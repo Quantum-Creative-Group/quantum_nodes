@@ -10,6 +10,7 @@ class SimulationDataManager:
 		self._v_x, self._v_y = None, None
 		self._wave_function = None
 		self._potential_wall = 1e10
+		self._potential_boundary = None
 		self._laplace_matrix = None
 		self._h1, self._hx, self._hy = None, None, None
 		self._x, self._y = None, None

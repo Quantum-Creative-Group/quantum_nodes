@@ -6,6 +6,7 @@ class SimulationInputsManager:
 	def __init__(self, dim, size, center, n_o_w, spr, pot, obs):
 		self._dimension = dim
 		self._size = size
+		self._step = size/dim
 		self._center = center
 		self._number_of_waves = n_o_w # (Kx, Ky)
 		self._sprawl = spr # étalement
