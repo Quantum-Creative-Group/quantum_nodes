@@ -11,23 +11,23 @@ class SimulationInputsManager:
 		self._sprawl = spr # étalement
 		self._potential_expr = "0"
 		self._obstacle_expr = "False"
-		self.setPotential(self, expr)
-		self.setObstacle(self, expr)
+		self.setPotential(pot)
+		self.setObstacle(obs)
 
 	@classmethod
 	def __verifyPotentialExpr(self, expr):
 		x, y = 0, 0
 		try:
 			test = eval(expr)
-			return true
+			return True
 		except:
-			print("ERROR::SchrödingerEquationSimulation : unable to evaluate the given potential formula '" + expr "'\n"\
+			print("ERROR::SchrödingerEquationSimulation : unable to evaluate the given potential formula '" + expr + "'\n"\
 				  "Expression set to : '0'")
-			return false
+			return False
 	
 	@classmethod
 	def setPotential(self, expr):
-		if(__verifyPotentialExpr(self, expr)):
+		if(self.__verifyPotentialExpr(expr)):
 			self._potential_expr = expr
 		else:
 			self._potential_expr = "0"
@@ -37,29 +37,29 @@ class SimulationInputsManager:
 		x, y = 0, 0
 		try:
 			test = eval(expr)
-			return true
+			return True
 		except:
-			print("ERROR::SchrödingerEquationSimulation : unable to evaluate the given obstacle formula '" + expr "'\n"\
+			print("ERROR::SchrödingerEquationSimulation : unable to evaluate the given obstacle formula '" + expr + "'\n"\
 				  "Expression set to : 'False'")
-			return false
+			return False
 	
 	@classmethod
 	def setObstacle(self, expr):
-		if(__verifyObstacleExpr(self, expr)):
+		if(self.__verifyObstacleExpr(expr)):
 			self._obstacle_expr = expr
 		else:
 			self._obstacle_expr = "False"
 	
 	@classmethod
 	def isObstacle(self, x, y):
-		if(__verifyObstacleExpr(self, self._obstacle_expr)):
+		if(self.__verifyObstacleExpr(self._obstacle_expr)):
 			return eval(self._obstacle_expr)
 		else:
 			return False
 	
 	@classmethod
 	def getPotential(self, x, y):
-		if(self.__verifyPotentialExpr(self, self._potential_expr)):
+		if(self.__verifyPotentialExpr(self._potential_expr)):
 			return eval(self._potential_expr)
 		else:
 			return 0 + 0j
