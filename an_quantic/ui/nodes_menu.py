@@ -12,6 +12,10 @@ class TestExtensionMenu(bpy.types.Menu):
         insertNode(layout, "an_CopyLocationWithOffsetNode", "Copy Location with Offset")
         insertNode(layout, "an_MeshToHeight", "Mesh to Height")
         insertNode(layout, "an_HeightToMesh", "Height to Mesh")
+        insertNode(layout, "an_QuantumGateY", "Quantum Gate Y")
+        insertNode(layout, "an_HeightmapToQuantumCircuitNode", "Heightmap To Quantum Circuit")
+        
+        
 
 def drawMenu(self, context):
     if context.space_data.tree_type != "an_AnimationNodeTree": return

@@ -4,7 +4,7 @@ from .. lib.quantumblur import *
 from animation_nodes.base_types import AnimationNode
 
 class HeightmapToQuantumCircuit(bpy.types.Node, AnimationNode):
-    bl_idname = "an_HeightmapToQuantumCircuittNode"
+    bl_idname = "an_HeightmapToQuantumCircuitNode"
     bl_label = "Heightmap To Quantum Circuit"
 
     def create(self):
@@ -13,8 +13,7 @@ class HeightmapToQuantumCircuit(bpy.types.Node, AnimationNode):
 
     def execute(self, heightmap):
         try:
-            quantumCircuit = height2circuit(heightmap)
-            return quantumCircuit
+            return height2circuit(heightmap)
         except:
             return
         

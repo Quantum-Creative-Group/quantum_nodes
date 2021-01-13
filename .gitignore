@@ -22,3 +22,10 @@ an_quantic/nodes/__pycache__/gatex.cpython-37.pyc
 an_quantic/nodes/__pycache__/gatey.cpython-37.pyc
 an_quantic/nodes/__pycache__/height_to_circuit copy.cpython-37.pyc
 an_quantic/lib/__pycache__/quantumblur.cpython-37.pyc
+an_quantic/ui/__pycache__/nodes_menu.cpython-37.pyc
+an_quantic/sockets/__pycache__/quantum.cpython-37.pyc
+an_quantic/nodes/__pycache__/quantum_circuit_output_state.cpython-37.pyc
+an_quantic/nodes/__pycache__/nodeTest.cpython-37.pyc
+an_quantic/nodes/__pycache__/circuit_to_height.cpython-37.pyc
+an_quantic/nodes/__pycache__/nodeTest.cpython-37.pyc
+an_quantic/ui/__pycache__/nodes_menu.cpython-37.pyc

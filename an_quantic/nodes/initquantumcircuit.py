@@ -7,13 +7,11 @@ class InitQuantumCircuit(bpy.types.Node, AnimationNode):
     bl_label = "Init Quantum Circuit"
 
     def create(self):
-        self.newInput("Integer", "Input", "input")
-        self.newOutput("QuantumCircuit", "Output", "output")
+        self.newInput("Integer", "Number Of Qubits", "number_of_qubits")
+        self.newOutput("QuantumCircuit", "QuantumCircuit", "quantum_circuit")
 
-    def execute(self, input):
+    def execute(self, number_of_qubits):
         try:
-            for j in range(input.num_qubits):
-                input.x(j)
-            output = input
+            return QuantumCircuit(number_of_qubits)
         except:
             return
