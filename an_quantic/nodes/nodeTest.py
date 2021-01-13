@@ -7,6 +7,8 @@ class CopyLocationWithOffsetNode(bpy.types.Node, AnimationNode):
     bl_label = "Copy Location with Offset"
 
     def create(self):
+        self.newInput("Object", "Source", "source")
+        self.newInput("Object", "Target", "target")
         self.newInput("Quantum", "Offset", "offset")
 
     def execute(self, source, target, offset):

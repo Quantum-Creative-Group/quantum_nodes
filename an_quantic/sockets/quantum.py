@@ -11,7 +11,7 @@ class QuantumSocket(bpy.types.NodeSocket, AnimationNodeSocket):
     bl_idname = "an_QuantumSocket"
     bl_label = "Quantum Socket"
     dataType = "Quantum"
-    drawColor = (0.7, 0.7, 0.4, 1)
+    drawColor = (0.2, 0.2, 0.2, 1.0)
     storable = True
     comparable = True
 
@@ -35,9 +35,18 @@ class QuantumSocket(bpy.types.NodeSocket, AnimationNodeSocket):
 
     @classmethod
     def getDefaultValue(cls):
-        return Vector((1, 1, 1))
+        return Vector((0, 0, 0))
 
     @classmethod
     def getCopyExpression(cls):
         return "value.copy()"
 
+    @classmethod
+    def correctValue(cls, value):
+        if isinstance(value, Vector) and len(value) == 3:
+            return value, 0
+        try:
+            if len(value) == 3: return Vector(value), 1
+        except:
+            pass
+        return cls.getDefaultValue(), 2
