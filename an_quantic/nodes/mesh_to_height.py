@@ -1,6 +1,7 @@
 import bpy
 import math # ceil, log
 import numpy as np  # abs
+from mathutils import Vector
 from animation_nodes.base_types import AnimationNode
 
 class MeshToHeight(bpy.types.Node, AnimationNode):
@@ -14,7 +15,7 @@ class MeshToHeight(bpy.types.Node, AnimationNode):
 
     def execute(self, source, index = 0):
         if source is None:
-            return
+            return Vector((0, 0, 0)), Vector((0, 0, 0))
         """ Converts a mesh into a python dictionnary containing one of 
         the (x, y, z) coordinates. Uses the exact same logic as James Wootton 
         about QuantumBlur for images, but applied on vertices of a mesh.
