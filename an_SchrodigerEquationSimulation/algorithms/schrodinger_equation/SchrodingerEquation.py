@@ -103,8 +103,10 @@ class SchrodingerEquation:
         self._cache[frame] = d._wave_function
     
     def getFrame(self, frame):
-        if(np.size(self._cache[frame]) != 1):
-            return self._cache[0]
-        else:
-            self.processFrame(frame)
-            return self._cache[0]
+        if(frame < np.size(self._cache)):
+            if(np.size(self._cache[frame]) != 1):
+                return self._cache[frame]
+            else:
+                self.processFrame(frame)
+                return self._cache[frame]
+        else: return [0] * self._duration * self._frame_rate
