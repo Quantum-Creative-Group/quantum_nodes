@@ -5,8 +5,8 @@ import scipy as sp
 import scipy.sparse
 import scipy.sparse.linalg
 
-from SimulationDataManager import SimulationDataManager
-from SimulationInputsManager import SimulationInputsManager
+from . SimulationDataManager import SimulationDataManager
+from . SimulationInputsManager import SimulationInputsManager
 
 class SchrodingerEquation:
     def __init__(self, dim, size, center, n_o_w, spr, pot, obs, fr, d, dt):
@@ -15,7 +15,9 @@ class SchrodingerEquation:
         self._frame_rate = fr
         self._duration = d
         self._delta_t = dt
-        self._cache = None
+        self._cache = [0] * d*fr
+        print(self._cache)
+        self.initialize()
         
     def initialize(self):
         d = self._data
@@ -76,9 +78,11 @@ class SchrodingerEquation:
                     adj = d.getAdjPos(i, j, inp._dimension)
                     for xx, yy in adj:
                         if xx >= 0 and yy >= 0 and xx < inp._dimension and yy < inp._dimension and not inp.isObstacle(d._x_axis[yy], d._y_axis[xx]):
-                            d._potential_boudnary.append((i, j))
+                            d._potential_boundary.append((i, j))
+                            
+        self._cache[0] = d._wave_function
     
-    def processFrame(self):
+    def processFrame(self, frame):
         d = self._data		# data container
         inp = self._inputs	# inputs container
         vector_selon_x = d.xConcatenate(d._wave_function, inp._dimension)
@@ -95,7 +99,12 @@ class SchrodingerEquation:
         U_selon_y_plus = scipy.sparse.linalg.spsolve(d._hy, U_selon_y)
 
         d._wave_function = d.yDeconcatenate(U_selon_y_plus, inp._dimension)
+        
+        self._cache[frame] = d._wave_function
     
-    def getFrame(self):
-        self.processFrame()
-        return self._data._wave_function
+    def getFrame(self, frame):
+        if(np.size(self._cache[frame]) != 1):
+            return self._cache[0]
+        else:
+            self.processFrame(frame)
+            return self._cache[0]
