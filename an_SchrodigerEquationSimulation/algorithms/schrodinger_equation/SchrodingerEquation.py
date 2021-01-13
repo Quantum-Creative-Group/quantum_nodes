@@ -19,8 +19,8 @@ class SchrodingerEquation:
 
 	@classmethod
 	def initialize(self):
-		d = self._data 	   # data container
-		inp = self._inputs # inputs container
+		d = self._data		# data container
+		inp = self._inputs	# inputs container
 		d._x_axis = np.linspace(-inp._size/2, inp._size/2, d._dimension)
 		d._y_axis = np.linspace(-inp._size/2, inp._size/2, d._dimension)
 		d._x, d._y = np.meshgrid(d._x_axis, d._y_axis)
@@ -40,7 +40,7 @@ class SchrodingerEquation:
 				d._laplace_matrix[k+1,k] = 1
 
 		d._v_x = np.zeros(d._dimension**2, dtype='c16')
-		
+
 		for j in range(d._dimension):
 			for i in range(d._dimension):
 				xx, yy = i, d._dimension*j
@@ -48,9 +48,9 @@ class SchrodingerEquation:
 					d._v_x[xx+yy] = inp._potential_wall
 				else:
 					d._v_x[xx+yy] = inp.getPotential(d._x_axis[j], d._y_axis[i])
-		
+
 		d._v_y = np.zeros(d._dimension**2, dtype='c16')
-		
+
 		for j in range(d._dimension):
 			for i in range(d._dimension):
 				xx, yy = j*d._dimension, i
@@ -82,8 +82,8 @@ class SchrodingerEquation:
 	
 	@classmethod
 	def processFrame(self, frame):
-		d = self._data 	   # data container
-		inp = self._inputs # inputs container
+		d = self._data		# data container
+		inp = self._inputs	# inputs container
 		vector_selon_x = d.xConcatenate(d._wave_function, d._dimension) 	
 
 		vector_derive_y_selon_x = d.xConcatenate(d.dySquare(d._wave_function, d._dimension, inp._step), d._dimension)
@@ -98,5 +98,3 @@ class SchrodingerEquation:
 		U_selon_y_plus = scipy.sparse.linalg.spsolve(d._hy, U_selon_y)
 
 		d._wave_function = d.yDeconcatenate(U_selon_y_plus, d._dimension)
-
-
