@@ -1,11 +1,7 @@
 import numpy as np
 import math
 import bpy, os, sys
-#dir = os.path.dirname(bpy.data.filepath)
-dir = "/home/theo/Documents/PTut/Blender_Addon/"
-if not dir in sys.path:
-    sys.path.append(dir)
-import quantumblur as qb
+from .. lib import quantumblur
 
 from bpy.props import(
     BoolProperty,
@@ -116,11 +112,11 @@ class quantumize_op(Operator):
         #print(height)
         #print(negative_coords)
         # Converts heightmap to a qiskit QuantumCircuit
-        qc = qb.height2circuit(height)
+        qc = quantumblur.height2circuit(height)
         # Applies quantum gates to qc
         self.applyQuantumGates(qc, gates)
         # Converts qc back to a heightmap
-        new_height = qb.circuit2height(qc)
+        new_height = quantumblur.circuit2height(qc)
         # Applies modified vertices to mesh
         self.height2mesh(obj.data.vertices, new_height, negative_coords, distance, index)
     
@@ -143,6 +139,17 @@ class quantumize_op(Operator):
                 self.transform(obj, index, settings.get("distance"), gates)
             
         return {'FINISHED'}
+
+class swap_to_an(bpy.types.Operator):
+    bl_idname = "screen.swap_to_an"
+    bl_label = "Add Material"
+    bl_description = "Add New Material"
+
+    def execute(self,context):
+        bpy.ops.screen.space_type_set_or_cycle(space_type='NODE_EDITOR')
+        #if bpy.types.Panel.bl_idname == 'AN_PT_tree_panel': print("coucou")            TESTER SI L'IDNAME CORRESPOND A ANIMATION NODE
+        return {'FINISHED'}
+
         
 
 class quantumize_ui(bpy.types.Panel):
@@ -177,6 +184,8 @@ class quantumize_ui(bpy.types.Panel):
         row.prop(settings, "y_gate_tick", text = "Y gate")
         row = layout.row()
         row.operator(quantumize_op.bl_idname, text="Appliquer", icon="CHECKMARK")
+        row = layout.row()
+        row.operator(swap_to_an.bl_idname, text="Advanced", icon="PLUS")
 
 classes = (
     settings,

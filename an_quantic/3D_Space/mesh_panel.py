@@ -14,11 +14,8 @@ class QuantumMeshPanel(bpy.types.Panel):
         col = layout.column()
         col.operator('mesh.quantum_mesh', text='Create Quantum Mesh')
         col.operator('dialog.number')
-        col.operator('object.quantumize_ui')
-        col.operator('screen.swap_to_an')
-       
-        
-
+        #col.operator('screen.swap_to_an')
+        #col.operator('object.quantumize_ui')
 
 #def register(): bpy.utils.register_class(QuantumMeshPanel)
 
