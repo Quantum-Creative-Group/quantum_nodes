@@ -1,2 +1,6 @@
-an_quantic/sockets/__pycache__/quantum.cpython-38.pyc
 an_quantic/sockets/__pycache__/__init__.cpython-38.pyc
+an_quantic/sockets/__pycache__/quantum.cpython-38.pyc
+an_quantic/__pycache__/__init__.cpython-38.pyc
+an_quantic/nodes/__pycache__/mesh_to_height.cpython-38.pyc
+an_quantic/nodes/__pycache__/nodeTest.cpython-38.pyc
+an_quantic/ui/__pycache__/nodes_menu.cpython-38.pyc

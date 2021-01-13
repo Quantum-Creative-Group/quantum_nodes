@@ -10,6 +10,8 @@ class TestExtensionMenu(bpy.types.Menu):
         layout = self.layout
         # REPLACE with bl_idname and bl_label of the node in the nodes folder
         insertNode(layout, "an_CopyLocationWithOffsetNode", "Copy Location with Offset")
+        insertNode(layout, "an_MeshToHeight", "Mesh to Height")
+        insertNode(layout, "an_HeightToMesh", "Height to Mesh")
 
 def drawMenu(self, context):
     if context.space_data.tree_type != "an_AnimationNodeTree": return
