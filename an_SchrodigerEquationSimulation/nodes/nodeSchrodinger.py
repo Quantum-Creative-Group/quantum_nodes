@@ -1,10 +1,14 @@
 import bpy
 
 from animation_nodes.base_types import AnimationNode
+from SchrodingerEquation import SchrodingerEquation
 
 class SchrodingerEquationSimulationNode(bpy.types.Node, AnimationNode):
     bl_idname = "an_SchrodingerEquationSimulation"
     bl_label = "Schrödinger Equation Simulation"
+    
+    def __init__(self):
+        self._schrodinger_equation = SchrodingerEquation(10, 5, [-5.0, 0.0], [1.0, 0.0], [0.5, 0.5], "0", "False", 25, 10, 0.125)
 
     def create(self):
         self.newInput("Integer", "Frame rate", "frame_rate", value = 25, minValue = 0)
@@ -23,8 +27,5 @@ class SchrodingerEquationSimulationNode(bpy.types.Node, AnimationNode):
 
         self.newOutput("Matrix", "Output", "output")
 
-    # def execute(self, source, target, offset):
-    #     if source is None or target is None:
-    #         return
-
-    #     target.location = source.location + offset
+    def execute(self, source, target, offset):
+        return self._schrodinger_equation.getFrame()

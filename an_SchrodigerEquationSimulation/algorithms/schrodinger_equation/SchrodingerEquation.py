@@ -78,7 +78,7 @@ class SchrodingerEquation:
                         if xx >= 0 and yy >= 0 and xx < inp._dimension and yy < inp._dimension and not inp.isObstacle(d._x_axis[yy], d._y_axis[xx]):
                             d._potential_boudnary.append((i, j))
     
-    def processFrame(self, frame):
+    def processFrame(self):
         d = self._data		# data container
         inp = self._inputs	# inputs container
         vector_selon_x = d.xConcatenate(d._wave_function, inp._dimension)
@@ -95,3 +95,7 @@ class SchrodingerEquation:
         U_selon_y_plus = scipy.sparse.linalg.spsolve(d._hy, U_selon_y)
 
         d._wave_function = d.yDeconcatenate(U_selon_y_plus, inp._dimension)
+    
+    def getFrame(self):
+        self.processFrame()
+        return self._data._wave_function
