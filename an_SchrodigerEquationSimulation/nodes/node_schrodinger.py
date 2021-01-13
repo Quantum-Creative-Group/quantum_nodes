@@ -8,6 +8,7 @@ class SchrodingerEquationSimulationNode(bpy.types.Node, AnimationNode):
     bl_label = "Schrödinger Equation Simulation"
     _schrodinger_equation = SchrodingerEquation(10, 5, [-5.0, 0.0], [1.0, 0.0], [0.5, 0.5], "0", "False", 25, 10, 0.125)
 
+    
     def create(self):
         self.newInput("Integer", "Frame rate", "frame_rate", value = 25, minValue = 0)
         self.newInput("Float", "Duration", "duration", value = 5, minValue = 0)
@@ -16,9 +17,9 @@ class SchrodingerEquationSimulationNode(bpy.types.Node, AnimationNode):
         self.newInput("Integer", "Dimension (N)", "dimension", value = 10, minValue = 1)
         self.newInput("Integer", "Size", "size", value = 5, minValue = 0)
 
-        self.newInput("Vector", "Center", "center", value = (5.,2.,3.))
-        self.newInput("Vector", "Number of waves", "number_of_waves")
-        self.newInput("Vector", "Sprawl", "sprawl")
+        self.newInput("Vector 2D", "Center", "center", value = (5.,2.))
+        self.newInput("Vector 2D", "Number of waves", "number_of_waves")
+        self.newInput("Vector 2D", "Sprawl", "sprawl")
 
         self.newInput("Boolean", "Potential", "potential", value = 0)
         self.newInput("Boolean", "Obstacle.s", "obstacles", value = 0)
