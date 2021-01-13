@@ -1,6 +1,5 @@
 import numpy as np
 from numpy import pi
-import os
 
 class SimulationDataManager:
 	def __init__(self):
