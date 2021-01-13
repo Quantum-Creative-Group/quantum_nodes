@@ -4,3 +4,21 @@ an_quantic/__pycache__/__init__.cpython-38.pyc
 an_quantic/nodes/__pycache__/mesh_to_height.cpython-38.pyc
 an_quantic/nodes/__pycache__/nodeTest.cpython-38.pyc
 an_quantic/ui/__pycache__/nodes_menu.cpython-38.pyc
+an_quantic/__pycache__/__init__.cpython-37.pyc
+an_quantic/__pycache__/auto_load.cpython-37.pyc
+an_quantic/nodes/__pycache__/height_to_circuit.cpython-37.pyc
+an_quantic/nodes/__pycache__/height_to_mesh.cpython-37.pyc
+an_quantic/nodes/__pycache__/initquantumcircuit.cpython-37.pyc
+an_quantic/nodes/__pycache__/mesh_to_height.cpython-37.pyc
+an_quantic/nodes/__pycache__/nodeTest.cpython-37.pyc
+an_quantic/nodes/__pycache__/quantumblur.cpython-37.pyc
+an_quantic/ui/__pycache__/__init__.cpython-37.pyc
+an_quantic/ui/__pycache__/nodes_menu.cpython-37.pyc
+an_quantic/nodes/__pycache__/__init__.cpython-37.pyc
+an_quantic/nodes/__pycache__/game.cpython-37.pyc
+an_quantic/nodes/__pycache__/gateh.cpython-37.pyc
+an_quantic/nodes/__pycache__/gatex copy.cpython-37.pyc
+an_quantic/nodes/__pycache__/gatex.cpython-37.pyc
+an_quantic/nodes/__pycache__/gatey.cpython-37.pyc
+an_quantic/nodes/__pycache__/height_to_circuit copy.cpython-37.pyc
+an_quantic/lib/__pycache__/quantumblur.cpython-37.pyc
