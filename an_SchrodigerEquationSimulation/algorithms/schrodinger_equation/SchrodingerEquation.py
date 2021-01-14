@@ -4,6 +4,7 @@ import scipy.linalg
 import scipy as sp
 import scipy.sparse
 import scipy.sparse.linalg
+import sys
 
 from . SimulationDataManager import SimulationDataManager
 from . SimulationInputsManager import SimulationInputsManager
@@ -13,10 +14,10 @@ class SchrodingerEquation:
     def __init__(self, dim, size, center, n_o_w, spr, pot, obs, fr, d, dt):
         self._inputs = SimulationInputsManager(dim, size, center, n_o_w, spr, pot, obs, fr, d, dt)
         self._data = SimulationDataManager()
-        self._cache = SchrodingerSimulationCache()
-        self.initialize()
+        self._cache = SchrodingerSimulationCache(self._inputs._duration * self._inputs._frame_rate + 1)
+        self.__initialize()
         
-    def initialize(self):
+    def __initialize(self):
         d = self._data
         inp = self._inputs
         d._x_axis = np.linspace(-inp._size/2, inp._size/2, inp._dimension)
@@ -77,7 +78,7 @@ class SchrodingerEquation:
                         if xx >= 0 and yy >= 0 and xx < inp._dimension and yy < inp._dimension and not inp.isObstacle(d._x_axis[yy], d._y_axis[xx]):
                             d._potential_boundary.append((i, j))
                             
-        self._cache._data.append(d._wave_function)
+        self._cache._data[0] = d._wave_function
         self._cache._last_computed_frame = 0
 
     
@@ -86,3 +87,5 @@ class SchrodingerEquation:
             return self._cache.getFrame(frame, self._data, self._inputs)
         except:
             print("ERROR::SchrodingerEquation : impossible the get the requested data at frame : " + str(frame))
+            print("Unexpected error : ", sys.exc_info()[0])
+            return self._cache.getFrame(0, self._data, self._inputs)

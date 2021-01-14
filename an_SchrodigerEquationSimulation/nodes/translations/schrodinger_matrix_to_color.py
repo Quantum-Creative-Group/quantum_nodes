@@ -1,78 +1,78 @@
-import bpy, colorsys
-from bpy.props import *
-from animation_nodes.base_types import AnimationNode, VectorizedSocket
+# import bpy, colorsys
+# from bpy.props import *
+# from animation_nodes.base_types import AnimationNode, VectorizedSocket
 
-# using linear conversion here, unlike BL colorpicker hsv/hex
-# BL Color() funcion does this also and has only rgb+hsv, so we'l use colorsys
-# only hsv/hex in the colorpicker are gamma corrected for colorspaces
-# we shall not use other functions, till they are in context (BL color space)
+# # using linear conversion here, unlike BL colorpicker hsv/hex
+# # BL Color() funcion does this also and has only rgb+hsv, so we'l use colorsys
+# # only hsv/hex in the colorpicker are gamma corrected for colorspaces
+# # we shall not use other functions, till they are in context (BL color space)
 
-targetTypeItems = [
-    ("RGB", "RGB", "Red, Green, Blue"),
-    ("HSL", "HSL", "Hue, Saturation, Lightness"),]
+# targetTypeItems = [
+#     ("RGB", "RGB", "Red, Green, Blue"),
+#     ("HSL", "HSL", "Hue, Saturation, Lightness"),]
 
-class SchrodingerToColorNode(bpy.types.Node, AnimationNode):
-    bl_idname = "an_SchrodingerToColorNode"
-    bl_label = "Schrödinger Complex To Color"
-    dynamicLabelType = "HIDDEN_ONLY"
+# class SchrodingerToColorNode(bpy.types.Node, AnimationNode):
+#     bl_idname = "an_SchrodingerToColorNode"
+#     bl_label = "Schrödinger Complex To Color"
+#     dynamicLabelType = "HIDDEN_ONLY"
 
-    useList: VectorizedSocket.newProperty()
+#     useList: VectorizedSocket.newProperty()
 
-    targetType: EnumProperty(name = "Target Type", items = targetTypeItems,
-        default = "RGB", update = AnimationNode.refresh)
+#     targetType: EnumProperty(name = "Target Type", items = targetTypeItems,
+#         default = "RGB", update = AnimationNode.refresh)
 
-    def create(self):
-        self.newInput(VectorizedSocket("Matrix", "useList", ("Schrödinger Matrix", "schrodinger_matrix"), ("Schrödinger Matrix", "schrodinger_matrix")))
+#     def create(self):
+#         self.newInput(VectorizedSocket("Matrix", "useList", ("Schrödinger Matrix", "schrodinger_matrix"), ("Schrödinger Matrix", "schrodinger_matrix")))
 
-        if self.targetType == "RGB":
-            self.newOutput(VectorizedSocket("Color", "useList", ("Color", "color"), ("Colors", "colors")))
-        elif self.targetType == "HSL":
-            self.newInput(VectorizedSocket("Float", "useList", ("S", "s"), ("S", "s")))
-            self.newOutput(VectorizedSocket("Color", "useList", ("Color", "color"), ("Colors", "colors")))
+#         if self.targetType == "RGB":
+#             self.newOutput(VectorizedSocket("Color", "useList", ("Color", "color"), ("Colors", "colors")))
+#         elif self.targetType == "HSL":
+#             self.newInput(VectorizedSocket("Float", "useList", ("S", "s"), ("S", "s")))
+#             self.newOutput(VectorizedSocket("Color", "useList", ("Color", "color"), ("Colors", "colors")))
             
-    def draw(self, layout):
-        layout.prop(self, "targetType", expand = True)
+#     def draw(self, layout):
+#         layout.prop(self, "targetType", expand = True)
 
-    def drawLabel(self):
-        return "{}A from Color".format(self.targetType)
+#     def drawLabel(self):
+#         return "{}A from Color".format(self.targetType)
 
-    def drawAdvanced(self, layout):
-        layout.label(text = "Uses linear color space", icon = "INFO")
+#     def drawAdvanced(self, layout):
+#         layout.label(text = "Uses linear color space", icon = "INFO")
 
-    def gexecute(self):
+#     def gexecute(self):
 
-        if self.targetType == "RGB":    
-            # if schrodinger_matrix is None:
-            #     return Color((0, 0, 0))
+#         if self.targetType == "RGB":    
+#             # if schrodinger_matrix is None:
+#             #     return Color((0, 0, 0))
 
-            # r = np.abs(schrodinger_complex)
-            # arg = np.angle(schrodinger_complex)
+#             # r = np.abs(schrodinger_complex)
+#             # arg = np.angle(schrodinger_complex)
 
-            # h = (arg + np.pi) / (2 * np.pi) + 0.5
-            # l = 1.0 - 1.0/(1.0 + 2*r**1.2)
-            # s = saturation
+#             # h = (arg + np.pi) / (2 * np.pi) + 0.5
+#             # l = 1.0 - 1.0/(1.0 + 2*r**1.2)
+#             # s = saturation
 
-            # c = np.vectorize(hls_to_rgb) (h,l,s) 
-            # c = np.array(c)
-            # c = c.swapaxes(0,2)
-            # c = c.swapaxes(0,1)
-            return Color((0,0,0))
-        elif self.targetType == "HSL":  
-            if schrodinger_matrix is None:
-                return Color((0, 0, 0))
+#             # c = np.vectorize(hls_to_rgb) (h,l,s) 
+#             # c = np.array(c)
+#             # c = c.swapaxes(0,2)
+#             # c = c.swapaxes(0,1)
+#             return Color((0,0,0))
+#         elif self.targetType == "HSL":  
+#             if schrodinger_matrix is None:
+#                 return Color((0, 0, 0))
 
-            r = np.abs(schrodinger_complex)
-            arg = np.angle(schrodinger_complex)
+#             r = np.abs(schrodinger_complex)
+#             arg = np.angle(schrodinger_complex)
 
-            h = (arg + np.pi) / (2 * np.pi) + 0.5
-            l = 1.0 - 1.0/(1.0 + 2*r**1.2)
-            s = saturation
+#             h = (arg + np.pi) / (2 * np.pi) + 0.5
+#             l = 1.0 - 1.0/(1.0 + 2*r**1.2)
+#             s = saturation
 
-            c = np.vectorize(hls_to_rgb) (h,l,s) 
-            c = np.array(c)
-            c = c.swapaxes(0,2)
-            c = c.swapaxes(0,1)
-            return c
+#             c = np.vectorize(hls_to_rgb) (h,l,s) 
+#             c = np.array(c)
+#             c = c.swapaxes(0,2)
+#             c = c.swapaxes(0,1)
+#             return c
 
-    def getUsedModules(self):
-        return ["colorsys"]
+#     def getUsedModules(self):
+#         return ["colorsys"]
