@@ -8,10 +8,8 @@ class QuantumNode(bpy.types.Node, AnimationNode):
 
     def create(self):
         self.newInput("Vector List", "Heightmap", "heightmap")
-        self.newOutput("QuantumCircuit", "QuantumCircuit", "quantumCircuit")
+        self.newOutput("QuantumRegister", "QuantumRegister", "quantumregister")
 
-    def execute(self, source, target, offset):
+    def execute(self):
         if source is None or target is None:
             return
-
-        target.location = source.location + offset

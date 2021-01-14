@@ -1,6 +1,6 @@
 import bpy
 from qiskit import *
-from .. lib.quantumblur import *
+from ... lib.quantumblur import *
 from animation_nodes.base_types import AnimationNode
 
 class QuantumCircuitToHeightmapNode(bpy.types.Node, AnimationNode):
