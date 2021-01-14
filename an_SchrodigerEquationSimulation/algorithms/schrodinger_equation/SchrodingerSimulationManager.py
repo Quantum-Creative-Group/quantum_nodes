@@ -84,7 +84,11 @@ class SchrodingerSimulationManager:
     
     def getFrameData(self, frame):
         try:
-            return self._cache.getFrame(frame, self._data, self._inputs)
+            frame = self._cache.getFrame(frame, self._data, self._inputs)
+            formatted_output = frame[0]
+            for i in range(1, self._inputs._dimension):
+                formatted_output = np.concatenate((formatted_output, frame[i]))
+            return formatted_output
         except:
             print("ERROR::SchrodingerEquation : impossible the get the requested data at frame : " + str(frame))
             print("Unexpected error : ", sys.exc_info())
