@@ -7,16 +7,13 @@ import scipy.sparse.linalg
 
 from . SimulationDataManager import SimulationDataManager
 from . SimulationInputsManager import SimulationInputsManager
+from . SchrodingerSimulationCache import SchrodingerSimulationCache
 
 class SchrodingerEquation:
     def __init__(self, dim, size, center, n_o_w, spr, pot, obs, fr, d, dt):
-        self._inputs = SimulationInputsManager(dim, size, center, n_o_w, spr, pot, obs)
+        self._inputs = SimulationInputsManager(dim, size, center, n_o_w, spr, pot, obs, fr, d, dt)
         self._data = SimulationDataManager()
-        self._frame_rate = fr
-        self._duration = d
-        self._delta_t = dt
-        self._cache = [0] * d*fr
-        print(self._cache)
+        self._cache = SchrodingerSimulationCache()
         self.initialize()
         
     def initialize(self):
@@ -63,13 +60,13 @@ class SchrodingerEquation:
         V_y_matrix = sp.sparse.diags([d._v_y], [0])
         d._laplace_matrix = d._laplace_matrix/(inp._step**2)
 
-        d._h1 = (1*sp.sparse.identity(inp._dimension**2) - 1j*(self._delta_t/2)*(d._laplace_matrix))
+        d._h1 = (1*sp.sparse.identity(inp._dimension**2) - 1j*(inp._delta_t/2)*(d._laplace_matrix))
         d._h1 = sp.sparse.dia_matrix(d._h1)
 
-        d._hx = (1*sp.sparse.identity(inp._dimension**2) - 1j*(self._delta_t/2)*(d._laplace_matrix - V_x_matrix))
+        d._hx = (1*sp.sparse.identity(inp._dimension**2) - 1j*(inp._delta_t/2)*(d._laplace_matrix - V_x_matrix))
         d._hx = sp.sparse.dia_matrix(d._hx)
 
-        d._hy = (1*sp.sparse.identity(inp._dimension**2) - 1j*(self._delta_t/2)*(d._laplace_matrix - V_y_matrix))
+        d._hy = (1*sp.sparse.identity(inp._dimension**2) - 1j*(inp._delta_t/2)*(d._laplace_matrix - V_y_matrix))
         d._hy = sp.sparse.dia_matrix(d._hy)
 
         for i in range(0, inp._dimension):
@@ -80,33 +77,12 @@ class SchrodingerEquation:
                         if xx >= 0 and yy >= 0 and xx < inp._dimension and yy < inp._dimension and not inp.isObstacle(d._x_axis[yy], d._y_axis[xx]):
                             d._potential_boundary.append((i, j))
                             
-        self._cache[0] = d._wave_function
+        self._cache._data.append(d._wave_function)
+        self._cache._last_computed_frame = 0
+
     
-    def processFrame(self, frame):
-        d = self._data		# data container
-        inp = self._inputs	# inputs container
-        vector_selon_x = d.xConcatenate(d._wave_function, inp._dimension)
-
-        vector_derive_y_selon_x = d.xConcatenate(d.dySquare(d._wave_function, inp._dimension, inp._step), inp._dimension)
-        U_selon_x = vector_selon_x + (1j*self._delta_t/2)*(vector_derive_y_selon_x - d._v_x*vector_selon_x)
-        U_selon_x_plus = scipy.sparse.linalg.spsolve(d._hx, U_selon_x)
-
-        d._wave_function = d.xDeconcatenate(U_selon_x_plus, inp._dimension)
-
-        vector_selon_y = d.yConcatenate(d._wave_function, inp._dimension)
-        vector_derive_x_selon_y = d.yConcatenate(d.dxSquare(d._wave_function, inp._dimension, inp._step), inp._dimension)
-        U_selon_y = vector_selon_y  + (1j*self._delta_t/2)*(vector_derive_x_selon_y - d._v_y*vector_selon_y)
-        U_selon_y_plus = scipy.sparse.linalg.spsolve(d._hy, U_selon_y)
-
-        d._wave_function = d.yDeconcatenate(U_selon_y_plus, inp._dimension)
-        
-        self._cache[frame] = d._wave_function
-    
-    def getFrame(self, frame):
-        if(frame < np.size(self._cache)):
-            if(np.size(self._cache[frame]) != 1):
-                return self._cache[frame]
-            else:
-                self.processFrame(frame)
-                return self._cache[frame]
-        else: return [0] * self._duration * self._frame_rate
+    def getFrameData(self, frame):
+        try:
+            return self._cache.getFrame(frame, self._data, self._inputs)
+        except:
+            print("ERROR::SchrodingerEquation : impossible the get the requested data at frame : " + str(frame))

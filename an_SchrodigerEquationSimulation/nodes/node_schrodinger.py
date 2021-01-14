@@ -27,4 +27,4 @@ class SchrodingerEquationSimulationNode(bpy.types.Node, AnimationNode):
         self.newOutput("Matrix", "Output", "output")
 
     def execute(self, frame_rate, duration, delta_t, dimension, size, center, number_of_waves, sprawl, potential, obstacles):
-        return self._schrodinger_equation.getFrame(bpy.data.scenes['Scene'].frame_current)
+        return self._schrodinger_equation.getFrameData(bpy.data.scenes['Scene'].frame_current)

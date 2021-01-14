@@ -3,7 +3,10 @@ from numpy import sin, cos, exp, pi, tan, log, sinh, cosh, tanh, sinc, sqrt, cbr
 from numpy import pi, e
 
 class SimulationInputsManager:
-	def __init__(self, dim, size, center, n_o_w, spr, pot, obs):
+	def __init__(self, dim, size, center, n_o_w, spr, pot, obs, fr, d, dt):
+		self._frame_rate = fr
+		self._duration = d
+		self._delta_t = dt
 		self._dimension = dim
 		self._size = size
 		self._step = size/dim
