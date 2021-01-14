@@ -10,11 +10,11 @@ from . SimulationDataManager import SimulationDataManager
 from . SimulationInputsManager import SimulationInputsManager
 from . SchrodingerSimulationCache import SchrodingerSimulationCache
 
-class SchrodingerEquation:
+class SchrodingerSimulationManager:
     def __init__(self, dim, size, center, n_o_w, spr, pot, obs, fr, d, dt):
         self._inputs = SimulationInputsManager(dim, size, center, n_o_w, spr, pot, obs, fr, d, dt)
         self._data = SimulationDataManager()
-        self._cache = SchrodingerSimulationCache(self._inputs._duration * self._inputs._frame_rate + 1)
+        self._cache = SchrodingerSimulationCache(int(self._inputs._duration * self._inputs._frame_rate) + 1)
         self.__initialize()
         
     def __initialize(self):
@@ -87,5 +87,9 @@ class SchrodingerEquation:
             return self._cache.getFrame(frame, self._data, self._inputs)
         except:
             print("ERROR::SchrodingerEquation : impossible the get the requested data at frame : " + str(frame))
-            print("Unexpected error : ", sys.exc_info()[0])
+            print("Unexpected error : ", sys.exc_info())
             return self._cache.getFrame(0, self._data, self._inputs)
+    
+    def updateSimulation(self, dim, size, center, n_o_w, spr, pot, obs, fr, d, dt):
+        if(self._inputs.hasChanged(dim, size, center, n_o_w, spr, pot, obs, fr, d, dt)):
+            self.__init__(dim, size, center, n_o_w, spr, pot, obs, fr, d, dt)

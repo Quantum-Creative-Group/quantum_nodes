@@ -4,9 +4,6 @@ from numpy import pi, e
 
 class SimulationInputsManager:
 	def __init__(self, dim, size, center, n_o_w, spr, pot, obs, fr, d, dt):
-		self._frame_rate = fr
-		self._duration = d
-		self._delta_t = dt
 		self._dimension = dim
 		self._size = size
 		self._step = size/dim
@@ -17,6 +14,19 @@ class SimulationInputsManager:
 		self._obstacle_expr = "False"
 		self.setPotential(pot)
 		self.setObstacle(obs)
+		self._frame_rate = fr
+		self._duration = d
+		self._delta_t = dt
+
+	def hasChanged(self, dim, size, center, n_o_w, spr, pot, obs, fr, d, dt):
+		new_inputs = [dim, size, center, n_o_w, spr, pot, obs, fr, d, dt]
+		current_inputs = [self._dimension, self._size, self._center, self._number_of_waves,\
+						  self._sprawl, self._potential_expr, self._obstacle_expr, self._frame_rate,\
+						  self._duration, self._delta_t]
+		for i in range(np.size(new_inputs)):
+			if(new_inputs[i] != current_inputs[i]):
+				return True
+		return False
 
 	@classmethod
 	def __verifyPotentialExpr(self, expr):
@@ -25,8 +35,8 @@ class SimulationInputsManager:
 			test = eval(expr)
 			return True
 		except:
-			print("ERROR::SchrödingerEquationSimulation : unable to evaluate the given potential formula '" + expr + "'\n"\
-				  "Expression set to : '0'")
+			# unable to evaluate the given potential formula
+			# expression set to "0" by default
 			return False
 	
 	@classmethod
@@ -43,8 +53,8 @@ class SimulationInputsManager:
 			test = eval(expr)
 			return True
 		except:
-			print("ERROR::SchrödingerEquationSimulation : unable to evaluate the given obstacle formula '" + expr + "'\n"\
-				  "Expression set to : 'False'")
+			# unable to evaluate the given obstacle formula
+			# expression set to "False" by default
 			return False
 	
 	@classmethod
