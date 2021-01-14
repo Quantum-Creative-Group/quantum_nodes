@@ -7,7 +7,7 @@ class QuantumCircuitOutputStateNode(bpy.types.Node, AnimationNode):
     bl_label = "Quantum Circuit Output State"
 
     def create(self):
-        self.newInput("QuantumCircuit", "QuantumCircuit", "quantum_circuit")
+        self.newInput("Quantum Circuit", "Quantum Circuit", "quantum_circuit")
         self.newOutput("Vector", "Output State", "output_state")
 
     def execute(self, quantum_circuit):

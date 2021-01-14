@@ -9,7 +9,7 @@ class HeightmapToQuantumCircuitNode(bpy.types.Node, AnimationNode):
 
     def create(self):
         self.newInput("Vector List", "Heightmap", "heightmap")
-        self.newOutput("QuantumCircuit", "QuantumCircuit", "quantumCircuit")
+        self.newOutput("Quantum Circuit", "Quantum Circuit", "quantum_circuit")
 
     def execute(self, heightmap):
         try:

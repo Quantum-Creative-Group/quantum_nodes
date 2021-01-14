@@ -8,7 +8,7 @@ class InitQuantumCircuitNode(bpy.types.Node, AnimationNode):
 
     def create(self):
         self.newInput("Integer", "Number Of Qubits", "number_of_qubits")
-        self.newOutput("QuantumCircuit", "QuantumCircuit", "quantum_circuit")
+        self.newOutput("Quantum Circuit", "Quantum Circuit", "quantum_circuit")
 
     def execute(self, number_of_qubits):
         try:

@@ -7,8 +7,8 @@ class QuantumGateYToAllNode(bpy.types.Node, AnimationNode):
     bl_label = "Quantum GateY To All Circuit"
 
     def create(self):
-        self.newInput("QuantumCircuit", "Input", "input")
-        self.newOutput("QuantumCircuit", "Output", "output")
+        self.newInput("Quantum Circuit", "Input Circuit", "input")
+        self.newOutput("Quantum Circuit", "Output Circuit", "output")
 
     def execute(self, input):
         try:
