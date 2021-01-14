@@ -2,7 +2,7 @@ import bpy
 from qiskit import *
 from animation_nodes.base_types import AnimationNode
 
-class QuantumCircuitOutputState(bpy.types.Node, AnimationNode):
+class QuantumCircuitOutputStateNode(bpy.types.Node, AnimationNode):
     bl_idname = "an_QuantumCircuitOutputStateNode"
     bl_label = "Quantum Circuit Output State"
 

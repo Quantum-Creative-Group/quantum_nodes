@@ -3,9 +3,9 @@ from qiskit import *
 from .. lib.quantumblur import *
 from animation_nodes.base_types import AnimationNode
 
-class QuantumCircuitToHeightmap(bpy.types.Node, AnimationNode):
+class QuantumCircuitToHeightmapNode(bpy.types.Node, AnimationNode):
     bl_idname = "an_QuantumCircuitToHeightmapNode"
-    bl_label = "Quantum Circuit To Heightmap Node"
+    bl_label = "Quantum Circuit To Heightmap"
 
     def create(self):
         self.newInput("QuantumCircuit", "QuantumCircuit", "quantumCircuit")

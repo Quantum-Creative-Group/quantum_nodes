@@ -2,8 +2,8 @@ import bpy
 from qiskit import *
 from animation_nodes.base_types import AnimationNode
 
-class InitQuantumCircuit(bpy.types.Node, AnimationNode):
-    bl_idname = "an_InitQuantumCircuit"
+class InitQuantumCircuitNode(bpy.types.Node, AnimationNode):
+    bl_idname = "an_InitQuantumCircuitNode"
     bl_label = "Init Quantum Circuit"
 
     def create(self):
