@@ -15,3 +15,5 @@ class InitQuantumCircuitNode(bpy.types.Node, AnimationNode):
             return QuantumCircuit(number_of_qubits)
         except:
             return
+
+    
