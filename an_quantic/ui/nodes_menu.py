@@ -5,11 +5,13 @@ from animation_nodes.utils.nodes import getAnimationNodeTrees
 class TestExtensionMenu(bpy.types.Menu):
     bl_idname = "AN_MT_quantic_extension_menu"
     bl_label = "Quantic Extension Menu"
-
+    
     def draw(self, context):
         layout = self.layout
         # REPLACE with bl_idname and bl_label of the node in the nodes folder
         insertNode(layout, "an_CopyLocationWithOffsetNode", "Copy Location with Offset")
+        insertNode(layout, "an_SplitComplex128", "Split complex128")
+
 
 def drawMenu(self, context):
     if context.space_data.tree_type != "an_AnimationNodeTree": return
