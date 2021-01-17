@@ -77,3 +77,9 @@ an_quantic/__pycache__/__init__.cpython-37.pyc
 an_quantic/__pycache__/__init__.cpython-37.pyc
 an_quantic/nodes/quantum_gates/__pycache__/gatehtest.cpython-37.pyc
 an_quantic/nodes/quantum_output/__pycache__/quantum_measure.cpython-37.pyc
+an_quantic/nodes/quantum_gates/__pycache__/gateccx.cpython-37.pyc
+an_quantic/nodes/quantum_gates/__pycache__/gatecx.cpython-37.pyc
+an_quantic/nodes/quantum_gates/__pycache__/gates.cpython-37.pyc
+an_quantic/nodes/quantum_gates/__pycache__/gatesdg.cpython-37.pyc
+an_quantic/nodes/quantum_gates/__pycache__/gatex.cpython-37.pyc
+an_quantic/nodes/quantum_gates/__pycache__/gatey.cpython-37.pyc
