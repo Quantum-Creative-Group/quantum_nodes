@@ -2,7 +2,7 @@ import bpy
 import math # ceil, log
 import numpy as np  # abs
 from mathutils import Vector
-# from ... lib.quantumblur impor
+from animation_nodes.data_structures import Vector3DList
 from animation_nodes.base_types import AnimationNode
 
 class MeshToHeight(bpy.types.Node, AnimationNode):
@@ -48,8 +48,7 @@ class MeshToHeight(bpy.types.Node, AnimationNode):
         the (x, y, z) coordinates. Uses the exact same logic as James Wootton 
         about QuantumBlur for images, but applied on vertices of a mesh.
         """
-        vertices = [ (source.matrix_world @ v.co) for v in source.data.vertices ]
-            # TODO: There is a better way to do this, see the code for the node mesh object input
+        vertices = Vector3DList.fromValues([ (source.matrix_world @ v.co) for v in source.data.vertices ])
         heights, negative_coords = self.vertices2height(vertices)
             
         return heights, negative_coords, vertices
