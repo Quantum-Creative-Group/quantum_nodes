@@ -1,0 +1,8 @@
+an_quantic/__pycache__
+an_quantic/lib/__pycache__
+an_quantic/ui/__pycache__
+an_quantic/nodes/__pycache__
+an_quantic/nodes/init_quantum_circuit
+an_quantic/nodes/quantum_gates/__pycache__
+an_quantic/nodes/quantum_heightmap/__pycache__
+an_quantic/nodes/quantum_output/__pycache__

@@ -2,6 +2,7 @@ import bpy
 import math # ceil
 import numpy as np  # sqrt
 from mathutils import Vector
+from animation_nodes.data_structures import Vector3DList
 from animation_nodes.base_types import AnimationNode
 
 class HeighttoMesh(bpy.types.Node, AnimationNode):
@@ -17,6 +18,7 @@ class HeighttoMesh(bpy.types.Node, AnimationNode):
         n = int(math.ceil(np.sqrt(nb_vertices)))
         iterator = 0
         h_max = [max(height.values()) for height in heights]
+        vertices = Vector3DList()
 
         for i in range(n):
             for j in range(n):
@@ -29,7 +31,7 @@ class HeighttoMesh(bpy.types.Node, AnimationNode):
                         h = 0
                     xyz[k] = float(minus*h)
                 if iterator < nb_vertices:
-                    vertices[iterator] = xyz
+                    vertices.append(xyz)
                 iterator += 1
         return vertices
 
@@ -45,4 +47,5 @@ class HeighttoMesh(bpy.types.Node, AnimationNode):
         """ Replaces the vertices by the new ones """
         vertices = [ (modify.matrix_world @ v.co) for v in modify.data.vertices ]
         vertices = self.heights2mesh(vertices, negativeCoord, heightmap)
+
         return vertices

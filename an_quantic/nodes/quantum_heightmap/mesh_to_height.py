@@ -34,27 +34,6 @@ class MeshToHeight(bpy.types.Node, AnimationNode):
 
         return heights, negative_coords
 
-    # def vertices2circuits(coordinates, log=False):
-    #     """
-    #     Converts an image to a set of three circuits, with one corresponding to
-    #     each RGB colour channel.
-
-    #     Args:
-    #         coordinates (Vector List): A list of the vertices' coordinates.
-    #         log (bool): If given, a logarithmic encoding is used.
-
-    #     Returns:
-    #         circuits (list): A list of quantum circuits encoding the vertices.
-    #     """
-
-    #     heights = vertices2height(coordinates)
-
-    #     circuits = []
-    #     for height in heights:
-    #         circuits.append( height2circuit(height, log=log) )
-
-    #     return circuits
-
     def create(self):
         self.newInput("Object", "Source", "source")
         self.newOutput("Vector 2D List", "Heightmap", "heightmap")
@@ -63,15 +42,14 @@ class MeshToHeight(bpy.types.Node, AnimationNode):
 
     def execute(self, source):
         if source is None:
-            return Vector((0, 0)), None, Vector((0, 0, 0))
+            return Vector((0, 0)), Vector((0,0)), Vector((0, 0, 0))
         """
         Converts a mesh into a python dictionnary containing one of 
         the (x, y, z) coordinates. Uses the exact same logic as James Wootton 
         about QuantumBlur for images, but applied on vertices of a mesh.
         """
         vertices = [ (source.matrix_world @ v.co) for v in source.data.vertices ]
+            # TODO: There is a better way to do this, see the code for the node mesh object input
         heights, negative_coords = self.vertices2height(vertices)
-        # circuits = vertices2circuits(vertices)
-        offset = len(vertices)
             
         return heights, negative_coords, vertices

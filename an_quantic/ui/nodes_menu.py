@@ -11,6 +11,8 @@ class TestExtensionMenu(bpy.types.Menu):
         # REPLACE with bl_idname and bl_label of the node in the nodes folder
         insertNode(layout, "an_MeshToHeight", "Mesh to Height")
         insertNode(layout, "an_HeightToMesh", "Height to Mesh")
+        insertNode(layout, "an_HeightmapToQuantumCircuitNode", "Heightmap To Quantum Circuit")
+        insertNode(layout, "an_QuantumCircuitToHeightmapNode", "Quantum Circuit To Heightmap")
         insertNode(layout, "an_InitClassicalRegisterNode", "Init Classical Register")
         insertNode(layout, "an_InitQuantumRegisterNode", "Init Quantum Register")
         insertNode(layout, "an_InitQuantumCircuitNode", "Init Quantum Circuit")
