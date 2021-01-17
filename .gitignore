@@ -83,3 +83,10 @@ an_quantic/nodes/quantum_gates/__pycache__/gates.cpython-37.pyc
 an_quantic/nodes/quantum_gates/__pycache__/gatesdg.cpython-37.pyc
 an_quantic/nodes/quantum_gates/__pycache__/gatex.cpython-37.pyc
 an_quantic/nodes/quantum_gates/__pycache__/gatey.cpython-37.pyc
+an_quantic/nodes/quantum_gates/__pycache__/gateccy.cpython-37.pyc
+an_quantic/nodes/quantum_gates/__pycache__/gateccz.cpython-37.pyc
+an_quantic/nodes/quantum_gates/__pycache__/gatecy.cpython-37.pyc
+an_quantic/nodes/quantum_gates/__pycache__/gatecz.cpython-37.pyc
+an_quantic/nodes/quantum_gates/__pycache__/gaterx.cpython-37.pyc
+an_quantic/nodes/quantum_gates/__pycache__/gatet.cpython-37.pyc
+an_quantic/nodes/quantum_gates/__pycache__/gatetdg.cpython-37.pyc
