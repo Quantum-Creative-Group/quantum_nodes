@@ -1,6 +1,2 @@
-an_quantic/__pycache__/__init__.cpython-37.pyc
-an_quantic/__pycache__/auto_load.cpython-37.pyc
-an_quantic/nodes/__pycache__/__init__.cpython-37.pyc
-an_quantic/nodes/__pycache__/nodeTest.cpython-37.pyc
-an_quantic/ui/__pycache__/__init__.cpython-37.pyc
-an_quantic/ui/__pycache__/nodes_menu.cpython-37.pyc
+.vscode
+__pycache__
