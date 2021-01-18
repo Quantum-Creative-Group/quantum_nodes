@@ -34,14 +34,16 @@ class SimulationInputsManager:
 		self._delta_t = dt
 
 	def hasChanged(self, dim, size, center, n_o_w, spr, pot, obs, fr, d, dt):
+		"""
+		Returns true if any of the inputs have changed, false otherwise
+		@parameters :
+		same as __init__ method
+		"""
 		new_inputs = [dim, size, center, n_o_w, spr, pot, obs, fr, d, dt]
 		current_inputs = [self._dimension, self._size, self._center, self._number_of_waves,\
 						  self._sprawl, self._potential_expr, self._obstacle_expr, self._frame_rate,\
 						  self._duration, self._delta_t]
-		for i in range(np.size(new_inputs)):
-			if(new_inputs[i] != current_inputs[i]):
-				return True
-		return False
+		return not(all(new_inputs[i] == current_inputs[i] for i in range(np.size(current_inputs))))
 
 	@classmethod
 	def __verifyPotentialExpr(cls, expr):

@@ -12,7 +12,7 @@ import scipy.sparse.linalg
 class SimulationCache:
     def __init__(self, max_frame):
         """
-        @parameters :
+        @parameter :
         max_frame - integer - the length of the simulation, in frames
         """
         self._data = np.empty((max_frame), np.ndarray)
