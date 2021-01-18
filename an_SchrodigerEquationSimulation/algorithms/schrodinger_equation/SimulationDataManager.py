@@ -1,6 +1,10 @@
 import numpy as np
 from numpy import pi
 
+# This class manages all the data needed to compute the next frame
+# All these methods are taken from util.py
+# source code : https://github.com/Azercoco/Python-2D-Simulation-of-Schrodinger-Equation/blob/master/util.py
+
 class SimulationDataManager:
 	def __init__(self):
 		self._x_axis, self._y_axis = None, None
@@ -13,7 +17,7 @@ class SimulationDataManager:
 		self._x, self._y = None, None
 
 	@classmethod
-	def xConcatenate(self, MM, N):
+	def xConcatenate(cls, MM, N):
 		result = []
 		for j in range(N):
 			for i in range(N):
@@ -21,7 +25,7 @@ class SimulationDataManager:
 		return np.array(result, dtype='c16')
 
 	@classmethod
-	def xDeconcatenate(self, vector, N):
+	def xDeconcatenate(cls, vector, N):
 		result = np.zeros((N, N), dtype='c16')
 		for j in range(N):
 			for i in range(N):
@@ -29,7 +33,7 @@ class SimulationDataManager:
 		return result
 
 	@classmethod
-	def yConcatenate(self, MM, N):
+	def yConcatenate(cls, MM, N):
 		result = []
 		for i in range(N):
 			for j in range(N):
@@ -37,7 +41,7 @@ class SimulationDataManager:
 		return np.array(result, dtype='c16')
 
 	@classmethod
-	def yDeconcatenate(self, vector, N):
+	def yDeconcatenate(cls, vector, N):
 		result = np.zeros((N, N), dtype='c16')
 		for i in range(N):
 			for j in range(N):
@@ -45,7 +49,7 @@ class SimulationDataManager:
 		return result
 
 	@classmethod
-	def dxSquare(self, MM, N, step):
+	def dxSquare(cls, MM, N, step):
 		result = np.zeros((N, N), dtype='c16')
 		for j in range(N):
 			result[0][j] = MM[1][j] - 2*MM[0][j]
@@ -55,7 +59,7 @@ class SimulationDataManager:
 		return result / (step**2)
 
 	@classmethod
-	def dySquare(self, MM, N, step):
+	def dySquare(cls, MM, N, step):
 		result = np.zeros((N, N), dtype='c16')
 		for j in range(N):
 			result[j][0] = MM[j][1] - 2*MM[j][0]
@@ -65,7 +69,7 @@ class SimulationDataManager:
 		return result / (step**2)
 
 	@classmethod
-	def applyObstacle(self, MM, N, mesh_x, mesh_y, sim_inputs):
+	def applyObstacle(cls, MM, N, mesh_x, mesh_y, sim_inputs):
 		for i in range(N):
 			for j in range(N):
 				if sim_inputs.isObstacle(mesh_x[i][j], mesh_y[i][j]):
@@ -73,7 +77,7 @@ class SimulationDataManager:
 		return MM
 
 	@classmethod
-	def getAdjPos(self, x, y, N):
+	def getAdjPos(cls, x, y, N):
 		res = []
 		res.append((x-1,y))
 		res.append((x+1,y))
@@ -86,7 +90,7 @@ class SimulationDataManager:
 		return res
 
 	@classmethod
-	def integrate(self, MM, N, step):
+	def integrate(cls, MM, N, step):
 		a, air = 0, step*step/2
 		for i in range(N-1):
 			for j in range(N-1):

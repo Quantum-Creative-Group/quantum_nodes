@@ -2,14 +2,31 @@ import numpy as np
 from numpy import sin, cos, exp, pi, tan, log, sinh, cosh, tanh, sinc, sqrt, cbrt, angle, real, imag, abs, arcsin, arccos, arctan, arcsinh, arccosh, arctanh
 from numpy import pi, e
 
+# This class Manages all the user inputs
+# All these methods are taken from field.py
+# source code : https://github.com/Azercoco/Python-2D-Simulation-of-Schrodinger-Equation/blob/master/field.py
+
 class SimulationInputsManager:
 	def __init__(self, dim, size, center, n_o_w, spr, pot, obs, fr, d, dt):
+		"""
+		@parameters :
+		dim 	- integer 	- size of the 2d grid, which corresponds to dim**2 points 
+		size 	- integer 	- scale of the simulation
+		center 	- vector 2d - starting position of the wave packet
+		n_o_w 	- vector 2d - number of waves that compose the wave packet
+		spr 	- vector 2d - spreading of the wave packet
+		pot 	- string 	- boolean expression of the potential (in function of x and y)
+		obs 	- string 	- boolean expression of the obstacle.s (in function of x and y)
+		fr 		- integer 	- frame rate of the simulation
+		d 		- float 	- duration of the simulation
+		dt 		- float 	- simulation time spent for each second of animation
+		"""
 		self._dimension = dim
 		self._size = size
 		self._step = size/dim
 		self._center = center
-		self._number_of_waves = n_o_w # (Kx, Ky)
-		self._sprawl = spr # étalement
+		self._number_of_waves = n_o_w
+		self._sprawl = spr
 		self.setPotential(pot)
 		self.setObstacle(obs)
 		self._frame_rate = fr
@@ -27,7 +44,7 @@ class SimulationInputsManager:
 		return False
 
 	@classmethod
-	def __verifyPotentialExpr(self, expr):
+	def __verifyPotentialExpr(cls, expr):
 		x, y = 0, 0
 		try:
 			test = eval(expr)
@@ -37,7 +54,6 @@ class SimulationInputsManager:
 			# expression set to "0" by default
 			return False
 	
-	@classmethod
 	def setPotential(self, expr):
 		if(self.__verifyPotentialExpr(expr)):
 			self._potential_expr = expr
@@ -45,7 +61,7 @@ class SimulationInputsManager:
 			self._potential_expr = "0"
 
 	@classmethod
-	def __verifyObstacleExpr(self, expr):
+	def __verifyObstacleExpr(cls, expr):
 		x, y = 0, 0
 		try:
 			test = eval(expr)
@@ -55,21 +71,18 @@ class SimulationInputsManager:
 			# expression set to "False" by default
 			return False
 	
-	@classmethod
 	def setObstacle(self, expr):
 		if(self.__verifyObstacleExpr(expr)):
 			self._obstacle_expr = expr
 		else:
 			self._obstacle_expr = "False"
 	
-	@classmethod
 	def isObstacle(self, x, y):
 		if(self.__verifyObstacleExpr(self._obstacle_expr)):
 			return eval(self._obstacle_expr)
 		else:
 			return False
 	
-	@classmethod
 	def getPotential(self, x, y):
 		if(self.__verifyPotentialExpr(self._potential_expr)):
 			return eval(self._potential_expr)

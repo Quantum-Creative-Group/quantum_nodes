@@ -5,12 +5,27 @@ import scipy as sp
 import scipy.sparse
 import scipy.sparse.linalg
 
-class SchrodingerSimulationCache:
+# This class is used to store all the computed frames
+# and to determine the ones that need to be computed
+# when the user is asking the data for a specific frame
+
+class SimulationCache:
     def __init__(self, max_frame):
+        """
+        @parameters :
+        max_frame - integer - the length of the simulation, in frames
+        """
         self._data = np.empty((max_frame), np.ndarray)
         self._last_computed_frame = None
     
     def __processFrame(self, d, inp):
+        """
+        Computes the next frame.
+
+        @parameters : 
+        d   - SimulationDataManager
+        inp - SimulationInputsManager
+        """
         vector_selon_x = d.xConcatenate(d._wave_function, inp._dimension)
         vector_derive_y_selon_x = d.xConcatenate(d.dySquare(d._wave_function, inp._dimension, inp._step), inp._dimension)
         U_selon_x = vector_selon_x + (1j*inp._delta_t/2)*(vector_derive_y_selon_x - d._v_x*vector_selon_x)
@@ -27,6 +42,16 @@ class SchrodingerSimulationCache:
     
 
     def getFrame(self, frame, d, inp):
+        """
+        Returns the requested data at the given frame.
+        Manages the situations where several frames need to be
+        calculated in order to return the requested data.
+
+        @parameters :
+        frame   - integer - index of the frame
+        d       - SimulationDataManager
+        inp     - SimulationInputsManager
+        """
         if(frame >= 0):
             if(frame <= self._last_computed_frame):
                 # the frame has already been computed

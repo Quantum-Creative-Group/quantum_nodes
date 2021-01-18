@@ -8,18 +8,33 @@ import sys
 
 from . SimulationDataManager import SimulationDataManager
 from . SimulationInputsManager import SimulationInputsManager
-from . SchrodingerSimulationCache import SchrodingerSimulationCache
+from . SimulationCache import SimulationCache
 
-class SchrodingerSimulationManager:
+# This is an implementation of the 2D simulation of Schrödinger equation
+# This code is just a new architecture to meet our needs (adapted for blender animation nodes)
+# All the simulation computation is from Azercoco
+# You can find his code here : https://github.com/Azercoco/Python-2D-Simulation-of-Schrodinger-Equation
+
+class SimulationManager:
     def __init__(self, dim, size, center, n_o_w, spr, pot, obs, fr, d, dt):
+        """
+        @parameters : see full details in the corresponding classes.
+        --> SimulationInputsManager
+        --> SimulationDataManager
+        --> SimulationCache
+        """
         self._inputs = SimulationInputsManager(dim, size, center, n_o_w, spr, pot, obs, fr, d, dt)
         self._data = SimulationDataManager()
-        self._cache = SchrodingerSimulationCache(int(self._inputs._duration * self._inputs._frame_rate) + 1)
+        self._cache = SimulationCache(int(self._inputs._duration * self._inputs._frame_rate) + 1)
         self.__initialize()
         
     def __initialize(self):
-        d = self._data
-        inp = self._inputs
+        """ 
+        Initializes the data needed for the simulation.
+        This method is only an implementation of the init() function taken from the source code.
+        """
+        d = self._data      # data container
+        inp = self._inputs  # user inputs container
         d._x_axis = np.linspace(-inp._size/2, inp._size/2, inp._dimension)
         d._y_axis = np.linspace(-inp._size/2, inp._size/2, inp._dimension)
         d._x, d._y = np.meshgrid(d._x_axis, d._y_axis)
@@ -38,7 +53,6 @@ class SchrodingerSimulationManager:
                 d._laplace_matrix[k+1,k] = 1
 
         d._v_x = np.zeros(inp._dimension**2, dtype='c16')
-
         for j in range(inp._dimension):
             for i in range(inp._dimension):
                 xx, yy = i, inp._dimension*j
@@ -48,7 +62,6 @@ class SchrodingerSimulationManager:
                     d._v_x[xx+yy] = inp.getPotential(d._x_axis[j], d._y_axis[i])
 
         d._v_y = np.zeros(inp._dimension**2, dtype='c16')
-
         for j in range(inp._dimension):
             for i in range(inp._dimension):
                 xx, yy = j*inp._dimension, i
@@ -79,12 +92,23 @@ class SchrodingerSimulationManager:
                         if xx >= 0 and yy >= 0 and xx < inp._dimension and yy < inp._dimension and not inp.isObstacle(d._x_axis[yy], d._y_axis[xx]):
                             d._potential_boundary.append((i, j))
                             
-        self._cache._data[0] = d._wave_function
+        self._cache._data[0] = d._wave_function     # stores the first frame in the cache
         self._cache._last_computed_frame = 0
 
     
     def getFrameData(self, frame):
+        """
+        Returns the data from the requested frame.
+
+        @parameter :
+        frame - integer - the requested frame
+        """
         try:
+            # returns a list of complex numbers rather than
+            # a matrix of complex numbers (list of list)
+            # the shape of the output is :
+            # not formatted : wave_function[i] = [z_i1, z_i2, ... z_in] (shape n * n)
+            # formatted_output = [z_11, ..., z_1n, z_21, ..., z_2n, ..., z_n1, ..., z_nn] (shape 1 * n)
             frame = self._cache.getFrame(frame, self._data, self._inputs)
             formatted_output = frame[0]
             for i in range(1, self._inputs._dimension):
@@ -96,5 +120,13 @@ class SchrodingerSimulationManager:
             return self._cache.getFrame(0, self._data, self._inputs)
     
     def updateSimulation(self, dim, size, center, n_o_w, spr, pot, obs, fr, d, dt):
+        """
+        Checks if any of the user inputs have changed in order to
+        update the parameters of the simulation.
+        
+        @parameters :
+        same as the __init__ method
+        """
         if(self._inputs.hasChanged(dim, size, center, n_o_w, spr, pot, obs, fr, d, dt)):
+            print("HAS CHANGED")
             self.__init__(dim, size, center, n_o_w, spr, pot, obs, fr, d, dt)
