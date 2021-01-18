@@ -3,7 +3,7 @@ from qiskit import *
 from animation_nodes.base_types import AnimationNode
 
 class QuantumGateXToAllNode(bpy.types.Node, AnimationNode):
-    bl_idname = "an_QuantumGateXToAllNode"
+    bl_idname = "an_QuantumGateToAllXNode"
     bl_label = "Quantum GateX To All Circuit"
 
     def create(self):

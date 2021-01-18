@@ -4,7 +4,7 @@ from animation_nodes.base_types import AnimationNode
 
 class QuantumGateRXNode(bpy.types.Node, AnimationNode):
     bl_idname = "an_QuantumGateRXNode"
-    bl_label = "Quantum Gate RX Circuit"
+    bl_label = "Quantum Gate RX"
 
     def create(self):
         self.newInput("Quantum Circuit", "Input Circuit", "input")
