@@ -2,9 +2,9 @@ import bpy
 from qiskit import *
 from animation_nodes.base_types import AnimationNode
 
-class QuantumGateCZNode(bpy.types.Node, AnimationNode):
-    bl_idname = "an_QuantumGateCZNode"
-    bl_label = "Quantum Gate CZ"
+class QuantumGateCHNode(bpy.types.Node, AnimationNode):
+    bl_idname = "an_QuantumGateCHNode"
+    bl_label = "Quantum Gate CH"
     errorHandlingType = "EXCEPTION"
 
     def create(self):
@@ -21,7 +21,7 @@ class QuantumGateCZNode(bpy.types.Node, AnimationNode):
         if (controle_qubit==target_qubit) :
             self.raiseErrorMessage("The controle qubit must be different from the target qubit")
         try:
-            input.cz(controle_qubit,target_qubit)
+            input.ch(controle_qubit,target_qubit)
             return input
         except:
             return

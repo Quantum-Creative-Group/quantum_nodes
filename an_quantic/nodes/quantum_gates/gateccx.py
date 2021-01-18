@@ -14,7 +14,7 @@ class QuantumGateCCXNode(bpy.types.Node, AnimationNode):
         self.newInput("Integer", "Target Qubit Index", "target_qubit", value = 3, minValue = 0)
         self.newOutput("Quantum Circuit", "Output Circuit", "output")
 
-    def execute(self, input ,controle_qubit_1,controle_qubit_2 ,target_qubit ):
+    def execute(self, input, controle_qubit_1, controle_qubit_2, target_qubit):
         if (controle_qubit_1 >= input.num_qubits ) :
             self.raiseErrorMessage("The first controle qubit index must lower than " + str(input.num_qubits))
         if (controle_qubit_2 >= input.num_qubits ) :
