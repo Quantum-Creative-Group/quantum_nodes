@@ -28,3 +28,4 @@ Qiskit has to be installed on your machine and Blender has to use your version o
 
 * Finally, you can find our extension in the Animation Nodes Panel and start messing around with it ! More nodes and features will be available in next updates. 
 
+![Animation Nodes Quantum Menu image](assets/readme_pictures/quantum_menu.png)
