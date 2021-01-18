@@ -37,8 +37,6 @@ class QuantumGateSDGNode(bpy.types.Node, AnimationNode):
             yield "try:"
             yield f"    if (element_{i} < inputCircuit.num_qubits) :"
             yield f"        inputCircuit.sdg(element_{i})"
-            yield f"    else :"
-            yield "        self.raiseErrorMessage(\"Qubit Index can't be larger than the number of qubits in the Input Circuit.\")"
             yield "except:"
             yield "    output_circuit = inputCircuit"
             yield "    self.raiseErrorMessage(\"Qubit Index can't be larger than the number of qubits in the Input Circuit.\")"

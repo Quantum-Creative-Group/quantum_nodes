@@ -3,9 +3,9 @@ from qiskit import *
 from bpy.props import *
 from animation_nodes.base_types import AnimationNode
 
-class QuantumGateTDGNode(bpy.types.Node, AnimationNode):
-    bl_idname = "an_QuantumGateTDGNode"
-    bl_label = "Quantum Gate TDG"
+class QuantumGateYNode(bpy.types.Node, AnimationNode):
+    bl_idname = "an_QuantumGateYNode"
+    bl_label = "Quantum Gate Y"
     errorHandlingType = "EXCEPTION"
 
     def setup(self):
@@ -36,9 +36,7 @@ class QuantumGateTDGNode(bpy.types.Node, AnimationNode):
         for i in range(len(self.inputs) - 1) :
             yield "try:"
             yield f"    if (element_{i} < inputCircuit.num_qubits) :"
-            yield f"        inputCircuit.tdg(element_{i})"
-            yield f"    else :"
-            yield "        self.raiseErrorMessage(\"Qubit Index can't be larger than the number of qubits in the Input Circuit.\")"
+            yield f"        inputCircuit.y(element_{i})"
             yield "except:"
             yield "    output_circuit = inputCircuit"
             yield "    self.raiseErrorMessage(\"Qubit Index can't be larger than the number of qubits in the Input Circuit.\")"
