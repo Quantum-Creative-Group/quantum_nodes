@@ -4,6 +4,7 @@ import scipy.linalg
 import scipy as sp
 import scipy.sparse
 import scipy.sparse.linalg
+import sys
 
 # This class is used to store all the computed frames
 # and to determine the ones that need to be computed
@@ -60,10 +61,14 @@ class SimulationCache:
                 # the frame is in the scope of the simulation
                 # but has not been computed yet
                 frames_to_compute = frame - self._last_computed_frame
-                for frame in range(frames_to_compute):
-                    self.__processFrame(d, inp)
-                    self._last_computed_frame += 1
-                    self._data[self._last_computed_frame] = d._wave_function
+                try:
+                    for frame in range(frames_to_compute):
+                        self.__processFrame(d, inp)
+                        self._last_computed_frame += 1
+                        self._data[self._last_computed_frame] = d._wave_function
+                except Exception as e:
+                    print(sys.exc_info())
+                    raise e from e
                 return self._data[frame]
             else:
                 # the requested frame is not in the scope of the simulation
@@ -71,5 +76,4 @@ class SimulationCache:
                 return self._data[self._last_computed_frame]
         else:
             # the requested frame is negative
-            # return the first frame by default
-            return self._data[0]
+            raise IndexError("ERROR::SimulationCache::getFrame() frame index out of range\nData for frame n°" + str(frame) + " unavailable")

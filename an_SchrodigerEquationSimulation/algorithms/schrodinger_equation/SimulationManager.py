@@ -39,8 +39,8 @@ class SimulationManager:
         d._y_axis = np.linspace(-inp._size/2, inp._size/2, inp._dimension)
         d._x, d._y = np.meshgrid(d._x_axis, d._y_axis)
         phase = np.exp( 1j*(d._x*inp._number_of_waves[0] + d._y*inp._number_of_waves[1]))
-        px = np.exp( - ((inp._center[0] - d._x)**2)/(4*inp._sprawl[0]**2))
-        py = np.exp( - ((inp._center[1] - d._y)**2)/(4*inp._sprawl[1]**2))
+        px = np.exp( - ((inp._center[0] - d._x)**2)/(4*inp._spreading[0]**2))
+        py = np.exp( - ((inp._center[1] - d._y)**2)/(4*inp._spreading[1]**2))
         d._wave_function = phase*px*py
         norm = np.sqrt(d.integrate(np.abs(d._wave_function)**2, inp._dimension, inp._step))
         d._wave_function = d._wave_function/norm
@@ -114,10 +114,8 @@ class SimulationManager:
             for i in range(1, self._inputs._dimension):
                 formatted_output = np.concatenate((formatted_output, frame[i]))
             return formatted_output
-        except:
-            print("ERROR::SchrodingerEquation : impossible the get the requested data at frame : " + str(frame))
-            print("Unexpected error : ", sys.exc_info())
-            return self._cache.getFrame(0, self._data, self._inputs)
+        except Exception as e:
+            raise e from e
     
     def updateSimulation(self, dim, size, center, n_o_w, spr, pot, obs, fr, d, dt):
         """
@@ -128,5 +126,4 @@ class SimulationManager:
         same as the __init__ method
         """
         if(self._inputs.hasChanged(dim, size, center, n_o_w, spr, pot, obs, fr, d, dt)):
-            print("HAS CHANGED")
             self.__init__(dim, size, center, n_o_w, spr, pot, obs, fr, d, dt)

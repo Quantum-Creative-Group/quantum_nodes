@@ -26,7 +26,7 @@ class SimulationInputsManager:
 		self._step = size/dim
 		self._center = center
 		self._number_of_waves = n_o_w
-		self._sprawl = spr
+		self._spreading = spr
 		self.setPotential(pot)
 		self.setObstacle(obs)
 		self._frame_rate = fr
@@ -41,7 +41,7 @@ class SimulationInputsManager:
 		"""
 		new_inputs = [dim, size, center, n_o_w, spr, pot, obs, fr, d, dt]
 		current_inputs = [self._dimension, self._size, self._center, self._number_of_waves,\
-						  self._sprawl, self._potential_expr, self._obstacle_expr, self._frame_rate,\
+						  self._spreading, self._potential_expr, self._obstacle_expr, self._frame_rate,\
 						  self._duration, self._delta_t]
 		return not(all(new_inputs[i] == current_inputs[i] for i in range(np.size(current_inputs))))
 
