@@ -70,6 +70,7 @@ class SchrodingerSimulationManager:
         d._hy = (1*sp.sparse.identity(inp._dimension**2) - 1j*(inp._delta_t/2)*(d._laplace_matrix - V_y_matrix))
         d._hy = sp.sparse.dia_matrix(d._hy)
 
+        d._potential_boundary = []
         for i in range(0, inp._dimension):
             for j in range(0, inp._dimension):
                 if inp.isObstacle(d._x_axis[j], d._y_axis[i]):
@@ -84,7 +85,11 @@ class SchrodingerSimulationManager:
     
     def getFrameData(self, frame):
         try:
-            return self._cache.getFrame(frame, self._data, self._inputs)
+            frame = self._cache.getFrame(frame, self._data, self._inputs)
+            formatted_output = frame[0]
+            for i in range(1, self._inputs._dimension):
+                formatted_output = np.concatenate((formatted_output, frame[i]))
+            return formatted_output
         except:
             print("ERROR::SchrodingerEquation : impossible the get the requested data at frame : " + str(frame))
             print("Unexpected error : ", sys.exc_info())

@@ -10,8 +10,6 @@ class SimulationInputsManager:
 		self._center = center
 		self._number_of_waves = n_o_w # (Kx, Ky)
 		self._sprawl = spr # étalement
-		self._potential_expr = "0"
-		self._obstacle_expr = "False"
 		self.setPotential(pot)
 		self.setObstacle(obs)
 		self._frame_rate = fr

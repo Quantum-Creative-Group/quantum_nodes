@@ -24,8 +24,9 @@ class SchrodingerEquationSimulationNode(bpy.types.Node, AnimationNode):
         self.newInput("Text", "Potential", "potential", value = "0")
         self.newInput("Text", "Obstacle.s", "obstacles", value = "False")
 
-        self.newOutput("Matrix", "Output", "output")
+        self.newOutput("Complex128 List", "Output", "output")
+        self.newOutput("Integer", "Offset", "offset")
 
     def execute(self, frame_rate, duration, delta_t, dimension, size, center, number_of_waves, sprawl, potential, obstacles):
         self._sse.updateSimulation(dimension, size, center, number_of_waves, sprawl, potential, obstacles, frame_rate, duration, delta_t)
-        return self._sse.getFrameData(bpy.data.scenes['Scene'].frame_current)
+        return (self._sse.getFrameData(bpy.data.scenes['Scene'].frame_current), dimension)
