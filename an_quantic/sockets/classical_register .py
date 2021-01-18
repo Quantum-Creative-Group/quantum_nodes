@@ -26,7 +26,7 @@ class ClassicalRegisterSocket(bpy.types.NodeSocket, AnimationNodeSocket):
         return cls.getDefaultValue(), 2
 
 class ClassicalRegisterListSocket(bpy.types.NodeSocket, PythonListSocket):
-    bl_idname = "an_ClassicalRegisterrListSocket"
+    bl_idname = "an_ClassicalRegisterListSocket"
     bl_label = "ClassicalRegister List Socket"
     dataType = "ClassicalRegister List"
     baseType = ClassicalRegisterSocket

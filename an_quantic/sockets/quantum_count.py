@@ -1,6 +1,6 @@
 import bpy
 from bpy.props import *
-from qiskit import Counts
+from qiskit import *
 from .. base_types import AnimationNodeSocket, PythonListSocket
 
 class QuantumCountSocket(bpy.types.NodeSocket, AnimationNodeSocket):
@@ -21,7 +21,7 @@ class QuantumCountSocket(bpy.types.NodeSocket, AnimationNodeSocket):
 
     @classmethod
     def correctValue(cls, value):
-        if isinstance(value, Counts):
+        if isinstance(value, qiskit.result.counts.Counts):
             return value, 0
         return cls.getDefaultValue(), 2
 
@@ -29,7 +29,7 @@ class QuantumCountListSocket(bpy.types.NodeSocket, PythonListSocket):
     bl_idname = "an_QuantumCountListSocket"
     bl_label = "Quantum Count List Socket"
     dataType = "Quantum Count List"
-    baseType = ClassicalRegisterSocket
+    baseType = QuantumCountSocket
     drawColor = (0.18, 0.32, 1, 0.5)
     storable = True
     comparable = False
@@ -41,6 +41,6 @@ class QuantumCountListSocket(bpy.types.NodeSocket, PythonListSocket):
     @classmethod
     def correctValue(cls, value):
         if isinstance(value, list):
-            if all(isinstance(element, Counts) for element in value):
+            if all(isinstance(element, qiskit.result.counts.Counts) for element in value):
                 return value, 0
         return cls.getDefaultValue(), 2

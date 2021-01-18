@@ -13,7 +13,7 @@ class QuantumCircuitSocket(bpy.types.NodeSocket, AnimationNodeSocket):
 
     @classmethod
     def getDefaultValue(cls):
-        return QuantumCircuit(1)
+        return QuantumCircuit(1,1)
 
 #    @classmethod
 #    def getCopyExpression(cls):
