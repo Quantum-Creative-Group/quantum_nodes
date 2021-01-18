@@ -11,10 +11,16 @@ Follow these steps to use Animation Nodes :
 
 
 ### Quantum Creative
-If you want to use our project :
+#### Prerequisite
 
-* Download the ZIP file from Gitlab
+Qiskit has to be installed on your machine and Blender has to use your version of Python. If it is not done yet you can follow the step by step tutorial in *Bundled Python & Extensions* on : https://docs.blender.org/api/current/info_tips_and_tricks.html
 
 #### On Linux
 
-* Copy the content of the sockets folder in /home/<username>/.config/blender/2.91/scripts/addons/animation_nodes/sockets
+
+* Download the ZIP file from Gitlab
+
+* Copy the content of the sockets folder in /home/username/.config/blender/2.91/scripts/addons/animation_nodes/sockets
+
+* Then do the same as Animation Nodes and install our extension in Blender
+
