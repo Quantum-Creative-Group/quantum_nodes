@@ -14,7 +14,7 @@ Follow these steps to use Animation Nodes :
 ### Quantum Creative
 #### Prerequisite
 
-Qiskit has to be installed on your machine and Blender has to use your version of Python. If it is not done yet you can follow the step by step tutorial in *Bundled Python & Extensions* on : https://docs.blender.org/api/current/info_tips_and_tricks.html
+Qiskit and PIL have to be installed on your machine (*pip install qiskit && pip install pillow*) and Blender has to use your version of Python. If it is not done yet you can follow the step by step tutorial in *Bundled Python & Extensions* on : https://docs.blender.org/api/current/info_tips_and_tricks.html
 
 #### On Linux
 
