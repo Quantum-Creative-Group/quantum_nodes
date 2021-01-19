@@ -22,7 +22,8 @@ class SimulationCache:
     def __processFrame(self, d, inp):
         """
         Computes the next frame.
-
+        This method is only an implementation of the plot_animation() function taken from the source code.
+         
         @parameters : 
         d   - SimulationDataManager
         inp - SimulationInputsManager

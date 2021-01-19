@@ -31,7 +31,7 @@ class SimulationInputsManager:
 		self.setObstacle(obs)
 		self._frame_rate = fr
 		self._duration = d
-		self._delta_t = dt
+		self._delta_t = dt/fr
 
 	def hasChanged(self, dim, size, center, n_o_w, spr, pot, obs, fr, d, dt):
 		"""
@@ -39,7 +39,7 @@ class SimulationInputsManager:
 		@parameters :
 		same as __init__ method
 		"""
-		new_inputs = [dim, size, center, n_o_w, spr, pot, obs, fr, d, dt]
+		new_inputs = [dim, size, center, n_o_w, spr, pot, obs, fr, d, dt/fr]
 		current_inputs = [self._dimension, self._size, self._center, self._number_of_waves,\
 						  self._spreading, self._potential_expr, self._obstacle_expr, self._frame_rate,\
 						  self._duration, self._delta_t]
