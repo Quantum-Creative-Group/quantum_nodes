@@ -1,4 +1,5 @@
 import bpy
+from qiskit import *
 from animation_nodes.base_types import AnimationNode
 
 class QuantumNode(bpy.types.Node, AnimationNode):
@@ -6,12 +7,9 @@ class QuantumNode(bpy.types.Node, AnimationNode):
     bl_label = "Quantum Node"
 
     def create(self):
-        self.newInput("Object", "Source", "source")
-        self.newInput("Object", "Target", "target")
-        self.newInput("QuantumCircuit", "Offset", "offset")
+        self.newInput("Vector List", "Heightmap", "heightmap")
+        self.newOutput("Quantum Register", "Quantum Register", "quantumregister")
 
-    def execute(self, source, target, offset):
+    def execute(self):
         if source is None or target is None:
             return
-
-        target.location = source.location + offset
