@@ -43,7 +43,7 @@ class MeshToHeight(bpy.types.Node, AnimationNode):
 
     def execute(self, source):
         if source is None:
-            return Vector((0, 0)), Vector((0,0)), Vector((0, 0, 0))
+            return Vector((0, 0)), Vector((0,0)), Vector((0, 0, 0)), [0,0,0]
         """
         Converts a mesh into a python dictionnary containing one of 
         the (x, y, z) coordinates. Uses the exact same logic as James Wootton 

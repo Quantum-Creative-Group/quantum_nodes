@@ -15,12 +15,12 @@ class TestExtensionMenu(bpy.types.Menu):
         insertNode(layout, "an_QuantumCircuitToHeightmapNode", "Quantum Circuit To Heightmap")
         insertNode(layout, "an_InitClassicalRegisterNode", "Init Classical Register")
         insertNode(layout, "an_InitQuantumRegisterNode", "Init Quantum Register")
-        insertNode(layout, "an_InitQuantumCircuitNode", "Init Quantum Circuit")
+        #insertNode(layout, "an_InitQuantumCircuitNode", "Init Quantum Circuit")
         insertNode(layout, "an_QuantumGateHToAllNode", "Quantum GateH To All Circuit")
         insertNode(layout, "an_QuantumGateXToAllNode", "Quantum GateX To All Circuit")
         insertNode(layout, "an_QuantumGateYToAllNode", "Quantum GateY To All Circuit")
         insertNode(layout, "an_QuantumCircuitOutputStateNode", "Quantum Circuit Output State")
-
+        insertNode(layout, "an_SchrodingerEquationSimulation", "Schrödinger Equation Simulation")
         
 
 def drawMenu(self, context):
