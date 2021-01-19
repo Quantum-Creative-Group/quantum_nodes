@@ -1,7 +1,7 @@
 import bpy
 from animation_nodes.base_types import AnimationNode
 
-from .. algorithms.schrodinger_equation.SimulationManager import SimulationManager
+from ... algorithms.schrodinger_equation.SimulationManager import SimulationManager
 
 class SchrodingerEquationSimulationNode(bpy.types.Node, AnimationNode):
     bl_idname = "an_SchrodingerEquationSimulation"

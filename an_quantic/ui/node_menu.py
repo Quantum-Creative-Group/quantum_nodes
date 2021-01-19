@@ -8,7 +8,6 @@ class TestExtensionMenu(bpy.types.Menu):
     def draw(self, context):
         layout = self.layout
         insertNode(layout, "an_SchrodingerEquationSimulation", "Schrödinger Equation Simulation")
-        insertNode(layout, "an_SchrodingerToColorNode", "Schrödinger Complex To Color HSL")
 
 def drawMenu(self, context):
     if context.space_data.tree_type != "an_AnimationNodeTree": return
