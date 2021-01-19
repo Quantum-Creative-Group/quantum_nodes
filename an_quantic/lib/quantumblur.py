@@ -331,7 +331,7 @@ def height2circuit(height, log=False, eps=1e-2):
     for bitstring in grid:
         (x,y) = grid[bitstring]
         if (x,y) in height:
-            h = height[x,y]
+            h = float(height[x,y])
             if log:
                 state[ int(bitstring,2) ] = math.sqrt(base**(float(h)/min_h))
             else:

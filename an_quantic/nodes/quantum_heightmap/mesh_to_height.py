@@ -15,8 +15,8 @@ class MeshToHeight(bpy.types.Node, AnimationNode):
         each coordinates.
         """
         nb_vertices = len(coordinates)
-        # n = int(math.ceil(math.sqrt(nb_vertices)))    # the formulas seem to return the same result
-        n = int(math.ceil(math.log(nb_vertices)/math.log(2)))
+        n = int(math.ceil(math.sqrt(nb_vertices)))    # the formulas seem to return the same result
+        # n = int(math.ceil(math.log(nb_vertices)/math.log(2)))
         heights = [{} for j in range(3)]
         negative_coords = [{} for j in range(3)]
         iterator = 0
