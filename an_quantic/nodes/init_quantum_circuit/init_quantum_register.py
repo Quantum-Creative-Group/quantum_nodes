@@ -7,7 +7,7 @@ class InitQuantumRegisterNode(bpy.types.Node, AnimationNode):
     bl_label = "Init Quantum Register"
 
     def create(self):
-        self.newInput("Integer", "Number Of Qubits", "number_of_qubits")
+        self.newInput("Integer", "Number Of Qubits", "number_of_qubits", value = 1, minValue = 1)
         self.newOutput("Quantum Register", "Quantum Register", "quantum_register")
 
     def execute(self, number_of_qubits):

@@ -2,9 +2,9 @@ import bpy
 from qiskit import *
 from animation_nodes.base_types import AnimationNode
 
-class QuantumGateXToAllNode(bpy.types.Node, AnimationNode):
-    bl_idname = "an_QuantumGateXToAllNode"
-    bl_label = "Quantum GateX To All Circuit"
+class QuantumGateSDGToAllNode(bpy.types.Node, AnimationNode):
+    bl_idname = "an_QuantumGateSDGToAllNode"
+    bl_label = "Quantum Gate SDG To All Circuit"
 
     def create(self):
         self.newInput("Quantum Circuit", "Input Circuit", "input")
@@ -13,7 +13,7 @@ class QuantumGateXToAllNode(bpy.types.Node, AnimationNode):
     def execute(self, input):
         try:
             for j in range(input.num_qubits):
-                input.x(j)
+                input.sdg(j)
             return input
         except:
             return
