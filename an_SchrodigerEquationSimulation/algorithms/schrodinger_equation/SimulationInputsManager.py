@@ -27,8 +27,11 @@ class SimulationInputsManager:
 		self._center = center
 		self._number_of_waves = n_o_w
 		self._spreading = spr
-		self.setPotential(pot)
-		self.setObstacle(obs)
+		try:
+			self.setPotential(pot)
+			self.setObstacle(obs)
+		except Exception as e:
+			raise e from e
 		self._frame_rate = fr
 		self._duration = d
 		self._delta_t = dt/fr
@@ -54,7 +57,7 @@ class SimulationInputsManager:
 		except:
 			# unable to evaluate the given potential formula
 			# expression set to "0" by default
-			return False
+			raise ValueError("ERROR::SimulationInputsManager::__verifyPotentialExpr()\nUnable to evaluate the given expression")
 	
 	def setPotential(self, expr):
 		if(self.__verifyPotentialExpr(expr)):
@@ -71,7 +74,7 @@ class SimulationInputsManager:
 		except:
 			# unable to evaluate the given obstacle formula
 			# expression set to "False" by default
-			return False
+			raise ValueError("ERROR::SimulationInputsManager::__verifyObstacleExpr()\nUnable to evaluate the given expression")
 	
 	def setObstacle(self, expr):
 		if(self.__verifyObstacleExpr(expr)):
