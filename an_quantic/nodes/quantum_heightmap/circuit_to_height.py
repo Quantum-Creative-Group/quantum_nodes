@@ -20,7 +20,7 @@ class QuantumCircuitToHeightmapNode(bpy.types.Node, AnimationNode):
             heights.append( circuit2height(qc_1) )
             heights.append( circuit2height(qc_2) )
             heights.append( circuit2height(qc_3) )
-
+            
             return heights
         except:
             return

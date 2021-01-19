@@ -25,19 +25,20 @@ class MeshToHeight(bpy.types.Node, AnimationNode):
                 if iterator < nb_vertices:
                     xyz = coordinates[iterator]
                     for k in range(3):
-                        heights[k][i,j] = abs(xyz[k])
+                        heights[k][i,j] = float(format(abs(xyz[k]), '.3f'))
                         if xyz[k] >= 0: negative_coords[k][i,j] = 1.0
                         else: negative_coords[k][i,j] = -1.0
                 else:
                     for k in range(3): heights[k][i,j] = 0.
                 iterator += 1
-
+    
         return heights, negative_coords
 
     def create(self):
         self.newInput("Object", "Source", "source")
         self.newOutput("Vector 2D List", "Heightmap", "heightmap")
         self.newOutput("Vector 2D List", "Negative", "negative")
+        self.newOutput("Float List", "Max Values", "max_values")
         self.newOutput("Vector List", "Vertices", "vertices")
 
     def execute(self, source):
@@ -48,7 +49,9 @@ class MeshToHeight(bpy.types.Node, AnimationNode):
         the (x, y, z) coordinates. Uses the exact same logic as James Wootton 
         about QuantumBlur for images, but applied on vertices of a mesh.
         """
-        vertices = Vector3DList.fromValues([ (source.matrix_world @ v.co) for v in source.data.vertices ])
+        max_values = []
+        vertices = Vector3DList.fromValues([ (v.co) for v in source.data.vertices ])
         heights, negative_coords = self.vertices2height(vertices)
-            
-        return heights, negative_coords, vertices
+        for height in heights:
+            max_values.append(max(height.values()))
+        return heights, negative_coords, max_values, vertices

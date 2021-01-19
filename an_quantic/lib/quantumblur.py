@@ -331,7 +331,7 @@ def height2circuit(height, log=False, eps=1e-2):
     for bitstring in grid:
         (x,y) = grid[bitstring]
         if (x,y) in height:
-            h = float(height[x,y])
+            h = height[x,y]
             if log:
                 state[ int(bitstring,2) ] = math.sqrt(base**(float(h)/min_h))
             else:
@@ -385,7 +385,7 @@ def probs2height(probs, size=None, log=False):
     for bitstring in probs:
         if bitstring in grid:
             height[grid[bitstring]] = float(probs[bitstring])/max_h
-         
+            
     # take logs if required
     if log:
         min_h = min([height[pos] for pos in height if height[pos] !=0])
