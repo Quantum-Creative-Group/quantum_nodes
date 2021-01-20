@@ -36,12 +36,12 @@ class HeighttoMesh(bpy.types.Node, AnimationNode):
 
     def create(self):
         self.newInput("Object", "To modify", "modify")
-        self.newInput("Vector 2D List", "Negative Coordinates", "negativeCoord")
         self.newInput("Vector 2D List", "Heightmap", "heightmap")
+        self.newInput("Vector 2D List", "Negative Coordinates", "negativeCoord")
         self.newInput("Float List", "Max Values", "max_values")
         self.newOutput("Vector List", "Vertices", "vertices")
 
-    def execute(self, modify, negativeCoord, heightmap, max_values):
+    def execute(self, modify, heightmap, negativeCoord, max_values):
         if negativeCoord == {} or heightmap == {} or modify is None:
             return {}
         """ Replaces the vertices by the new ones """

@@ -14,13 +14,15 @@ Follow these steps to use Animation Nodes :
 ### Quantum Creative
 #### Prerequisite
 
-Qiskit and PIL have to be installed on your machine (*pip install qiskit && pip install pillow*) and Blender has to use your version of Python. If it is not done yet you can follow the step by step tutorial in *Bundled Python & Extensions* on : https://docs.blender.org/api/current/info_tips_and_tricks.html
+Qiskit and PIL have to be installed on your machine (*pip install qiskit && pip install pillow*) and Blender has to use your version of Python. If it is not done yet you can follow the step by step tutorial :
+
+
 
 #### On Linux
 
 
 * Download the ZIP file from Gitlab
-* Copy the content of the sockets folder in /home/*username*/.config/blender/2.91/scripts/addons/animation_nodes/sockets
+* Copy the content of quantum-creative/an_quantic/sockets in /home/*username*/.config/blender/2.91/scripts/addons/animation_nodes/sockets
 
 ![Animation Nodes Folder image](assets/readme_pictures/animation_nodes_folder.png)
 

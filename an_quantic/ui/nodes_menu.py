@@ -20,7 +20,7 @@ class TestExtensionMenu(bpy.types.Menu):
         insertNode(layout, "an_QuantumGateXToAllNode", "Quantum GateX To All Circuit")
         insertNode(layout, "an_QuantumGateYToAllNode", "Quantum GateY To All Circuit")
         insertNode(layout, "an_QuantumCircuitOutputStateNode", "Quantum Circuit Output State")
-        insertNode(layout, "an_SchrodingerEquationSimulation", "Schrödinger Equation Simulation")
+        insertNode(layout, "an_SchrodingerEquationSimulationNode", "Schrödinger Equation Simulation")
         
 
 def drawMenu(self, context):
