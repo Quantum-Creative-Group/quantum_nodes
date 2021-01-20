@@ -8,7 +8,7 @@ class TestExtensionMenu(bpy.types.Menu):
 
     def draw(self, context):
         layout = self.layout
-        # REPLACE with bl_idname and bl_label of the node in the nodes folder
+        # ADD your node with its bl_idname and bl_label
         insertNode(layout, "an_MeshToHeight", "Mesh to Height")
         insertNode(layout, "an_HeightToMesh", "Height to Mesh")
         insertNode(layout, "an_InitClassicalRegisterNode", "Init Classical Register")
@@ -18,8 +18,8 @@ class TestExtensionMenu(bpy.types.Menu):
         insertNode(layout, "an_QuantumGateXToAllNode", "Quantum GateX To All Circuit")
         insertNode(layout, "an_QuantumGateYToAllNode", "Quantum GateY To All Circuit")
         insertNode(layout, "an_QuantumCircuitOutputStateNode", "Quantum Circuit Output State")
-
-        
+        insertNode(layout, "an_QuantumCircuitIBMOutputStateNode", "Quantum Circuit IBM Output State")
+                
 
 def drawMenu(self, context):
     if context.space_data.tree_type != "an_AnimationNodeTree": return
