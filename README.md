@@ -1,7 +1,7 @@
 # Quantum Creative
 Project of a Blender add-on in Python 3 using Qiskit.
 
-## Installation
+## Installation On Linux
 ### Animation Nodes
 Follow these steps to use Animation Nodes :
 
@@ -14,14 +14,28 @@ Follow these steps to use Animation Nodes :
 ### Quantum Creative
 #### Prerequisite
 
-Qiskit and PIL have to be installed on your machine (*pip install qiskit && pip install pillow*) and Blender has to use your version of Python. If it is not done yet you can follow the step by step tutorial :
+Qiskit and PIL have to be installed on your machine and Blender has to use your version of Python Anaconda. If it is not done yet you can follow the step by step tutorial :
 
+* Install Anaconda 3.8 from the official website : https://www.anaconda.com/products/individual
 
+* Then install the required libraries :
 
-#### On Linux
+```
+conda activate
 
+pip install numpy
+pip install qiskit
+pip install pillow
+```
 
-* Download the ZIP file from Gitlab
+* Go to /usr/share/blender/*blender-version*/ and open a terminal :
+
+```
+sudo ln -s ~/anaconda3/ . && sudo mv anaconda3 python
+```
+It's ready ! Blender is now using Anaconda 3 with your libraries to run.
+
+* Download the ZIP file from Gitlab (you can download from "master" but a version with more content but a little bit less stable is available on the "dev" branch)
 * Copy the content of quantum-creative/an_quantic/sockets in /home/*username*/.config/blender/2.91/scripts/addons/animation_nodes/sockets
 
 ![Animation Nodes Folder image](assets/readme_pictures/animation_nodes_folder.png)
