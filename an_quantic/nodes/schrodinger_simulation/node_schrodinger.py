@@ -4,7 +4,7 @@ from animation_nodes.base_types import AnimationNode
 from ... algorithms.schrodinger_equation.SimulationManager import SimulationManager
 
 class SchrodingerEquationSimulationNode(bpy.types.Node, AnimationNode):
-    bl_idname = "an_SchrodingerEquationSimulation"
+    bl_idname = "an_SchrodingerEquationSimulationNode"
     bl_label = "Schrödinger Equation Simulation"
     errorHandlingType = "EXCEPTION"
     _sse = SimulationManager(10, 5, [-5.0, 0.0], [1.0, 0.0], [0.5, 0.5], "0", "False", 25, 10, 0.125)

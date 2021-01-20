@@ -1,8 +1,7 @@
 '''
-Copyright (C) 2020 QuantumNodes
-<YOUR EMAIL>
+Copyright (C) 2021 QuantumNodes
 
-Created by QuantumNodes
+Created by Quantum-Creative-Group
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -19,12 +18,12 @@ Created by QuantumNodes
 '''
 
 bl_info = {
-    "name": "Quantum Nodes",
-    "author": "Quantum Nodes",
+    "name": "Quantic Nodes",
+    "author": "Quantum-Creative-Group",
     "version": (0, 0, 1),
     "blender": (2, 91, 0),
     "location": "Animation Nodes",
-    "description": "Schrödinger Simulation for Animation Node",
+    "description": "No desciption available yet",
     "warning": "",
     "doc_url": "",
     "tracker_url": "",
