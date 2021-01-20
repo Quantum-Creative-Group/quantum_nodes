@@ -2,7 +2,7 @@ import bpy
 from animation_nodes.ui.node_menu import insertNode
 from animation_nodes.utils.nodes import getAnimationNodeTrees
 
-class TestExtensionMenu(bpy.types.Menu):
+class QuanticExtensionMenu(bpy.types.Menu):
     bl_idname = "AN_MT_quantic_extension_menu"
     bl_label = "Quantic Extension Menu"
     
@@ -11,6 +11,69 @@ class TestExtensionMenu(bpy.types.Menu):
         # REPLACE with bl_idname and bl_label of the node in the nodes folder
         insertNode(layout, "an_CopyLocationWithOffsetNode", "Copy Location with Offset")
         insertNode(layout, "an_SplitComplex128", "Split complex128")
+        layout.menu("AN_MT_quantic_gates", text = "Gates", icon = "SCRIPTPLUGINS")
+        layout.separator()
+        layout.menu("AN_MT_quantic_converters", text = "Converters", icon = "SCRIPTPLUGINS")
+        layout.menu("AN_MT_quantic_complex", text = "Complex", icon = "SCRIPTPLUGINS")
+        layout.menu("AN_MT_quantic_Qiskit", text = "Qiskit", icon = "SCRIPTPLUGINS")
+
+
+class QuanticExtensionMenu_Gates(bpy.types.Menu):
+    bl_idname = "AN_MT_quantic_gates"
+    bl_label = "Gates"
+    
+    def draw(self, context):
+        layout = self.layout
+
+class QuanticExtensionMenu_Converters(bpy.types.Menu):
+    bl_idname = "AN_MT_quantic_converters"
+    bl_label = "Converters"
+    
+    def draw(self, context):
+        layout = self.layout
+
+class QuanticExtensionMenu_Complex(bpy.types.Menu):
+    bl_idname = "AN_MT_quantic_complex"
+    bl_label = "Complex"
+    
+    def draw(self, context):
+        layout = self.layout
+
+class QuanticExtensionMenu_Qiskit(bpy.types.Menu):
+    bl_idname = "AN_MT_quantic_Qiskit"
+    bl_label = "Qiskit"
+    
+    def draw(self, context):
+        layout = self.layout
+        
+       
+
+class Pie_menu(bpy.types.Menu):
+    bl_label = "Some Pie Menu"
+    def draw(self, context):
+        layout = self.layout
+        pie = layout.menu_pie()
+        pie.operator("wm.call_menu_pie", text = "Some Other Pie", icon = "RIGHTARROW_THIN").name="Pie_menu"
+        pie.operator("mesh.primitive_cube_add", text = "Some Operator", icon = "BLENDER")
+        pie.operator("mesh.primitive_cube_add", text = "Some Operator", icon = "BLENDER")
+        pie.operator("mesh.primitive_cube_add", text = "Some Operator", icon = "BLENDER")
+        pie.operator("mesh.primitive_cube_add", text = "Some Operator", icon = "BLENDER")
+        pie.operator("mesh.primitive_cube_add", text = "Some Operator", icon = "BLENDER")
+        pie.operator("mesh.primitive_cube_add", text = "Some Operator", icon = "BLENDER")
+        pie.operator("mesh.primitive_cube_add", text = "Some Operator", icon = "BLENDER")
+        pie.separator()
+        pie.separator()
+        other = pie.column()
+        gap = other.column()
+        gap.separator()
+        gap.scale_y = 7
+        other_menu = other.box().column()
+        other_menu.scale_y=1.3
+        other_menu.operator("mesh.primitive_cube_add", text = "Some Menu Operator",icon = "BLENDER")
+        other_menu.operator("mesh.primitive_cube_add", text = "Some Menu Operator",icon = "BLENDER") 
+        other_menu.menu('Submenu', icon='RIGHTARROW_THIN',  text='Some Submenu...')
+
+
 
 
 def drawMenu(self, context):
