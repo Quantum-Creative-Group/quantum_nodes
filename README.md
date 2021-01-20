@@ -41,7 +41,22 @@ It's ready ! Blender is now using Anaconda 3 with your libraries to run.
 ![Animation Nodes Folder image](assets/readme_pictures/animation_nodes_folder.png)
 
 * Then do the same as Animation Nodes and install our extension in Blender
-
 * Finally, you can find our extension in the Animation Nodes Panel and start messing around with it ! More nodes and features will be available in next updates. 
 
 ![Animation Nodes Quantum Menu image](assets/readme_pictures/quantum_menu.png)
+
+## Contribute to our project
+
+If you want to contribute you can use your favorite IDE our you can use Visual Studio Code that has a very interesting Extension for Blender Development made by Jacques Lucke :
+
+* First you have to clone our repo
+* Open Visual Studio Code and install *Blender Development* :
+
+![Blender Dev image](assets/readme_pictures/blender_dev.png)
+
+* Then you can follow the extension tutorial to set-up the "Blender: Start" directly from VS Code :
+
+![Tuto Blender Dev image](assets/readme_pictures/tuto_blender_dev.png)
+
+Like this any updates you want to do will be taken into account when you save a file. You don't have to import again any ZIP file into Blender, the extension does it for you.
+
