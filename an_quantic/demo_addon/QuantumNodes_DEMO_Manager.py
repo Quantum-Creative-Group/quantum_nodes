@@ -7,7 +7,7 @@ from . NodeTreeManager import NodeTreeManager
 
 class QuantumNodes_DEMO_Manager():
 
-    def __init__(self, nb = 1):
+    def __init__(self, nb = 3):
         self.qc_x_coords = CircuitManager(nb)
         self.qc_y_coords = CircuitManager(nb)
         self.qc_z_coords = CircuitManager(nb)
