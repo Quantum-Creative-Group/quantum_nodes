@@ -2,7 +2,7 @@ import numpy as np
 import math
 import bpy, os, sys
 from .. lib import quantumblur
-from . circuit_manager import CircuitManager
+from . CircuitManager import CircuitManager
 from . NodeTreeManager import NodeTreeManager
 
 class QuantumNodes_DEMO_Manager():

@@ -1,7 +1,7 @@
 import bpy
 from animation_nodes.ui.node_menu import insertNode
 from animation_nodes.utils.nodes import getAnimationNodeTrees
-from .. template.template1 import *
+from .. node_templates.template1 import *
 
 
 
