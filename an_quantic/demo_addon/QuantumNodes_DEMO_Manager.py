@@ -2,7 +2,8 @@ import numpy as np
 import math
 import bpy, os, sys
 from .. lib import quantumblur
-from . circuit_manager import CircuitManager
+from . CircuitManager import CircuitManager
+from . NodeTreeManager import NodeTreeManager
 
 class QuantumNodes_DEMO_Manager():
 
@@ -11,12 +12,14 @@ class QuantumNodes_DEMO_Manager():
         self.qc_y_coords = CircuitManager(nb)
         self.qc_z_coords = CircuitManager(nb)
         self.selected_circuit = 'x'
+        self.ntm = NodeTreeManager()
         self.nb_qubits = nb
-
-    #def active_object_has_changed(self, obj_name):
-    #    if obj_tmp != obj_name: print('OSKOUR')
+        
     def get_selected_circuit(self):
         sc = self.selected_circuit
         if(sc == 'x'): return self.qc_x_coords
         elif(sc == 'y'): return self.qc_y_coords
         return self.qc_z_coords
+    
+    def initializeDemo(self, context):
+        self.ntm.generateNodeTree()
