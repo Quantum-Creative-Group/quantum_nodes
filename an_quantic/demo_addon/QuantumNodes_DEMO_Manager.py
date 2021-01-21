@@ -21,5 +21,5 @@ class QuantumNodes_DEMO_Manager():
         elif(sc == 'y'): return self.qc_y_coords
         return self.qc_z_coords
     
-    def initializeDemo(self, context):
+    def initializeDemo(self):
         self.ntm.generateNodeTree()
