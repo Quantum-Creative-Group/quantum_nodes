@@ -17,50 +17,31 @@ from bpy.types import(
     PropertyGroup,
 )
 
-class h_gate(bpy.types.Operator):
-    bl_idname = "object.first_one_id"
-    bl_label = "H - Gate"
+class AddGateButton(bpy.types.Operator):
+    bl_idname = "object.add_gate_button"
+    bl_label = "AddGateButton"
+
+    text: bpy.props.StringProperty(
+        name = 'text',
+        default = ''
+    )
 
     def execute(self, context):
-        #DEMO_Manager.get_selected_circuit().add_gate(settings.nb_qubit-1, 'h')
-        return{'FINISHED'}
-
-class x_gate(bpy.types.Operator):
-    bl_idname = "object.second_one_id"
-    bl_label = "X - Gate"
-
-    def execute(self, context):
-
-        return{'FINISHED'}
-
-class y_gate(bpy.types.Operator):
-    bl_idname = "object.third_one_id"
-    bl_label = "Y - Gate"
-
-    def execute(self, context):
+        DEMO_Manager = bpy.types.Scene.QuantumNodes_DEMO_Manager
+        DEMO_Manager.get_selected_circuit().add_gate(context.scene.quantumize_settings.nb_qubit-1, self.text)
+        #print(DEMO_Manager.get_selected_circuit())
 
         return{'FINISHED'}
 
 def draw_func(self, context):
     layout = self.layout
 
-    layout.operator("object.first_one_id")
-    layout.operator("object.second_one_id")
-    layout.operator("object.third_one_id")
-
-#class SimpleOperator(bpy.types.Operator):
-#    bl_idname = "object.simple_operator"
-#    bl_label = "Simple Object Operator"
-
-#    @classmethod
-#    def poll(cls, context):
-#        return context.object is not None
-
-#    def execute(self, context):
-#        wm = bpy.context.window_manager
-#        wm.popup_menu(draw_func, title="Options")
-#        return {'FINISHED'}
-
+    button1 = layout.operator('object.add_gate_button', text = 'h')
+    button1.text = 'h'
+    button2 = layout.operator('object.add_gate_button', text = 'x')
+    button2.text = 'x'
+    button3 = layout.operator('object.add_gate_button', text = 'y')
+    button3.text = 'y'
 
 
 class settings(PropertyGroup):
@@ -121,7 +102,7 @@ class quantumize_op(Operator):
         me = obj.data
         nb_vertices = (len(me.vertices))
         n = int(math.ceil(math.log(nb_vertices)/math.log(2)))
-        print("nb of vertices = " + str(nb_vertices) + " ||||| nb of qubits = " + str(n))
+        #print("nb of vertices = " + str(nb_vertices) + " ||||| nb of qubits = " + str(n))
             
         return {'FINISHED'}
 
@@ -166,7 +147,7 @@ class AddAndDelGate(bpy.types.Operator):
         if self.button == 'add':
             wm = bpy.context.window_manager
             wm.popup_menu(draw_func, title="Options")
-            DEMO_Manager.get_selected_circuit().add_gate(settings.nb_qubit-1, 'h') ######################### 'h' à modifier
+            #DEMO_Manager.get_selected_circuit().add_gate(settings.nb_qubit-1, 'h') ######################### 'h' à modifier
         if self.button == 'del': 
             DEMO_Manager.get_selected_circuit().del_gate(settings.nb_qubit-1)
         return{'FINISHED'}
@@ -178,62 +159,103 @@ class quantumize_ui(bpy.types.Panel):
     bl_region_type = "UI"
     bl_category = "QuantumMesh"
 
-        
+    obj_tmp = 'XXXXXXXXXXXXXXX'
+    nb_qubits = 0
+
+    def addRow(self,n):
+        layout = self.layout
+        for i in range(n):
+            row = layout.row()
+        return row
     
     def draw(self, context):
-        # variables
+
+        ####### __INIT__ #######
+
         layout = self.layout
         scene = context.scene
         obj = bpy.context.active_object
         settings = scene.quantumize_settings
+        
+        DEMO_Manager = bpy.types.Scene.QuantumNodes_DEMO_Manager
 
      
-        #if obj.name != self.obj_tmp: self.obj_tmp = obj.name
 
-        nb_qubits = int(math.ceil(math.log(len(obj.data.vertices))/math.log(2)))
+        ####### DEFINE NB OF QUBITS FOR AN OBJECT #######
 
-        #update selected circuit
-        bpy.types.Scene.QuantumNodes_DEMO_Manager.selected_circuit = context.scene.axis_choice.axis 
-        #print(bpy.types.Scene.QuantumNodes_DEMO_Manager.selected_circuit)
+        if obj.name != self.obj_tmp: 
+            self.obj_tmp = obj.name
+            self.nb_qubits = int(math.ceil(math.log(len(obj.data.vertices))/math.log(2)))
 
-        if nb_qubits > 10 or bpy.context.active_object == False: 
+        ####### UPDATE SELECTED CIRCUIT #######
+
+        DEMO_Manager.selected_circuit = context.scene.axis_choice.axis 
+
+        if context.object.select_get() == False or context.object.type != "MESH" or self.nb_qubits > 10:                                        
             bpy.context.active_object.select_set(False)
-            nb_qubits = 0
+            self.nb_qubits = 0
 
-        row = layout.row()
-        row.label(text="Objet sélectionné", icon="MESH_CUBE")
-        row = layout.row()
+
+        ####### SELECTED OBJECT #######
+
+        row = self.addRow(1)
+        row.label(text="Selected Object", icon="MESH_CUBE")
+        row = self.addRow(1)
         row.prop(obj, "name")
-        for i in range(5) : row = layout.row()
-        row.label(text="Paramètres", icon="SETTINGS")
-        for i in range(3) : row = layout.row()
+        row = self.addRow(5)
+       
+        ####### SETTINGS #######
+        
+        row.label(text="Settings", icon="SETTINGS")
+        row = self.addRow(3)
+
+        ####### AXIS CHOICE #######
+
         row.label(text = "Axis", icon = 'ORIENTATION_LOCAL')
+        row = self.addRow(1)
         row = layout.row()
         row.prop(context.scene.axis_choice, "axis", icon = 'ORIENTATION_LOCAL', expand = True)
-        for i in range(2) : row = layout.row()
+        row = self.addRow(2)
+
+        ####### QUBIT SELECTION #######
+
         row.label(text = "ID Qbit", icon = "LIGHTPROBE_GRID")
         row.prop(settings, "nb_qubit")
-        for i in range(3) : row = layout.row()
+        row = self.addRow(3)
+ 
+        ####### QUANTUM GATES #######
+        
         row.label(text = "Quantum Gates", icon = 'SNAP_VERTEX')
-        row = layout.row()
+        row = self.addRow(1)
         layout.operator('object.add_and_del_gate', text='+').button = 'add'
         layout.operator('object.add_and_del_gate', text='-').button = 'del'
-        #row.prop(settings, "h_gate_tick", text = "H gate")
-        #row.prop(settings, "x_gate_tick", text = "X gate")
-        #row.prop(settings, "y_gate_tick", text = "Y gate")
-        for i in range(3) : row = layout.row()
-        for i in range(nb_qubits):
-            gate_display = ""
-            if settings.h_gate_tick : gate_display += "---|H|---"
-            if settings.x_gate_tick : gate_display += "---|X|---"
-            if settings.y_gate_tick : gate_display += "---|Y|---"  
-            row.label(text="q"+str(i)+gate_display)
-            row = layout.row()
-        for i in range(2) : row = layout.row()
-        for i in range(2) : row = layout.row()
-        row.operator(quantumize_op.bl_idname, text="Appliquer", icon="CHECKMARK")
-        row = layout.row()
-        row.operator(swap_to_an.bl_idname, text="Advanced", icon="PLUS")
+        row = self.addRow(3)
+
+        ####### DISPLAY #######
+        if self.nb_qubits > 0:
+            qindex = 0
+            for qubit in DEMO_Manager.get_selected_circuit().data:
+                qindex += 1
+                gate_display = ""
+                gate_display += "q" + str(qindex) + "  "
+                for gate in qubit:
+                    gate_display += "---|" + gate.upper() + "|---"
+                row.label(text=gate_display)
+                row = self.addRow(1)
+
+        elif context.object.select_get() == False or context.object.type != "MESH" or self.nb_qubits > 10:                                        
+            bpy.context.active_object.select_set(False)
+            self.nb_qubits = 0
+            row.label(text="Select a correct object")
+            row = self.addRow(2)
+
+        ####### THE END #######
+
+        row.operator(quantumize_op.bl_idname, text="Apply", icon="CHECKMARK")
+        row = self.addRow(1)
+        row.operator(swap_to_an.bl_idname, text="Advanced (Quantum Magic)", icon="PLUS")
+
+        #######################
 
 classes = (
     settings,
