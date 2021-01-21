@@ -17,6 +17,52 @@ from bpy.types import(
     PropertyGroup,
 )
 
+class h_gate(bpy.types.Operator):
+    bl_idname = "object.first_one_id"
+    bl_label = "H - Gate"
+
+    def execute(self, context):
+        #DEMO_Manager.get_selected_circuit().add_gate(settings.nb_qubit-1, 'h')
+        return{'FINISHED'}
+
+class x_gate(bpy.types.Operator):
+    bl_idname = "object.second_one_id"
+    bl_label = "X - Gate"
+
+    def execute(self, context):
+
+        return{'FINISHED'}
+
+class y_gate(bpy.types.Operator):
+    bl_idname = "object.third_one_id"
+    bl_label = "Y - Gate"
+
+    def execute(self, context):
+
+        return{'FINISHED'}
+
+def draw_func(self, context):
+    layout = self.layout
+
+    layout.operator("object.first_one_id")
+    layout.operator("object.second_one_id")
+    layout.operator("object.third_one_id")
+
+#class SimpleOperator(bpy.types.Operator):
+#    bl_idname = "object.simple_operator"
+#    bl_label = "Simple Object Operator"
+
+#    @classmethod
+#    def poll(cls, context):
+#        return context.object is not None
+
+#    def execute(self, context):
+#        wm = bpy.context.window_manager
+#        wm.popup_menu(draw_func, title="Options")
+#        return {'FINISHED'}
+
+
+
 class settings(PropertyGroup):
 
     x_tick: BoolProperty(
@@ -110,11 +156,17 @@ class AddAndDelGate(bpy.types.Operator):
         default='add'
     )
 
+    @classmethod
+    def poll(cls, context):
+        return context.object is not None
+
     def execute(self, context):
         settings = context.scene.quantumize_settings
         DEMO_Manager = bpy.types.Scene.QuantumNodes_DEMO_Manager
         if self.button == 'add':
-            DEMO_Manager.get_selected_circuit().add_gate(settings.nb_qubit-1, 'h')
+            wm = bpy.context.window_manager
+            wm.popup_menu(draw_func, title="Options")
+            DEMO_Manager.get_selected_circuit().add_gate(settings.nb_qubit-1, 'h') ######################### 'h' à modifier
         if self.button == 'del': 
             DEMO_Manager.get_selected_circuit().del_gate(settings.nb_qubit-1)
         return{'FINISHED'}
@@ -126,7 +178,6 @@ class quantumize_ui(bpy.types.Panel):
     bl_region_type = "UI"
     bl_category = "QuantumMesh"
 
-    nb_gates_available = 1
         
     
     def draw(self, context):
@@ -145,7 +196,7 @@ class quantumize_ui(bpy.types.Panel):
         bpy.types.Scene.QuantumNodes_DEMO_Manager.selected_circuit = context.scene.axis_choice.axis 
         #print(bpy.types.Scene.QuantumNodes_DEMO_Manager.selected_circuit)
 
-        if nb_qubits > 10 or context.object.select_get() == False: 
+        if nb_qubits > 10 or bpy.context.active_object == False: 
             bpy.context.active_object.select_set(False)
             nb_qubits = 0
 
@@ -165,7 +216,9 @@ class quantumize_ui(bpy.types.Panel):
         for i in range(3) : row = layout.row()
         row.label(text = "Quantum Gates", icon = 'SNAP_VERTEX')
         row = layout.row()
-        row.prop(settings, "h_gate_tick", text = "H gate")
+        layout.operator('object.add_and_del_gate', text='+').button = 'add'
+        layout.operator('object.add_and_del_gate', text='-').button = 'del'
+        #row.prop(settings, "h_gate_tick", text = "H gate")
         #row.prop(settings, "x_gate_tick", text = "X gate")
         #row.prop(settings, "y_gate_tick", text = "Y gate")
         for i in range(3) : row = layout.row()
@@ -177,8 +230,6 @@ class quantumize_ui(bpy.types.Panel):
             row.label(text="q"+str(i)+gate_display)
             row = layout.row()
         for i in range(2) : row = layout.row()
-        layout.operator('object.add_and_del_gate', text='+').button = 'add'
-        layout.operator('object.add_and_del_gate', text='-').button = 'del'
         for i in range(2) : row = layout.row()
         row.operator(quantumize_op.bl_idname, text="Appliquer", icon="CHECKMARK")
         row = layout.row()
