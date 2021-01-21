@@ -20,12 +20,15 @@ class AddAndDelGate(bpy.types.Operator):
         return context.object is not None
 
     def execute(self, context):
-        #settings = context.scene.quantumize_settings
+
         DEMO_Manager = bpy.types.Scene.QuantumNodes_DEMO_Manager
-        if self.button == 'add':
+        if self.button == 'add':    
             wm = bpy.context.window_manager
             wm.popup_menu(draw_func, title="Options")
-            #DEMO_Manager.get_selected_circuit().add_gate(settings.nb_qubit-1, 'h') ######################### 'h' à modifier
-        if self.button == 'del': 
+        else: 
             DEMO_Manager.get_selected_circuit().del_gate(bpy.types.Object.select_index-1)
-        return{'FINISHED'}
+        
+        
+        
+        return {'FINISHED'}
+

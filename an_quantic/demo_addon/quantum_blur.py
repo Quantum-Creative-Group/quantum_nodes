@@ -41,7 +41,6 @@ class quantumize_op(Operator):
         me = obj.data
         nb_vertices = (len(me.vertices))
         n = int(math.ceil(math.log(nb_vertices)/math.log(2)))
-        #print("nb of vertices = " + str(nb_vertices) + " ||||| nb of qubits = " + str(n))
             
         return {'FINISHED'}
 
@@ -100,35 +99,38 @@ class quantumize_ui(bpy.types.Panel):
         row = self.addRow(5)
        
         ####### SETTINGS #######
+        box = layout.box()
         
-        row.label(text="Settings", icon="SETTINGS")
+        box.label(text="Settings", icon="SETTINGS")
         row = self.addRow(3)
 
         ####### AXIS CHOICE #######
 
-        row.label(text = "Axis", icon = 'ORIENTATION_LOCAL')
+        box.label(text = "Axis", icon = 'ORIENTATION_LOCAL')
         row = self.addRow(1)
         row = layout.row()
+        row = box.row()
         row.prop(context.scene.axis_choice, "axis", icon = 'ORIENTATION_LOCAL', expand = True)
         row = self.addRow(2)
-
+            
         ####### QUBIT SELECTION #######
 
-        row.label(text = "Select QuBit", icon = "LIGHTPROBE_GRID")
+        box.label(text = "Select QuBit", icon = "LIGHTPROBE_GRID")
         index_qubit = bpy.types.Object.select_index
-        row.operator('dialog.select_qubit', text = "ID = "+str(index_qubit), icon = "VIEWZOOM")
+        box.operator('dialog.select_qubit', text = "ID = "+str(index_qubit), icon = "VIEWZOOM")
         row = self.addRow(3)
  
         ####### QUANTUM GATES #######
         
-        row.label(text = "Quantum Gates", icon = 'SNAP_VERTEX')
+        box.label(text = "Quantum Gates", icon = 'SNAP_VERTEX')
         row = self.addRow(1)
-        layout.operator('object.add_and_del_gate', text='+').button = 'add'
-        layout.operator('object.add_and_del_gate', text='-').button = 'del'
-        row = self.addRow(3)
+        row = box.row()
+        row.operator('object.add_and_del_gate', text='+').button = 'add'
+        row.operator('object.add_and_del_gate', text='-').button = 'del'
+        #row = self.addRow(3)
 
         ####### DISPLAY #######
-        
+        box = layout.box()
         if self.nb_qubits > 0:
             qindex = 0
             for qubit in DEMO_Manager.get_selected_circuit().data:
@@ -137,13 +139,13 @@ class quantumize_ui(bpy.types.Panel):
                 gate_display += "q" + str(qindex) + "  ---"
                 for gate in qubit:
                     gate_display += "|" + gate.upper() + "|---"
-                row.label(text=gate_display)
+                box.label(text=gate_display)
                 row = self.addRow(1)
 
         else :                                        
             bpy.context.active_object.select_set(False)
             self.nb_qubits = 0
-            row.label(text="Select a correct object")
+            box.label(text="Select a correct object")
             row = self.addRow(2)
 
         ####### THE END #######
