@@ -29,7 +29,7 @@ class AddGateButton(bpy.types.Operator):
 
     def execute(self, context):
         DEMO_Manager = bpy.types.Scene.QuantumNodes_DEMO_Manager
-        DEMO_Manager.get_selected_circuit().add_gate(context.scene.quantumize_settings.nb_qubit-1, self.text)
+        DEMO_Manager.get_selected_circuit().add_gate(bpy.types.Object.select_index-1, self.text)
         #print(DEMO_Manager.get_selected_circuit())
 
         return{'FINISHED'}
@@ -54,7 +54,6 @@ def setSliderValue(self, value):
     else : return m
     #return self
     
-
 def getSliderValue(self):
     return self
 
@@ -74,8 +73,6 @@ class NbQubitSetting(Operator):
 
     def invoke(self, context, event):    
         return context.window_manager.invoke_props_dialog(self)
-
-
 
 class quantumize_op(Operator):
     bl_label = "Quantumize"
@@ -188,6 +185,8 @@ class quantumize_ui(bpy.types.Panel):
         if context.object.select_get() == False or context.object.type != "MESH" or self.nb_qubits > 10:                                        
             bpy.context.active_object.select_set(False)
             self.nb_qubits = 0
+        else : 
+            self.nb_qubits = int(math.ceil(math.log(len(obj.data.vertices))/math.log(2)))
 
         ####### SELECTED OBJECT #######
 
@@ -226,6 +225,7 @@ class quantumize_ui(bpy.types.Panel):
         row = self.addRow(3)
 
         ####### DISPLAY #######
+        
         if self.nb_qubits > 0:
             qindex = 0
             for qubit in DEMO_Manager.get_selected_circuit().data:
@@ -237,7 +237,7 @@ class quantumize_ui(bpy.types.Panel):
                 row.label(text=gate_display)
                 row = self.addRow(1)
 
-        elif context.object.select_get() == False or context.object.type != "MESH" or self.nb_qubits > 10:                                        
+        else :                                        
             bpy.context.active_object.select_set(False)
             self.nb_qubits = 0
             row.label(text="Select a correct object")
@@ -265,5 +265,3 @@ def register():
 
 if __name__ == "__main__":
     register()
-
-

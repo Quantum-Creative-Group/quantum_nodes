@@ -12,7 +12,6 @@ class QuantumNodes_DEMO_Manager():
         self.qc_z_coords = CircuitManager(nb)
         self.selected_circuit = 'x'
         self.nb_qubits = nb
-        #self.obj_tmp = "XXXXXXX"
 
     #def active_object_has_changed(self, obj_name):
     #    if obj_tmp != obj_name: print('OSKOUR')
