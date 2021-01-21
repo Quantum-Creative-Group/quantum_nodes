@@ -9,6 +9,7 @@ from bpy.props import(
     BoolProperty,
     FloatProperty,
     PointerProperty,
+    IntProperty,
 )
 from bpy.types import(
     Panel,
@@ -44,45 +45,37 @@ def draw_func(self, context):
     button3.text = 'y'
 
 
-class settings(PropertyGroup):
+def setSliderValue(self, value):
+    DEMO_Manager = bpy.types.Scene.QuantumNodes_DEMO_Manager
+    m = DEMO_Manager.nb_qubits
 
-    x_tick: BoolProperty(
-        name = "Enable x value",
-        description = "Allows the algorithm to include the x value of the coordinate",
-        default = False
-    )
-    y_tick: BoolProperty(
-        name = "Enable y value",
-        description = "Allows the algorithm to include the y value of the coordinate",
-        default = False
-    )
-    z_tick: BoolProperty(
-        name = "Enable z value",
-        description = "Allows the algorithm to include the z value of the coordinate",
-        default = False
-    )
-    h_gate_tick: BoolProperty(
-        name = "Enable Hadamard gate",
-        description = "Allows the algorithm to apply the Hadamard gate",
-        default = True
-    )
-    x_gate_tick: BoolProperty(
-        name = "Enable X gate",
-        description = "Allows the algorithm to apply the X gate",
-        default = False
-    )
-    y_gate_tick: BoolProperty(
-        name = "Enable Y gate",
-        description = "Allows the algorithm to apply the Y gate",
-        default = False
-    )
-    nb_qubit : bpy.props.IntProperty(
-        name = "Select",
-        description = "Select a qubit",
-        default = 1,
-        min = 1,
-        max = 10
-    )
+    if 1<=value<=m : return value
+    elif value < 1 : return 1
+    else : return m
+    #return self
+    
+
+def getSliderValue(self):
+    return self
+
+class NbQubitSetting(Operator):
+    bl_label = "Select Qubit"
+    bl_idname = "dialog.select_qubit"
+
+    n = bpy.props.IntProperty(name="Select QuBit Index", default=1)
+
+    @classmethod
+    def poll(cls, context):
+        return context.object.select_get() and context.object.type == "MESH"
+
+    def execute(self, context):
+        bpy.types.Object.select_index = setSliderValue(self.n, getSliderValue(self.n))
+        return {'FINISHED'}
+
+    def invoke(self, context, event):    
+        return context.window_manager.invoke_props_dialog(self)
+
+
 
 class quantumize_op(Operator):
     bl_label = "Quantumize"
@@ -96,7 +89,7 @@ class quantumize_op(Operator):
     
     def execute(self, context):
         scene = bpy.context.scene
-        settings = scene.quantumize_settings
+        #settings = scene.quantumize_settings
         
         obj = context.object
         me = obj.data
@@ -142,14 +135,14 @@ class AddAndDelGate(bpy.types.Operator):
         return context.object is not None
 
     def execute(self, context):
-        settings = context.scene.quantumize_settings
+        #settings = context.scene.quantumize_settings
         DEMO_Manager = bpy.types.Scene.QuantumNodes_DEMO_Manager
         if self.button == 'add':
             wm = bpy.context.window_manager
             wm.popup_menu(draw_func, title="Options")
             #DEMO_Manager.get_selected_circuit().add_gate(settings.nb_qubit-1, 'h') ######################### 'h' à modifier
         if self.button == 'del': 
-            DEMO_Manager.get_selected_circuit().del_gate(settings.nb_qubit-1)
+            DEMO_Manager.get_selected_circuit().del_gate(bpy.types.Object.coucou-1)
         return{'FINISHED'}
 
 class quantumize_ui(bpy.types.Panel):
@@ -161,6 +154,9 @@ class quantumize_ui(bpy.types.Panel):
 
     obj_tmp = 'XXXXXXXXXXXXXXX'
     nb_qubits = 0
+
+    bpy.types.Object.select_index = 1
+    index_qubit = bpy.types.Object.select_index
 
     def addRow(self,n):
         layout = self.layout
@@ -175,17 +171,15 @@ class quantumize_ui(bpy.types.Panel):
         layout = self.layout
         scene = context.scene
         obj = bpy.context.active_object
-        settings = scene.quantumize_settings
-        
+       
         DEMO_Manager = bpy.types.Scene.QuantumNodes_DEMO_Manager
-
      
 
         ####### DEFINE NB OF QUBITS FOR AN OBJECT #######
 
         if obj.name != self.obj_tmp: 
             self.obj_tmp = obj.name
-            self.nb_qubits = int(math.ceil(math.log(len(obj.data.vertices))/math.log(2)))
+            DEMO_Manager.nb_qubits = int(math.ceil(math.log(len(obj.data.vertices))/math.log(2)))
 
         ####### UPDATE SELECTED CIRCUIT #######
 
@@ -194,7 +188,6 @@ class quantumize_ui(bpy.types.Panel):
         if context.object.select_get() == False or context.object.type != "MESH" or self.nb_qubits > 10:                                        
             bpy.context.active_object.select_set(False)
             self.nb_qubits = 0
-
 
         ####### SELECTED OBJECT #######
 
@@ -219,8 +212,9 @@ class quantumize_ui(bpy.types.Panel):
 
         ####### QUBIT SELECTION #######
 
-        row.label(text = "ID Qbit", icon = "LIGHTPROBE_GRID")
-        row.prop(settings, "nb_qubit")
+        row.label(text = "Select QuBit", icon = "LIGHTPROBE_GRID")
+        index_qubit = bpy.types.Object.select_index
+        row.operator('dialog.select_qubit', text = "ID = "+str(index_qubit), icon = "VIEWZOOM")
         row = self.addRow(3)
  
         ####### QUANTUM GATES #######
@@ -258,7 +252,7 @@ class quantumize_ui(bpy.types.Panel):
         #######################
 
 classes = (
-    settings,
+    NbQubitSetting,
     SelectAxis,
     AddAndDelGate,
     quantumize_op,
@@ -266,10 +260,8 @@ classes = (
 )
 
 def register():
-    bpy.types.Scene.quantumize_settings = PointerProperty(type = settings)
     bpy.types.Scene.axis_choice = PointerProperty(type = SelectAxis)
     bpy.types.Scene.QuantumNodes_DEMO_Manager = QuantumNodes_DEMO_Manager()
-
 
 if __name__ == "__main__":
     register()

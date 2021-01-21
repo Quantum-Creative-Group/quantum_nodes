@@ -6,11 +6,12 @@ from . circuit_manager import CircuitManager
 
 class QuantumNodes_DEMO_Manager():
 
-    def __init__(self, nb = 3):
+    def __init__(self, nb = 1):
         self.qc_x_coords = CircuitManager(nb)
         self.qc_y_coords = CircuitManager(nb)
         self.qc_z_coords = CircuitManager(nb)
         self.selected_circuit = 'x'
+        self.nb_qubits = nb
         #self.obj_tmp = "XXXXXXX"
 
     #def active_object_has_changed(self, obj_name):

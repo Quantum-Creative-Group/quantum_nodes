@@ -9,7 +9,7 @@ class CircuitManager():
         self.data = [[] for i in range(nb_qubits)]
 
     def add_gate(self, q_index, gate):
-        if len(self.data[q_index]) < 6 : 
+        if len(self.data[q_index]) < 5 : 
             self.data[q_index].append(gate)
         print(self.data[q_index])
 
