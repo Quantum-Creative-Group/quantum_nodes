@@ -2,39 +2,80 @@ import bpy
 # from qiskit import *
 from qiskit import IBMQ
 from animation_nodes.base_types import AnimationNode
-
-# import re
 from bpy.props import * # ...Property
-# from animation_nodes.utils.code import isCodeValid
-# from animation_nodes.utils.layout import splitAlignment
+from animation_nodes.events import propertyChanged
 from animation_nodes.events import executionCodeChanged
-# from animation_nodes.execution.code_generator import iter_Imports
 
-from animation_nodes.nodes.spline.c_utils import getMatricesAlongSpline
-from animation_nodes.data_structures import Mesh, LongList
-from animation_nodes.nodes.mesh.c_utils import getReplicatedVertices
-from animation_nodes.nodes.spline.spline_evaluation_base import SplineEvaluationBase
-from animation_nodes.algorithms.mesh_generation.circle import getPointsOnCircle
-from animation_nodes.algorithms.mesh_generation.grid import quadEdges, quadPolygons
 
-class QuantumCircuitOutputStateNode(bpy.types.Node, AnimationNode):
+class Provider():
+    def __init__(self):
+        self.provider = None
+
+    def get_provider(self):
+        if self.provider == None:
+            self.provider = IBMQ.providers()[0]
+        return self.provider
+
+
+class QuantumCircuitIBMOutputStateNode(bpy.types.Node, AnimationNode):
     bl_idname = "an_QuantumCircuitIBMOutputStateNode"
     bl_label = "Quantum Circuit IBM Output State"
+    bl_width_default = 180
+    errorHandlingType = "EXCEPTION"
+    _provider = Provider()
 
     token: StringProperty(name = "Token",
         description = "Copy your IBM quantum experience token here",
-        update = executionCodeChanged)
+        update = propertyChanged)
 
-    def create(self):
-        self.newInput("Spline", "Spline", "spline", defaultDrawType = "PROPERTY_ONLY")
+    initialized: BoolProperty(name = "Initialized", default = False,
+        description = "If the node has been initialized")
+
+    def item_callback(self, context):
+        return [ (sys.name(), sys.name(), "number of qubits: " + str(sys.configuration().n_qubits)) for sys in self._provider.get_provider().backends() ]
+        # backendItems = []
+        # for sys in self._provider.get_provider().backends():
+        #     # if sys.status().operational == True:  # TODO: fix --> make everything rly slow, idk why
+        #         backendItems.append( (sys.name(), sys.name(), "number of qubits: " + str(sys.configuration().n_qubits)) )
+        # return backendItems
+
+    backendMenu: EnumProperty(
+        items = item_callback,
+        name = "Backend",
+        description = "Choose a system",
+        # default = "ibmq_qasm_simulator",  # can't set a default value...?
+        update = AnimationNode.refresh,
+        get = None,
+        set = None)
+
+    def __init__(self):
+        if not self.initialized:
+            if IBMQ.active_account() == None:
+                IBMQ.load_account() # needs a connection to internet!
+            # TODO: try if load account fails and in catch ask for token (w/ self.raiseError maybe?)
+            self.initialized = True
+
+    def setup(self):
+        print("setup")
+        self.newInput("Quantum Circuit", "Quantum Circuit", "quantum_circuit")
+        self.newOutput("Generic", "Result", "result")
+    
+    def draw(self, layout):
+        # print("draw")
+        layout.prop(self, "backendMenu")
 
     def drawAdvanced(self, layout):
         layout.prop(self, "token")
         col = layout.column()
 
-        # col.prop(self, "parameterType")
-        # subcol = col.column()
-        # subcol.active = self.parameterType == "UNIFORM"
-        # subcol.prop(self, "resolution")
-
-    
+    def execute(self, quantum_circuit): # is never called...?
+        print("execute")
+        backend = self._provider.get_provider().get_backend(self.backendMenu)   # TODO: fix --> Exception: node is not refreshable >:(
+        print(backend)
+        if (quantum_circuit.num_qubits > backend.configuration().n_qubits):
+            self.raiseErrorMessage("This system doesn't compute enough qubits: " + str(backend.configuration().n_qubits))
+        # to execute only once "Execute node tree button"
+        qobj = assemble(transpile(quantum_circuit, backend=backend), backend=backend)
+        job = backend.run(qobj)
+        retrieve_job = backend.retrieve_job(job.job_id())
+        return retrieve_job.get_statevector(quantum_circuit, quantum_circuit.num_qubits)
