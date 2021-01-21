@@ -19,6 +19,8 @@ class QuanticExtensionMenu(bpy.types.Menu):
         layout.menu("AN_MT_quantic_schrodinger_simulation", text = "Schrödinger Simulation", icon = "OPTIONS")
 
 
+################# MENU-CLASSES ################# 
+
 class QuanticExtensionMenu_Complex(bpy.types.Menu):
     bl_idname = "AN_MT_quantic_complex"
     bl_label = "Complex Numbers"
@@ -81,6 +83,8 @@ class QuanticExtensionMenu_Gates(bpy.types.Menu):
         layout.menu("AN_MT_quantic_gates_to_all", text = "Gates_To_All", icon = "OBJECT_ORIGIN")
         layout.menu("AN_MT_quantic_gates_single_qubit", text = "Single_Qubit_Gates", icon = "DOT")
 
+
+################# GATES - SUBMENU ################# 
 
 class QuanticExtensionMenu_Gates_c(bpy.types.Menu):
     bl_idname = "AN_MT_quantic_gates_c"
