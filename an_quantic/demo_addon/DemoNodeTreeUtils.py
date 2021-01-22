@@ -1,5 +1,4 @@
 import bpy
-from animation_nodes.nodes.subprogram.subprogram_sockets import forceSubprogramUpdate
 
 def genereateMultiplyAll(context, demo_id):
     context.new_node_tree(type="an_AnimationNodeTree", name=demo_id+"multiply_all")
@@ -273,3 +272,60 @@ def generateCircuit(context, demo_id, circuit_id):
     node_tree.links.new(grp_in.outputs[0], heightmap_to_circuit.inputs[0])
     node_tree.links.new(heightmap_to_circuit.outputs[0], circuit_to_heightmap.inputs[0])
     node_tree.links.new(circuit_to_heightmap.outputs[0], grp_out.inputs[0])
+
+def generateMainNodeTree(context, demo_id):
+    bpy.ops.node.new_node_tree(type="an_AnimationNodeTree", name=demo_id)
+    node_tree = bpy.data.node_groups[demo_id]
+    node_tree_id = "_main"
+
+    # Mesh Object Input node
+    node_tree.nodes.new(type="an_MeshObjectInputNode")
+    node_name = demo_id + "mesh_obj_input" + node_tree_id
+    node_tree.nodes["Mesh Object Input"].name = node_name
+    mesh_obj_inp = node_tree.nodes[node_name]
+    mesh_obj_inp.location[0] = -400
+    mesh_obj_inp.location[1] = -100
+
+    # Separate Vector node
+    node_tree.nodes.new(type="an_SeparateVectorNode")
+    node_name = demo_id + "sep_vecs" + node_tree_id
+    node_tree.nodes["Separate Vector"].name = node_name
+    sep_vecs = node_tree.nodes[node_name]
+    sep_vecs.location[0] = -100
+    sep_vecs.location[1] = -100
+
+    inv_mesh_data_circuits = {"x" : None, "y" : None, "z" : None}
+    for circ_name in ["x", "y", "z"]:
+        # Invoke mesh_data_c(x/y/z)
+        node_tree.nodes.new(type="an_InvokeSubprogramNode")
+        node_name = demo_id + "invoke_mesh_data_" + circ_name + node_tree_id
+        node_tree.nodes["Invoke Subprogram"].name = node_name
+        inv_mesh_data_circuits[circ_name] = node_tree.nodes[node_name]
+        inv_mesh_data_circuits[circ_name].location[0] = 200
+        inv_mesh_data_circuits[circ_name].location[1] = 50
+            # set subprogram
+        subprog_inp = bpy.data.node_groups["an_q_demo_"+"mesh_data"].nodes["an_q_demo_" + "grp_in" + "_md"]
+        inv_mesh_data_circuits[circ_name].subprogramIdentifier = subprog_inp.identifier
+
+    # Combine Vector node
+    node_tree.nodes.new(type="an_CombineVectorNode")
+    node_name = demo_id + "comb_vecs" + node_tree_id
+    node_tree.nodes["Combine Vector"].name = node_name
+    comb_vecs = node_tree.nodes[node_name]
+    comb_vecs.location[0] = 200
+    comb_vecs.location[1] = -100
+
+    # Mesh Object Output node
+    node_tree.nodes.new(type="an_MeshObjectOutputNode")
+    node_name = demo_id + "mesh_obj_output" + node_tree_id
+    node_tree.nodes["Mesh Object Output"].name = node_name
+    mesh_obj_out = node_tree.nodes[node_name]
+    mesh_obj_out.location[0] = -400
+    mesh_obj_out.location[1] = -100
+
+    # force to update socket inputs/outputs (tada !)
+    bpy.context.scene.frame_set(bpy.data.scenes['Scene'].frame_current)
+    # Linking everything
+        # Invoke mesh_data_c(x/y/z) output to combine vector inputs
+    for index, circ_name in [(0, "x"), (1, "y"), (2, "z")]:
+        node_tree.links.new(inv_mesh_data_circuits[circ_name].outputs[0], comb_vecs.inputs[index])
