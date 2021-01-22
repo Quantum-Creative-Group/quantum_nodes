@@ -10,18 +10,12 @@ class CircuitManager():
 
     def add_gate(self, q_index, gate):
        if len(self.data[q_index]) < 5 : 
-            ###### DISABLE CURRENT OBJ
-            tmp = bpy.context.active_object.name
-            bpy.context.active_object.select_set(False)
-            
+                       
             ###### APPEND GATE
             self.data[q_index].append(gate)
-            
-            ###### ENABLE OBJ 
-            bpy.data.objects[tmp].select_set(True)  
         
             ##### TADAAAAAAAAAAA CALL ME HOUDINI
-        #print(self.data[q_index])
+            bpy.context.scene.frame_set(bpy.data.scenes['Scene'].frame_current)
 
     def del_gate(self, q_index):
         if len(self.data[q_index]) > 0 : 

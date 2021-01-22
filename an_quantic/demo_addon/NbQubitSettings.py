@@ -41,17 +41,13 @@ class NbQubitSettings(Operator):
     def poll(cls, context):
         return context.object.select_get() and context.object.type == "MESH"
 
-    def execute(self, context):###### DISABLE CURRENT OBJ
-        tmp = bpy.context.active_object.name
-        bpy.context.active_object.select_set(False)
-        
+    def execute(self, context):
+
         ###### 
         bpy.types.Object.select_index = setSliderValue(self.n, getSliderValue(self.n))
         
-        ###### ENABLE OBJ 
-        bpy.data.objects[tmp].select_set(True)  
-    
         ##### TADAAAAAAAAAAA CALL ME HOUDINI
+        bpy.context.scene.frame_set(bpy.data.scenes['Scene'].frame_current)
         
         return {'FINISHED'}
 
