@@ -1,6 +1,9 @@
 import bpy
-# from qiskit import *
+import time
 from qiskit import IBMQ
+from qiskit import execute
+from qiskit.compiler import transpile, assemble
+from qiskit.providers.jobstatus import JobStatus, JOB_FINAL_STATES
 from animation_nodes.base_types import AnimationNode
 from bpy.props import * # ...Property
 from animation_nodes.events import propertyChanged
@@ -51,14 +54,14 @@ class QuantumCircuitIBMOutputStateNode(bpy.types.Node, AnimationNode):
     def __init__(self):
         if not self.initialized:
             if IBMQ.active_account() == None:
-                IBMQ.load_account() # needs a connection to internet!
+                IBMQ.load_account() # needs a connection to internet! (TODO: manage exceptions)
             # TODO: try if load account fails and in catch ask for token (w/ self.raiseError maybe?)
             self.initialized = True
 
     def setup(self):
-        print("setup")
+        # print("setup")
         self.newInput("Quantum Circuit", "Quantum Circuit", "quantum_circuit")
-        self.newOutput("Generic", "Result", "result")
+        self.newOutput("Generic", "Output State", "output_state")
     
     def draw(self, layout):
         # print("draw")
@@ -68,14 +71,31 @@ class QuantumCircuitIBMOutputStateNode(bpy.types.Node, AnimationNode):
         layout.prop(self, "token")
         col = layout.column()
 
-    def execute(self, quantum_circuit): # is never called...?
-        print("execute")
-        backend = self._provider.get_provider().get_backend(self.backendMenu)   # TODO: fix --> Exception: node is not refreshable >:(
-        print(backend)
+    def getExecutionFunctionName(self): # doesn't call the execute function if I don't do it that way
+        return "execute"
+
+    def execute(self, quantum_circuit):
+        backend = self._provider.get_provider().get_backend(self.backendMenu)   # TODO: fix --> Exception: node is not refreshable
         if (quantum_circuit.num_qubits > backend.configuration().n_qubits):
             self.raiseErrorMessage("This system doesn't compute enough qubits: " + str(backend.configuration().n_qubits))
-        # to execute only once "Execute node tree button"
-        qobj = assemble(transpile(quantum_circuit, backend=backend), backend=backend)
-        job = backend.run(qobj)
-        retrieve_job = backend.retrieve_job(job.job_id())
-        return retrieve_job.get_statevector(quantum_circuit, quantum_circuit.num_qubits)
+        # ---execute() works but is not optimized for more important jobs
+        job = execute(quantum_circuit, backend)
+        # the other method should be better but doesn't return get_counts
+        # qobj = assemble(transpile(quantum_circuit, backend=backend), backend=backend)
+        # qobj = compile(quantum_circuit, backend, shots=2000)
+        # job = backend.run(qobj)
+
+        start_time = time.time()
+        job_status = job.status()
+        while job_status not in JOB_FINAL_STATES:
+            print(f'Status @ {time.time()-start_time:0.0f} s: {job_status.name},'
+                f' est. queue position: {job.queue_position()}')
+            # time.sleep(10)
+            job_status = job.status()
+
+        # ---idk what's the difference
+        # retrieved_job = backend.retrieve_job(job.job_id())
+        # result = retrieved_job.result()
+        result = job.result()
+        # ---feel like we need a measure to get a proper result (???)
+        return result.get_counts()
