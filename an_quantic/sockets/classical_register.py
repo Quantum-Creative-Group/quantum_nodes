@@ -43,8 +43,4 @@ class ClassicalRegisterListSocket(bpy.types.NodeSocket, PythonListSocket):
         if isinstance(value, list):
             if all(isinstance(element, ClassicalRegister) for element in value):
                 return value, 0
-<<<<<<< HEAD
         return cls.getDefaultValue(), 2
-=======
-        return cls.getDefaultValue(), 2
->>>>>>> Node_developpement
