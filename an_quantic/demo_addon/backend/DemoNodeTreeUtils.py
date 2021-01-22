@@ -10,8 +10,7 @@ def genereateMultiplyAll(context, demo_id):
     node_name = demo_id + "loop_in" + node_tree_id
     node_tree.nodes["Loop Input"].name = node_name
     loop_in = node_tree.nodes[node_name]
-    loop_in.location[0] = -400
-    loop_in.location[1] = -100
+    loop_in.location = (0, 0)
     loop_in.subprogramName = demo_id + "multiply_all"
     loop_in.newIterator("Float List", "Float")
     loop_in.newIterator("Float List", "Float")
@@ -21,8 +20,7 @@ def genereateMultiplyAll(context, demo_id):
     node_name = demo_id + "loop_out" + node_tree_id
     node_tree.nodes["Loop Generator Output"].name = node_name
     loop_out = node_tree.nodes[node_name]
-    loop_out.location[0] = 875
-    loop_out.location[1] = -150
+    loop_out.location = (425, 0)
     loop_out.listDataType = "Float List"
 
     # Multiply node
@@ -30,8 +28,7 @@ def genereateMultiplyAll(context, demo_id):
     node_name = demo_id + "math_multiply" + node_tree_id
     node_tree.nodes["Float Math"].name = node_name
     math_mult = node_tree.nodes[node_name]
-    math_mult.location[0] = 0
-    math_mult.location[1] = -50
+    math_mult.location = (225, 0)
     math_mult.operation = 'MULTIPLY'
 
     # Linking everything
@@ -51,8 +48,7 @@ def generateMaxValue(context, demo_id):
     node_name = demo_id + "grp_in" + node_tree_id
     node_tree.nodes["Group Input"].name = node_name
     grp_in = node_tree.nodes[node_name]
-    grp_in.location[0] = -400
-    grp_in.location[1] = -100
+    grp_in.location = (0, 0)
     grp_in.subprogramName = demo_id + "max_values"
     grp_in.newGroupInput("Float List", "Float List")
 
@@ -61,8 +57,7 @@ def generateMaxValue(context, demo_id):
     node_name = demo_id + "grp_out" + node_tree_id
     node_tree.nodes["Group Output"].name = node_name
     grp_out = node_tree.nodes[node_name]
-    grp_out.location[0] = 400
-    grp_out.location[1] = -100
+    grp_out.location = (600, 0)
     grp_out.newGroupOutput("Float", "Result")
 
     # To absolute node
@@ -70,8 +65,7 @@ def generateMaxValue(context, demo_id):
     node_name = demo_id + "math_abs" + node_tree_id
     node_tree.nodes["Float Math"].name = node_name
     math_abs = node_tree.nodes[node_name]
-    math_abs.location[0] = 0
-    math_abs.location[1] = -50
+    math_abs.location = (225, 0)
     math_abs.operation = 'ABSOLUTE'
 
     # Max value node
@@ -79,8 +73,7 @@ def generateMaxValue(context, demo_id):
     node_name = demo_id + "n_list_math" + node_tree_id
     node_tree.nodes["Number List Math"].name = node_name
     n_list_math = node_tree.nodes[node_name]
-    n_list_math.location[0] = 200
-    n_list_math.location[1] = -50
+    n_list_math.location = (410, 0)
     n_list_math.operation = 'MAX'
 
     # Linking everything
@@ -101,8 +94,7 @@ def generateNegative(context, demo_id):
     node_name = demo_id + "loop_in" + node_tree_id
     node_tree.nodes["Loop Input"].name = node_name
     loop_in = node_tree.nodes[node_name]
-    loop_in.location[0] = -400
-    loop_in.location[1] = -100
+    loop_in.location = (0, 0)
     loop_in.subprogramName = demo_id + "negative"
     loop_in.newIterator("Float List", "Float")
 
@@ -111,8 +103,7 @@ def generateNegative(context, demo_id):
     node_name = demo_id + "loop_out" + node_tree_id
     node_tree.nodes["Loop Generator Output"].name = node_name
     loop_out = node_tree.nodes[node_name]
-    loop_out.location[0] = 875
-    loop_out.location[1] = -150
+    loop_out.location = (600, 0)
     loop_out.listDataType = "Float List"
 
     # Compare node
@@ -120,8 +111,7 @@ def generateNegative(context, demo_id):
     node_name = demo_id + "compare" + node_tree_id
     node_tree.nodes["Compare"].name = node_name
     compare = node_tree.nodes[node_name]
-    compare.location[0] = 0
-    compare.location[1] = -50
+    compare.location = (225, 0)
     compare.compareType = 'A>B'
     compare.inputs[1].value = 0.00
 
@@ -130,8 +120,7 @@ def generateNegative(context, demo_id):
     node_name = demo_id + "switch" + node_tree_id
     node_tree.nodes["Switch"].name = node_name
     switch = node_tree.nodes[node_name]
-    switch.location[0] = 200
-    switch.location[1] = -50
+    switch.location = (420, 0)
     switch.inputs[1].value = 1.00
     switch.inputs[2].value = -1.00
 
@@ -153,8 +142,7 @@ def generateMeshData(context, demo_id):
     node_name = demo_id + "grp_in" + node_tree_id
     node_tree.nodes["Group Input"].name = node_name
     grp_in = node_tree.nodes[node_name]
-    grp_in.location[0] = -400
-    grp_in.location[1] = -100
+    grp_in.location = (-350, 0)
     grp_in.subprogramName = demo_id + "mesh_data"
     grp_in.newGroupInput("Float List", "Float List")
     grp_in.newGroupInput("Float List", "Float List")
@@ -164,8 +152,7 @@ def generateMeshData(context, demo_id):
     node_name = demo_id + "grp_out" + node_tree_id
     node_tree.nodes["Group Output"].name = node_name
     grp_out = node_tree.nodes[node_name]
-    grp_out.location[0] = 400
-    grp_out.location[1] = -100
+    grp_out.location = (650, 0)
     grp_out.newGroupOutput("Float List", "Results")
 
     # Invoke multiply_all
@@ -173,8 +160,7 @@ def generateMeshData(context, demo_id):
     node_name = demo_id + "invoke_multiply_all" + node_tree_id
     node_tree.nodes["Invoke Subprogram"].name = node_name
     inv_mult_all = node_tree.nodes[node_name]
-    inv_mult_all.location[0] = 200
-    inv_mult_all.location[1] = 50
+    inv_mult_all.location = (160, 200)
         # set subprogram
     inv_mult_all_inp = bpy.data.node_groups[demo_id+"multiply_all"].nodes[demo_id + "loop_in" + "_ma"]
     inv_mult_all.subprogramIdentifier = inv_mult_all_inp.identifier
@@ -184,8 +170,7 @@ def generateMeshData(context, demo_id):
     node_name = demo_id + "invoke_negative" + node_tree_id
     node_tree.nodes["Invoke Subprogram"].name = node_name
     inv_neg = node_tree.nodes[node_name]
-    inv_neg.location[0] = 300
-    inv_neg.location[1] = 100
+    inv_neg.location = (-40, 0)
         # set subprogram
     inv_neg_inp = bpy.data.node_groups[demo_id+"negative"].nodes[demo_id + "loop_in" + "_neg"]
     inv_neg.subprogramIdentifier = inv_neg_inp.identifier
@@ -195,8 +180,7 @@ def generateMeshData(context, demo_id):
     node_name = demo_id + "invoke_max_values" + node_tree_id
     node_tree.nodes["Invoke Subprogram"].name = node_name
     inv_mv = node_tree.nodes[node_name]
-    inv_mv.location[0] = -100
-    inv_mv.location[1] = 100
+    inv_mv.location = (-40, -160)
         # set subprogram
     inv_mv_inp = bpy.data.node_groups[demo_id+"max_values"].nodes[demo_id + "grp_in" + "_mv"]
     inv_mv.subprogramIdentifier = inv_mv_inp.identifier
@@ -206,8 +190,7 @@ def generateMeshData(context, demo_id):
     node_name = demo_id + "math_multiply" + node_tree_id
     node_tree.nodes["Float Math"].name = node_name
     math_mult = node_tree.nodes[node_name]
-    math_mult.location[0] = 0
-    math_mult.location[1] = -50
+    math_mult.location = (460, 0)
     math_mult.operation = 'MULTIPLY'
 
     # force to update socket inputs/outputs (tada !)
