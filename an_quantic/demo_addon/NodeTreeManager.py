@@ -5,7 +5,7 @@ from . DemoNodeTreeUtils import *
 
 class NodeTreeManager:
     def __init__(self):
-        self.target_node_tree = "DEMO_TREE"
+        self.target_node_tree = "DEMO_TREE_"
         self.last_circuits = None
     
     def generateNodeTree(self):
@@ -13,8 +13,7 @@ class NodeTreeManager:
         generateMaxValue(bpy.ops.node, "an_q_demo_")
         generateNegative(bpy.ops.node, "an_q_demo_")
         generateMeshData(bpy.ops.node, "an_q_demo_")
-        bpy.ops.node.new_node_tree(type="an_AnimationNodeTree", name=self.target_node_tree)
-        node_tree = bpy.data.node_groups[self.target_node_tree]
+        generateMainNodeTree(bpy.ops.node, self.target_node_tree)
     
     def updateNodeTree(self, new_circuits):
         return
