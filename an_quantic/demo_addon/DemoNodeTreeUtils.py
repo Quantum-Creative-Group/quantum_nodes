@@ -229,6 +229,50 @@ def generateMeshData(context, demo_id):
         # Math output to Group out input
     node_tree.links.new(math_mult.outputs[0], grp_out.inputs[0])
 
+def generateCircuit(context, demo_id, circuit_id):
+    context.new_node_tree(type="an_AnimationNodeTree", name=demo_id+"circuit_"+circuit_id)
+    node_tree = bpy.data.node_groups[demo_id+"circuit_"+circuit_id]
+    node_tree_id = "_c"+circuit_id
+
+    # Group input node
+    node_tree.nodes.new(type="an_GroupInputNode")
+    node_name = demo_id + "grp_in" + node_tree_id
+    node_tree.nodes["Group Input"].name = node_name
+    grp_in = node_tree.nodes[node_name]
+    grp_in.location[0] = -400
+    grp_in.location[1] = -100
+    grp_in.subprogramName = demo_id + "circuit_" + circuit_id
+
+    # Heightmap to quantum circuit node
+    node_tree.nodes.new(type="an_HeightmapToQuantumCircuitNode")
+    node_name = demo_id + "hmap_to_qu_cir" + node_tree_id
+    node_tree.nodes["Heightmap To Quantum Circuit"].name = node_name
+    heightmap_to_circuit = node_tree.nodes[node_name]
+    heightmap_to_circuit.location[0] = -200
+    heightmap_to_circuit.location[1] = -100
+
+    # Quantum circuit to heightmap node
+    node_tree.nodes.new(type="an_QuantumCircuitToHeightmapNode")
+    node_name = demo_id + "qu_cir_to_hmap" + node_tree_id
+    node_tree.nodes["Quantum Circuit To Heightmap"].name = node_name
+    circuit_to_heightmap = node_tree.nodes[node_name]
+    circuit_to_heightmap.location[0] = 700
+    circuit_to_heightmap.location[1] = -100
+
+    # Group output node
+    node_tree.nodes.new(type="an_GroupOutputNode")
+    node_name = demo_id + "grp_out" + node_tree_id
+    node_tree.nodes["Group Output"].name = node_name
+    grp_out = node_tree.nodes[node_name]
+    grp_out.location[0] = 875
+    grp_out.location[1] = -100
+    grp_out.newGroupOutput("Float List", "Results")
+
+    # Linking everything
+    node_tree.links.new(grp_in.outputs[0], heightmap_to_circuit.inputs[0])
+    node_tree.links.new(heightmap_to_circuit.outputs[0], circuit_to_heightmap.inputs[0])
+    node_tree.links.new(circuit_to_heightmap.outputs[0], grp_out.inputs[0])
+
 def generateMainNodeTree(context, demo_id):
     bpy.ops.node.new_node_tree(type="an_AnimationNodeTree", name=demo_id)
     node_tree = bpy.data.node_groups[demo_id]
@@ -285,4 +329,3 @@ def generateMainNodeTree(context, demo_id):
         # Invoke mesh_data_c(x/y/z) output to combine vector inputs
     for index, circ_name in [(0, "x"), (1, "y"), (2, "z")]:
         node_tree.links.new(inv_mesh_data_circuits[circ_name].outputs[0], comb_vecs.inputs[index])
-    
