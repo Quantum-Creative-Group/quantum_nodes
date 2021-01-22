@@ -12,7 +12,6 @@ class SwapToAn(bpy.types.Operator):
         for area in context.screen.areas:
             if area not in start_areas:
                 area.type = 'NODE_EDITOR'
-
-
-        #if bpy.types.Panel.bl_idname == 'AN_PT_tree_panel': print("coucou")            TESTER SI L'IDNAME CORRESPOND A ANIMATION NODE
+                area.spaces[0].tree_type = 'an_AnimationNodeTree' 
+                #if area.spaces[0].tree_type == 'an_AnimationNodeTree': print('YAHOUUUUUUUUUUUUUUUUUUUUUUUU')
         return {'FINISHED'}
