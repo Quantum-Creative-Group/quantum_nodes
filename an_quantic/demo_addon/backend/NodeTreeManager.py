@@ -1,6 +1,4 @@
 import bpy
-from animation_nodes.ui.node_menu import insertNode
-from animation_nodes.utils.nodes import getAnimationNodeTrees
 from . DemoNodeTreeUtils import *
 
 class NodeTreeManager:

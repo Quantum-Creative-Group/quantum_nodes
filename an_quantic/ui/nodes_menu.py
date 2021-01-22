@@ -145,6 +145,7 @@ class QuanticExtensionMenu_Gates_Single_Qubit(bpy.types.Menu):
 ################# PIE MENU : A DEVELOPPER ################# 
 
 class Pie_menu(bpy.types.Menu):
+    bl_idname = "AN_MT_pie_menu"
     bl_label = "Some Pie Menu"
     def draw(self, context):
         layout = self.layout

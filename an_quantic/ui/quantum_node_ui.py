@@ -7,7 +7,7 @@ from .. node_templates.template1 import *
 
 class InsertNodeUI(bpy.types.Panel):
     bl_label = "Quantum Node Panel"
-    bl_idname = "InsertNodeUI"
+    bl_idname = "AN_PT_InsertNodeUI"
     bl_space_type = "NODE_EDITOR"
     bl_region_type = "UI"
     bl_category = "QuantumNode"

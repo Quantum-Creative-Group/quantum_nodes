@@ -1,16 +1,10 @@
 import bpy
-import math
 from bpy.props import *
 from random import randrange
 
-def QuantumizeIcoSphere(obj): #Disposition random des vertices de l'icosphere
-    for vertex in obj.data.vertices:
-            vertex.co = [randrange(25)-12.5 for i in range(3)] #A REMPLACER PAR LES PORTES QUANTIQUES
-
-
-class NumberOfVerts(bpy.types.Operator): #Selection du nombre de subdivisions
+class NumberOfVerts(bpy.types.Operator): # Selection du nombre de subdivisions
     bl_idname = "dialog.number"
-    bl_label = "Subdivisions"
+    bl_label = "Subdivisions Operator"
     bl_description = "Subdivide your object"
     number = bpy.props.IntProperty(name="subs", default=2, min=1, max=3)
 
@@ -27,7 +21,6 @@ class NumberOfVerts(bpy.types.Operator): #Selection du nombre de subdivisions
 
     def invoke(self, context, event):    
         return context.window_manager.invoke_props_dialog(self)
-
 
 class QuantumMesh_Operator(bpy.types.Operator):
     bl_idname = "mesh.quantum_mesh"
@@ -54,6 +47,6 @@ class QuantumMesh_Operator(bpy.types.Operator):
   #  bpy.utils.unregister_class(NumberOfVerts)
 
 
-if __name__ == "__main__":
-    register()
+# if __name__ == "__main__":
+#     register()
 

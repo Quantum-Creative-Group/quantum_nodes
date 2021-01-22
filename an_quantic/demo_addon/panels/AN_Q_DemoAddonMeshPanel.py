@@ -1,11 +1,11 @@
 import bpy
 
-class QuantumMeshPanel(bpy.types.Panel):
-    bl_idname = "QuantumMeshPanel"
-    bl_label = "Quantum Mesh Panel"
+class AN_Q_DemoAddonMeshPanel(bpy.types.Panel):
+    bl_idname = "AN_Q_PT_DemoAddonMeshPanel"
+    bl_label = "Mesh properties"
     bl_space_type = "VIEW_3D"
     bl_region_type = "UI"
-    bl_category = "QuantumMesh"
+    bl_category = "AN_Q_DEMO"
 
     def draw(self, context):
         layout = self.layout
@@ -21,5 +21,5 @@ class QuantumMeshPanel(bpy.types.Panel):
 
 #def unregister(): bpy.utils.unregister_class(QuantumMeshPanel)
 
-if __name__ == "__main__":
-    register()
+# if __name__ == "__main__":
+#     register()

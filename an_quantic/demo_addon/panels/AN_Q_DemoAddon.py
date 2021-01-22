@@ -1,55 +1,23 @@
-import numpy as np
 import math
 import bpy, os, sys
-from .. lib import quantumblur
-from . CircuitManager import CircuitManager
-from . QuantumNodes_DEMO_Manager import QuantumNodes_DEMO_Manager
-from . SwapToAn import SwapToAn
-from . SelectAxis import SelectAxis
-from . AddGateButton import AddGateButton
-from . AddAndDelGate import AddAndDelGate
-from . NbQubitSettings import NbQubitSettings, draw_func, setSliderValue, getSliderValue
 
-from bpy.props import(
-    BoolProperty,
-    FloatProperty,
-    PointerProperty,
-    IntProperty,
-)
-from bpy.types import(
-    Panel,
-    Operator,
-    AddonPreferences,
-    PropertyGroup,
-)
+from .. backend.QuantumNodes_DEMO_Manager import QuantumNodes_DEMO_Manager
+from .. operators.SwapToAn import SwapToAn
+from .. properties.SelectAxis import SelectAxis
+from .. operators.AddGateButton import AddGateButton
+from .. operators.AddAndDelGate import AddAndDelGate
+from .. operators.NbQubitSettings import NbQubitSettings, draw_func, setSliderValue, getSliderValue
+from .. operators.ApplyQuantumCircuit import ApplyQuantumCircuit
 
-class quantumize_op(Operator):
-    bl_label = "Quantumize"
-    bl_idname = "object.quantumize_op"
-    bl_description = "Quantumizes the selected mesh"
-    bl_options = {'REGISTER', 'UNDO'}
-    
-    @classmethod
-    def poll(cls, context):
-        return context.object.select_get() and context.object.type == "MESH"
-    
-    def execute(self, context):
-        scene = bpy.context.scene
-        #settings = scene.quantumize_settings
-        
-        obj = context.object
-        me = obj.data
-        nb_vertices = (len(me.vertices))
-        n = int(math.ceil(math.log(nb_vertices)/math.log(2)))
-            
-        return {'FINISHED'}
+from bpy.props import PointerProperty
+from bpy.types import Panel
 
-class quantumize_ui(bpy.types.Panel):
-    bl_label = "Quantumize"
-    bl_idname = "quantumize_op"
+class AN_Q_DemoAddon(bpy.types.Panel):
+    bl_idname = "AN_Q_PT_addon_demo_ui"
+    bl_label = "AN_Q Demo addon"
     bl_space_type = "VIEW_3D"
     bl_region_type = "UI"
-    bl_category = "QuantumMesh"
+    bl_category = "AN_Q_DEMO"
 
     obj_tmp = 'XXXXXXXXXXXXXXX'
     nb_qubits = 0
@@ -75,7 +43,7 @@ class quantumize_ui(bpy.types.Panel):
 
         ####### DEFINE NB OF QUBITS FOR AN OBJECT #######
 
-        if obj.name != self.obj_tmp: 
+        if obj.name != self.obj_tmp and obj.type == "MESH":
             self.obj_tmp = obj.name
             DEMO_Manager.nb_qubits = int(math.ceil(math.log(len(obj.data.vertices))/math.log(2)))
 
@@ -84,9 +52,9 @@ class quantumize_ui(bpy.types.Panel):
         DEMO_Manager.selected_circuit = context.scene.axis_choice.axis 
 
         if context.object.select_get() == False or context.object.type != "MESH" or self.nb_qubits > 10:                                        
-            bpy.context.active_object.select_set(False)
+            # bpy.context.active_object.select_set(False)
             self.nb_qubits = 0
-        else : 
+        else :
             self.nb_qubits = int(math.ceil(math.log(len(obj.data.vertices))/math.log(2)))
 
         ####### SELECTED OBJECT #######
@@ -142,14 +110,14 @@ class quantumize_ui(bpy.types.Panel):
                 row = self.addRow(1)
 
         else :                                        
-            bpy.context.active_object.select_set(False)
-            self.nb_qubits = 0
+            # bpy.context.active_object.select_set(False)
+            # self.nb_qubits = 0
             box.label(text="Select a correct object")
             row = self.addRow(2)
 
         ####### THE END #######
 
-        row.operator(quantumize_op.bl_idname, text="Apply", icon="CHECKMARK")
+        row.operator(ApplyQuantumCircuit.bl_idname, text="Apply", icon="CHECKMARK")
         row = self.addRow(1)
         row.operator(SwapToAn.bl_idname, text="Advanced (Quantum Magic)", icon="PLUS")
 

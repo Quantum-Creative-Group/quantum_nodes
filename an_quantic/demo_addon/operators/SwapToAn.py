@@ -1,7 +1,4 @@
-import numpy as np
-import math
 import bpy, os, sys
-from .. lib import quantumblur
 
 class SwapToAn(bpy.types.Operator):
     bl_idname = "screen.swap_to_an"

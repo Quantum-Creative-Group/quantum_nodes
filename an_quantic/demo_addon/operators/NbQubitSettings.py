@@ -1,7 +1,4 @@
-import numpy as np
-import math
 import bpy, os, sys
-from .. lib import quantumblur
 from bpy.types import(
     Panel,
     Operator,
@@ -26,7 +23,6 @@ def setSliderValue(self, value):
     if 1<=value<=m : return value
     elif value < 1 : return 1
     else : return m
-    #return self
     
 def getSliderValue(self):
     return self
@@ -35,7 +31,7 @@ class NbQubitSettings(Operator):
     bl_label = "Select Qubit"
     bl_idname = "dialog.select_qubit"
 
-    n = bpy.props.IntProperty(name="Select QuBit Index", default=1)
+    n: bpy.props.IntProperty(name="Select QuBit Index", default=1)
 
     @classmethod
     def poll(cls, context):
