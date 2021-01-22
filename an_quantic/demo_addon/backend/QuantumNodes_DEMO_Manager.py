@@ -13,6 +13,7 @@ class QuantumNodes_DEMO_Manager():
         self.ntm = NodeTreeManager()
         self.nb_qubits = nb
         self.initialized = False
+        self.selected_obj = None
         
     def get_selected_circuit(self):
         sc = self.selected_circuit

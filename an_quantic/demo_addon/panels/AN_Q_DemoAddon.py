@@ -2,10 +2,11 @@ import math
 import bpy, os, sys
 
 from .. backend.QuantumNodes_DEMO_Manager import QuantumNodes_DEMO_Manager
-from .. operators.SwapToAn import SwapToAn
 from .. properties.SelectAxis import SelectAxis
+from .. operators.SwapToAn import SwapToAn
 from .. operators.AddGateButton import AddGateButton
 from .. operators.AddAndDelGate import AddAndDelGate
+from .. operators.SelectObject import *
 from .. operators.NbQubitSettings import NbQubitSettings, draw_func, setSliderValue, getSliderValue
 from .. operators.ApplyQuantumCircuit import ApplyQuantumCircuit
 
@@ -21,9 +22,9 @@ class AN_Q_DemoAddon(bpy.types.Panel):
 
     obj_tmp = 'XXXXXXXXXXXXXXX'
     nb_qubits = 0
-
     bpy.types.Object.select_index = 1
     index_qubit = bpy.types.Object.select_index
+  
 
     def addRow(self,n):
         layout = self.layout
@@ -37,9 +38,12 @@ class AN_Q_DemoAddon(bpy.types.Panel):
 
         layout = self.layout
         scene = context.scene
-        obj = bpy.context.active_object
-       
         DEMO_Manager = bpy.types.Scene.QuantumNodes_DEMO_Manager
+
+        if DEMO_Manager.selected_obj == None:
+            DEMO_Manager.selected_obj = bpy.context.active_object
+
+        obj = DEMO_Manager.selected_obj
 
         ####### DEFINE NB OF QUBITS FOR AN OBJECT #######
 
@@ -63,6 +67,9 @@ class AN_Q_DemoAddon(bpy.types.Panel):
         row.label(text="Selected Object", icon="MESH_CUBE")
         row = self.addRow(1)
         row.prop(obj, "name")
+        row.operator('object.select_object', text = '', icon="EYEDROPPER")
+        #row.operator('object.select_object')
+        
         row = self.addRow(5)
        
         ####### SETTINGS #######
@@ -126,6 +133,8 @@ class AN_Q_DemoAddon(bpy.types.Panel):
 def register():
     bpy.types.Scene.axis_choice = PointerProperty(type = SelectAxis)
     bpy.types.Scene.QuantumNodes_DEMO_Manager = QuantumNodes_DEMO_Manager()
+    #bpy.types.Scene.ConfirmPopUpBis = ConfirmPopUp() 
+
 
 if __name__ == "__main__":
     register()
