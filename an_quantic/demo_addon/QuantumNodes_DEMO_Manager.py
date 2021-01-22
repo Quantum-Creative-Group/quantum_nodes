@@ -14,6 +14,7 @@ class QuantumNodes_DEMO_Manager():
         self.selected_circuit = 'x'
         self.ntm = NodeTreeManager()
         self.nb_qubits = nb
+        self.initialized = False
         
     def get_selected_circuit(self):
         sc = self.selected_circuit
@@ -22,4 +23,6 @@ class QuantumNodes_DEMO_Manager():
         return self.qc_z_coords
     
     def initializeDemo(self):
-        self.ntm.generateNodeTree()
+        if(not self.initialized):
+            self.ntm.generateNodeTree()
+            self.initialized = True

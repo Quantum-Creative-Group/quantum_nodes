@@ -170,7 +170,6 @@ class quantumize_ui(bpy.types.Panel):
         obj = bpy.context.active_object
        
         DEMO_Manager = bpy.types.Scene.QuantumNodes_DEMO_Manager
-     
 
         ####### DEFINE NB OF QUBITS FOR AN OBJECT #######
 

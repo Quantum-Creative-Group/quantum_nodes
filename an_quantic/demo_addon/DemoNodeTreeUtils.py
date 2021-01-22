@@ -1,4 +1,5 @@
 import bpy
+from animation_nodes.nodes.subprogram.subprogram_sockets import forceSubprogramUpdate
 
 def genereateMultiplyAll(context, demo_id):
     context.new_node_tree(type="an_AnimationNodeTree", name=demo_id+"multiply_all")
@@ -77,7 +78,6 @@ def generateMaxValue(context, demo_id):
     # Max value node
     node_tree.nodes.new(type="an_NumberListMathNode")
     node_name = demo_id + "n_list_math" + node_tree_id
-    print(node_tree.nodes[3])
     node_tree.nodes["Number List Math"].name = node_name
     n_list_math = node_tree.nodes[node_name]
     n_list_math.location[0] = 200
@@ -171,7 +171,7 @@ def generateMeshData(context, demo_id):
 
     # Invoke multiply_all
     node_tree.nodes.new(type="an_InvokeSubprogramNode")
-    node_name = demo_id + "invoke_multipy_all" + node_tree_id
+    node_name = demo_id + "invoke_multiply_all" + node_tree_id
     node_tree.nodes["Invoke Subprogram"].name = node_name
     inv_mult_all = node_tree.nodes[node_name]
     inv_mult_all.location[0] = 200
@@ -211,21 +211,21 @@ def generateMeshData(context, demo_id):
     math_mult.location[1] = -50
     math_mult.operation = 'MULTIPLY'
 
+    # force to update socket inputs/outputs (tada !)
+    bpy.context.scene.frame_set(bpy.data.scenes['Scene'].frame_current)
     # Linking everything
-        # Group in output 
+        # Group in output
             # to invoke multiply_all
-    node_tree.links.new(inv_mult_all_inp.outputs[2], grp_in.outputs[0])
-    print(inv_mult_all_inp.inputs)
-    print(inv_mult_all_inp.outputs)
+    node_tree.links.new(grp_in.outputs[0], inv_mult_all.inputs[0])
             # to invoke negative
-    node_tree.links.new(grp_in.outputs[1], inv_neg_inp.outputs[2])
+    node_tree.links.new(grp_in.outputs[1], inv_neg.inputs[0])
             # to invoke max_values
-    node_tree.links.new(grp_in.outputs[1], inv_mv_inp.outputs[0])
+    node_tree.links.new(grp_in.outputs[1], inv_mv.inputs[0])
         # Invoke negative output to invoke multiply_all input
-    #node_tree.links.new(inv_neg.outputs[0], inv_mult_all.inputs[1])
+    node_tree.links.new(inv_neg.outputs[0], inv_mult_all.inputs[1])
         # Invoke max_values output to math_mult input
-    #node_tree.links.new(inv_mv.outputs[0], math_mult.inputs[1])
+    node_tree.links.new(inv_mv.outputs[0], math_mult.inputs[1])
         # Invoke multiply_all output to math_mult input
-    #node_tree.links.new(inv_mult_all.outputs[0], math_mult.inputs[0])
+    node_tree.links.new(inv_mult_all.outputs[0], math_mult.inputs[0])
         # Math output to Group out input
     node_tree.links.new(math_mult.outputs[0], grp_out.inputs[0])
