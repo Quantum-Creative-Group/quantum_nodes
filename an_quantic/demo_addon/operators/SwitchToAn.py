@@ -1,7 +1,7 @@
 import bpy, os, sys
 
-class SwapToAn(bpy.types.Operator):
-    bl_idname = "screen.swap_to_an"
+class SwitchToAn(bpy.types.Operator):
+    bl_idname = "screen.switch_to_an"
     bl_label = "Add Material"
     bl_description = "Add New Material"
 

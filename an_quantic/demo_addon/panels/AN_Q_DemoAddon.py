@@ -2,7 +2,7 @@ import math
 import bpy, os, sys
 
 from .. backend.QuantumNodes_DEMO_Manager import QuantumNodes_DEMO_Manager
-from .. operators.SwapToAn import SwapToAn
+from .. operators.SwitchToAn import SwitchToAn
 from .. properties.SelectAxis import SelectAxis
 from .. operators.AddGateButton import AddGateButton
 from .. operators.AddAndDelGate import AddAndDelGate
@@ -25,7 +25,7 @@ class AN_Q_DemoAddon(bpy.types.Panel):
     bpy.types.Object.select_index = 1
     index_qubit = bpy.types.Object.select_index
 
-    def addRow(self,n):
+    def addRow(self, n):
         layout = self.layout
         for i in range(n):
             row = layout.row()
@@ -49,7 +49,7 @@ class AN_Q_DemoAddon(bpy.types.Panel):
 
         ####### UPDATE SELECTED CIRCUIT #######
 
-        DEMO_Manager.selected_circuit = context.scene.axis_choice.axis 
+        DEMO_Manager.selected_circuit = context.scene.axis_choice.axis
 
         if context.object.select_get() == False or context.object.type != "MESH" or self.nb_qubits > 10:                                        
             # bpy.context.active_object.select_set(False)
@@ -119,7 +119,7 @@ class AN_Q_DemoAddon(bpy.types.Panel):
 
         row.operator(ApplyQuantumCircuit.bl_idname, text="Apply", icon="CHECKMARK")
         row = self.addRow(1)
-        row.operator(SwapToAn.bl_idname, text="Advanced (Quantum Magic)", icon="PLUS")
+        row.operator(SwitchToAn.bl_idname, text="Advanced (Quantum Magic)", icon="PLUS")
 
         #######################
 
