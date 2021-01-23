@@ -20,7 +20,7 @@ class AN_Q_DemoAddon(bpy.types.Panel):
     bl_category = "AN_Q_DEMO"
 
     obj_tmp = 'XXXXXXXXXXXXXXX'
-    bpy.types.Object.select_index = 1
+    bpy.types.Object.select_index = 0
   
     def addRow(self, n):
         for i in range(n): row = self.layout.row()

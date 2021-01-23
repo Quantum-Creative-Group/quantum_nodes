@@ -1,21 +1,18 @@
-import bpy, os, sys
+import bpy
+from bpy.types import Operator
+from bpy.props import EnumProperty
 
 def drawGatesOperator(self, context):
-    layout = self.layout
+    dm = bpy.types.Scene.QuantumNodes_DEMO_Manager
+    for gate in dm.possible_gates:
+        button = self.layout.operator('object.add_gate_button', text = gate)
+        button.text = gate
 
-    button1 = layout.operator('object.add_gate_button', text = 'h')
-    button1.text = 'h'
-    button2 = layout.operator('object.add_gate_button', text = 'x')
-    button2.text = 'x'
-    button3 = layout.operator('object.add_gate_button', text = 'y')
-    button3.text = 'y'
-
-
-class AddAndDelGate(bpy.types.Operator):
+class AddAndDelGate(Operator):
     bl_idname = "object.add_and_del_gate"
     bl_label = "Add And Delete Gate Operator"
     
-    button: bpy.props.EnumProperty(
+    button: EnumProperty(
         items=[
             ('add', '+', '+', '', 0),
             ('del', '-', '-', '', 1),
@@ -28,12 +25,11 @@ class AddAndDelGate(bpy.types.Operator):
         return context.object is not None
 
     def execute(self, context):
-        DEMO_Manager = bpy.types.Scene.QuantumNodes_DEMO_Manager
+        dm = bpy.types.Scene.QuantumNodes_DEMO_Manager
         if self.button == 'add':
             wm = bpy.context.window_manager
             wm.popup_menu(drawGatesOperator, title="Options")
         else: 
-            DEMO_Manager.get_selected_circuit().del_gate(bpy.types.Object.select_index-1)
-
+            dm.get_selected_circuit().del_gate(bpy.types.Object.select_index)
         return {'FINISHED'}
 

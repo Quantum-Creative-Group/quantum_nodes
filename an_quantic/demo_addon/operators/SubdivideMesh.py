@@ -1,12 +1,13 @@
 import bpy
+from bpy.types import Operator
 from bpy.props import IntProperty
 
-class SubdivideMesh(bpy.types.Operator):
+class SubdivideMesh(Operator):
     bl_idname = "dialog.number"
     bl_label = "Subdivide"
     bl_description = "Subdivides your object"
 
-    number: bpy.props.IntProperty(name="subs", default=2, min=1, max=5)
+    number: IntProperty(name="subs", default=2, min=1, max=5)
 
     @classmethod
     def poll(cls, context):

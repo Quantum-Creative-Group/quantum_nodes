@@ -1,17 +1,10 @@
-import bpy, os, sys
-from bpy.types import(
-    Panel,
-    Operator,
-    AddonPreferences,
-    PropertyGroup,
-)
+import bpy
+from bpy.types import Operator
 
 def drawSelectQubitOperator(self, context):
-    layout = self.layout
-
     dm = bpy.types.Scene.QuantumNodes_DEMO_Manager
     for i in range(dm.nb_qubits):
-        button = layout.operator('object.select_qubit_button', text = "q"+str(i+1))
+        button = self.layout.operator('object.select_qubit_button', text = "q"+str(i+1))
         button.index = i
 
 class SelectQubit(Operator):

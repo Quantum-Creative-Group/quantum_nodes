@@ -7,6 +7,7 @@ from . NodeTreeManager import NodeTreeManager
 class QuantumNodes_DEMO_Manager():
 
     def __init__(self, nb = 3):
+        self.possible_gates = ["h", "x", "y"]
         self.circuits = {"x": None, "y": None, "z": None}
         self.selected_circuit = 'x'
         self.ntm = NodeTreeManager()

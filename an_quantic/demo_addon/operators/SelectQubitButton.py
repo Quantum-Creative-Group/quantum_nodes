@@ -1,10 +1,12 @@
-import bpy, os, sys
+import bpy
+from bpy.types import Operator
+from bpy.props import IntProperty
 
-class SelectQubitButton(bpy.types.Operator):
+class SelectQubitButton(Operator):
     bl_idname = "object.select_qubit_button"
     bl_label = "Select qubit button Operator"
     
-    index: bpy.props.IntProperty(default = 0)
+    index: IntProperty(default = 0)
 
     def execute(self, context):
         bpy.types.Object.select_index = self.index

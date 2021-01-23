@@ -1,6 +1,7 @@
-import bpy, os, sys
+import bpy
+from bpy.types import Operator
 
-class SwitchToAn(bpy.types.Operator):
+class SwitchToAn(Operator):
     bl_idname = "screen.switch_to_an"
     bl_label = "Redirects the user to the animation nodes editor"
     bl_description = "Behind the scenes"

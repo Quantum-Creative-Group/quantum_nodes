@@ -1,8 +1,8 @@
 from bpy.types import Operator
 
 class ApplyQuantumCircuit(Operator):
-    bl_label = "ApplyQuantumCircuit"
     bl_idname = "object.apply_quantum_circuit"
+    bl_label = "ApplyQuantumCircuit"
     bl_description = "Applies the quantum circuit on the selected mesh"
     bl_options = {'REGISTER', 'UNDO'}
     
