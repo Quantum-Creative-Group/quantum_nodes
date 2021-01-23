@@ -252,7 +252,7 @@ def generateCircuit(context, demo_id, circuit_id):
     node_tree.links.new(heightmap_to_circuit.outputs[0], circuit_to_heightmap.inputs[0])
     node_tree.links.new(circuit_to_heightmap.outputs[0], grp_out.inputs[0])
 
-def generateMainNodeTree(context, demo_id):
+def generateMainNodeTree(context, demo_id, obj):
     bpy.ops.node.new_node_tree(type="an_AnimationNodeTree", name=demo_id+"an_q")
     node_tree = bpy.data.node_groups[demo_id+"an_q"]
     node_tree_id = "_main"
@@ -263,6 +263,7 @@ def generateMainNodeTree(context, demo_id):
     node_tree.nodes["Mesh Object Input"].name = node_name
     mesh_obj_inp = node_tree.nodes[node_name]
     mesh_obj_inp.location = (-950, 0)
+    mesh_obj_inp.inputs[0].object = obj
 
     # Separate Vector node
     node_tree.nodes.new(type="an_SeparateVectorNode")
@@ -310,6 +311,17 @@ def generateMainNodeTree(context, demo_id):
     mesh_obj_out.location = (800, 0)
     mesh_obj_out.meshDataType = "VERTICES"
 
+    # Object instancer node
+    node_tree.nodes.new(type="an_ObjectInstancerNode")
+    node_name = demo_id + "mesh_instancer" + node_tree_id
+    node_tree.nodes["Object Instancer"].name = node_name
+    mesh_inst = node_tree.nodes[node_name]
+    mesh_inst.location = (-1500, 0)
+    mesh_inst.inputs[0].value = 1
+    mesh_inst.inputs[1].object = obj
+    mesh_inst.copyObjectProperties = True
+    mesh_inst.deepCopy = True
+
     # force to update socket inputs/outputs (tada !)
     bpy.context.scene.frame_set(bpy.data.scenes['Scene'].frame_current)
     # Linking everything
@@ -331,3 +343,5 @@ def generateMainNodeTree(context, demo_id):
     node_tree.links.new(comb_vecs.outputs[0], mesh_obj_out.inputs[1])
         # Enables input mesh object output
     mesh_obj_out.inputs[1].isUsed = True
+        # Object instancer output to Mesh object input
+    node_tree.links.new(mesh_inst.outputs[0], mesh_obj_out.inputs[0])

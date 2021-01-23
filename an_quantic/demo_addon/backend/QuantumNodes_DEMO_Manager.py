@@ -12,16 +12,16 @@ class QuantumNodes_DEMO_Manager():
         self.selected_circuit = 'x'
         self.ntm = NodeTreeManager()
         self.nb_qubits = None
-        self.initialized = False
+        self.nt_initialized = False
         self.selected_obj = None
 
     def get_selected_circuit(self):
         return self.circuits[self.selected_circuit]
 
-    def initializeDemo(self):
-        if(not self.initialized):
-            self.ntm.generateNodeTree()
-            self.initialized = True
+    def initializeDemoNodeTree(self, obj):
+        if(not self.nt_initialized):
+            self.ntm.generateNodeTree(obj)
+            self.nt_initialized = True
 
     def reset(self):
         for circuit_name in list(self.circuits.keys()): self.circuits[circuit_name].data.clear()

@@ -29,17 +29,17 @@ class AN_Q_DemoAddon(bpy.types.Panel):
         # ---------- Initialization ----------
 
         layout = self.layout
-        DEMO_Manager = bpy.types.Scene.demo_manager
+        dm = bpy.types.Scene.demo_manager
 
-        if DEMO_Manager.selected_obj == None:
-            # initializes the first circuit with the default cube 
-            DEMO_Manager.createNewCircuit(bpy.context.active_object)
+        if dm.selected_obj == None:
+            # initializes the first circuit with the default cube
+            dm.createNewCircuit(bpy.context.active_object)
 
-        obj = DEMO_Manager.selected_obj
+        obj = dm.selected_obj
 
         # ---------- Updates selected circuit ----------
 
-        DEMO_Manager.selected_circuit = context.scene.selected_axis.axis
+        dm.selected_circuit = context.scene.selected_axis.axis
 
         # ---------- Object selection ----------
 
@@ -76,9 +76,9 @@ class AN_Q_DemoAddon(bpy.types.Panel):
 
         # ---------- Circuit display ----------
         box = layout.box()
-        if DEMO_Manager.nb_qubits > 0:
+        if dm.nb_qubits > 0:
             qindex = 0
-            for qubit in DEMO_Manager.get_selected_circuit().data:
+            for qubit in dm.get_selected_circuit().data:
                 qindex += 1
                 gate_display = ""
                 gate_display += "q" + str(qindex) + "  ---"

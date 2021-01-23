@@ -9,9 +9,11 @@ class SelectObject(Operator):
 
     def execute(self, context):
         dm = bpy.types.Scene.demo_manager
-        self.report({'INFO'}, "AN_Q_DEMO : target successfully updated")
-        dm.reset()
-        dm.createNewCircuit(bpy.context.active_object)
+        if(dm.selected_obj != bpy.context.active_object):
+            self.report({'INFO'}, "AN_Q_DEMO : target successfully updated")
+            dm.reset()
+            dm.createNewCircuit(bpy.context.active_object)
+            dm.initializeDemoNodeTree(dm.selected_obj)
         
         # forces to redraw the view (magic trick)
         bpy.context.scene.frame_set(bpy.data.scenes['Scene'].frame_current)
