@@ -48,13 +48,13 @@ class AN_Q_DemoAddon(bpy.types.Panel):
         ####### DEFINE NB OF QUBITS FOR AN OBJECT #######
         if obj.name != self.obj_tmp and obj.type == "MESH":
             self.obj_tmp = obj.name
-            DEMO_Manager.createNewCircuit(obj)
+            # DEMO_Manager.createNewCircuit(obj)
 
         ####### UPDATE SELECTED CIRCUIT #######
 
-        DEMO_Manager.selected_circuit = context.scene.axis_choice.axis 
+        DEMO_Manager.selected_circuit = context.scene.axis_choice.axis
 
-        if context.object.select_get() == False or context.object.type != "MESH" or self.nb_qubits > 10:                                        
+        if context.object.select_get() == False or context.object.type != "MESH" or self.nb_qubits > 10:
             # bpy.context.active_object.select_set(False)
             self.nb_qubits = 0
         else :
