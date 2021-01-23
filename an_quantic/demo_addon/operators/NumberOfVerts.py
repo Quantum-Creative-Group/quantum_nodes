@@ -1,12 +1,12 @@
 import bpy
-from bpy.props import *
+from bpy.props import IntProperty
 from random import randrange
 
 class NumberOfVerts(bpy.types.Operator): # Selection du nombre de subdivisions
     bl_idname = "dialog.number"
     bl_label = "Subdivisions Operator"
     bl_description = "Subdivide your object"
-    number = bpy.props.IntProperty(name="subs", default=2, min=1, max=3)
+    number: bpy.props.IntProperty(name="subs", default=2, min=1, max=3)
 
     @classmethod
     def poll(cls, context):
@@ -27,7 +27,7 @@ class QuantumMesh_Operator(bpy.types.Operator):
     bl_label = "Quantum Mesh"
     bl_description = "Create Quantum Mesh"
 
-    subs = bpy.props.IntProperty(name="subs", default=2, min=1, max=100)
+    subs: bpy.props.IntProperty(name="subs", default=2, min=1, max=100)
 
     def execute(self, context):
         bpy.ops.mesh.primitive_ico_sphere_add()

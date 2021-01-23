@@ -4,7 +4,7 @@ from . NbQubitSettings import draw_func, setSliderValue, getSliderValue
 class AddGateButton(bpy.types.Operator):
     bl_idname = "object.add_gate_button"
     bl_label = "Add Gate Button Operator"
-
+    
     text: bpy.props.StringProperty(
         name = 'text',
         default = ''
