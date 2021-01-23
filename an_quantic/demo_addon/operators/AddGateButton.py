@@ -1,5 +1,4 @@
 import bpy, os, sys
-from . NbQubitSettings import draw_func, setSliderValue, getSliderValue
 
 class AddGateButton(bpy.types.Operator):
     bl_idname = "object.add_gate_button"
