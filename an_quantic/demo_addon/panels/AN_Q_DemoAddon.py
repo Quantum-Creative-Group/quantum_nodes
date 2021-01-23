@@ -41,15 +41,14 @@ class AN_Q_DemoAddon(bpy.types.Panel):
         DEMO_Manager = bpy.types.Scene.QuantumNodes_DEMO_Manager
 
         if DEMO_Manager.selected_obj == None:
-            DEMO_Manager.selected_obj = bpy.context.active_object
+            DEMO_Manager.createNewCircuit(bpy.context.active_object)
 
         obj = DEMO_Manager.selected_obj
 
         ####### DEFINE NB OF QUBITS FOR AN OBJECT #######
-
         if obj.name != self.obj_tmp and obj.type == "MESH":
             self.obj_tmp = obj.name
-            DEMO_Manager.nb_qubits = int(math.ceil(math.log(len(obj.data.vertices))/math.log(2)))
+            DEMO_Manager.createNewCircuit(obj)
 
         ####### UPDATE SELECTED CIRCUIT #######
 

@@ -7,7 +7,7 @@ class CircuitManager():
 
     def add_gate(self, q_index, gate):
        if len(self.data[q_index]) < 5 : 
-                       
+   
             ###### APPEND GATE
             self.data[q_index].append(gate)
         

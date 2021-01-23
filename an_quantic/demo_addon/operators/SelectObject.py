@@ -8,7 +8,8 @@ class SelectObject(bpy.types.Operator):
     def execute(self, context):
         DEMO_Manager = bpy.types.Scene.QuantumNodes_DEMO_Manager
         self.report({'INFO'}, "Object has changed")
-        DEMO_Manager.selected_obj = bpy.context.active_object
+        DEMO_Manager.reset()
+        DEMO_Manager.createNewCircuit(bpy.context.active_object)
         return {'FINISHED'}
 
     def invoke(self, context, event):   

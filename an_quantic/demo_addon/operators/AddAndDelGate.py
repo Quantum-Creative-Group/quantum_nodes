@@ -24,5 +24,6 @@ class AddAndDelGate(bpy.types.Operator):
             wm.popup_menu(draw_func, title="Options")
         else: 
             DEMO_Manager.get_selected_circuit().del_gate(bpy.types.Object.select_index-1)
+
         return {'FINISHED'}
 
