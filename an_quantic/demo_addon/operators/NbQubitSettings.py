@@ -38,13 +38,9 @@ class NbQubitSettings(Operator):
         return context.object.select_get() and context.object.type == "MESH"
 
     def execute(self, context):
-
-        ###### 
         bpy.types.Object.select_index = setSliderValue(self.n, getSliderValue(self.n))
-        
-        ##### TADAAAAAAAAAAA CALL ME HOUDINI
+        # TADAAAAAAAAAAA CALL ME HOUDINI (forces to refresh)
         bpy.context.scene.frame_set(bpy.data.scenes['Scene'].frame_current)
-        
         return {'FINISHED'}
 
     def invoke(self, context, event):    
