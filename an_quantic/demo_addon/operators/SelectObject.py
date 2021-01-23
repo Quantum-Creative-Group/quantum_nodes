@@ -7,11 +7,16 @@ class SelectObject(Operator):
     bl_idname = "object.select_object"
     bl_label = "Set a new target"
 
+    @classmethod
+    def poll(cls, context):
+        return context.object.select_get() and context.active_object.type == 'MESH'
+
     def execute(self, context):
         dm = bpy.types.Scene.demo_manager
         if(dm.selected_obj != bpy.context.active_object):
-            self.report({'INFO'}, "AN_Q_DEMO : target successfully updated")
-            dm.reset()
+            if(dm.selected_obj != None):
+                self.report({'INFO'}, "AN_Q_DEMO : target successfully updated")
+                dm.reset()
             dm.createNewCircuit(bpy.context.active_object)
             dm.initializeDemoNodeTree(dm.selected_obj)
         
@@ -19,8 +24,9 @@ class SelectObject(Operator):
         bpy.context.scene.frame_set(bpy.data.scenes['Scene'].frame_current)
         return {'FINISHED'}
 
-    def invoke(self, context, event):   
+    def invoke(self, context, event):
         dm = bpy.types.Scene.demo_manager
-        if context.active_object != dm.selected_obj and context.active_object.type == 'MESH': 
+        if context.active_object != dm.selected_obj and dm.selected_obj != None and context.active_object.type == 'MESH':
             return context.window_manager.invoke_confirm(self, event)
+        self.execute(context) # not sure about that lol
         return {'FINISHED'}

@@ -308,7 +308,7 @@ def generateMainNodeTree(context, demo_id, obj):
     node_name = demo_id + "mesh_obj_output" + node_tree_id
     node_tree.nodes["Mesh Object Output"].name = node_name
     mesh_obj_out = node_tree.nodes[node_name]
-    mesh_obj_out.location = (800, 0)
+    mesh_obj_out.location = (1080, 0)
     mesh_obj_out.meshDataType = "VERTICES"
 
     # Object instancer node
@@ -316,7 +316,7 @@ def generateMainNodeTree(context, demo_id, obj):
     node_name = demo_id + "mesh_instancer" + node_tree_id
     node_tree.nodes["Object Instancer"].name = node_name
     mesh_inst = node_tree.nodes[node_name]
-    mesh_inst.location = (-1500, 0)
+    mesh_inst.location = (650, 245)
     mesh_inst.inputs[0].value = 1
     mesh_inst.inputs[1].object = obj
     mesh_inst.copyObjectProperties = True
