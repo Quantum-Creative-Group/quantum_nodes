@@ -100,8 +100,7 @@ class AN_Q_DemoAddon(bpy.types.Panel):
         row = box.row()
         row.operator('object.add_and_del_gate', text='+').button = 'add'
         row.operator('object.add_and_del_gate', text='-').button = 'del'
-        #row = self.addRow(3)
-
+            
         ####### DISPLAY #######
         box = layout.box()
         if self.nb_qubits > 0:
