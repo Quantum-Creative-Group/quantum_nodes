@@ -9,6 +9,6 @@ class AddGateButton(Operator):
     text: StringProperty(name = 'text', default = '')
 
     def execute(self, context):
-        dm = bpy.types.Scene.QuantumNodes_DEMO_Manager
+        dm = bpy.types.Scene.demo_manager
         dm.get_selected_circuit().add_gate(bpy.types.Object.select_index, self.text)
         return{'FINISHED'}

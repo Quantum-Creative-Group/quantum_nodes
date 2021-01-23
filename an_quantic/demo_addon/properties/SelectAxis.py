@@ -1,9 +1,8 @@
-import numpy as np
-import math
-import bpy, os, sys
+from bpy.types import PropertyGroup
+from bpy.props import EnumProperty
 
-class SelectAxis(bpy.types.PropertyGroup):
-    axis: bpy.props.EnumProperty(
+class SelectAxis(PropertyGroup):
+    axis: EnumProperty(
         items=[
             ('x', 'X', 'X', '', 0),
             ('y', 'Y', 'Y', '', 1),

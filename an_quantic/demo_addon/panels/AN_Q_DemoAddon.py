@@ -19,7 +19,6 @@ class AN_Q_DemoAddon(bpy.types.Panel):
     bl_region_type = "UI"
     bl_category = "AN_Q_DEMO"
 
-    obj_tmp = 'XXXXXXXXXXXXXXX'
     bpy.types.Object.select_index = 0
   
     def addRow(self, n):
@@ -30,7 +29,7 @@ class AN_Q_DemoAddon(bpy.types.Panel):
         # ---------- Initialization ----------
 
         layout = self.layout
-        DEMO_Manager = bpy.types.Scene.QuantumNodes_DEMO_Manager
+        DEMO_Manager = bpy.types.Scene.demo_manager
 
         if DEMO_Manager.selected_obj == None:
             # initializes the first circuit with the default cube 
@@ -38,18 +37,14 @@ class AN_Q_DemoAddon(bpy.types.Panel):
 
         obj = DEMO_Manager.selected_obj
 
-        if obj.name != self.obj_tmp and obj.type == "MESH":
-            # let us know if the current selected object is the target object
-            self.obj_tmp = obj.name
-
         # ---------- Updates selected circuit ----------
 
-        DEMO_Manager.selected_circuit = context.scene.axis_choice.axis
+        DEMO_Manager.selected_circuit = context.scene.selected_axis.axis
 
         # ---------- Object selection ----------
 
         row = self.addRow(1)
-        row.label(text="Selected Object", icon="MESH_CUBE")
+        row.label(text="Target", icon="MESH_CUBE")
         row = self.addRow(1)
         row.prop(obj, "name")
         row.operator('object.select_object', text = '', icon="EYEDROPPER")
@@ -64,7 +59,7 @@ class AN_Q_DemoAddon(bpy.types.Panel):
 
         box.label(text = "Axis", icon = 'ORIENTATION_LOCAL')
         row = box.row()
-        row.prop(context.scene.axis_choice, "axis", icon = 'ORIENTATION_LOCAL', expand = True)
+        row.prop(context.scene.selected_axis, "axis", icon = 'ORIENTATION_LOCAL', expand = True)
         row = self.addRow(1)
 
             # ---------- Qubit selection ----------
@@ -102,8 +97,10 @@ class AN_Q_DemoAddon(bpy.types.Panel):
         row.operator(SwitchToAn.bl_idname, text="Advanced (Quantum Magic)", icon="PLUS")
 
 def register():
-    bpy.types.Scene.axis_choice = PointerProperty(type = SelectAxis)
-    bpy.types.Scene.QuantumNodes_DEMO_Manager = QuantumNodes_DEMO_Manager()
+    # PointerProperty : https://docs.blender.org/api/current/bpy.props.html
+    # (it is possible to set a poll function if needed for selected_axis)
+    bpy.types.Scene.selected_axis = PointerProperty(type = SelectAxis)
+    bpy.types.Scene.demo_manager = QuantumNodes_DEMO_Manager()
 
 if __name__ == "__main__":
     register()

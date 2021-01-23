@@ -1,3 +1,4 @@
+import bpy
 from bpy.types import Operator
 
 class ApplyQuantumCircuit(Operator):
@@ -8,7 +9,7 @@ class ApplyQuantumCircuit(Operator):
     
     @classmethod
     def poll(cls, context):
-        return context.object.select_get() and context.object.type == "MESH"
+        return context.object.select_get() and bpy.context.active_object == bpy.types.Scene.demo_manager.selected_obj
     
     def execute(self, context):
         return {'FINISHED'}

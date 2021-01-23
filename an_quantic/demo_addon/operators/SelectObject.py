@@ -8,7 +8,7 @@ class SelectObject(Operator):
     bl_label = "Set a new target"
 
     def execute(self, context):
-        dm = bpy.types.Scene.QuantumNodes_DEMO_Manager
+        dm = bpy.types.Scene.demo_manager
         self.report({'INFO'}, "AN_Q_DEMO : target successfully updated")
         dm.reset()
         dm.createNewCircuit(bpy.context.active_object)
@@ -18,7 +18,7 @@ class SelectObject(Operator):
         return {'FINISHED'}
 
     def invoke(self, context, event):   
-        dm = bpy.types.Scene.QuantumNodes_DEMO_Manager
+        dm = bpy.types.Scene.demo_manager
         if context.active_object != dm.selected_obj and context.active_object.type == 'MESH': 
             return context.window_manager.invoke_confirm(self, event)
         return {'FINISHED'}

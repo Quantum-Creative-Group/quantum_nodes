@@ -3,7 +3,7 @@ from bpy.types import Operator
 from bpy.props import EnumProperty
 
 def drawGatesOperator(self, context):
-    dm = bpy.types.Scene.QuantumNodes_DEMO_Manager
+    dm = bpy.types.Scene.demo_manager
     for gate in dm.possible_gates:
         button = self.layout.operator('object.add_gate_button', text = gate)
         button.text = gate
@@ -22,10 +22,10 @@ class AddAndDelGate(Operator):
 
     @classmethod
     def poll(cls, context):
-        return context.object is not None
+        return context.object.select_get() and bpy.context.active_object == bpy.types.Scene.demo_manager.selected_obj
 
     def execute(self, context):
-        dm = bpy.types.Scene.QuantumNodes_DEMO_Manager
+        dm = bpy.types.Scene.demo_manager
         if self.button == 'add':
             wm = bpy.context.window_manager
             wm.popup_menu(drawGatesOperator, title="Options")
