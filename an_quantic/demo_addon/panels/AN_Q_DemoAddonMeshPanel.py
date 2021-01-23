@@ -12,10 +12,8 @@ class AN_Q_DemoAddonMeshPanel(bpy.types.Panel):
 
         row = layout.row()
         col = layout.column()
-        col.operator('mesh.quantum_mesh', text='Create Quantum Mesh')
+        col.operator('mesh.create_mesh', text='Create a new mesh')
         col.operator('dialog.number')
-        #col.operator('screen.swap_to_an')
-        #col.operator('object.quantumize_ui')
 
 #def register(): bpy.utils.register_class(QuantumMeshPanel)
 

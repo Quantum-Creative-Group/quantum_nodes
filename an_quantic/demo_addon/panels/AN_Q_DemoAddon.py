@@ -4,11 +4,9 @@ import bpy, os, sys
 from .. backend.QuantumNodes_DEMO_Manager import QuantumNodes_DEMO_Manager
 from .. operators.SwitchToAn import SwitchToAn
 from .. properties.SelectAxis import SelectAxis
-from .. operators.SwapToAn import SwapToAn
 from .. operators.AddGateButton import AddGateButton
 from .. operators.AddAndDelGate import AddAndDelGate
-from .. operators.SelectObject import *
-from .. operators.NbQubitSettings import NbQubitSettings, draw_func, setSliderValue, getSliderValue
+from .. operators.SelectQubit import SelectQubit
 from .. operators.ApplyQuantumCircuit import ApplyQuantumCircuit
 
 from bpy.props import PointerProperty
@@ -21,90 +19,64 @@ class AN_Q_DemoAddon(bpy.types.Panel):
     bl_region_type = "UI"
     bl_category = "AN_Q_DEMO"
 
-    obj_tmp = 'XXXXXXXXXXXXXXX'
-    nb_qubits = 0
-    bpy.types.Object.select_index = 1
-    index_qubit = bpy.types.Object.select_index
+    bpy.types.Object.select_index = 0
   
-
     def addRow(self, n):
-        layout = self.layout
-        for i in range(n):
-            row = layout.row()
+        for i in range(n): row = self.layout.row()
         return row
     
     def draw(self, context):
-
-        ####### __INIT__ #######
+        # ---------- Initialization ----------
 
         layout = self.layout
-        scene = context.scene
-        DEMO_Manager = bpy.types.Scene.QuantumNodes_DEMO_Manager
+        DEMO_Manager = bpy.types.Scene.demo_manager
 
         if DEMO_Manager.selected_obj == None:
+            # initializes the first circuit with the default cube 
             DEMO_Manager.createNewCircuit(bpy.context.active_object)
 
         obj = DEMO_Manager.selected_obj
 
-        ####### DEFINE NB OF QUBITS FOR AN OBJECT #######
-        if obj.name != self.obj_tmp and obj.type == "MESH":
-            self.obj_tmp = obj.name
-            # DEMO_Manager.createNewCircuit(obj)
+        # ---------- Updates selected circuit ----------
 
-        ####### UPDATE SELECTED CIRCUIT #######
+        DEMO_Manager.selected_circuit = context.scene.selected_axis.axis
 
-        DEMO_Manager.selected_circuit = context.scene.axis_choice.axis
-
-        if context.object.select_get() == False or context.object.type != "MESH" or self.nb_qubits > 10:
-            # bpy.context.active_object.select_set(False)
-            self.nb_qubits = 0
-        else :
-            self.nb_qubits = int(math.ceil(math.log(len(obj.data.vertices))/math.log(2)))
-
-        ####### SELECTED OBJECT #######
+        # ---------- Object selection ----------
 
         row = self.addRow(1)
-        row.label(text="Selected Object", icon="MESH_CUBE")
+        row.label(text="Target", icon="MESH_CUBE")
         row = self.addRow(1)
         row.prop(obj, "name")
         row.operator('object.select_object', text = '', icon="EYEDROPPER")
-        #row.operator('object.select_object')
-        
-        row = self.addRow(5)
+        row = self.addRow(1)
        
-        ####### SETTINGS #######
-        box = layout.box()
-        
-        box.label(text="Settings", icon="SETTINGS")
-        row = self.addRow(3)
+        # ---------- Settings section ----------
 
-        ####### AXIS CHOICE #######
+        box = layout.box()
+        box.label(text="Settings", icon="SETTINGS")
+
+            # ---------- Axis selection ----------
 
         box.label(text = "Axis", icon = 'ORIENTATION_LOCAL')
-        row = self.addRow(1)
-        row = layout.row()
         row = box.row()
-        row.prop(context.scene.axis_choice, "axis", icon = 'ORIENTATION_LOCAL', expand = True)
-        row = self.addRow(2)
-            
-        ####### QUBIT SELECTION #######
+        row.prop(context.scene.selected_axis, "axis", icon = 'ORIENTATION_LOCAL', expand = True)
+        row = self.addRow(1)
+
+            # ---------- Qubit selection ----------
 
         box.label(text = "Select QuBit", icon = "LIGHTPROBE_GRID")
-        index_qubit = bpy.types.Object.select_index
-        box.operator('dialog.select_qubit', text = "ID = "+str(index_qubit), icon = "VIEWZOOM")
-        row = self.addRow(3)
+        box.operator('dialog.select_qubit', text = "q"+str(bpy.types.Object.select_index + 1), icon = "VIEWZOOM")
  
-        ####### QUANTUM GATES #######
+            # ---------- Gate selection ----------
         
         box.label(text = "Quantum Gates", icon = 'SNAP_VERTEX')
-        row = self.addRow(1)
         row = box.row()
         row.operator('object.add_and_del_gate', text='+').button = 'add'
         row.operator('object.add_and_del_gate', text='-').button = 'del'
-            
-        ####### DISPLAY #######
+
+        # ---------- Circuit display ----------
         box = layout.box()
-        if self.nb_qubits > 0:
+        if DEMO_Manager.nb_qubits > 0:
             qindex = 0
             for qubit in DEMO_Manager.get_selected_circuit().data:
                 qindex += 1
@@ -113,27 +85,22 @@ class AN_Q_DemoAddon(bpy.types.Panel):
                 for gate in qubit:
                     gate_display += "|" + gate.upper() + "|---"
                 box.label(text=gate_display)
-                row = self.addRow(1)
 
         else :                                        
-            # bpy.context.active_object.select_set(False)
-            # self.nb_qubits = 0
             box.label(text="Select a correct object")
-            row = self.addRow(2)
 
-        ####### THE END #######
+        # ---------- End buttons ----------
 
+        row = self.addRow(2)
         row.operator(ApplyQuantumCircuit.bl_idname, text="Apply", icon="CHECKMARK")
         row = self.addRow(1)
         row.operator(SwitchToAn.bl_idname, text="Advanced (Quantum Magic)", icon="PLUS")
 
-        #######################
-
 def register():
-    bpy.types.Scene.axis_choice = PointerProperty(type = SelectAxis)
-    bpy.types.Scene.QuantumNodes_DEMO_Manager = QuantumNodes_DEMO_Manager()
-    #bpy.types.Scene.ConfirmPopUpBis = ConfirmPopUp() 
-
+    # PointerProperty : https://docs.blender.org/api/current/bpy.props.html
+    # (it is possible to set a poll function if needed for selected_axis)
+    bpy.types.Scene.selected_axis = PointerProperty(type = SelectAxis)
+    bpy.types.Scene.demo_manager = QuantumNodes_DEMO_Manager()
 
 if __name__ == "__main__":
     register()
