@@ -13,12 +13,11 @@ class SelectObject(Operator):
 
     def execute(self, context):
         dm = bpy.types.Scene.demo_manager
-        if(dm.selected_obj != bpy.context.active_object):
-            if(dm.selected_obj != None):
+        if(dm.target != bpy.context.active_object):
+            if(dm.target != None):
                 self.report({'INFO'}, "AN_Q_DEMO : target successfully updated")
-                dm.reset()
-            dm.createNewCircuit(bpy.context.active_object)
-            dm.initializeDemoNodeTree(dm.selected_obj)
+            dm.initializeDemoNodeTree()
+            dm.setNewTarget(bpy.context.active_object)
         
         # forces to redraw the view (magic trick)
         bpy.context.scene.frame_set(bpy.data.scenes['Scene'].frame_current)
@@ -26,7 +25,7 @@ class SelectObject(Operator):
 
     def invoke(self, context, event):
         dm = bpy.types.Scene.demo_manager
-        if context.active_object != dm.selected_obj and dm.selected_obj != None and context.active_object.type == 'MESH':
+        if context.active_object != dm.target and dm.target != None and context.active_object.type == 'MESH':
             return context.window_manager.invoke_confirm(self, event)
         self.execute(context) # not sure about that lol
         return {'FINISHED'}

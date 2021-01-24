@@ -2,21 +2,20 @@ import bpy, os, sys
 
 class CircuitManager():
 
-    def __init__(self, nb_qubits):
+    def __init__(self, nb_qubits, mg):
+        self.max_gates = mg
         self.data = [[] for i in range(nb_qubits)]
 
-    def add_gate(self, q_index, gate):
-       if len(self.data[q_index]) < 5 :
-
-            ###### APPEND GATE
+    def pushGate(self, q_index, gate):
+       if len(self.data[q_index]) < self.max_gates:
             self.data[q_index].append(gate)
 
-            ##### TADAAAAAAAAAAA CALL ME HOUDINI
-            bpy.context.scene.frame_set(bpy.data.scenes['Scene'].frame_current)
-
-    def del_gate(self, q_index):
-        if len(self.data[q_index]) > 0 : 
+    def popGate(self, q_index):
+        if len(self.data[q_index]) > 0:
             self.data[q_index].pop()
+
+    def reset(self):
+        self.data.clear()
         
 
         

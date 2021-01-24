@@ -252,14 +252,14 @@ def generateCircuit(context, demo_id, circuit_id):
     node_tree.links.new(heightmap_to_circuit.outputs[0], circuit_to_heightmap.inputs[0])
     node_tree.links.new(circuit_to_heightmap.outputs[0], grp_out.inputs[0])
 
-def generateMainNodeTree(context, demo_id, obj):
-    bpy.ops.node.new_node_tree(type="an_AnimationNodeTree", name=demo_id+"an_q")
-    node_tree = bpy.data.node_groups[demo_id+"an_q"]
+def generateMainNodeTree(context, main_tree_id, obj):
+    bpy.ops.node.new_node_tree(type="an_AnimationNodeTree", name=main_tree_id+"an_q")
+    node_tree = bpy.data.node_groups[main_tree_id+"an_q"]
     node_tree_id = "_main"
 
     # Mesh Object Input node
     node_tree.nodes.new(type="an_MeshObjectInputNode")
-    node_name = demo_id + "mesh_obj_input" + node_tree_id
+    node_name = main_tree_id + "mesh_obj_input" + node_tree_id
     node_tree.nodes["Mesh Object Input"].name = node_name
     mesh_obj_inp = node_tree.nodes[node_name]
     mesh_obj_inp.location = (-950, 0)
@@ -267,7 +267,7 @@ def generateMainNodeTree(context, demo_id, obj):
 
     # Separate Vector node
     node_tree.nodes.new(type="an_SeparateVectorNode")
-    node_name = demo_id + "sep_vecs" + node_tree_id
+    node_name = main_tree_id + "sep_vecs" + node_tree_id
     node_tree.nodes["Separate Vector"].name = node_name
     sep_vecs = node_tree.nodes[node_name]
     sep_vecs.location = (-750, 0)
@@ -276,7 +276,7 @@ def generateMainNodeTree(context, demo_id, obj):
     for offset, circ_name in [(0, "x"), (1, "y"), (2, "z")]:
         # Invoke mesh_data_c(x/y/z)
         node_tree.nodes.new(type="an_InvokeSubprogramNode")
-        node_name = demo_id + "invoke_circuit_" + circ_name + node_tree_id
+        node_name = main_tree_id + "invoke_circuit_" + circ_name + node_tree_id
         node_tree.nodes["Invoke Subprogram"].name = node_name
         inv_circuits[circ_name] = node_tree.nodes[node_name]
         inv_circuits[circ_name].location = (-200, 500 + offset*(-350))
@@ -288,7 +288,7 @@ def generateMainNodeTree(context, demo_id, obj):
     for offset, circ_name in [(0, "x"), (1, "y"), (2, "z")]:
         # Invoke circuit_(x/y/z)
         node_tree.nodes.new(type="an_InvokeSubprogramNode")
-        node_name = demo_id + "invoke_mesh_data_" + circ_name + node_tree_id
+        node_name = main_tree_id + "invoke_mesh_data_" + circ_name + node_tree_id
         node_tree.nodes["Invoke Subprogram"].name = node_name
         inv_mesh_data_circuits[circ_name] = node_tree.nodes[node_name]
         inv_mesh_data_circuits[circ_name].location = (200, 500 + offset*(-500))
@@ -298,14 +298,14 @@ def generateMainNodeTree(context, demo_id, obj):
 
     # Combine Vector node
     node_tree.nodes.new(type="an_CombineVectorNode")
-    node_name = demo_id + "comb_vecs" + node_tree_id
+    node_name = main_tree_id + "comb_vecs" + node_tree_id
     node_tree.nodes["Combine Vector"].name = node_name
     comb_vecs = node_tree.nodes[node_name]
     comb_vecs.location = (600, 0)
 
     # Mesh Object Output node
     node_tree.nodes.new(type="an_MeshObjectOutputNode")
-    node_name = demo_id + "mesh_obj_output" + node_tree_id
+    node_name = main_tree_id + "mesh_obj_output" + node_tree_id
     node_tree.nodes["Mesh Object Output"].name = node_name
     mesh_obj_out = node_tree.nodes[node_name]
     mesh_obj_out.location = (1080, 0)
@@ -313,7 +313,7 @@ def generateMainNodeTree(context, demo_id, obj):
 
     # Object instancer node
     node_tree.nodes.new(type="an_ObjectInstancerNode")
-    node_name = demo_id + "mesh_instancer" + node_tree_id
+    node_name = main_tree_id + "obj_instancer" + node_tree_id
     node_tree.nodes["Object Instancer"].name = node_name
     mesh_inst = node_tree.nodes[node_name]
     mesh_inst.location = (650, 245)

@@ -10,5 +10,5 @@ class AddGateButton(Operator):
 
     def execute(self, context):
         dm = bpy.types.Scene.demo_manager
-        dm.get_selected_circuit().add_gate(bpy.types.Object.select_index, self.text)
+        dm.get_selected_circuit().pushGate(bpy.types.Object.select_index, self.text)
         return{'FINISHED'}

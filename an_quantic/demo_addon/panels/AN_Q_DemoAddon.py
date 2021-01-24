@@ -30,7 +30,7 @@ class AN_Q_DemoAddon(bpy.types.Panel):
 
         layout = self.layout
         dm = bpy.types.Scene.demo_manager
-        obj = dm.selected_obj
+        obj = dm.target
 
         # ---------- Updates selected circuit ----------
 

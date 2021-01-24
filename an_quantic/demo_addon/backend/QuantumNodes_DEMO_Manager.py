@@ -6,27 +6,36 @@ from . NodeTreeManager import NodeTreeManager
 
 class QuantumNodes_DEMO_Manager():
 
-    def __init__(self, nb = 3):
+    def __init__(self):
+        self.max_qubits = 10
+        self.max_gates = 5
         self.possible_gates = ["h", "x", "y"]
         self.circuits = {"x": None, "y": None, "z": None}
         self.selected_circuit = 'x'
         self.ntm = NodeTreeManager()
         self.nb_qubits = None
         self.nt_initialized = False
-        self.selected_obj = None
+        self.target = None
 
     def get_selected_circuit(self):
         return self.circuits[self.selected_circuit]
 
-    def initializeDemoNodeTree(self, obj):
+    def initializeDemoNodeTree(self):
         if(not self.nt_initialized):
-            self.ntm.generateNodeTree(obj)
+            self.ntm.generateNodeTree(self.target)
             self.nt_initialized = True
 
-    def reset(self):
-        for circuit_name in list(self.circuits.keys()): self.circuits[circuit_name].data.clear()
+    def setNewTarget(self, new_target):
+        # resets circuits
+        for circuit_name in list(self.circuits.keys()):
+            circuit = self.circuits[circuit_name]
+            if(circuit != None):
+                circuit.reset()
+        # sets new target
+        self.setNewCircuits(new_target)
+        self.target = new_target
+        self.ntm.updateTarget(new_target)
 
-    def createNewCircuit(self, obj):
-        self.selected_obj = obj
+    def setNewCircuits(self, obj):
         self.nb_qubits = int(math.ceil(math.log(len(obj.data.vertices))/math.log(2)))
-        for circuit_name in list(self.circuits.keys()): self.circuits[circuit_name] = CircuitManager(self.nb_qubits)
+        for circuit_name in list(self.circuits.keys()): self.circuits[circuit_name] = CircuitManager(self.nb_qubits, self.max_gates)
