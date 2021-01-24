@@ -1,5 +1,6 @@
 import bpy, os, sys
 import math
+import copy
 
 from . CircuitManager import CircuitManager
 from . NodeTreeManager import NodeTreeManager
@@ -17,7 +18,7 @@ class QuantumNodes_DEMO_Manager():
         self.nt_initialized = False
         self.target = None
 
-    def get_selected_circuit(self):
+    def getSelectedCircuit(self):
         return self.circuits[self.selected_circuit]
 
     def initializeDemoNodeTree(self):
@@ -39,3 +40,7 @@ class QuantumNodes_DEMO_Manager():
     def setNewCircuits(self, obj):
         self.nb_qubits = int(math.ceil(math.log(len(obj.data.vertices))/math.log(2)))
         for circuit_name in list(self.circuits.keys()): self.circuits[circuit_name] = CircuitManager(self.nb_qubits, self.max_gates)
+        self.ntm.last_circuits = copy.deepcopy(self.circuits)
+    
+    def updateNodeTree(self):
+        self.ntm.update(self.circuits)

@@ -75,7 +75,7 @@ class AN_Q_DemoAddon(bpy.types.Panel):
             box = layout.box()
             if dm.nb_qubits > 0:
                 qindex = 0
-                for qubit in dm.get_selected_circuit().data:
+                for qubit in dm.getSelectedCircuit().data:
                     qindex += 1
                     gate_display = ""
                     gate_display += "q" + str(qindex) + "  ---"

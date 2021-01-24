@@ -5,3 +5,11 @@ class Gate:
         self.location = loc
         self.input = inp
         self.output = out
+    
+    def __str__(self):
+        ostream = "TYPE : " + self.type + "\n"
+        ostream += "NAME : " + self.name + "\n"
+        ostream += "LOCATION : " + str(self.location) + "\n"
+        ostream += "INPUT : " + str(self.input) + "\n"
+        ostream += "OUTPUT : " + str(self.output)
+        return ostream

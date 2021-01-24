@@ -32,6 +32,7 @@ class AddAndDelGate(Operator):
             # forces to redraw the view (magic trick)
             bpy.context.scene.frame_set(bpy.data.scenes['Scene'].frame_current)
         else: 
-            dm.get_selected_circuit().popGate(bpy.types.Object.select_index)
+            dm.getSelectedCircuit().popGate(bpy.types.Object.select_index)
+            dm.updateNodeTree()
         return {'FINISHED'}
 
