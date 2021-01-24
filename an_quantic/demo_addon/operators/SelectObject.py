@@ -9,7 +9,8 @@ class SelectObject(Operator):
 
     @classmethod
     def poll(cls, context):
-        return context.object.select_get() and context.active_object.type == 'MESH'
+        return context.object.select_get() and context.active_object.type == 'MESH'\
+            and "Animation Nodes" not in context.active_object.users_collection[0].name
 
     def execute(self, context):
         dm = bpy.types.Scene.demo_manager

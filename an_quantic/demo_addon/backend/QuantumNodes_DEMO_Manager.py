@@ -32,6 +32,7 @@ class QuantumNodes_DEMO_Manager():
             circuit = self.circuits[circuit_name]
             if(circuit != None):
                 circuit.reset()
+                self.ntm.resetAllGates()
         # sets new target
         self.setNewCircuits(new_target)
         self.target = new_target
