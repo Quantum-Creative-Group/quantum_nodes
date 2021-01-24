@@ -41,22 +41,23 @@ class NodeTreeManager:
             circuit_id = "_c" + modif[2][0]
             gate_name = self.demo_id + "gate_" + modif[1] + circuit_id
             if(modif[0] == "ADD"):
-                if(not self.gateAlreadyExists(circuit_node_tree, gate_name)):
+                new_gate = self.gf.createGate(gate_name, modif[1], modif[2][2], circuit_node_tree)
+                print(new_gate)
+                existing_gate = self.getExistingGate(circuit_node_tree, new_gate)
+                if(existing_gate == None):
                     # add a new gate
-                    new_gate_node = self.gf.createGate(gate_name, modif[1], circuit_node_tree)
                     existing_gates = self.gf.getExistingGates(circuit_node_tree)
                     if(len(existing_gates) > 0):
                         # if there is a gate before
                         gate_node_before = existing_gates[-1]
-                        self.removeLink(gate_node_before.outputs[0], new_gate_node.output.inputs[0], circuit_node_tree)
-                    self.addGate(new_gate_node, circuit_node_tree, modif[2][1])
+                        self.removeLink(gate_node_before.outputs[0], new_gate.output.inputs[0], circuit_node_tree)
+                    self.addGate(new_gate, circuit_node_tree, modif[2][1])
                 else:
                     # the gate already exists
-                    current_gate = circuit_node_tree.nodes[self.demo_id + "gate_" + modif[1] + circuit_id]
-                    current_gate.newInputSocket()
+                    existing_gate.newInputSocket()
                     # forces to update the tree (magic trick)
                     bpy.context.scene.frame_set(bpy.data.scenes['Scene'].frame_current)
-                    current_gate.inputs[len(current_gate.inputs) - 2].value = modif[2][1]
+                    existing_gate.inputs[len(existing_gate.inputs) - 2].value = modif[2][1]
             elif(modif[0] == "DEL"):
                 # delete a gate
                 if(self.gateIsStillUsed(modif[1], new_circuits[modif[2][0]])):
@@ -67,7 +68,6 @@ class NodeTreeManager:
                     current_gate_node = circuit_node_tree.nodes[self.demo_id + "gate_" + modif[1] + circuit_id]
                     self.removeGate(current_gate_node, circuit_node_tree)
 
-        
         # sets last ciruits to the current circuits
         self.last_circuits = copy.deepcopy(new_circuits)
 
@@ -95,10 +95,6 @@ class NodeTreeManager:
         # save the input and output
         inp = gate_node.originNodes[0].outputs[0]
         out = gate_node.outputs[0].directTargets[0]
-        # print("INPUTS : ", gate_node.originNodes[0].outputs)
-        # for out in gate_node.originNodes[0].outputs:
-        #     print(out.node)
-        # print("OUTPUTS : ", gate_node.outputs[0].directTargets)
         self.removeLink(gate_node.originNodes[0].outputs[0], gate_node.inputs[len(gate_node.inputs) - 1], circuit_tree)
         self.removeLink(gate_node.outputs[0], gate_node.outputs[0].directTargets[0], circuit_tree)
         # link the saved output and input
@@ -128,15 +124,15 @@ class NodeTreeManager:
         return None, None, None
     
     @classmethod
-    def gateAlreadyExists(cls, circuit_tree, gate_name):
+    def getExistingGate(cls, circuit_tree, gate):
         """
         Returns True if the given gate already exists in the node tree
         """
-        try:
-            gate = circuit_tree.nodes[gate_name]
-            return True
-        except:
-            return False
+        for node in circuit_tree.nodes:
+            if("gate_" + gate.type.lower() in node.name):
+                if("index_" + str(gate.index) in node.name or "index_" + str(gate.index - 1) in node.name):
+                    return node
+        return None
     
     @classmethod
     def removeLink(cls, inp, out, node_tree):
