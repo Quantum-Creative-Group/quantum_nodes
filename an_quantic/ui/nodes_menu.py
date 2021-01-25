@@ -1,4 +1,8 @@
-import bpy
+import bpy, os
+import bpy.utils.previews
+
+from typing import Optional
+
 from animation_nodes.ui.node_menu import insertNode
 from animation_nodes.utils.nodes import getAnimationNodeTrees
 
@@ -6,7 +10,10 @@ class QuanticExtensionMenu(bpy.types.Menu):
     bl_idname = "AN_MT_quantic_extension_menu"
     bl_label = "Quantic Extension Menu"
     
+
     def draw(self, context):
+        pcoll = preview_collections["main"]
+        my_icon = pcoll["my_icon"]
         layout = self.layout
         # REPLACE with bl_idname and bl_label of the node in the nodes folder     
         layout.menu("AN_MT_quantic_gates", text = "Quantum Gates", icon = "SHADING_BBOX")
@@ -17,6 +24,7 @@ class QuanticExtensionMenu(bpy.types.Menu):
         layout.menu("AN_MT_quantic_qu_output", text = "Quantum Output", icon = "ORIENTATION_NORMAL")
         layout.separator()
         layout.menu("AN_MT_quantic_schrodinger_simulation", text = "Schrödinger Simulation", icon = "OPTIONS")
+        #layout.label(text='lol', icon_value=my_icon.icon_id)
 
 
 ################# MENU-CLASSES ################# 
@@ -172,6 +180,9 @@ class Pie_menu(bpy.types.Menu):
 
 
 def drawMenu(self, context):
+    pcoll = preview_collections["main"]
+    my_icon = pcoll["my_icon"]
+    
     if context.space_data.tree_type != "an_AnimationNodeTree": return
 
     layout = self.layout
@@ -180,10 +191,30 @@ def drawMenu(self, context):
     if len(getAnimationNodeTrees()) == 0: return
 
     layout.separator()
-    layout.menu("AN_MT_quantic_extension_menu", text = "Quantic Extension Menu", icon = "SCRIPTPLUGINS")
+    layout.menu("AN_MT_quantic_extension_menu", text = "Quantic Extension Menu", icon_value=my_icon.icon_id)
+
+preview_collections = {}
 
 def register():
+    import bpy, os
     bpy.types.NODE_MT_add.append(drawMenu)
+
+    import bpy.utils.previews
+    pcoll = bpy.utils.previews.new()
+
+    # path to the folder where the icon is
+    # the path is calculated relative to this py file inside the addon folder
+    my_icons_dir = os.path.join(os.path.dirname(__file__), "icons")
+
+    # load a preview thumbnail of a file and store in the previews collection
+    pcoll.load("my_icon", os.path.join(my_icons_dir, "discord.png"), 'IMAGE')
+
+    preview_collections["main"] = pcoll
+
+
 
 def unregister():
     bpy.types.NODE_MT_add.remove(drawMenu)
+    for pcoll in preview_collections.values():
+        bpy.utils.previews.remove(pcoll)
+    preview_collections.clear()
