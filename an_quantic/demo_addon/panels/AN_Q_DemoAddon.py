@@ -8,6 +8,8 @@ from .. operators.AddGateButton import AddGateButton
 from .. operators.AddAndDelGate import AddAndDelGate
 from .. operators.SelectQubit import SelectQubit
 from .. operators.ApplyQuantumCircuit import ApplyQuantumCircuit
+from .. operators.RefreshCircuit import RefreshCircuit
+from .. operators.DeleteTarget import DeleteTarget
 
 from bpy.props import PointerProperty
 from bpy.types import Panel
@@ -43,6 +45,7 @@ class AN_Q_DemoAddon(bpy.types.Panel):
         row = self.addRow(1)
         if(obj != None): row.prop(obj, "name")
         else: row.label(text="Select a target")
+        row.operator('object.delete_target', text = '', icon="CANCEL")
         row.operator('object.select_object', text = '', icon="EYEDROPPER")
         row = self.addRow(1)
        
@@ -85,11 +88,15 @@ class AN_Q_DemoAddon(bpy.types.Panel):
 
             else :                                        
                 box.label(text="Select a correct object")
+            
+            row = box.row()
+            row.operator("object.refresh_quantum_circuit", text = "Refresh Trees", icon="RECOVER_LAST")
 
             # ---------- End buttons ----------
 
             row = self.addRow(2)
             row.operator(ApplyQuantumCircuit.bl_idname, text="Apply", icon="CHECKMARK")
+            row.operator("object.duplicate_target", text="Duplicate", icon="DUPLICATE")
             row = self.addRow(1)
             row.operator(SwitchToAn.bl_idname, text="Advanced (Quantum Magic)", icon="PLUS")
 
