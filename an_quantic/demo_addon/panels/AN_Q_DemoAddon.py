@@ -8,7 +8,7 @@ from .. operators.AddGateButton import AddGateButton
 from .. operators.AddAndDelGate import AddAndDelGate
 from .. operators.SelectQubit import SelectQubit
 from .. operators.ApplyQuantumCircuit import ApplyQuantumCircuit
-from .. operators.RefreshCircuit import RefreshCircuit
+from .. operators.ResetCircuits import ResetCircuits
 from .. operators.DeleteTarget import DeleteTarget
 
 from bpy.props import PointerProperty
@@ -90,7 +90,7 @@ class AN_Q_DemoAddon(bpy.types.Panel):
                 box.label(text="Select a correct object")
             
             row = box.row()
-            row.operator("object.refresh_quantum_circuit", text = "Refresh Trees", icon="RECOVER_LAST")
+            row.operator("object.reset_quantum_circuits", text = "Reset circuits", icon="RECOVER_LAST")
 
             # ---------- End buttons ----------
 
