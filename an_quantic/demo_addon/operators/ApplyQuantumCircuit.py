@@ -9,6 +9,7 @@ class ApplyQuantumCircuit(Operator):
     
     @classmethod
     def poll(cls, context):
+        if(context.object == None): return False
         return context.object.select_get() and bpy.context.active_object == bpy.types.Scene.demo_manager.target
     
     def execute(self, context):

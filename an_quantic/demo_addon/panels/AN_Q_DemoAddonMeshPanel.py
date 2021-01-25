@@ -2,18 +2,15 @@ import bpy
 
 class AN_Q_DemoAddonMeshPanel(bpy.types.Panel):
     bl_idname = "AN_Q_PT_DemoAddonMeshPanel"
-    bl_label = "Mesh properties"
+    bl_label = "Add a new mesh"
     bl_space_type = "VIEW_3D"
     bl_region_type = "UI"
     bl_category = "AN_Q_DEMO"
 
     def draw(self, context):
-        layout = self.layout
-
-        row = layout.row()
-        col = layout.column()
-        col.operator('mesh.create_mesh', text='Create a new mesh')
-        col.operator('dialog.number')
+        row = self.layout.row()
+        row.menu("VIEW3D_MT_mesh_add", text="Meshes", icon="OUTLINER_OB_MESH")
+        row.operator('dialog.number')
 
 #def register(): bpy.utils.register_class(QuantumMeshPanel)
 

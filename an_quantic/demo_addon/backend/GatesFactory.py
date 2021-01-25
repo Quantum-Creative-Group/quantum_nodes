@@ -33,7 +33,6 @@ class GatesFactory:
         elif((c2h.location[0] - h2c.location[0])/self.spacing > nb_existing_gates + 1):
             # if there is more space than needed
             nb_del_space = int((c2h.location[0] - h2c.location[0])/self.spacing - (nb_existing_gates + 1))
-            print(nb_del_space)
             for i in range(nb_del_space):
                 c2h.location[0] -= self.spacing
                 grp_out.location[0] -= self.spacing

@@ -9,6 +9,7 @@ class SelectObject(Operator):
 
     @classmethod
     def poll(cls, context):
+        if(context.object == None): return False
         return context.object.select_get() and context.active_object.type == 'MESH'\
             and "Animation Nodes" not in context.active_object.users_collection[0].name
             # TODO: improve security on third condition 
