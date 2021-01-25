@@ -9,6 +9,8 @@ from bpy.props import * # ...Property
 from animation_nodes.events import propertyChanged
 from animation_nodes.events import executionCodeChanged
 
+ # TODO: go see how clear cache from invoke subprogram is done to run this node the same way
+
 
 class Provider():
     def __init__(self):
@@ -23,7 +25,7 @@ class Provider():
 class QuantumCircuitIBMOutputStateNode(bpy.types.Node, AnimationNode):
     bl_idname = "an_QuantumCircuitIBMOutputStateNode"
     bl_label = "Quantum Circuit IBM Output State"
-    bl_width_default = 180
+    bl_width_default = 210
     errorHandlingType = "EXCEPTION"
     _provider = Provider()
 
@@ -33,6 +35,9 @@ class QuantumCircuitIBMOutputStateNode(bpy.types.Node, AnimationNode):
 
     initialized: BoolProperty(name = "Initialized", default = False,
         description = "If the node has been initialized")
+
+    remaining_jobs: IntProperty(name = "Remaining jobs",
+        description = "The number of remaining jobs for a backend")
 
     def item_callback(self, context):
         return [ (sys.name(), sys.name(), "number of qubits: " + str(sys.configuration().n_qubits)) for sys in self._provider.get_provider().backends() ]
@@ -53,37 +58,55 @@ class QuantumCircuitIBMOutputStateNode(bpy.types.Node, AnimationNode):
 
     def __init__(self):
         if not self.initialized:
-            if IBMQ.active_account() == None:
-                IBMQ.load_account() # needs a connection to internet! (TODO: manage exceptions)
+            if IBMQ.active_account() == None:   # test if the IBMQ account is already loaded
+                try:
+                    IBMQ.load_account() # needs a connection to internet! (TODO: manage exceptions)
+                except Exception as e:  # two possibilities: either not connected to internet or doesn't have an IBM account
+                    error_msg = ""
+                    for msg in e.args:
+                        error_msg += msg + "\n"
+                    self.raiseErrorMessage(error_msg)
+
+
             # TODO: try if load account fails and in catch ask for token (w/ self.raiseError maybe?)
             self.initialized = True
 
     def setup(self):
         # print("setup")
+        bpy.data.node_groups["AN Tree"].autoExecution.sceneUpdate = False
+        bpy.data.node_groups["AN Tree"].autoExecution.treeChanged = False # Property
+        bpy.data.node_groups["AN Tree"].autoExecution.frameChanged = False # Property
+        bpy.data.node_groups["AN Tree"].autoExecution.propertyChanged = False # Property
         self.newInput("Quantum Circuit", "Quantum Circuit", "quantum_circuit")
         self.newOutput("Generic", "Output State", "output_state")
     
     def draw(self, layout):
         # print("draw")
         layout.prop(self, "backendMenu")
+        layout.label(text = "Number of jobs remaining: " + str(self.remaining_jobs), icon = "INFO")
+        self.invokeFunction(layout, "executeTree", text = "Send")
+
+    def executeTree(self):
+        bpy.ops.an.execute_tree(name="AN Tree")
 
     def drawAdvanced(self, layout):
         layout.prop(self, "token")
         col = layout.column()
 
-    def getExecutionFunctionName(self): # doesn't call the execute function if I don't do it that way
-        return "execute"
+    # def getExecutionFunctionName(self):
+    #     return "execute"
 
     def execute(self, quantum_circuit):
         backend = self._provider.get_provider().get_backend(self.backendMenu)   # TODO: fix --> Exception: node is not refreshable
+        self.remaining_jobs = backend.remaining_jobs_count()
         if (quantum_circuit.num_qubits > backend.configuration().n_qubits):
             self.raiseErrorMessage("This system doesn't compute enough qubits: " + str(backend.configuration().n_qubits))
         # ---execute() works but is not optimized for more important jobs
-        job = execute(quantum_circuit, backend)
-        # the other method should be better but doesn't return get_counts
-        # qobj = assemble(transpile(quantum_circuit, backend=backend), backend=backend)
-        # qobj = compile(quantum_circuit, backend, shots=2000)
-        # job = backend.run(qobj)
+        quantum_circuit.measure_all() # should find a way to get rid of this but it doesn't work without any measure
+        # job = execute(quantum_circuit, backend)
+        # ---there are 2 ways of computing this (lign ahead or the two above)
+        qobj = assemble(transpile(quantum_circuit, backend=backend), backend=backend)
+        job = backend.run(qobj)
 
         start_time = time.time()
         job_status = job.status()
