@@ -2,10 +2,10 @@ import bpy
 from . Gate import Gate
 
 class GatesFactory:
-    def __init__(self, did):
-        self.start_loc_left = -200
-        self.spacing = 250
-        self.demo_id = did
+    def __init__(self, start_left, spacing, demo_id):
+        self.start_loc_left = start_left
+        self.spacing = spacing
+        self.demo_id = demo_id
     
     def createGate(self, gate_name, gate_type, gate_index, circuit_tree):
         """
