@@ -11,6 +11,8 @@ class SelectObject(Operator):
     def poll(cls, context):
         return context.object.select_get() and context.active_object.type == 'MESH'\
             and "Animation Nodes" not in context.active_object.users_collection[0].name
+            # TODO: improve security on third condition 
+            # (blender crashes when the created object is selected as the new target)
 
     def execute(self, context):
         dm = bpy.types.Scene.demo_manager
@@ -21,6 +23,7 @@ class SelectObject(Operator):
             dm.setNewTarget(bpy.context.active_object)
         
         # forces to redraw the view (magic trick)
+        # TODO: find a better solution for it
         bpy.context.scene.frame_set(bpy.data.scenes['Scene'].frame_current)
         return {'FINISHED'}
 
@@ -29,4 +32,5 @@ class SelectObject(Operator):
         if context.active_object != dm.target and dm.target != None and context.active_object.type == 'MESH':
             return context.window_manager.invoke_confirm(self, event)
         self.execute(context) # not sure about that lol
+        # TODO: there must be a better solution
         return {'FINISHED'}

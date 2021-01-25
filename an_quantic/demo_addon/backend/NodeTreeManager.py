@@ -34,35 +34,44 @@ class NodeTreeManager:
     def update(self, new_circuits):
         """
         Updates the circuit node trees
+        If "ADD" : 
+            Searches for a potential existing gate to insert the new one
+            If not found, then creates a new node
+        If "DEL" :
+            Retrieves the node where the gate is and removes the socket
+            If the node isn't used anymore, deletes it
         """
+        # detects the modification
         modif = self.getModification(self.last_circuits, new_circuits)
         if(modif != (None, None, None)):
+            # identifies the node tree and builds the name of the gate
             circuit_node_tree = bpy.data.node_groups[self.demo_id + "circuit_" + modif[2][0]]
             circuit_id = "_c" + modif[2][0]
             gate_name = self.demo_id + "gate_" + modif[1] + circuit_id
+
             if(modif[0] == "ADD"):
-                modified_gate = self.gf.createGate(gate_name, modif[1], modif[2][2], circuit_node_tree)
-                qubit_data = self.last_circuits[modif[2][0]].data[modif[2][1]]
-                existing_gate = self.getExistingGate(circuit_node_tree, modified_gate, modif[2][1], qubit_data)
+                qubit_data = self.last_circuits[modif[2][0]].data[modif[2][1]] # data before modification
+                existing_gate = self.getExistingGate(circuit_node_tree, modif[1], modif[2][1], qubit_data)
                 if(existing_gate == None):
                     # add a new gate
+                    new_gate = self.gf.createGate(gate_name, modif[1], modif[2][2], circuit_node_tree)
                     existing_gates = self.gf.getExistingGates(circuit_node_tree)
                     if(len(existing_gates) > 0):
                         # if there is a gate before
                         gate_node_before = existing_gates[-1]
-                        self.removeLink(gate_node_before.outputs[0], modified_gate.output.inputs[0], circuit_node_tree)
-                    self.addGate(modified_gate, circuit_node_tree, modif[2][1])
+                        self.removeLink(gate_node_before.outputs[0], new_gate.output.inputs[0], circuit_node_tree)
+                    self.addGate(new_gate, circuit_node_tree, modif[2][1])
                 else:
                     # the gate already exists
                     existing_gate.newInputSocket()
                     # forces to update the tree (magic trick)
                     bpy.context.scene.frame_set(bpy.data.scenes['Scene'].frame_current)
                     existing_gate.inputs[len(existing_gate.inputs) - 2].value = modif[2][1]
+
             elif(modif[0] == "DEL"):
                 # delete a gate
-                modified_gate = self.gf.createGate(gate_name, modif[1], modif[2][2], circuit_node_tree)
-                qubit_data = new_circuits[modif[2][0]].data[modif[2][1]]        
-                existing_gate = self.getExistingGate(circuit_node_tree, modified_gate, modif[2][1], qubit_data)
+                qubit_data = new_circuits[modif[2][0]].data[modif[2][1]] # data before modification      
+                existing_gate = self.getExistingGate(circuit_node_tree, modif[1], modif[2][1], qubit_data)
                 for socket in existing_gate.inputs:
                     if(type(socket).__name__ == "IntegerSocket" and socket.value == modif[2][1]):
                         socket.remove()
@@ -75,6 +84,9 @@ class NodeTreeManager:
         self.last_circuits = copy.deepcopy(new_circuits)
 
     def resetAllGates(self):
+        """
+        Resets all the gate nodes in the node trees (for each circuit)
+        """
         for circ_name in ["x", "y", "z"]:
             circuit_node_tree = bpy.data.node_groups[self.demo_id + "circuit_" + circ_name]
             for gate_node in circuit_node_tree.nodes:
@@ -95,15 +107,20 @@ class NodeTreeManager:
         circuit_tree.links.new(gate_node.outputs[0], new_gate.output.inputs[0])
     
     def removeGate(self, gate_node, circuit_tree):
-        # save the input and output
+        """
+        Removes the given gate node
+        Creates a new link between the input and output of the deleted node
+        """
+        # saves the input and output
         inp = gate_node.originNodes[0].outputs[0]
         out = gate_node.outputs[0].directTargets[0]
         self.removeLink(gate_node.originNodes[0].outputs[0], gate_node.inputs[len(gate_node.inputs) - 1], circuit_tree)
         self.removeLink(gate_node.outputs[0], gate_node.outputs[0].directTargets[0], circuit_tree)
-        # link the saved output and input
+        # links the saved output and input
         circuit_tree.links.new(inp, out)
         gate_node.remove()
         # forces to update the tree (magic trick)
+        # TODO: find a better solution
         bpy.context.scene.frame_set(bpy.data.scenes['Scene'].frame_current)
     
     @classmethod
@@ -127,14 +144,13 @@ class NodeTreeManager:
         return None, None, None
     
     @classmethod
-    def getExistingGate(cls, circuit_tree, gate, q_index, qubit_data):
+    def getExistingGate(cls, circuit_tree, gate_type, q_index, qubit_data):
         """
         Returns the gate if it already exists
         """
         # finds the first node that contains a gate of the corresponding circuit
-        # so let's start looking from this index for potential existing gates
+        # so let's start looking from this index for a potential existing gate
         min_gate_index = 0
-        print(qubit_data)
         if(len(qubit_data) > 0):
             # only when there are already gates in the node tree
             for node in circuit_tree.nodes:
@@ -143,23 +159,21 @@ class NodeTreeManager:
                         min_gate_index += 1
                     else:
                         break
-        print(min_gate_index)
         
-        # finds where the potential existing gate should (at least) be placed
-        # from the previous min_gate_index
-        last_gate_type = "" # last_gate_type is used to counter redunduncy (exp: q1 --|H|--|H|--)
+        # finds where the potential existing gate should (at least) 
+        # be placed from the previous min_gate_index
+        last_gate_type = "" # last_gate_type is used to counter redundancy (ex: q1 --|H|--|H|--)
         for g in qubit_data:
-            if(g != gate.type.lower() and last_gate_type != g):
+            if(g != gate_type and last_gate_type != g):
                 min_gate_index += 1
             last_gate_type = g
-        print(min_gate_index)
 
         # searches for the potential existing gate with these conditions :
-        # gate_index >= min_gate_index, "gate_T" in node.name
+        # gate_index >= min_gate_index and "gate_T" in node.name
         gate_index = 0
         for node in circuit_tree.nodes:
             if("gate_" in node.name):
-                if("gate_" + gate.type.lower() in node.name):
+                if("gate_" + gate_type in node.name):
                     if(gate_index >= min_gate_index):
                         return node
                 gate_index += 1
@@ -177,6 +191,9 @@ class NodeTreeManager:
     
     @classmethod
     def qubitIndexInGate(cls, q_index, node):
+        """
+        Returns True if the q_index is a value of one of the sockets
+        """
         for socket in node.inputs:
             if(type(socket).__name__ == "IntegerSocket" and q_index == socket.value):
                 return True
