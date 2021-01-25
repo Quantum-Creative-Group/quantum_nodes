@@ -11,6 +11,7 @@ class SubdivideMesh(Operator):
 
     @classmethod
     def poll(cls, context):
+        if(context.object == None): return False
         obj = bpy.context.active_object
         return context.object.select_get() and obj.type == "MESH"
 
