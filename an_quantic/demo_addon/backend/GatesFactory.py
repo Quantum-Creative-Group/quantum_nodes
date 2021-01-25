@@ -22,12 +22,21 @@ class GatesFactory:
             inp = circuit_tree.nodes[1]
 
         circuit_id = gate_name[len(gate_name) - 3:]
-        if(nb_existing_gates + 1 > 3):
+        h2c = circuit_tree.nodes[self.demo_id + "hmap_to_qu_cir" + circuit_id]
+        c2h = circuit_tree.nodes[self.demo_id + "qu_cir_to_hmap" + circuit_id]
+        grp_out = circuit_tree.nodes[self.demo_id + "grp_out" + circuit_id]
+        # TODO: not sure that this code should be here (spacing management)
+        if(nb_existing_gates + 1 > (c2h.location[0] - h2c.location[0])/self.spacing):
             # moves to the right the output nodes so the node tree is still readable
-            h2c = circuit_tree.nodes[self.demo_id + "qu_cir_to_hmap" + circuit_id]
-            grp_out = circuit_tree.nodes[self.demo_id + "grp_out" + circuit_id]
-            h2c.location[0] += self.spacing
+            c2h.location[0] += self.spacing
             grp_out.location[0] += self.spacing
+        elif((c2h.location[0] - h2c.location[0])/self.spacing > nb_existing_gates + 1):
+            # if there is more space than needed
+            nb_del_space = int((c2h.location[0] - h2c.location[0])/self.spacing - (nb_existing_gates + 1))
+            print(nb_del_space)
+            for i in range(nb_del_space):
+                c2h.location[0] -= self.spacing
+                grp_out.location[0] -= self.spacing
         
         out = circuit_tree.nodes[self.demo_id + "qu_cir_to_hmap" + circuit_id]
         return Gate(gate_type.upper(), "index_" + str(gate_index) + "_" + gate_name, gate_index, location, inp, out)
