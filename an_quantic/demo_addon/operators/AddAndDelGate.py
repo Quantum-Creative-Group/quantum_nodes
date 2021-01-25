@@ -22,14 +22,17 @@ class AddAndDelGate(Operator):
 
     @classmethod
     def poll(cls, context):
-        return context.object.select_get() and bpy.context.active_object == bpy.types.Scene.demo_manager.selected_obj
+        return context.object.select_get() and bpy.context.active_object == bpy.types.Scene.demo_manager.target
 
     def execute(self, context):
         dm = bpy.types.Scene.demo_manager
         if self.button == 'add':
             wm = bpy.context.window_manager
             wm.popup_menu(drawGatesOperator, title="Options")
+            # forces to redraw the view (magic trick)
+            bpy.context.scene.frame_set(bpy.data.scenes['Scene'].frame_current)
         else: 
-            dm.get_selected_circuit().del_gate(bpy.types.Object.select_index)
+            dm.getSelectedCircuit().popGate(bpy.types.Object.select_index)
+            dm.updateNodeTree()
         return {'FINISHED'}
 
