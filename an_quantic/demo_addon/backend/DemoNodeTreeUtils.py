@@ -374,6 +374,14 @@ def generateMainNodeTree(context, main_tree_id, obj):
     obj_transf_out.location = (1900, 0)
     obj_transf_out.useLocation = True, True, True
 
+    # Data interface node
+    node_tree.nodes.new(type="an_DataInterfaceNode")
+    node_name = main_tree_id + "data_interface" + node_tree_id
+    node_tree.nodes["Data Interface"].name = node_name
+    data_interface = node_tree.nodes[node_name]
+    data_interface.location = (2100, 0)
+    data_interface.dataDirection = "EXPORT"
+
     # forces to update socket inputs/outputs (tada !)
     # TODO: find a better solution
     bpy.context.scene.frame_set(bpy.data.scenes['Scene'].frame_current)
@@ -408,6 +416,8 @@ def generateMainNodeTree(context, main_tree_id, obj):
     node_tree.links.new(mesh_obj_out.outputs[0], transf_obj.inputs[0])
         # Transform Object output to Object transforms output in
     node_tree.links.new(transf_obj.outputs[0], obj_transf_out.inputs[0])
+        # Data Interface input to Transform Object output out
+    node_tree.links.new(obj_transf_out.outputs[0], data_interface.inputs[0])
 
         # Set offset of the copied object :
     obj_transf_out.inputs[1].value[1] = 5.0

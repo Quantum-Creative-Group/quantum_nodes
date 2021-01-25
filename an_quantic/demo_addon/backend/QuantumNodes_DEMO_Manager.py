@@ -39,11 +39,7 @@ class QuantumNodes_DEMO_Manager():
         Sets the new target and resets everything (circuits in the UI + node trees)
         """
         # resets circuits
-        for circuit_name in list(self.circuits.keys()):
-            circuit = self.circuits[circuit_name]
-            if(circuit != None):
-                circuit.reset()
-                self.ntm.resetAllGates()
+        self.resetCircuits()
         # sets new target
         self.setNewCircuits(new_target)
         self.target = new_target
@@ -63,3 +59,20 @@ class QuantumNodes_DEMO_Manager():
         Updates the node tree so that it correponds to the represented circuits in the UI
         """
         self.ntm.update(self.circuits)
+
+    def resetCircuits(self):
+        """
+        Resets the circuits and the corresponding node trees
+        """
+        for circuit_name in list(self.circuits.keys()):
+            circuit = self.circuits[circuit_name]
+            if(circuit != None):
+                circuit.reset()
+                self.ntm.resetAllGates()
+    
+    def removeAll(self):
+        self.resetCircuits()
+        self.ntm.removeAllTrees()
+        self.nt_initialized = False
+        self.target = None
+        return

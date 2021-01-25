@@ -96,6 +96,18 @@ class NodeTreeManager:
                 if("gate" in gate_node.name):
                     GateNodesManager.removeGate(gate_node, circuit_node_tree)
     
+    def removeAllTrees(self):
+        """
+        Removes all the demo node trees
+        """
+        # removes the copy
+        self.main_node_tree.nodes[self.main_tree_id + "obj_instancer" + "_main"].inputs[1].object = None
+        bpy.ops.an.execute_tree(name=self.main_tree_id+"an_q")
+        # TODO: not sure about that "refresh"
+        for node_tree in bpy.data.node_groups:
+            if(self.demo_id in node_tree.name or self.main_tree_id in node_tree.name):
+                bpy.data.node_groups.remove(node_tree)
+    
     @classmethod
     def getModification(cls, last_circuits, new_circuits):
         """
