@@ -23,7 +23,7 @@ class GatesFactory:
 
         circuit_id = gate_name[len(gate_name) - 3:]
         if(nb_existing_gates + 1 > 3):
-            # moves to the right the output nodes so it the node tree is still readable
+            # moves to the right the output nodes so the node tree is still readable
             h2c = circuit_tree.nodes[self.demo_id + "qu_cir_to_hmap" + circuit_id]
             grp_out = circuit_tree.nodes[self.demo_id + "grp_out" + circuit_id]
             h2c.location[0] += self.spacing

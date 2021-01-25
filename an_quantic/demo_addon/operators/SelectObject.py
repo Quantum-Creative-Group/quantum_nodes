@@ -21,6 +21,7 @@ class SelectObject(Operator):
                 self.report({'INFO'}, "AN_Q_DEMO : target successfully updated")
             dm.initializeDemoNodeTree()
             dm.setNewTarget(bpy.context.active_object)
+            bpy.ops.an.execute_tree(name=dm.ntm.main_tree_id+"an_q")
         
         # forces to redraw the view (magic trick)
         # TODO: find a better solution for it

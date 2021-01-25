@@ -6,6 +6,7 @@ from . CircuitManager import CircuitManager
 from . NodeTreeManager import NodeTreeManager
 
 class QuantumNodes_DEMO_Manager():
+    # TODO: find a way to save these data
 
     def __init__(self):
         self.max_qubits = 10
@@ -35,7 +36,7 @@ class QuantumNodes_DEMO_Manager():
 
     def setNewTarget(self, new_target):
         """
-        Sets the new target and reset everything (circuits in the UI + node tree)
+        Sets the new target and resets everything (circuits in the UI + node trees)
         """
         # resets circuits
         for circuit_name in list(self.circuits.keys()):
