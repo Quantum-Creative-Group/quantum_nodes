@@ -40,12 +40,10 @@ class NodeTreeManager:
             circuit_node_tree = bpy.data.node_groups[self.demo_id + "circuit_" + modif[2][0]]
             circuit_id = "_c" + modif[2][0]
             gate_name = self.demo_id + "gate_" + modif[1] + circuit_id
-            modified_gate = self.gf.createGate(gate_name, modif[1], modif[2][2], circuit_node_tree)
-            qubit = new_circuits[modif[2][0]].data[modif[2][1]]
-            for name in ["x", "y", "z"]: print(new_circuits[name])
-            
-            existing_gate = self.getExistingGate(circuit_node_tree, modified_gate, qubit)
             if(modif[0] == "ADD"):
+                modified_gate = self.gf.createGate(gate_name, modif[1], modif[2][2], circuit_node_tree)
+                qubit_data = self.last_circuits[modif[2][0]].data[modif[2][1]]
+                existing_gate = self.getExistingGate(circuit_node_tree, modified_gate, modif[2][1], qubit_data)
                 if(existing_gate == None):
                     # add a new gate
                     existing_gates = self.gf.getExistingGates(circuit_node_tree)
@@ -62,16 +60,15 @@ class NodeTreeManager:
                     existing_gate.inputs[len(existing_gate.inputs) - 2].value = modif[2][1]
             elif(modif[0] == "DEL"):
                 # delete a gate
-                if(self.gateIsStillUsed(modified_gate, new_circuits[modif[2][0]])):
-                    # the gate is still used, only remove the corresponding socket
-                    print("GATE " + modif[1].upper() + " : still used")
-                    for socket in existing_gate.inputs:
-                        if(type(socket).__name__ == "IntegerSocket" and socket.value == modif[2][1]):
-                            socket.remove()
-                            break
-                    # existing_gate.removeSocket()
-                else:
-                    # the gate isn't used anymore
+                modified_gate = self.gf.createGate(gate_name, modif[1], modif[2][2], circuit_node_tree)
+                qubit_data = new_circuits[modif[2][0]].data[modif[2][1]]        
+                existing_gate = self.getExistingGate(circuit_node_tree, modified_gate, modif[2][1], qubit_data)
+                for socket in existing_gate.inputs:
+                    if(type(socket).__name__ == "IntegerSocket" and socket.value == modif[2][1]):
+                        socket.remove()
+                        break
+                # if the gate isn't used anymore
+                if(len(existing_gate.inputs) == 1):
                     self.removeGate(existing_gate, circuit_node_tree)
 
         # sets last ciruits to the current circuits
@@ -130,27 +127,43 @@ class NodeTreeManager:
         return None, None, None
     
     @classmethod
-    def getExistingGate(cls, circuit_tree, gate, qubit):
+    def getExistingGate(cls, circuit_tree, gate, q_index, qubit_data):
         """
-        Returns True if the given gate already exists in the node tree
+        Returns the gate if it already exists
         """
+        # finds the first node that contains a gate of the corresponding circuit
+        # so let's start looking from this index for potential existing gates
         min_gate_index = 0
-        for g in qubit:
-            if(g != gate.type.lower()): min_gate_index += 1
+        print(qubit_data)
+        if(len(qubit_data) > 0):
+            # only when there are already gates in the node tree
+            for node in circuit_tree.nodes:
+                if("gate_" in node.name):
+                    if(not cls.qubitIndexInGate(q_index, node)):
+                        min_gate_index += 1
+                    else:
+                        break
+        print(min_gate_index)
+        
+        # finds where the potential existing gate should (at least) be placed
+        # from the previous min_gate_index
+        last_gate_type = "" # last_gate_type is used to counter redunduncy (exp: q1 --|H|--|H|--)
+        for g in qubit_data:
+            if(g != gate.type.lower() and last_gate_type != g):
+                min_gate_index += 1
+            last_gate_type = g
         print(min_gate_index)
 
+        # searches for the potential existing gate with these conditions :
+        # gate_index >= min_gate_index, "gate_T" in node.name
         gate_index = 0
-        if(gate.index - 1 >= min_gate_index):
-            for node in circuit_tree.nodes:
+        for node in circuit_tree.nodes:
+            if("gate_" in node.name):
                 if("gate_" + gate.type.lower() in node.name):
                     if(gate_index >= min_gate_index):
                         return node
-                    gate_index += 1
-        
-        for node in circuit_tree.nodes:
-            if("gate_" + gate.type.lower() in node.name):
-                if("index_" + str(gate.index) in node.name or "index_" + str(gate.index - 1) in node.name):
-                        return node
+                gate_index += 1
+
         return None
     
     @classmethod
@@ -163,12 +176,8 @@ class NodeTreeManager:
                 node_tree.links.remove(link)
     
     @classmethod
-    def gateIsStillUsed(cls, modified_gate, circuit):
-        """
-        Returns True if the given gate is still used in the circuit
-        """
-        for qubit in circuit.data:
-            for i in range(len(qubit)):
-                if((i == modified_gate.index or i == (modified_gate.index - 1)) and qubit[i] == modified_gate.type.lower()):
-                    return True
+    def qubitIndexInGate(cls, q_index, node):
+        for socket in node.inputs:
+            if(type(socket).__name__ == "IntegerSocket" and q_index == socket.value):
+                return True
         return False
