@@ -211,8 +211,6 @@ def register():
 
     preview_collections["main"] = pcoll
 
-
-
 def unregister():
     bpy.types.NODE_MT_add.remove(drawMenu)
     for pcoll in preview_collections.values():

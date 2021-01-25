@@ -10,6 +10,7 @@ def drawSelectQubitOperator(self, context):
 class SelectQubit(Operator):
     bl_idname = "dialog.select_qubit"
     bl_label = "Select a qubit"
+    bl_description = "Select the qubit you want to modify"
 
     @classmethod
     def poll(cls, context):

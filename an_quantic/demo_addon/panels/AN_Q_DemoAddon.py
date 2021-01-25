@@ -99,6 +99,11 @@ class AN_Q_DemoAddon(bpy.types.Panel):
             row.operator("object.duplicate_target", text="Duplicate", icon="DUPLICATE")
             row = self.addRow(1)
             row.operator(SwitchToAn.bl_idname, text="Advanced (Quantum Magic)", icon="PLUS")
+            row = self.addRow(4)
+
+            row.operator('wm.url_open', text="Need Help ?", icon='BOOKMARKS').url='https://elgoog.im/'
+            row = self.addRow(1)
+            row.operator('wm.url_open', text="Creation gallery", icon='FUND').url='https://www.instagram.com/theo_goatyeah'
 
 def register():
     # PointerProperty : https://docs.blender.org/api/current/bpy.props.html
