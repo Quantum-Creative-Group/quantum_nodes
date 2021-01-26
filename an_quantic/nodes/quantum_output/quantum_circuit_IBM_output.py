@@ -61,10 +61,8 @@ class QuantumCircuitIBMOutputStateNode(bpy.types.Node, AnimationNode):
                     IBMQ.load_account() # needs a connection to internet! (TODO: manage exceptions)
                 except Exception as e:  # two possibilities: either not connected to internet or doesn't have an IBM account
                     error_msg = ""
-                    print(type(e).__name__)
                     for msg in e.args:
                         error_msg += msg + "\n"
-                    # time.sleep(10)
                     self.raiseErrorMessage(error_msg)
 
 
