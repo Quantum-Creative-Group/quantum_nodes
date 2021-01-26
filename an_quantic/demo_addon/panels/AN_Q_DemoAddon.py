@@ -14,6 +14,11 @@ from .. operators.DeleteTarget import DeleteTarget
 from bpy.props import PointerProperty
 from bpy.types import Panel
 
+# TODO: find a way to allow undo for the addon
+# def undo_addon_handler(scene):
+#     dm = scene.demo_manager
+#     print(dm)
+
 class AN_Q_DemoAddon(bpy.types.Panel):
     bl_idname = "AN_Q_PT_addon_demo_ui"
     bl_label = "AN_Q Demo addon"
@@ -113,6 +118,7 @@ def register():
     # (it is possible to set a poll function if needed for selected_axis)
     bpy.types.Scene.selected_axis = PointerProperty(type = SelectAxis)
     bpy.types.Scene.demo_manager = QuantumNodes_DEMO_Manager()
+    # bpy.app.handlers.undo_pre.append(undo_addon_handler)
 
 if __name__ == "__main__":
     register()
