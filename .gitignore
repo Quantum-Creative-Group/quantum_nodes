@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 an_quantic/sockets/__pycache__/__init__.cpython-38.pyc
 an_quantic/sockets/__pycache__/quantum.cpython-38.pyc
 an_quantic/__pycache__/__init__.cpython-38.pyc
@@ -126,3 +127,7 @@ an_quantic/nodes/quantum_gates/single_qubit_gates/__pycache__/gateid.cpython-37.
 an_quantic/nodes/quantum_gates/single_qubit_gates/__pycache__/gatez.cpython-37.pyc
 an_quantic/nodes/quantum_output/__pycache__/quantum_circuit_get_count.cpython-37.pyc
 an_quantic/nodes/quantum_output/__pycache__/quantum_bloch_sphere.cpython-37.pyc
+=======
+.vscode
+**/__pycache__
+>>>>>>> 9f5ecffc6f9edb503140329bbbba3bd49111eb6d
