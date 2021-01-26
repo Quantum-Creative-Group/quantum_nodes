@@ -9,9 +9,6 @@ from bpy.props import * # ...Property
 from animation_nodes.events import propertyChanged
 from animation_nodes.events import executionCodeChanged
 
- # TODO: go see how clear cache from invoke subprogram is done to run this node the same way
-
-
 class Provider():
     def __init__(self):
         self.provider = None
@@ -60,7 +57,7 @@ class QuantumCircuitIBMOutputStateNode(bpy.types.Node, AnimationNode):
         if not self.initialized:
             if IBMQ.active_account() == None:   # test if the IBMQ account is already loaded
                 try:
-                    IBMQ.enable_account("8d1a1a42b2266ae891741209ae6fc32a696df8fb4193ca47399494d0925a595fb7ff221feb127051d8fba24a2688dde9dc6958ff11ad0f1ecba1d46811725395")
+                    # IBMQ.enable_account("8d1a1a42b2266ae891741209ae6fc32a696df8fb4193ca47399494d0925a595fb7ff221feb127051d8fba24a2688dde9dc6958ff11ad0f1ecba1d46811725395")
                     IBMQ.load_account() # needs a connection to internet! (TODO: manage exceptions)
                 except Exception as e:  # two possibilities: either not connected to internet or doesn't have an IBM account
                     error_msg = ""
@@ -73,25 +70,24 @@ class QuantumCircuitIBMOutputStateNode(bpy.types.Node, AnimationNode):
             self.initialized = True
 
     def setup(self):
-        # print("setup")
-        bpy.data.node_groups["AN Tree"].autoExecution.sceneUpdate = False # Property
-        bpy.data.node_groups["AN Tree"].autoExecution.treeChanged = False # Property
-        bpy.data.node_groups["AN Tree"].autoExecution.frameChanged = False # Property
-        bpy.data.node_groups["AN Tree"].autoExecution.propertyChanged = False # Property
+        node_tree = bpy.context.space_data.edit_tree
+        node_tree.autoExecution.sceneUpdate = False
+        node_tree.autoExecution.treeChanged = False
+        node_tree.autoExecution.frameChanged = False
+        node_tree.autoExecution.propertyChanged = False
 
     def create(self):
-        #self.setup()
         self.newInput("Quantum Circuit", "Quantum Circuit", "quantum_circuit")
         self.newOutput("Generic", "Output State", "output_state")
 
     def draw(self, layout):
-        # print("draw")
         layout.prop(self, "backendMenu")
         layout.label(text = "Number of jobs remaining: " + str(self.remaining_jobs), icon = "INFO")
         self.invokeFunction(layout, "executeTree", text = "Send")
 
     def executeTree(self):
-        bpy.ops.an.execute_tree(name="AN Tree")
+        node_tree = bpy.context.space_data.edit_tree
+        node_tree.execute()
 
     def drawAdvanced(self, layout):
         layout.prop(self, "token")
