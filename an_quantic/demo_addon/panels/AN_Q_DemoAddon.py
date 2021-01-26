@@ -43,8 +43,11 @@ class AN_Q_DemoAddon(bpy.types.Panel):
         row = self.addRow(1)
         row.label(text="Target", icon="MESH_CUBE")
         row = self.addRow(1)
-        if(obj != None): row.prop(obj, "name")
-        else: row.label(text="Select a target")
+
+        # These two lines causes a crash on undo (invalid object) (segfault)
+        # if(obj != None): row.prop(obj, "name")
+        # else: row.label(text="Select a target")
+
         row.operator('object.delete_target', text = '', icon="CANCEL")
         row.operator('object.select_object', text = '', icon="EYEDROPPER")
         row = self.addRow(1)
