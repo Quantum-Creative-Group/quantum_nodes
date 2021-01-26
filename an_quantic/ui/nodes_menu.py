@@ -67,6 +67,7 @@ class QuanticExtensionMenu_Output(bpy.types.Menu):
         insertNode(layout, "an_QuantumCircuitGetCountNode", "Quantum Circuit Get Count")
         insertNode(layout, "an_QuantumCircuitOutputStateNode", "Quantum Circuit Output State")
         insertNode(layout, "an_QuantumMeasureNode", "Quantum Measure")
+        insertNode(layout, "an_QuantumCircuitIBMOutputStateNode", "Quantum Circuit IBM Output State")
 
 class QuanticExtensionMenu_Schrodinger(bpy.types.Menu):
     bl_idname = "AN_MT_quantic_schrodinger_simulation"
