@@ -27,6 +27,9 @@ class InsertNodeUI(bpy.types.Panel):
         row = box.row()
         row.operator('nodes.insert', text='Wootton QB', icon="TRACKING")
         row.operator('object.bloch_sphere_instancer', text='Bloch sphere', icon="SPHERE")
+        row = box.row()
+        row.operator('object.histogram_instancer', text='Histogram', icon="SEQ_HISTOGRAM")
+        row.operator('object.state_city_instancer', text='State City', icon="SNAP_VERTEX")
         
         box = layout.box()
         row = box.row()
