@@ -1,4 +1,5 @@
 import bpy
+from qiskit import IBMQ
 from bpy.types import Operator
 
 class QueryProps(bpy.types.PropertyGroup):
@@ -13,6 +14,7 @@ class ConnexionIBM(Operator):
     def execute(self, context):
         try:
             bpy.data.objects[self.token].select_set(True)
+            IBMQ.enable_account(self.token)
             return {'FINISHED'}
         except:
             print('Could not select object')
