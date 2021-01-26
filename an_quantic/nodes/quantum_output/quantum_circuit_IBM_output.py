@@ -57,12 +57,14 @@ class QuantumCircuitIBMOutputStateNode(bpy.types.Node, AnimationNode):
         if not self.initialized:
             if IBMQ.active_account() == None:   # test if the IBMQ account is already loaded
                 try:
-                    # IBMQ.enable_account("8d1a1a42b2266ae891741209ae6fc32a696df8fb4193ca47399494d0925a595fb7ff221feb127051d8fba24a2688dde9dc6958ff11ad0f1ecba1d46811725395")
+                    #IBMQ.enable_account("8d1a1a42b2266ae891741209ae6fc32a696df8fb4193ca47399494d0925a595fb7ff221feb127051d8fba24a2688dde9dc6958ff11ad0f1ecba1d4681172539") #8d1a1a42b2266ae891741209ae6fc32a696df8fb4193ca47399494d0925a595fb7ff221feb127051d8fba24a2688dde9dc6958ff11ad0f1ecba1d46811725395
                     IBMQ.load_account() # needs a connection to internet! (TODO: manage exceptions)
                 except Exception as e:  # two possibilities: either not connected to internet or doesn't have an IBM account
                     error_msg = ""
+                    print(type(e).__name__)
                     for msg in e.args:
                         error_msg += msg + "\n"
+                    # time.sleep(10)
                     self.raiseErrorMessage(error_msg)
 
 
@@ -99,10 +101,12 @@ class QuantumCircuitIBMOutputStateNode(bpy.types.Node, AnimationNode):
     def execute(self, quantum_circuit):
         backend = self._provider.get_provider().get_backend(self.backendMenu)   # TODO: fix --> Exception: node is not refreshable
         self.remaining_jobs = backend.remaining_jobs_count()
+        if backend.status().operational == False:
+            self.raiseErrorMessage("This system is offline for now")
         if (quantum_circuit.num_qubits > backend.configuration().n_qubits):
             self.raiseErrorMessage("This system doesn't compute enough qubits: " + str(backend.configuration().n_qubits))
         # ---execute() works but is not optimized for more important jobs
-        quantum_circuit.measure_all() # should find a way to get rid of this but it doesn't work without any measure
+        # quantum_circuit.measure_all() # should find a way to get rid of this but it doesn't work without any measure
         # job = execute(quantum_circuit, backend)
         # ---there are 2 ways of computing this (lign ahead or the two above)
         qobj = assemble(transpile(quantum_circuit, backend=backend), backend=backend)

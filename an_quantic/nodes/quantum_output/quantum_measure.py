@@ -36,13 +36,15 @@ class QuantumMeasureNode(bpy.types.Node, AnimationNode):
 
     def execute_One(self,input_quantum_circuit, qubit_index ,bit_index):
         try:
-            return input_quantum_circuit.measure(qubit_index,bit_index)
+            input_quantum_circuit.measure(qubit_index,bit_index)
+            return input_quantum_circuit
         except:
             return
 
     def execute_All(self,input_quantum_circuit):
         try:
-            return input_quantum_circuit.measure_all()
+            input_quantum_circuit.measure_all()
+            return input_quantum_circuit
         except:
             return
     
