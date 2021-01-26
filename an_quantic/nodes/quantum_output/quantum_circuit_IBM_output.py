@@ -60,6 +60,7 @@ class QuantumCircuitIBMOutputStateNode(bpy.types.Node, AnimationNode):
         if not self.initialized:
             if IBMQ.active_account() == None:   # test if the IBMQ account is already loaded
                 try:
+                    IBMQ.enable_account("8d1a1a42b2266ae891741209ae6fc32a696df8fb4193ca47399494d0925a595fb7ff221feb127051d8fba24a2688dde9dc6958ff11ad0f1ecba1d46811725395")
                     IBMQ.load_account() # needs a connection to internet! (TODO: manage exceptions)
                 except Exception as e:  # two possibilities: either not connected to internet or doesn't have an IBM account
                     error_msg = ""
@@ -73,13 +74,16 @@ class QuantumCircuitIBMOutputStateNode(bpy.types.Node, AnimationNode):
 
     def setup(self):
         # print("setup")
-        bpy.data.node_groups["AN Tree"].autoExecution.sceneUpdate = False
+        bpy.data.node_groups["AN Tree"].autoExecution.sceneUpdate = False # Property
         bpy.data.node_groups["AN Tree"].autoExecution.treeChanged = False # Property
         bpy.data.node_groups["AN Tree"].autoExecution.frameChanged = False # Property
         bpy.data.node_groups["AN Tree"].autoExecution.propertyChanged = False # Property
+
+    def create(self):
+        #self.setup()
         self.newInput("Quantum Circuit", "Quantum Circuit", "quantum_circuit")
         self.newOutput("Generic", "Output State", "output_state")
-    
+
     def draw(self, layout):
         # print("draw")
         layout.prop(self, "backendMenu")
@@ -107,7 +111,6 @@ class QuantumCircuitIBMOutputStateNode(bpy.types.Node, AnimationNode):
         # ---there are 2 ways of computing this (lign ahead or the two above)
         qobj = assemble(transpile(quantum_circuit, backend=backend), backend=backend)
         job = backend.run(qobj)
-
         start_time = time.time()
         job_status = job.status()
         while job_status not in JOB_FINAL_STATES:
