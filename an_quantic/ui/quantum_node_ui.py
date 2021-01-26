@@ -26,7 +26,7 @@ class InsertNodeUI(bpy.types.Panel):
         row.label(text="Templates", icon='EXPERIMENTAL')
         row = box.row()
         row.operator('nodes.insert', text='Wootton QB', icon="TRACKING")
-        row.operator('nodes.insert', text='Bloch Sphere', icon="SPHERE")
+        row.operator('object.bloch_sphere_instancer', text='Bloch sphere', icon="SPHERE")
         
         box = layout.box()
         row = box.row()

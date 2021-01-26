@@ -6,11 +6,7 @@ import numpy as np
 from qiskit import *
 from qiskit.visualization.utils import _bloch_multivector_data
     
-def bloch_sphere():
-    bloch_data = _bloch_multivector_data(state)
-    _theta = get_angles(bloch_data[qubit_index][0],bloch_data[qubit_index][1],bloch_data[qubit_index][2])[1]
-    _phi = get_angles(bloch_data[qubit_index][0],bloch_data[qubit_index][1],bloch_data[qubit_index][2])[2]
-    
+def bloch_sphere():   
     bpy.ops.object.select_all(action='DESELECT') #deselect all object
 
     #Sphere-------------------------------------------------------------
@@ -127,7 +123,13 @@ def bloch_sphere():
     
     #Text
     font_qubit = bpy.data.curves.new(type="FONT",name="Font Curve Qubit")
-    font_qubit.body = "qubit"+str(qubit_index)
+    ##################################################################################
+
+    # QUBIT INDEX
+
+    font_qubit.body = "qubit"+str(0)
+
+    ##################################################################################
     font_obj_qubit = bpy.data.objects.new("Font Object Qubit", font_qubit)
     font_obj_qubit.rotation_euler = (np.pi/2,0,np.pi*(3/4))
     font_obj_qubit.scale = (0.5,0.5,0.5)
