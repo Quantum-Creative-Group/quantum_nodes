@@ -7,7 +7,6 @@ from qiskit import *
 from qiskit.visualization.utils import _bloch_multivector_data
 
 def plot_histograme(): 
-    
     #data
     nb_cubes = 2
     X = 3.2
@@ -18,33 +17,6 @@ def plot_histograme():
     size = 3
     
     bpy.ops.object.select_all(action='DESELECT') #deselect all object
-
-    #Cubes-------------------------------------------------------------
-    mesh_cube = bpy.data.meshes.new('Cube')
-    cube = bpy.data.objects.new("Cube", mesh_cube)
-    material_cube = bpy.data.materials.new("MyMaterialCube")
-    material_cube.diffuse_color = (0., 0., 1., 0.9)
-    mesh_cube.materials.append(material_cube)
-    
-    bpy.context.collection.objects.link(cube)
-    bpy.context.view_layer.objects.active = cube
-    cube.select_set(True)
-
-    bm = bmesh.new()
-    for i in range (nb_cubes) :
-        scale = counts[keys[i]]/myshots
-        resize = 0.5/(scale*size)
-        if (i != 0):
-            bmesh.ops.translate(bm, verts = bm.verts, vec = mathutils.Vector((0.0, 1.0, 0.0)))
-            bmesh.ops.scale(bm, verts = bm.verts, vec = mathutils.Vector((1/resize, 1/resize, 1)))
-            bmesh.ops.translate(bm, verts = bm.verts, vec = mathutils.Vector((0.0, 0.0, (-scale*size)/2)))
-        bmesh.ops.create_cube(bm, size=scale*size)
-        bmesh.ops.scale(bm, verts = bm.verts, vec = mathutils.Vector((resize, resize, 1.)))
-        bmesh.ops.translate(bm, verts = bm.verts, vec = mathutils.Vector((0.0, 0.0, (scale*size)/2)))   
-    bmesh.ops.translate(bm, verts = bm.verts, vec = mathutils.Vector((0.0, 0.5, 0.0))) 
-    bm.to_mesh(mesh_cube)
-    bm.free()
-    #--------------------------------------------------------------------
 
     #Faces-------------------------------------------------------------
     mesh_faces = bpy.data.meshes.new('Faces')
