@@ -6,15 +6,9 @@ import numpy as np
 from qiskit import *
 from qiskit.quantum_info.states import DensityMatrix
 
-def plot_state_city():
-    rho = DensityMatrix(state)
-    num = rho.num_qubits
-    if num is None:
-        raise VisualizationError("Input is not a multi-qubit quantum state.")
-        
+def plot_state_city():      
     # data
-    datareal = np.real(rho.data)
-    nb_cubes = len(datareal)
+    nb_cubes = 4
     
     # dimensions
     #                 Z
@@ -33,44 +27,8 @@ def plot_state_city():
     Z = nb_cubes + 0.5
     T = 0.01
     H = 0.25
-    column_names = [bin(i)[2:].zfill(num) for i in range(2**num)]
-    row_names = [bin(i)[2:].zfill(num) for i in range(2**num)]
-    bpy.ops.object.select_all(action='DESELECT') #deselect all object
 
-    #Cubes-------------------------------------------------------------
-    material_cube = bpy.data.materials.new("MyMaterialCube")
-    material_cube.diffuse_color = (0.45, 0.258, 0.784, 1.)
-    
-    for i in range (nb_cubes):
-        mesh_cube = bpy.data.meshes.new('Cube')
-        cube = bpy.data.objects.new("Cube", mesh_cube)
-        mesh_cube.materials.append(material_cube)
-        
-        bpy.context.collection.objects.link(cube)
-        bpy.context.view_layer.objects.active = cube
-        cube.select_set(True)
-        bm = bmesh.new()
-        print (nb_cubes)
-        for j in range (nb_cubes):
-            scale = datareal[i][nb_cubes-j-1]
-            if(scale == 0):
-                resize = 0.5/0.001
-                cube_size = 0.001
-            else:
-                cube_size = scale*size
-                resize = 0.5/cube_size
-            translate = cube_size/2
-            if (j != 0):
-                bmesh.ops.translate(bm, verts = bm.verts, vec = mathutils.Vector((-1.0, 0.0, 0.0)))
-                bmesh.ops.scale(bm, verts = bm.verts, vec = mathutils.Vector((1/resize, 1/resize, 1)))
-                bmesh.ops.translate(bm, verts = bm.verts, vec = mathutils.Vector((0.0, 0.0, -translate)))
-            bmesh.ops.create_cube(bm, size=cube_size)
-            bmesh.ops.scale(bm, verts = bm.verts, vec = mathutils.Vector((resize, resize, 1.)))
-            bmesh.ops.translate(bm, verts = bm.verts, vec = mathutils.Vector((0.0, 0.0, translate)))   
-        bmesh.ops.translate(bm, verts = bm.verts, vec = mathutils.Vector((-0.5, i+0.5, size))) 
-        bm.to_mesh(mesh_cube)
-        bm.free()
-    #--------------------------------------------------------------------
+    bpy.ops.object.select_all(action='DESELECT') #deselect all object
     
     #Faces-------------------------------------------------------------
     mesh_faces = bpy.data.meshes.new('Faces')
@@ -267,61 +225,10 @@ def plot_state_city():
         bpy.context.view_layer.objects.active = text_objects_left["font_obj_{0}".format(i)]
         text_objects_left["font_obj_{0}".format(i)].select_set(True)
         
-    curves_resuts_right = {}
-    text_objects_resuts_right = {}
-    for i in range (nb_cubes):
-        curves_resuts_right["font_curve_{0}".format(i)] = bpy.data.curves.new(type="FONT",name="Font Curve" +str(i))
-        curves_resuts_right["font_curve_{0}".format(i)].body = column_names[i]
-        text_objects_resuts_right["font_obj_{0}".format(i)] = bpy.data.objects.new("Font Object"+str(i), curves_resuts_right["font_curve_{0}".format(i)])
-        text_objects_resuts_right["font_obj_{0}".format(i)].rotation_euler = (0,0,np.pi)
-        text_objects_resuts_right["font_obj_{0}".format(i)].scale = (0.3,0.3,0.3)
-        text_objects_resuts_right["font_obj_{0}".format(i)].location = ((0.2)*num+0.5,i*((Y-0.5)/nb_cubes)+0.6,0.0)
-        bpy.context.collection.objects.link(text_objects_resuts_right["font_obj_{0}".format(i)])
-        bpy.context.view_layer.objects.active = text_objects_resuts_right["font_obj_{0}".format(i)]
-        text_objects_resuts_right["font_obj_{0}".format(i)].select_set(True)
-        
-    curves_resuts_right = {}
-    text_objects_resuts_right = {}
-    for i in range (nb_cubes):
-        curves_resuts_right["font_curve_{0}".format(i)] = bpy.data.curves.new(type="FONT",name="Font Curve" +str(i))
-        curves_resuts_right["font_curve_{0}".format(i)].body = column_names[i]
-        text_objects_resuts_right["font_obj_{0}".format(i)] = bpy.data.objects.new("Font Object"+str(i), curves_resuts_right["font_curve_{0}".format(i)])
-        text_objects_resuts_right["font_obj_{0}".format(i)].rotation_euler = (0,0,np.pi)
-        text_objects_resuts_right["font_obj_{0}".format(i)].scale = (0.3,0.3,0.3)
-        text_objects_resuts_right["font_obj_{0}".format(i)].location = ((0.2)*num+0.5,i*((Y-0.5)/nb_cubes)+0.6,X/2)
-        bpy.context.collection.objects.link(text_objects_resuts_right["font_obj_{0}".format(i)])
-        bpy.context.view_layer.objects.active = text_objects_resuts_right["font_obj_{0}".format(i)]
-        text_objects_resuts_right["font_obj_{0}".format(i)].select_set(True)
-        
-    curves_resuts_right = {}
-    text_objects_resuts_right = {}
-    for i in range (nb_cubes):
-        curves_resuts_right["font_curve_{0}".format(i)] = bpy.data.curves.new(type="FONT",name="Font Curve" +str(i))
-        curves_resuts_right["font_curve_{0}".format(i)].body = row_names[i]
-        text_objects_resuts_right["font_obj_{0}".format(i)] = bpy.data.objects.new("Font Object"+str(i), curves_resuts_right["font_curve_{0}".format(i)])
-        text_objects_resuts_right["font_obj_{0}".format(i)].rotation_euler = (0,0,-np.pi/2)
-        text_objects_resuts_right["font_obj_{0}".format(i)].scale = (0.3,0.3,0.3)
-        text_objects_resuts_right["font_obj_{0}".format(i)].location = (-i*((Y-0.5)/nb_cubes)-0.6,Z+((0.3)*num+0.5)/2,0.0)
-        bpy.context.collection.objects.link(text_objects_resuts_right["font_obj_{0}".format(i)])
-        bpy.context.view_layer.objects.active = text_objects_resuts_right["font_obj_{0}".format(i)]
-        text_objects_resuts_right["font_obj_{0}".format(i)].select_set(True)
-        
-    curves_resuts_right = {}
-    text_objects_resuts_right = {}
-    for i in range (nb_cubes):
-        curves_resuts_right["font_curve_{0}".format(i)] = bpy.data.curves.new(type="FONT",name="Font Curve" +str(i))
-        curves_resuts_right["font_curve_{0}".format(i)].body = row_names[i]
-        text_objects_resuts_right["font_obj_{0}".format(i)] = bpy.data.objects.new("Font Object"+str(i), curves_resuts_right["font_curve_{0}".format(i)])
-        text_objects_resuts_right["font_obj_{0}".format(i)].rotation_euler = (0,0,-np.pi/2)
-        text_objects_resuts_right["font_obj_{0}".format(i)].scale = (0.3,0.3,0.3)
-        text_objects_resuts_right["font_obj_{0}".format(i)].location = (-i*((Y-0.5)/nb_cubes)-0.6,Z+((0.3)*num+0.5)/2,X/2)
-        bpy.context.collection.objects.link(text_objects_resuts_right["font_obj_{0}".format(i)])
-        bpy.context.view_layer.objects.active = text_objects_resuts_right["font_obj_{0}".format(i)]
-        text_objects_resuts_right["font_obj_{0}".format(i)].select_set(True)
-        
     bpy.context.view_layer.objects.active = faces 
     bpy.ops.object.join()
-    #bpy.ops.object.parent_set()
+    bpy.ops.object.parent_set()
+
 
 quantumtest2 = QuantumCircuit(5) 
 quantumtest2.rx(3,0)
