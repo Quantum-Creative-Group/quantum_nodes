@@ -12,7 +12,7 @@ class QuantumMeasureNode(bpy.types.Node, AnimationNode):
     bl_idname = "an_QuantumMeasureNode"
     bl_label = "Quantum Measure"
 
-    mode = EnumProperty(name = "Mode", default = "ONE",
+    mode : EnumProperty(name = "Mode", default = "ONE",
         items = modeItems, update = AnimationNode.refresh)
 
     def create(self):
