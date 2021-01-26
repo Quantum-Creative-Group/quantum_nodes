@@ -2,6 +2,8 @@ import bpy
 from animation_nodes.ui.node_menu import insertNode
 from animation_nodes.utils.nodes import getAnimationNodeTrees
 from .. node_templates.template1 import *
+from . nodes_menu import *
+from .. demo_addon.operators.ConnexionIBM import *
 
 
 
@@ -17,6 +19,9 @@ class InsertNodeUI(bpy.types.Panel):
         
         box = layout.box()
 
+        pcoll = preview_collections["main"]
+        qubit = pcoll["qubit"]
+
         row = box.row()
         row.label(text="Templates", icon='EXPERIMENTAL')
         row = box.row()
@@ -28,7 +33,7 @@ class InsertNodeUI(bpy.types.Panel):
         row.label(text="Nodes", icon='NODE')
         row = box.row()
         row.menu("AN_MT_quantic_gates", text = "Gates", icon = "SHADING_BBOX")
-        row.menu("AN_MT_quantic_complex", text = "Complex Nb", icon = "MESH_UVSPHERE")
+        row.menu("AN_MT_quantic_complex", text = "Complex Nb", icon_value=qubit.icon_id)
         row = box.row()
         row.menu("AN_MT_quantic_qu_heightmap", text = "Heightmap", icon = "ORIENTATION_VIEW")
         row.menu("AN_MT_quantic_init_qu_circuit", text = "Init Circuit", icon = "KEYINGSET")
@@ -39,6 +44,24 @@ class InsertNodeUI(bpy.types.Panel):
 
         row = layout.row()
         row = layout.row()
+
+
+
+        props = bpy.context.scene.QueryProps
+
+        col = layout.column(align=True)
+        rowsub = col.row(align=True)
+
+        rowsub.label(text="Enter your IBM Account token", icon="PREFERENCES")
+
+        rowsub = col.row(align=True)
+        rowsub.prop(props, "query", text="")
+        rowsub.operator("object.connexion_ibm", text="Query")
+
+
+
+
+
         row = layout.row()
         row = layout.row()
         
@@ -51,6 +74,7 @@ def create_quantum_node_tree(context, operator, gp_name):
     
     return QuantumTree
 
+preview_collections = {}
 
 class InsertNodeOP(bpy.types.Operator):
     bl_idname = "nodes.insert"
@@ -82,3 +106,26 @@ class InsertNodeOP(bpy.types.Operator):
 
 #def unregister():
     #bpy.types.NODE_MT_add.remove(drawMenu)
+
+def register():
+    import bpy.utils.previews
+    pcoll = bpy.utils.previews.new()
+
+    # path to the folder where the icon is
+    # the path is calculated relative to this py file inside the addon folder
+    my_icons_dir = os.path.join(os.path.dirname(__file__), "icons")
+
+    # load a preview thumbnail of a file and store in the previews collection
+    pcoll.load("my_icon", os.path.join(my_icons_dir, "discord.png"), 'IMAGE')
+    pcoll.load("addon_logo", os.path.join(my_icons_dir, "addon_logo.png"), 'IMAGE')
+    pcoll.load("qubit", os.path.join(my_icons_dir, "qubit.png"), 'IMAGE')
+
+    preview_collections["main"] = pcoll
+
+    bpy.types.Scene.QueryProps = bpy.props.PointerProperty(type=QueryProps)
+
+def unregister():
+    for pcoll in preview_collections.values():
+        bpy.utils.previews.remove(pcoll)
+    preview_collections.clear()
+    del(bpy.types.Scene.QueryProps)
