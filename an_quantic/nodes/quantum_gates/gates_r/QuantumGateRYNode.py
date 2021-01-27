@@ -1,12 +1,12 @@
 import bpy
-from qiskit import *
+from qiskit import execute
 from math import pi
 from animation_nodes.base_types import AnimationNode
 from bpy.types import Node
 
-class QuantumGateRZNode(Node, AnimationNode):
-    bl_idname = "an_QuantumGateRZNode"
-    bl_label = "Quantum Gate RZ"
+class QuantumGateRYNode(Node, AnimationNode):
+    bl_idname = "an_QuantumGateRYNode"
+    bl_label = "Quantum Gate RY"
     errorHandlingType = "EXCEPTION"
 
     def create(self):
@@ -19,7 +19,7 @@ class QuantumGateRZNode(Node, AnimationNode):
         if qubit_index >= input.num_qubits:
             self.raiseErrorMessage("The qubit index must be lower than " + str(input.num_qubits))
         try:
-            input.rz(angle,qubit_index)
+            input.ry(angle,qubit_index)
             return input
         except:
             return
