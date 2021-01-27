@@ -1,7 +1,7 @@
 import bpy
 from bpy.types import Operator
 from bpy.props import StringProperty
-from .. visualization.bloch_sphere_visualization import bloch_sphere
+from ... visualization.empty_graphs.plotEmptyBlochSphere import plotEmptyBlochSphere
 
 class BlochSphereInstancer(Operator):
     bl_idname = "object.bloch_sphere_instancer"
@@ -9,5 +9,5 @@ class BlochSphereInstancer(Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
-        bloch_sphere()
+        plotEmptyBlochSphere()
         return{'FINISHED'}

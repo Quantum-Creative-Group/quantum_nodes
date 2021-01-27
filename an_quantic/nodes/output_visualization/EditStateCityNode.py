@@ -6,7 +6,7 @@ import numpy as np
 from qiskit import *
 import math
 from animation_nodes.base_types import AnimationNode
-from .. visualization.state_city_visualization import edit_state_city
+from ... visualization.utils.editStateCity import editStateCity
 
 class EditStateCityNode(bpy.types.Node, AnimationNode):
     bl_idname = "an_EditStateCityNode"
@@ -30,6 +30,6 @@ class EditStateCityNode(bpy.types.Node, AnimationNode):
             for i in range (len(state_city.children)):
                 bpy.data.objects.remove(state_city.children[0])
             bpy.data.objects.remove(state_city)
-            edit_state_city(parent,out_state)       
+            editStateCity(parent,out_state)       
         except:
             return

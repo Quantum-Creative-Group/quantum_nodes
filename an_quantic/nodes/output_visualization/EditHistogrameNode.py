@@ -6,7 +6,7 @@ import numpy as np
 from qiskit import *
 import math
 from animation_nodes.base_types import AnimationNode
-from .. visualization.histograme_visualization import edit_plot_histograme
+from ... visualization.utils.editHistogram import editHistogram
 
 class EditHistogrameNode(bpy.types.Node, AnimationNode):
     bl_idname = "an_EditHistogrameNode"
@@ -32,6 +32,6 @@ class EditHistogrameNode(bpy.types.Node, AnimationNode):
             for i in range (len(histograme.children)):
                 bpy.data.objects.remove(histograme.children[0])
             bpy.data.objects.remove(histograme)
-            edit_plot_histograme(parent, counts, shots)       
+            editHistogram(parent, counts, shots)       
         except:
             return

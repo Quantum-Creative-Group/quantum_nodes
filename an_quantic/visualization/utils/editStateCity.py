@@ -6,12 +6,11 @@ import numpy as np
 from qiskit import *
 from qiskit.quantum_info.states import  DensityMatrix
 
-
-def edit_state_city(parent, state):
+def editStateCity(parent, state):
     rho = DensityMatrix(state)
     num = rho.num_qubits
     if num is None:
-        raise VisualizationError("Input is not a multi-qubit quantum state.")
+        raise RuntimeError("Input is not a multi-qubit quantum state.")
         
     # data
     datareal = np.real(rho.data)

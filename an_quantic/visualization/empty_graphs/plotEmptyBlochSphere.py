@@ -6,7 +6,7 @@ import numpy as np
 from qiskit import *
 from qiskit.visualization.utils import _bloch_multivector_data
     
-def bloch_sphere():   
+def plotEmptyBlochSphere():   
     bpy.ops.object.select_all(action='DESELECT') #deselect all object
 
     #Sphere-------------------------------------------------------------

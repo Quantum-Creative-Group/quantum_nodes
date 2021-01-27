@@ -1,7 +1,7 @@
 import bpy
 from bpy.types import Operator
 from bpy.props import StringProperty
-# from .. visualization.bloch_sphere_visualization import bloch_sphere
+from ... visualization.empty_graphs.plotEmptyStateCity import plotEmptyStateCity
 
 class StateCityInstancer(Operator):
     bl_idname = "object.state_city_instancer"
@@ -9,5 +9,5 @@ class StateCityInstancer(Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
-        print("Et voilà, un nouveau state city !")
+        plotEmptyStateCity()
         return{'FINISHED'}

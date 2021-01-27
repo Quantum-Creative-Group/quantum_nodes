@@ -6,7 +6,7 @@ import numpy as np
 from qiskit import *
 from qiskit.quantum_info.states import DensityMatrix
 
-def plot_state_city():      
+def plotEmptyStateCity():      
     # data
     nb_cubes = 4
     

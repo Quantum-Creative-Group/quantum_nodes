@@ -6,7 +6,7 @@ import numpy as np
 from qiskit import *
 from qiskit.visualization.utils import _bloch_multivector_data
 
-def edit_plot_histograme(parent, _counts, _shots): 
+def editHistogram(parent, _counts, _shots): 
     #data
     keys = list(_counts)
     nb_cubes = len(keys)

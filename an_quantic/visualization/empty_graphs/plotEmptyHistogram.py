@@ -6,7 +6,7 @@ import numpy as np
 from qiskit import *
 from qiskit.visualization.utils import _bloch_multivector_data
 
-def plot_histograme(): 
+def plotEmptyHistogram(): 
     #data
     nb_cubes = 2
     X = 3.2
