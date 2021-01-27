@@ -1,7 +1,7 @@
 import bpy
 from bpy.props import *
 from qiskit import *
-from .. base_types import AnimationNodeSocket, PythonListSocket
+from animation_nodes.base_types import AnimationNodeSocket, PythonListSocket
 
 class QuantumCountSocket(bpy.types.NodeSocket, AnimationNodeSocket):
     bl_idname = "an_QuantumCountSocket"

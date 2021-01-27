@@ -1,11 +1,7 @@
 import bpy
 from qiskit import IBMQ
 from bpy.types import Operator
-
-class QueryProps(bpy.types.PropertyGroup):
-    error_msg: bpy.props.StringProperty(default="")
-    connected: bpy.props.BoolProperty(default=False)
-    query: bpy.props.StringProperty(default="")
+from .. properties.QueryProperties import QueryProps
     
 class ConnexionIBM(Operator):
     bl_idname = "object.connexion_ibm"
