@@ -1,8 +1,7 @@
 import bpy
-from mathutils import Vector
-from qiskit import *
-from ... lib.quantumblur import *
+from ... lib.quantumblur import height2circuit
 from animation_nodes.base_types import AnimationNode
+from math import ceil, sqrt
 
 class HeightmapToQuantumCircuitNode(bpy.types.Node, AnimationNode):
     bl_idname = "an_HeightmapToQuantumCircuitNode"
@@ -13,11 +12,10 @@ class HeightmapToQuantumCircuitNode(bpy.types.Node, AnimationNode):
         self.newOutput("Quantum Circuit", "Quantum Circuit", "quantum_circuit")
 
     def execute(self, floats):
-        if floats == [] :
+        if floats == []:
             return 0
-        # heights = _image2heights(image)
         dictFloats = {}
-        n = int(math.ceil(math.sqrt(len(floats))))
+        n = int(ceil(sqrt(len(floats))))
         iterator = 0
         for i in range(n):
             for j in range(n):
@@ -27,7 +25,4 @@ class HeightmapToQuantumCircuitNode(bpy.types.Node, AnimationNode):
                     dictFloats[i,j] = 0.0
                 iterator += 1
         circuit = height2circuit(dictFloats)
-
         return circuit
-
-        

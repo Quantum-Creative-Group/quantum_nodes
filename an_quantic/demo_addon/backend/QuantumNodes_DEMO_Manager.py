@@ -30,8 +30,7 @@ class QuantumNodes_DEMO_Manager():
         """
         Builds the demo node tree and links the target to the tree
         """
-        bpy.ops.ed.undo_push()
-        if(not self.nt_initialized):
+        if not self.nt_initialized:
             self.ntm.generateNodeTree(self.target)
             self.nt_initialized = True
 
@@ -39,10 +38,9 @@ class QuantumNodes_DEMO_Manager():
         """
         Sets the new target and resets everything (circuits in the UI + node trees)
         """
-        bpy.ops.ed.undo_push()
-        # resets circuits
+        # Resets circuits
         self.resetCircuits()
-        # sets new target
+        # Sets new target
         self.setNewCircuits(new_target)
         self.target = new_target
         self.ntm.updateTarget(new_target)
@@ -52,8 +50,7 @@ class QuantumNodes_DEMO_Manager():
         Sets the new circuit
         The size depends on the number of vertices of the target
         """
-        bpy.ops.ed.undo_push()
-        self.nb_qubits = int(math.ceil(math.log(len(obj.data.vertices))/math.log(2)))
+        self.nb_qubits = int(math.ceil(math.log(len(obj.data.vertices)) / math.log(2)))
         for circuit_name in list(self.circuits.keys()): self.circuits[circuit_name] = CircuitManager(self.nb_qubits, self.max_gates)
         self.ntm.last_circuits = copy.deepcopy(self.circuits)
     
@@ -71,7 +68,7 @@ class QuantumNodes_DEMO_Manager():
         bpy.ops.ed.undo_push()
         for circuit_name in list(self.circuits.keys()):
             circuit = self.circuits[circuit_name]
-            if(circuit != None):
+            if circuit != None:
                 circuit.reset()
                 self.ntm.resetAllGates()
     

@@ -1,7 +1,6 @@
 import bpy
-from bpy.props import *
 from qiskit import ClassicalRegister
-from .. base_types import AnimationNodeSocket, PythonListSocket
+from animation_nodes.base_types import AnimationNodeSocket, PythonListSocket
 
 class ClassicalRegisterSocket(bpy.types.NodeSocket, AnimationNodeSocket):
     bl_idname = "an_ClassicalRegisterSocket"

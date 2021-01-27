@@ -1,7 +1,6 @@
 import bpy
-from bpy.props import *
 from qiskit import QuantumRegister
-from .. base_types import AnimationNodeSocket, PythonListSocket
+from animation_nodes.base_types import AnimationNodeSocket, PythonListSocket
 
 class QuantumRegisterSocket(bpy.types.NodeSocket, AnimationNodeSocket):
     bl_idname = "an_QuantumRegisterSocket"
@@ -24,7 +23,6 @@ class QuantumRegisterSocket(bpy.types.NodeSocket, AnimationNodeSocket):
         if isinstance(value, QuantumRegister):
             return value, 0
         return cls.getDefaultValue(), 2
-
 
 class QuantumRegisterListSocket(bpy.types.NodeSocket, PythonListSocket):
     bl_idname = "an_QuantumRegisterListSocket"

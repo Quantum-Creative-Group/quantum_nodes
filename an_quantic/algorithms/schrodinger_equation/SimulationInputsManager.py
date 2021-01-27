@@ -21,20 +21,20 @@ class SimulationInputsManager:
 		d 		- float 	- duration of the simulation
 		dt 		- float 	- simulation time spent for each second of animation
 		"""
-		self._dimension = dim
-		self._size = size
-		self._step = size/dim
-		self._center = center
-		self._number_of_waves = n_o_w
-		self._spreading = spr
+		self.dimension = dim
+		self.size = size
+		self.step = size/dim
+		self.center = center
+		self.number_of_waves = n_o_w
+		self.spreading = spr
 		try:
 			self.setPotential(pot)
 			self.setObstacle(obs)
 		except Exception as e:
 			raise e from e
-		self._frame_rate = fr
-		self._duration = d
-		self._delta_t = dt/fr
+		self.frame_rate = fr
+		self.duration = d
+		self.delta_t = dt/fr
 
 	def hasChanged(self, dim, size, center, n_o_w, spr, pot, obs, fr, d, dt):
 		"""
@@ -43,9 +43,9 @@ class SimulationInputsManager:
 		same as __init__ method
 		"""
 		new_inputs = [dim, size, center, n_o_w, spr, pot, obs, fr, d, dt/fr]
-		current_inputs = [self._dimension, self._size, self._center, self._number_of_waves,\
-						  self._spreading, self._potential_expr, self._obstacle_expr, self._frame_rate,\
-						  self._duration, self._delta_t]
+		current_inputs = [self.dimension, self.size, self.center, self.number_of_waves,\
+						  self.spreading, self.potential_expr, self.obstacle_expr, self.frame_rate,\
+						  self.duration, self.delta_t]
 		return not(all(new_inputs[i] == current_inputs[i] for i in range(np.size(current_inputs))))
 
 	@classmethod
@@ -60,10 +60,10 @@ class SimulationInputsManager:
 			raise ValueError("ERROR::SimulationInputsManager::__verifyPotentialExpr()\nUnable to evaluate the given expression")
 	
 	def setPotential(self, expr):
-		if(self.__verifyPotentialExpr(expr)):
-			self._potential_expr = expr
+		if self.__verifyPotentialExpr(expr):
+			self.potential_expr = expr
 		else:
-			self._potential_expr = "0"
+			self.potential_expr = "0"
 
 	@classmethod
 	def __verifyObstacleExpr(cls, expr):
@@ -77,20 +77,20 @@ class SimulationInputsManager:
 			raise ValueError("ERROR::SimulationInputsManager::__verifyObstacleExpr()\nUnable to evaluate the given expression")
 	
 	def setObstacle(self, expr):
-		if(self.__verifyObstacleExpr(expr)):
-			self._obstacle_expr = expr
+		if self.__verifyObstacleExpr(expr):
+			self.obstacle_expr = expr
 		else:
-			self._obstacle_expr = "False"
+			self.obstacle_expr = "False"
 	
 	def isObstacle(self, x, y):
-		if(self.__verifyObstacleExpr(self._obstacle_expr)):
-			return eval(self._obstacle_expr)
+		if self.__verifyObstacleExpr(self.obstacle_expr):
+			return eval(self.obstacle_expr)
 		else:
 			return False
 	
 	def getPotential(self, x, y):
-		if(self.__verifyPotentialExpr(self._potential_expr)):
-			return eval(self._potential_expr)
+		if self.__verifyPotentialExpr(self.potential_expr):
+			return eval(self.potential_expr)
 		else:
 			return 0 + 0j
 

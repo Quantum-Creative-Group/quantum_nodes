@@ -12,4 +12,4 @@ class AddGateButton(Operator):
         dm = bpy.types.Scene.demo_manager
         dm.getSelectedCircuit().pushGate(bpy.types.Object.select_index, self.text)
         dm.updateNodeTree()
-        return{'FINISHED'}
+        return {'FINISHED'}

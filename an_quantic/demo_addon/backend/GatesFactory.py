@@ -15,7 +15,7 @@ class GatesFactory:
         existing_gates = self.getExistingGates(circuit_tree)
         nb_existing_gates = len(existing_gates)
         location = (self.start_loc_left + self.spacing + nb_existing_gates * self.spacing, 0)
-        if(nb_existing_gates > 0):
+        if nb_existing_gates > 0:
             gate_index = nb_existing_gates
             inp = existing_gates[-1]
         else:
@@ -26,12 +26,12 @@ class GatesFactory:
         c2h = circuit_tree.nodes[self.demo_id + "qu_cir_to_hmap" + circuit_id]
         grp_out = circuit_tree.nodes[self.demo_id + "grp_out" + circuit_id]
         # TODO: not sure that this code should be here (spacing management)
-        if(nb_existing_gates + 1 > (c2h.location[0] - h2c.location[0])/self.spacing):
-            # moves to the right the output nodes so the node tree is still readable
+        if nb_existing_gates + 1 > (c2h.location[0] - h2c.location[0])/self.spacing:
+            # Moves to the right the output nodes so the node tree is still readable
             c2h.location[0] += self.spacing
             grp_out.location[0] += self.spacing
-        elif((c2h.location[0] - h2c.location[0])/self.spacing > nb_existing_gates + 1):
-            # if there is more space than needed
+        elif (c2h.location[0] - h2c.location[0]) / self.spacing > nb_existing_gates + 1:
+            # If there is more space than needed
             nb_del_space = int((c2h.location[0] - h2c.location[0])/self.spacing - (nb_existing_gates + 1))
             for i in range(nb_del_space):
                 c2h.location[0] -= self.spacing
@@ -46,6 +46,6 @@ class GatesFactory:
         """
         existing_gates = []
         for node in circuit_tree.nodes:
-            if("gate" in node.name):
+            if "gate" in node.name:
                 existing_gates.append(node)
         return existing_gates
