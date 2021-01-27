@@ -2,7 +2,7 @@ from bpy.types import (Menu)
 
 from animation_nodes.ui.node_menu import insertNode
 
-class QuanticExtensionMenu_Circuit(Menu):
+class CircuitsSubmenu(Menu):
     bl_idname = "AN_MT_quantic_init_qu_circuit"
     bl_label = "Init Quantum Circuit"
     

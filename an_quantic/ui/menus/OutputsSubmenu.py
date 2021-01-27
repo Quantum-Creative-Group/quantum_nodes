@@ -2,7 +2,7 @@ from bpy.types import (Menu)
 
 from animation_nodes.ui.node_menu import insertNode
 
-class QuanticExtensionMenu_Output(Menu):
+class OutputsSubmenu(Menu):
     bl_idname = "AN_MT_quantic_qu_output"
     bl_label = "Quantum Output"
     

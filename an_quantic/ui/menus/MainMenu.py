@@ -1,18 +1,13 @@
 import bpy, os
 import bpy.utils.previews
-
-from bpy.types import (Menu)
-import bpy.utils.previews
-
-from typing import Optional
-
+from bpy.types import Menu
 from animation_nodes.ui.node_menu import insertNode
 from animation_nodes.utils.nodes import getAnimationNodeTrees
 
 def drawMenu(self, context):
     pcoll = preview_collections["main"]
     my_icon = pcoll["my_icon"]
-    
+
     if context.space_data.tree_type != "an_AnimationNodeTree": return
 
     layout = self.layout
@@ -21,16 +16,14 @@ def drawMenu(self, context):
     if len(getAnimationNodeTrees()) == 0: return
 
     layout.separator()
-    layout.menu("AN_MT_quantic_extension_menu", text = "Quantic Extension Menu", icon_value=my_icon.icon_id)
+    layout.menu("AN_MT_quantic_extension_menu", text = "Quantic Extension Menu", icon_value = my_icon.icon_id)
 
-class QuanticExtensionMenu(Menu):
+class MainMenu(Menu):
     bl_idname = "AN_MT_quantic_extension_menu"
     bl_label = "Quantic Extension Menu"
     
-
     def draw(self, context):
         layout = self.layout
-
         layout.menu("AN_MT_quantic_gates", text = "Quantum Gates", icon = "SHADING_BBOX")
         layout.menu("AN_MT_quantic_complex", text = "Complex Numbers", icon = "MESH_UVSPHERE")
         layout.separator()

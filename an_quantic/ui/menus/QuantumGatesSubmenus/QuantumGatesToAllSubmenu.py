@@ -2,7 +2,7 @@ from bpy.types import (Menu)
 
 from animation_nodes.ui.node_menu import insertNode
 
-class QuanticExtensionMenu_Gates_to_all(Menu):
+class QuantumGatesToAllSubmenu(Menu):
     bl_idname = "AN_MT_quantic_gates_to_all"
     bl_label = "Gates_To_All"
     
