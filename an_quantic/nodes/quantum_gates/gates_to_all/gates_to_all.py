@@ -1,11 +1,11 @@
 import bpy
-from qiskit import *
+from qiskit import execute
 from animation_nodes.base_types import AnimationNode
 from bpy.types import Node
 
 class QuantumGateSToAllNode(Node, AnimationNode):
     bl_idname = "an_QuantumGateSToAllNode"
-    bl_label = "Quantum Gate S To All Circuit"
+    bl_label = "Quantum Gate S to All Circuit"
 
     def create(self):
         self.newInput("Quantum Circuit", "Input Circuit", "input")

@@ -16,8 +16,8 @@ class QuantumGateRZNode(Node, AnimationNode):
         self.newOutput("Quantum Circuit", "Output Circuit", "output")
 
     def execute(self, input, angle, qubit_index):
-        if (qubit_index >= input.num_qubits) :
-            self.raiseErrorMessage("The qubit index must lower than " + str(input.num_qubits))
+        if qubit_index >= input.num_qubits:
+            self.raiseErrorMessage("The qubit index must be lower than " + str(input.num_qubits))
         try:
             input.rz(angle,qubit_index)
             return input

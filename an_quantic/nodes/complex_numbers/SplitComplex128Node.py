@@ -9,7 +9,6 @@ class SplitComplex128Node(Node, AnimationNode):
 
     def create(self):
         self.newInput("Complex128", "Complex128", "complex128")
-
         self.newOutput("Float", "Real part", "real_part")
         self.newOutput("Float", "Imaginary part", "imaginary_part")
 

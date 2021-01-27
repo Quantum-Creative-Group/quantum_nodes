@@ -1,5 +1,5 @@
 import bpy
-from qiskit import *
+from qiskit import execute
 from animation_nodes.base_types import AnimationNode
 from bpy.types import Node
 
@@ -16,19 +16,19 @@ class QuantumGateCCXNode(Node, AnimationNode):
         self.newOutput("Quantum Circuit", "Output Circuit", "output")
 
     def execute(self, input, controle_qubit_1, controle_qubit_2, target_qubit):
-        if (input.num_qubits < 3) :
-            self.raiseErrorMessage("They has to be at least three qubits in the circuit to use this gate")
-        if (controle_qubit_1 >= input.num_qubits ) :
-            self.raiseErrorMessage("The first controle qubit index must lower than " + str(input.num_qubits))
-        if (controle_qubit_2 >= input.num_qubits ) :
-            self.raiseErrorMessage("The second controle qubit index must lower than " + str(input.num_qubits))
-        if (target_qubit >= input.num_qubits ) :
-            self.raiseErrorMessage("The target qubit index must lower than " + str(input.num_qubits))
-        if (controle_qubit_1==controle_qubit_2) :
-            self.raiseErrorMessage("The two controle qubits must be differents")
-        if (controle_qubit_1==target_qubit) :
+        if input.num_qubits < 3:
+            self.raiseErrorMessage("There has to be at least three qubits in the circuit to use this gate")
+        if controle_qubit_1 >= input.num_qubits:
+            self.raiseErrorMessage("The first controle qubit index must be lower than " + str(input.num_qubits))
+        if controle_qubit_2 >= input.num_qubits:
+            self.raiseErrorMessage("The second controle qubit index must be lower than " + str(input.num_qubits))
+        if target_qubit >= input.num_qubits:
+            self.raiseErrorMessage("The target qubit index must be lower than " + str(input.num_qubits))
+        if controle_qubit_1 == controle_qubit_2:
+            self.raiseErrorMessage("The two controle qubits must be different")
+        if controle_qubit_1 == target_qubit:
             self.raiseErrorMessage("The first controle qubit must be different from the target qubit")
-        if (controle_qubit_2==target_qubit) :
+        if controle_qubit_2 == target_qubit:
             self.raiseErrorMessage("The second controle qubit must be different from the target qubit")
         try:
             input.ccx(controle_qubit_1, controle_qubit_2,target_qubit)

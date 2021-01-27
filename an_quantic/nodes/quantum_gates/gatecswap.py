@@ -1,5 +1,5 @@
 import bpy
-from qiskit import *
+from qiskit import execute
 from animation_nodes.base_types import AnimationNode
 from bpy.types import Node
 
@@ -16,19 +16,19 @@ class QuantumGateCSWAPNode(Node, AnimationNode):
         self.newOutput("Quantum Circuit", "Output Circuit", "output")
 
     def execute(self, input, first_qubit, second_qubit, control_qubit):
-        if (input.num_qubits < 3) :
-            self.raiseErrorMessage("They has to be at least three qubits in the circuit to use this gate")
-        if (first_qubit >= input.num_qubits ) :
-            self.raiseErrorMessage("The first qubit index must lower than " + str(input.num_qubits))
-        if (second_qubit >= input.num_qubits ) :
-            self.raiseErrorMessage("The second qubit index must lower than " + str(input.num_qubits))
-        if (control_qubit >= input.num_qubits ) :
-            self.raiseErrorMessage("The control qubit index must lower than " + str(input.num_qubits))
-        if (first_qubit==second_qubit) :
-            self.raiseErrorMessage("The two qubits must be differents")
-        if (first_qubit==control_qubit) :
+        if input.num_qubits < 3:
+            self.raiseErrorMessage("There has to be at least three qubits in the circuit to use this gate")
+        if first_qubit >= input.num_qubits:
+            self.raiseErrorMessage("The first qubit index must be lower than " + str(input.num_qubits))
+        if second_qubit >= input.num_qubits:
+            self.raiseErrorMessage("The second qubit index must be lower than " + str(input.num_qubits))
+        if control_qubit >= input.num_qubits:
+            self.raiseErrorMessage("The control qubit index must be lower than " + str(input.num_qubits))
+        if first_qubit == second_qubit:
+            self.raiseErrorMessage("The two qubits must be different")
+        if first_qubit == control_qubit:
             self.raiseErrorMessage("The first qubit must be different from the control qubit")
-        if (second_qubit==control_qubit) :
+        if second_qubit == control_qubit:
             self.raiseErrorMessage("The second qubit must be different from the control qubit")
         try:
             input.cswap(control_qubit, first_qubit, second_qubit)

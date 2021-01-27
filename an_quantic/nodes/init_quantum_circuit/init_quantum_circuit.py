@@ -1,5 +1,5 @@
 import bpy
-from qiskit import *
+from qiskit import QuantumCircuit
 from bpy.props import EnumProperty
 from animation_nodes.base_types import AnimationNode
 from bpy.types import Node
@@ -15,7 +15,7 @@ class InitQuantumCircuitNode(Node, AnimationNode):
     bl_idname = "an_InitQuantumCircuitNode"
     bl_label = "Init Quantum Circuit"
 
-    mode : EnumProperty(name = "Mode", default = "QNUMBER",
+    mode: EnumProperty(name = "Mode", default = "QNUMBER",
         items = modeItems, update = AnimationNode.refresh)
 
     def create(self):
@@ -67,4 +67,3 @@ class InitQuantumCircuitNode(Node, AnimationNode):
             return QuantumCircuit(quantum_register,classical_register)
         except:
             return
-

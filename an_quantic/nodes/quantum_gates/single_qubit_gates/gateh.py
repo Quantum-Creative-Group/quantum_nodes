@@ -1,12 +1,12 @@
 import bpy
-from qiskit import *
-from bpy.props import *
+from qiskit import execute
 from animation_nodes.base_types import AnimationNode
 from bpy.types import Node
 
 class QuantumGateHNode(Node, AnimationNode):
     bl_idname = "an_QuantumGateHNode"
     bl_label = "Quantum Gate H"
+    bl_width_default = 160
     errorHandlingType = "EXCEPTION"
 
     def setup(self):
@@ -29,20 +29,19 @@ class QuantumGateHNode(Node, AnimationNode):
         socketMapping = {}
         socketMapping["input_circuit"] = "inputCircuit"
         for i, socket in enumerate(self.inputs[:]):
-            if (socket.name != "Input Circuit") :
-                socketMapping[socket.identifier] = "element_"+str(i)
+            if socket.name != "Input Circuit":
+                socketMapping[socket.identifier] = "element_" + str(i)
         return socketMapping
 
     def getExecutionCode(self, required):
         for i in range(len(self.inputs) - 1) :
             yield "try:"
-            yield f"    if (element_{i} < inputCircuit.num_qubits) :"
+            yield f"    if element_{i} < inputCircuit.num_qubits:"
             yield f"        inputCircuit.h(element_{i})"
             yield "except:"
             yield "    output_circuit = inputCircuit"
             yield "    self.raiseErrorMessage(\"Qubit Index can't be larger than the number of qubits in the Input Circuit.\")"
         yield "output_circuit = inputCircuit"
-
 
     def newInputSocket(self):
         socket = self.newInput("Integer","Qubit Index", minValue = 0)
@@ -53,14 +52,11 @@ class QuantumGateHNode(Node, AnimationNode):
         socket.moveable = True
         socket.defaultDrawType = "PREFER_PROPERTY"
         socket.moveUp()
-
         if len(self.inputs) > 3:
             socket.copyDisplaySettingsFrom(self.inputs[1])
-
         return socket
 
     def removeUnlinkedInputs(self):
         for socket in self.inputs[1:-1]:
             if not socket.is_linked:
                 socket.remove()
-
