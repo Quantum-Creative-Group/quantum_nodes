@@ -228,7 +228,7 @@ def generateMeshData(context, demo_id):
 def generateCircuit(context, demo_id, circuit_id):
     context.new_node_tree(type="an_AnimationNodeTree", name=demo_id+"circuit_"+circuit_id)
     node_tree = bpy.data.node_groups[demo_id+"circuit_"+circuit_id]
-    node_tree_id = "_c"+circuit_id
+    node_tree_id = "_c" + circuit_id
 
     # auto-execution parameters
     node_tree.autoExecution.enabled = False
@@ -295,7 +295,7 @@ def generateMainNodeTree(context, main_tree_id, obj):
     sep_vecs = node_tree.nodes[node_name]
     sep_vecs.location = (-750, 0)
     
-    inv_circuits = {"x" : None, "y" : None, "z" : None}
+    inv_circuits = {"x": None, "y": None, "z": None}
     for offset, circ_name in [(0, "x"), (1, "y"), (2, "z")]:
         # Invoke mesh_data_c(x/y/z)
         node_tree.nodes.new(type="an_InvokeSubprogramNode")
@@ -307,7 +307,7 @@ def generateMainNodeTree(context, main_tree_id, obj):
         subprog_inp = bpy.data.node_groups["an_q_demo_"+"circuit_"+circ_name].nodes["an_q_demo_" + "grp_in" + "_c"+circ_name]
         inv_circuits[circ_name].subprogramIdentifier = subprog_inp.identifier
     
-    inv_mesh_data_circuits = {"x" : None, "y" : None, "z" : None}
+    inv_mesh_data_circuits = {"x": None, "y": None, "z": None}
     for offset, circ_name in [(0, "x"), (1, "y"), (2, "z")]:
         # Invoke circuit_(x/y/z)
         node_tree.nodes.new(type="an_InvokeSubprogramNode")
@@ -382,7 +382,7 @@ def generateMainNodeTree(context, main_tree_id, obj):
     data_interface.location = (2100, 0)
     data_interface.dataDirection = "EXPORT"
 
-    # forces to update socket inputs/outputs (tada !)
+    # forces to update socket inputs/outputs (tada!)
     # TODO: find a better solution
     bpy.context.scene.frame_set(bpy.data.scenes['Scene'].frame_current)
     # Linking everything
@@ -423,6 +423,6 @@ def generateMainNodeTree(context, main_tree_id, obj):
     obj_transf_out.inputs[1].value[1] = 5.0
     # TODO: find a better solution for this offset (maybe in function of the target object)
 
-    # forces to update socket inputs/outputs (tada !)
+    # forces to update socket inputs/outputs (tada!)
     # TODO: find a better solution
     bpy.context.scene.frame_set(bpy.data.scenes['Scene'].frame_current)

@@ -30,7 +30,7 @@ class QuantumNodes_DEMO_Manager():
         """
         Builds the demo node tree and links the target to the tree
         """
-        if(not self.nt_initialized):
+        if not self.nt_initialized:
             self.ntm.generateNodeTree(self.target)
             self.nt_initialized = True
 
@@ -50,7 +50,7 @@ class QuantumNodes_DEMO_Manager():
         Sets the new circuit
         The size depends on the number of vertices of the target
         """
-        self.nb_qubits = int(math.ceil(math.log(len(obj.data.vertices))/math.log(2)))
+        self.nb_qubits = int(math.ceil(math.log(len(obj.data.vertices)) / math.log(2)))
         for circuit_name in list(self.circuits.keys()): self.circuits[circuit_name] = CircuitManager(self.nb_qubits, self.max_gates)
         self.ntm.last_circuits = copy.deepcopy(self.circuits)
     
@@ -66,7 +66,7 @@ class QuantumNodes_DEMO_Manager():
         """
         for circuit_name in list(self.circuits.keys()):
             circuit = self.circuits[circuit_name]
-            if(circuit != None):
+            if circuit != None:
                 circuit.reset()
                 self.ntm.resetAllGates()
     
