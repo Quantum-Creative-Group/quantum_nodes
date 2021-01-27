@@ -1,5 +1,5 @@
 import bpy
-from qiskit import *
+from qiskit import ClassicalRegister
 from animation_nodes.base_types import AnimationNode
 
 class InitClassicalRegisterNode(bpy.types.Node, AnimationNode):

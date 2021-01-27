@@ -1,5 +1,5 @@
 import bpy
-from qiskit import *
+from qiskit import QuantumRegister
 from animation_nodes.base_types import AnimationNode
 
 class InitQuantumRegisterNode(bpy.types.Node, AnimationNode):

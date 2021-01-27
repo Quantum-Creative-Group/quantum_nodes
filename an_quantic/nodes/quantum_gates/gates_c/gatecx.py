@@ -1,10 +1,11 @@
 import bpy
-from qiskit import *
+from qiskit import execute
 from animation_nodes.base_types import AnimationNode
 
 class QuantumGateCXNode(bpy.types.Node, AnimationNode):
     bl_idname = "an_QuantumGateCXNode"
     bl_label = "Quantum Gate CX"
+    errorHandlingType = "EXCEPTION"
 
     def create(self):
         self.newInput("Quantum Circuit", "Input Circuit", "input")
@@ -13,16 +14,14 @@ class QuantumGateCXNode(bpy.types.Node, AnimationNode):
         self.newOutput("Quantum Circuit", "Output Circuit", "output")
 
     def execute(self, input, controle_qubit, target_qubit):
-        if (input.num_qubits < 2) :
-            self.raiseErrorMessage("They has to be at least two qubits in the circuit to use this gate")
-        if (target_qubit >= input.num_qubits) :
-            self.raiseErrorMessage("The target qubit index must lower than " + str(input.num_qubits))
-        if (controle_qubit >= input.num_qubits) :
-            self.raiseErrorMessage("The controle qubit index must lower than " + str(input.num_qubits))
-        if (controle_qubit==target_qubit) :
+        if input.num_qubits < 2:
+            self.raiseErrorMessage("There has to be at least two qubits in the circuit to use this gate")
+        if target_qubit >= input.num_qubits:
+            self.raiseErrorMessage("The target qubit index must be lower than " + str(input.num_qubits))
+        if controle_qubit == target_qubit:
             self.raiseErrorMessage("The controle qubit must be different from the target qubit")
         try:
-            input.cx(controle_qubit,target_qubit)
+            input.cx(controle_qubit, target_qubit)
             return input
         except:
             return

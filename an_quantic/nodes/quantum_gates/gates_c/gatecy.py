@@ -1,5 +1,5 @@
 import bpy
-from qiskit import *
+from qiskit import execute
 from animation_nodes.base_types import AnimationNode
 
 class QuantumGateCYNode(bpy.types.Node, AnimationNode):
@@ -14,13 +14,11 @@ class QuantumGateCYNode(bpy.types.Node, AnimationNode):
         self.newOutput("Quantum Circuit", "Output Circuit", "output")
 
     def execute(self, input, controle_qubit, target_qubit):
-        if (input.num_qubits < 2) :
-            self.raiseErrorMessage("They has to be at least two qubits in the circuit to use this gate")
-        if (target_qubit >= input.num_qubits) :
-            self.raiseErrorMessage("The target qubit index must lower than " + str(input.num_qubits))
-        if (controle_qubit >= input.num_qubits) :
-            self.raiseErrorMessage("The controle qubit index must lower than " + str(input.num_qubits))
-        if (controle_qubit==target_qubit) :
+        if input.num_qubits < 2:
+            self.raiseErrorMessage("There has to be at least two qubits in the circuit to use this gate")
+        if target_qubit >= input.num_qubits:
+            self.raiseErrorMessage("The target qubit index must be lower than " + str(input.num_qubits))
+        if controle_qubit == target_qubit:
             self.raiseErrorMessage("The controle qubit must be different from the target qubit")
         try:
             input.cy(controle_qubit, target_qubit)
