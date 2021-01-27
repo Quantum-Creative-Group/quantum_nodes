@@ -18,7 +18,7 @@ class NodeTreeManager:
         """
         Generates the demo node trees
         """
-        genereateMultiplyAll(bpy.ops.node, self.demo_id)
+        generateMultiplyAll(bpy.ops.node, self.demo_id)
         generateMaxValue(bpy.ops.node, self.demo_id)
         generateNegative(bpy.ops.node, self.demo_id)
         generateMeshData(bpy.ops.node, self.demo_id)

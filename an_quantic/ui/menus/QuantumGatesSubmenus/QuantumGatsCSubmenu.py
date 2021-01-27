@@ -1,10 +1,9 @@
-from bpy.types import (Menu)
-
+from bpy.types import Menu
 from animation_nodes.ui.node_menu import insertNode
 
 class QuantumGatsCSubmenu(Menu):
-    bl_idname = "AN_MT_quantic_gates_c"
-    bl_label = "Gates_C"
+    bl_idname = "AN_MT_quantum_gates_c"
+    bl_label = "C Gates"
     
     def draw(self, context):
         layout = self.layout

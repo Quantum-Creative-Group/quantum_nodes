@@ -9,7 +9,7 @@ class MainPanel(Panel):
     bl_idname = "AN_PT_MainPanel"
     bl_space_type = "NODE_EDITOR"
     bl_region_type = "UI"
-    bl_category = "Quantum Node"
+    bl_category = "Quantum Nodes"
 
     # TODO: tries to load your account if it's already saved on your computer
     # def __init__(self):
@@ -21,9 +21,12 @@ class MainPanel(Panel):
 
     def draw(self, context):
         layout = self.layout
+
+        # icons
         pcoll = preview_collections["main"]
         qubit = pcoll["qubit"]
 
+        # templates / visualizations
         box = layout.box()
         row = box.row()
         row.label(text = "Templates", icon = 'EXPERIMENTAL')
@@ -31,22 +34,24 @@ class MainPanel(Panel):
         row.operator('nodes.insert', text = 'Wootton QB', icon = "TRACKING")
         row.operator('nodes.insert', text = 'Bloch Sphere', icon = "SPHERE")
         
+        # menu
         box = layout.box()
         row = box.row()
         row.label(text = "Nodes", icon = 'NODE')
         row = box.row()
-        row.menu("AN_MT_quantic_gates", text = "Gates", icon = "SHADING_BBOX")
-        row.menu("AN_MT_quantic_complex", text = "Complex Nb", icon_value = qubit.icon_id)
+        row.menu("AN_MT_quantum_gates", text = "Gates", icon = "SHADING_BBOX")
+        row.menu("AN_MT_complex", text = "Complex Nb", icon_value = qubit.icon_id)
         row = box.row()
-        row.menu("AN_MT_quantic_qu_heightmap", text = "Heightmap", icon = "ORIENTATION_VIEW")
-        row.menu("AN_MT_quantic_init_qu_circuit", text = "Init Circuit", icon = "KEYINGSET")
+        row.menu("AN_MT_quantum_qu_heightmap", text = "Heightmap", icon = "ORIENTATION_VIEW")
+        row.menu("AN_MT_quantum_init_qu_circuit", text = "Init Circuit", icon = "KEYINGSET")
         row = box.row()
-        row.menu("AN_MT_quantic_qu_output", text = "Qu Output", icon = "ORIENTATION_NORMAL")
-        row.menu("AN_MT_quantic_schrodinger_simulation", text = "Schrödinger", icon = "OPTIONS")
-
+        row.menu("AN_MT_quantum_qu_output", text = "Qu Output", icon = "ORIENTATION_NORMAL")
+        row.menu("AN_MT_schrodinger_simulation", text = "Schrödinger", icon = "OPTIONS")
         row = layout.row()
         row = layout.row()
 
+
+        # IMBQ API connexion
         props = bpy.context.scene.QueryProps
 
         col = layout.column(align = True)
@@ -65,6 +70,7 @@ class MainPanel(Panel):
             row = box.row()
             row.label(text = props.error_msg, icon = "ERROR")
 
+        # help button
         row = layout.row()
         row = layout.row()
         row.operator('wm.url_open', text = "Need Help ?", icon = 'BOOKMARKS').url = 'https://elgoog.im/'
@@ -73,10 +79,9 @@ preview_collections = {}
 
 def register():
     pcoll = bpy.utils.previews.new()
-    # path to the folder where the icon is
-    # the path is calculated relative to this py file inside the addon folder
+    # path to the folder where the icons aren. Computes the path relatively this py file
     my_icons_dir = os.path.join(os.path.dirname(__file__), "../icons")
-    # load a preview thumbnail of a file and store in the previews collection
+    # loads a preview thumbnail of a file and stores it in the previews collection
     pcoll.load("my_icon", os.path.join(my_icons_dir, "discord.png"), 'IMAGE')
     pcoll.load("addon_logo", os.path.join(my_icons_dir, "discord.png"), 'IMAGE')
     pcoll.load("qubit", os.path.join(my_icons_dir, "discord.png"), 'IMAGE')

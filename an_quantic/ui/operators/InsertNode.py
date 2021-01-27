@@ -13,7 +13,7 @@ class InsertNode(Operator):
     bl_label = "Add Node Tree"
 
     def execute(self, context):
-        custom_node_name = "Quantum_Node_Tree 0"
+        custom_node_name = "Quantum_Node_Tree_"
         i = 0
         while bpy.data.node_groups.find(custom_node_name) != -1:
             i += 1
