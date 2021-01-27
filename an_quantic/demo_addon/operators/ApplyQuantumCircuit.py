@@ -9,10 +9,10 @@ class ApplyQuantumCircuit(Operator):
     
     @classmethod
     def poll(cls, context):
-        if(context.object == None): return False
-        return context.object.select_get() and bpy.context.active_object == bpy.types.Scene.demo_manager.target
+        if context.object == None: return False
+        return (context.object.select_get()) and (bpy.context.active_object == bpy.types.Scene.demo_manager.target)
     
     def execute(self, context):
         dm = bpy.types.Scene.demo_manager
-        bpy.ops.an.execute_tree(name=dm.ntm.main_tree_id+"an_q")
+        bpy.ops.an.execute_tree(name=dm.ntm.main_tree_id + "an_q")
         return {'FINISHED'}
