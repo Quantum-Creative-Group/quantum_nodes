@@ -5,7 +5,6 @@ from . DemoNodeTreeUtils import *
 from . GatesFactory import GatesFactory
 from . GateNodesManager import GateNodesManager
 
-
 class NodeTreeManager:
     def __init__(self):
         self.demo_id = "an_q_demo_"
@@ -31,6 +30,7 @@ class NodeTreeManager:
         """
         Updates the target of the quantum circuits
         """
+        print(obj)
         self.main_node_tree.nodes[self.main_tree_id + "mesh_obj_input" + "_main"].inputs[0].object = obj
         self.main_node_tree.nodes[self.main_tree_id + "obj_instancer" + "_main"].inputs[1].object = obj
     
