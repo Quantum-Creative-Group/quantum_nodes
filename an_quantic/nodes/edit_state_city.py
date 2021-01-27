@@ -21,14 +21,15 @@ class EditStateCityNode(bpy.types.Node, AnimationNode):
             return
         if (state_city.name != "Quantume_City_Faces") :
             return 
-        backend = Aer.get_backend('statevector_simulator')
-        result = execute(quantum_circuit,backend).result() #Do the simulation, returning the result
-        out_state = result.get_statevector()
+        try:
+            backend = Aer.get_backend('statevector_simulator')
+            result = execute(quantum_circuit,backend).result() #Do the simulation, returning the result
+            out_state = result.get_statevector()
 
-        parent = state_city.parent
-        for i in range (len(state_city.children)):
-            bpy.data.objects.remove(state_city.children[0])
-        bpy.data.objects.remove(state_city)
-        edit_state_city(parent,out_state)       
-        #except:
-        #    return
+            parent = state_city.parent
+            for i in range (len(state_city.children)):
+                bpy.data.objects.remove(state_city.children[0])
+            bpy.data.objects.remove(state_city)
+            edit_state_city(parent,out_state)       
+        except:
+            return
