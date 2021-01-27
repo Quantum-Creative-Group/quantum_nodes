@@ -31,7 +31,7 @@ class AddAndDelGate(Operator):
         if self.button == 'add':
             wm = bpy.context.window_manager
             wm.popup_menu(drawGatesOperator, title="Options")
-            # forces to redraw the view (magic trick)
+            # Forces to redraw the view (magic trick)
             bpy.context.scene.frame_set(bpy.data.scenes['Scene'].frame_current)
         else: 
             dm.getSelectedCircuit().popGate(bpy.types.Object.select_index)
