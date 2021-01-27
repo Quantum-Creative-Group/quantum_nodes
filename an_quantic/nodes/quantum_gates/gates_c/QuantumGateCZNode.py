@@ -1,5 +1,5 @@
 import bpy
-from qiskit import *
+from qiskit import execute
 from animation_nodes.base_types import AnimationNode
 from bpy.types import Node
 
