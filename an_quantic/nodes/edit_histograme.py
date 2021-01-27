@@ -4,11 +4,13 @@ import mathutils
 import math
 import numpy as np
 from qiskit import *
-from qiskit.visualization.utils import _bloch_multivector_data
+import math
+from animation_nodes.base_types import AnimationNode
 
-def plot_histograme(): 
+def edit_plot_histograme(parent, _counts, _shots): 
     #data
-    nb_cubes = 2
+    keys = list(_counts)
+    nb_cubes = len(keys)
     X = 3.2
     Y = 0.7
     Z = nb_cubes
@@ -17,21 +19,33 @@ def plot_histograme():
     size = 3
     
     bpy.ops.object.select_all(action='DESELECT') #deselect all object
+
+    #Cubes-------------------------------------------------------------
+    mesh_cube = bpy.data.meshes.new('Cube')
+    cube = bpy.data.objects.new("Cube", mesh_cube)
+    material_cube = bpy.data.materials.new("MyMaterialCube")
+    material_cube.diffuse_color = (0., 0., 1., 0.9)
+    mesh_cube.materials.append(material_cube)
     
-    mesh_parent = bpy.data.meshes.new('Parent')
-    parent = bpy.data.objects.new("Parent", mesh_parent)
-    material_parent = bpy.data.materials.new("MyMaterialParent")
-    material_parent.diffuse_color = (1., 1., 1., 0.)
-    mesh_parent.materials.append(material_parent)
-    
-    bpy.context.collection.objects.link(parent)
-    bpy.context.view_layer.objects.active = parent
-    parent.select_set(True)
-    
+    bpy.context.collection.objects.link(cube)
+    bpy.context.view_layer.objects.active = cube
+    cube.select_set(True)
+
     bm = bmesh.new()
-    bmesh.ops.create_cube(bm, size=1)
-    bm.to_mesh(mesh_parent)
+    for i in range (nb_cubes) :
+        scale = _counts[keys[i]]/_shots
+        resize = 0.5/(scale*size)
+        if (i != 0):
+            bmesh.ops.translate(bm, verts = bm.verts, vec = mathutils.Vector((0.0, 1.0, 0.0)))
+            bmesh.ops.scale(bm, verts = bm.verts, vec = mathutils.Vector((1/resize, 1/resize, 1)))
+            bmesh.ops.translate(bm, verts = bm.verts, vec = mathutils.Vector((0.0, 0.0, (-scale*size)/2)))
+        bmesh.ops.create_cube(bm, size=scale*size)
+        bmesh.ops.scale(bm, verts = bm.verts, vec = mathutils.Vector((resize, resize, 1.)))
+        bmesh.ops.translate(bm, verts = bm.verts, vec = mathutils.Vector((0.0, 0.0, (scale*size)/2)))   
+    bmesh.ops.translate(bm, verts = bm.verts, vec = mathutils.Vector((0.0, 0.5, 0.0))) 
+    bm.to_mesh(mesh_cube)
     bm.free()
+    #--------------------------------------------------------------------
 
     #Faces-------------------------------------------------------------
     mesh_faces = bpy.data.meshes.new('Quantume_Faces')
@@ -130,6 +144,33 @@ def plot_histograme():
         bpy.context.view_layer.objects.active = text_objects_left["font_obj_{0}".format(i)]
         text_objects_left["font_obj_{0}".format(i)].select_set(True)
         
+    curves_results_probabilities = {}
+    text_objects_results_probabilities = {}
+    for i in range (nb_cubes):
+        probability = _counts[keys[i]]/_shots
+        curves_results_probabilities["font_curve_{0}".format(i)] = bpy.data.curves.new(type="FONT",name="Font Curve" +str(i))
+        curves_results_probabilities["font_curve_{0}".format(i)].body = str(probability)
+        text_objects_results_probabilities["font_obj_{0}".format(i)] = bpy.data.objects.new("Font Object"+str(i), curves_results_probabilities["font_curve_{0}".format(i)])
+        text_objects_results_probabilities["font_obj_{0}".format(i)].rotation_euler = (np.pi/2,-np.pi/2,np.pi/2)
+        text_objects_results_probabilities["font_obj_{0}".format(i)].scale = (0.2,0.2,0.2)
+        text_objects_results_probabilities["font_obj_{0}".format(i)].location = (0.05,(nb_cubes-i)-0.4, probability*size + 0.2)
+        bpy.context.collection.objects.link(text_objects_results_probabilities["font_obj_{0}".format(i)])
+        bpy.context.view_layer.objects.active = text_objects_results_probabilities["font_obj_{0}".format(i)]
+        text_objects_results_probabilities["font_obj_{0}".format(i)].select_set(True)
+        
+    curves_results = {}
+    text_objects_results = {}
+    for i in range (nb_cubes):
+        curves_results["font_curve_{0}".format(i)] = bpy.data.curves.new(type="FONT",name="Font Curve" +str(i))
+        curves_results["font_curve_{0}".format(i)].body = keys[i]
+        text_objects_results["font_obj_{0}".format(i)] = bpy.data.objects.new("Font Object"+str(i), curves_results["font_curve_{0}".format(i)])
+        text_objects_results["font_obj_{0}".format(i)].rotation_euler = (np.pi/2,-np.pi,-np.pi/2)
+        text_objects_results["font_obj_{0}".format(i)].scale = (0.2,0.2,0.2)
+        text_objects_results["font_obj_{0}".format(i)].location = (Y+0.01,(nb_cubes-i)-0.7, 0.0)
+        bpy.context.collection.objects.link(text_objects_results["font_obj_{0}".format(i)])
+        bpy.context.view_layer.objects.active = text_objects_results["font_obj_{0}".format(i)]
+        text_objects_results["font_obj_{0}".format(i)].select_set(True)
+
     parent.select_set(False)
     bpy.context.view_layer.objects.active = faces 
     bpy.ops.object.join()
@@ -141,3 +182,32 @@ def plot_histograme():
     bpy.context.view_layer.objects.active = parent 
     bpy.ops.object.parent_set() 
     parent.select_set(False)
+    faces.select_set(True)
+
+class EditHistogrameNode(bpy.types.Node, AnimationNode):
+    bl_idname = "an_EditHistogrameNode"
+    bl_label = "Edit Histograme"
+
+    def create(self):
+        self.newInput("Integer", "Shots", "shots", value = 1024, minValue = 1)
+        self.newInput("Quantum Circuit", "Quantum Circuit", "quantum_circuit")
+        self.newInput("Object", "Histograme", "histograme")
+
+    def execute(self, shots, quantum_circuit, histograme):
+        if histograme is None:
+            return
+        if (histograme.name != "Quantume_Faces") :
+            return 
+        try:
+            quantum_circuit.measure_all()
+            backend = Aer.get_backend('qasm_simulator')
+            job = execute(quantum_circuit, backend, shots = shots)
+            counts = job.result().get_counts(quantum_circuit)
+
+            parent = histograme.parent
+            for i in range (len(histograme.children)):
+                bpy.data.objects.remove(histograme.children[0])
+            bpy.data.objects.remove(histograme)
+            edit_plot_histograme(parent, counts, shots)       
+        except:
+            return
