@@ -93,7 +93,7 @@ class SimulationManager:
                             d.potential_boundary.append((i, j))
                             
         self.cache.data[0] = d.wave_function     # stores the first frame in the cache
-        self.cache._last_computed_frame = 0
+        self.cache.last_computed_frame = 0
 
     
     def getFrameData(self, frame):

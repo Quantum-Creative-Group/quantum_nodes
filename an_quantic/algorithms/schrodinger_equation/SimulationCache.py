@@ -30,14 +30,14 @@ class SimulationCache:
         """
         vector_selon_x = d.xConcatenate(d.wave_function, inp.dimension)
         vector_derive_y_selon_x = d.xConcatenate(d.dySquare(d.wave_function, inp.dimension, inp.step), inp.dimension)
-        U_selon_x = vector_selon_x + (1j*inp._delta_t/2)*(vector_derive_y_selon_x - d._v_x*vector_selon_x)
-        U_selon_x_plus = scipy.sparse.linalg.spsolve(d._hx, U_selon_x)
+        U_selon_x = vector_selon_x + (1j*inp.delta_t/2)*(vector_derive_y_selon_x - d.v_x*vector_selon_x)
+        U_selon_x_plus = scipy.sparse.linalg.spsolve(d.hx, U_selon_x)
 
         d.wave_function = d.xDeconcatenate(U_selon_x_plus, inp.dimension)
 
         vector_selon_y = d.yConcatenate(d.wave_function, inp.dimension)
         vector_derive_x_selon_y = d.yConcatenate(d.dxSquare(d.wave_function, inp.dimension, inp.step), inp.dimension)
-        U_selon_y = vector_selon_y  + (1j*inp._delta_t/2)*(vector_derive_x_selon_y - d.v_y*vector_selon_y)
+        U_selon_y = vector_selon_y  + (1j*inp.delta_t/2)*(vector_derive_x_selon_y - d.v_y*vector_selon_y)
         U_selon_y_plus = scipy.sparse.linalg.spsolve(d.hy, U_selon_y)
 
         d.wave_function = d.yDeconcatenate(U_selon_y_plus, inp.dimension)
