@@ -10,4 +10,4 @@ class OutputsSubmenu(Menu):
         insertNode(layout, "an_QuantumCircuitGetCountNode", "Quantum Circuit Get Count")
         insertNode(layout, "an_QuantumCircuitOutputStateNode", "Quantum Circuit Output State")
         insertNode(layout, "an_QuantumMeasureNode", "Quantum Measure")
-        insertNode(layout, "an_QuantumCircuitIBMOutputStateNode", "Quantum Circuit IBM Output State")
+        insertNode(layout, "an_QuantumCircuitIBMOutputStateNode", "Quantum Circuit IBM Output")

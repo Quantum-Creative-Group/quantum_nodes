@@ -1,6 +1,6 @@
 import bpy
-from qiskit import *
-from bpy.props import *
+from qiskit import execute
+from bpy.props import EnumProperty
 from animation_nodes.base_types import AnimationNode
 
 modeItems = [
@@ -12,7 +12,7 @@ class QuantumMeasureNode(bpy.types.Node, AnimationNode):
     bl_idname = "an_QuantumMeasureNode"
     bl_label = "Quantum Measure"
 
-    mode : EnumProperty(name = "Mode", default = "ONE",
+    mode: EnumProperty(name = "Mode", default = "ONE",
         items = modeItems, update = AnimationNode.refresh)
 
     def create(self):
@@ -23,7 +23,6 @@ class QuantumMeasureNode(bpy.types.Node, AnimationNode):
         if self.mode == "ALL":
             self.newInput("Quantum Circuit", "Input Quantum Circuit", "input_quantum_circuit")
         self.newOutput("Quantum Circuit", "Output Quantum Circuit", "output_quantum_circuit")
-
 
     def draw(self, layout):
         layout.prop(self, "mode")
@@ -47,4 +46,3 @@ class QuantumMeasureNode(bpy.types.Node, AnimationNode):
             return input_quantum_circuit
         except:
             return
-    

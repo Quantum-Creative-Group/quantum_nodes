@@ -7,7 +7,5 @@ class HeightmapSubmenu(Menu):
     
     def draw(self, context):
         layout = self.layout
-        insertNode(layout, "an_MeshToHeight", "Mesh to Height")
-        insertNode(layout, "an_HeightToMesh", "Height to Mesh")
         insertNode(layout, "an_QuantumCircuitToHeightmapNode", "Quantum Circuit To Heightmap")
         insertNode(layout, "an_HeightmapToQuantumCircuitNode", "Heightmap To Quantum Circuit")
