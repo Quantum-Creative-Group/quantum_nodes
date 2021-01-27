@@ -6,7 +6,7 @@ import numpy as np
 from qiskit import *
 from qiskit.visualization.utils import _bloch_multivector_data
 
-def edit_plot_histograme(_counts, _shots): 
+def edit_plot_histograme(parent, _counts, _shots): 
     #data
     keys = list(_counts)
     nb_cubes = len(keys)
@@ -32,7 +32,7 @@ def edit_plot_histograme(_counts, _shots):
 
     bm = bmesh.new()
     for i in range (nb_cubes) :
-        scale = counts[keys[i]]/myshots
+        scale = _counts[keys[i]]/_shots
         resize = 0.5/(scale*size)
         if (i != 0):
             bmesh.ops.translate(bm, verts = bm.verts, vec = mathutils.Vector((0.0, 1.0, 0.0)))
@@ -47,8 +47,8 @@ def edit_plot_histograme(_counts, _shots):
     #--------------------------------------------------------------------
 
     #Faces-------------------------------------------------------------
-    mesh_faces = bpy.data.meshes.new('Faces')
-    faces = bpy.data.objects.new("Faces", mesh_faces)
+    mesh_faces = bpy.data.meshes.new('Quantume_Faces')
+    faces = bpy.data.objects.new("Quantume_Faces", mesh_faces)
     material_faces = bpy.data.materials.new("MyMaterialFaces")
     material_faces.diffuse_color = (1., 1., 1., 1.)
     mesh_faces.materials.append(material_faces)
@@ -146,7 +146,7 @@ def edit_plot_histograme(_counts, _shots):
     curves_results_probabilities = {}
     text_objects_results_probabilities = {}
     for i in range (nb_cubes):
-        probability = counts[keys[i]]/myshots
+        probability = _counts[keys[i]]/_shots
         curves_results_probabilities["font_curve_{0}".format(i)] = bpy.data.curves.new(type="FONT",name="Font Curve" +str(i))
         curves_results_probabilities["font_curve_{0}".format(i)].body = str(probability)
         text_objects_results_probabilities["font_obj_{0}".format(i)] = bpy.data.objects.new("Font Object"+str(i), curves_results_probabilities["font_curve_{0}".format(i)])
@@ -169,20 +169,16 @@ def edit_plot_histograme(_counts, _shots):
         bpy.context.collection.objects.link(text_objects_results["font_obj_{0}".format(i)])
         bpy.context.view_layer.objects.active = text_objects_results["font_obj_{0}".format(i)]
         text_objects_results["font_obj_{0}".format(i)].select_set(True)
-        
+
+    parent.select_set(False)
     bpy.context.view_layer.objects.active = faces 
     bpy.ops.object.join()
     bpy.ops.object.parent_set()
-        
-
-quantum_circuit = QuantumCircuit(5)
-quantum_circuit.h(2)
-#quantum_circuit.h(3)
-#quantum_circuit.h(4)
-quantum_circuit.measure_all()
-backend = Aer.get_backend('qasm_simulator')
-myshots = 1024
-job = execute(quantum_circuit, backend, shots = myshots)
-counts = job.result().get_counts(quantum_circuit)
-plot_histograme(counts, myshots)
-print(counts)
+    
+    bpy.ops.object.select_all(action='DESELECT')
+    parent.select_set(True)
+    faces.select_set(True)
+    bpy.context.view_layer.objects.active = parent 
+    bpy.ops.object.parent_set() 
+    parent.select_set(False)
+    faces.select_set(True)
