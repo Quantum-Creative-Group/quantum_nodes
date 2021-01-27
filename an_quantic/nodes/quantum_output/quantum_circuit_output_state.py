@@ -1,5 +1,6 @@
 import bpy
-from qiskit import *
+from qiskit import execute
+from qiskit import Aer
 from animation_nodes.base_types import AnimationNode
 
 class QuantumCircuitOutputStateNode(bpy.types.Node, AnimationNode):
