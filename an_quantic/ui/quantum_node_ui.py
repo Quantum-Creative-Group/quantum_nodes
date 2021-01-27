@@ -4,6 +4,7 @@ from animation_nodes.utils.nodes import getAnimationNodeTrees
 from .. node_templates.template1 import *
 from . nodes_menu import *
 from .. demo_addon.operators.ConnexionIBM import *
+# from qiskit import IBMQ
 
 
 
@@ -13,6 +14,13 @@ class InsertNodeUI(bpy.types.Panel):
     bl_space_type = "NODE_EDITOR"
     bl_region_type = "UI"
     bl_category = "QuantumNode"
+
+    # def __init__(self):
+    #     try:
+    #         IBMQ.load_account()
+    #         bpy.context.scene.QueryProps.connected = True
+    #     except Exception as e:
+    #         print(e.args)
 
     def draw(self, context):
         layout = self.layout
@@ -57,6 +65,19 @@ class InsertNodeUI(bpy.types.Panel):
         rowsub = col.row(align=True)
         rowsub.prop(props, "query", text="")
         rowsub.operator("object.connexion_ibm", text="Query")
+        
+        if(props.connected):
+            box = layout.box()
+            row = box.row()
+            row.label(text="Connected", icon="CHECKMARK")
+        if(props.error_msg != ""):
+            box = layout.box()
+            row = box.row()
+            row.label(text=props.error_msg, icon="ERROR")
+        
+
+        
+        
 
 
 
@@ -121,7 +142,7 @@ def register():
     pcoll.load("qubit", os.path.join(my_icons_dir, "qubit.png"), 'IMAGE')
 
     preview_collections["main"] = pcoll
-
+    
     bpy.types.Scene.QueryProps = bpy.props.PointerProperty(type=QueryProps)
 
 def unregister():

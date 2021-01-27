@@ -26,6 +26,7 @@ class QuantumCircuitIBMOutputStateNode(bpy.types.Node, AnimationNode):
     errorHandlingType = "EXCEPTION"
     _provider = Provider()
 
+
     token: StringProperty(name = "Token",
         description = "Copy your IBM quantum experience token here",
         update = propertyChanged)
@@ -57,7 +58,7 @@ class QuantumCircuitIBMOutputStateNode(bpy.types.Node, AnimationNode):
         if not self.initialized:
             if IBMQ.active_account() == None:   # test if the IBMQ account is already loaded
                 try:
-                    #IBMQ.enable_account("8d1a1a42b2266ae891741209ae6fc32a696df8fb4193ca47399494d0925a595fb7ff221feb127051d8fba24a2688dde9dc6958ff11ad0f1ecba1d4681172539") #8d1a1a42b2266ae891741209ae6fc32a696df8fb4193ca47399494d0925a595fb7ff221feb127051d8fba24a2688dde9dc6958ff11ad0f1ecba1d46811725395
+                #8d1a1a42b2266ae891741209ae6fc32a696df8fb4193ca47399494d0925a595fb7ff221feb127051d8fba24a2688dde9dc6958ff11ad0f1ecba1d46811725395
                     IBMQ.load_account() # needs a connection to internet! (TODO: manage exceptions)
                 except Exception as e:  # two possibilities: either not connected to internet or doesn't have an IBM account
                     error_msg = ""
@@ -91,7 +92,6 @@ class QuantumCircuitIBMOutputStateNode(bpy.types.Node, AnimationNode):
 
     def drawAdvanced(self, layout):
         layout.prop(self, "token")
-        col = layout.column()
 
     # def getExecutionFunctionName(self):
     #     return "execute"
