@@ -1,8 +1,9 @@
 import bpy
 from qiskit import *
 from animation_nodes.base_types import AnimationNode
+from bpy.types import Node
 
-class InitQuantumRegisterNode(bpy.types.Node, AnimationNode):
+class InitQuantumRegisterNode(Node, AnimationNode):
     bl_idname = "an_InitQuantumRegisterNode"
     bl_label = "Init Quantum Register"
 

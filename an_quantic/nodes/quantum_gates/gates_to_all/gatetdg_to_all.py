@@ -1,8 +1,9 @@
 import bpy
 from qiskit import *
 from animation_nodes.base_types import AnimationNode
+from bpy.types import Node
 
-class QuantumGateTDGToAllNode(bpy.types.Node, AnimationNode):
+class QuantumGateTDGToAllNode(Node, AnimationNode):
     bl_idname = "an_QuantumGateTDGToAllNode"
     bl_label = "Quantum Gate TDG To All Circuit"
 

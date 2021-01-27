@@ -1,8 +1,9 @@
 import bpy
 from qiskit import *
 from animation_nodes.base_types import AnimationNode
+from bpy.types import Node
 
-class QuantumGateCCXNode(bpy.types.Node, AnimationNode):
+class QuantumGateCCXNode(Node, AnimationNode):
     bl_idname = "an_QuantumGateCCXNode"
     bl_label = "Quantum Gate CCX"
     errorHandlingType = "EXCEPTION"

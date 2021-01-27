@@ -1,7 +1,8 @@
 import bpy
 from qiskit import *
-from bpy.props import *
+from bpy.props import EnumProperty
 from animation_nodes.base_types import AnimationNode
+from bpy.types import Node
 
 modeItems = [
     ("QNUMBER", "Number of Qubits", "Create quantum circuit from number of quibts", "", 0),
@@ -10,7 +11,7 @@ modeItems = [
     ("QCREGISTER", "Quantum and Classical Registers", "Create quantum circuit from quantum and classical register", "", 3)
 ]
 
-class InitQuantumCircuitNode(bpy.types.Node, AnimationNode):
+class InitQuantumCircuitNode(Node, AnimationNode):
     bl_idname = "an_InitQuantumCircuitNode"
     bl_label = "Init Quantum Circuit"
 

@@ -2,8 +2,9 @@ import bpy
 from qiskit import *
 from math import pi
 from animation_nodes.base_types import AnimationNode
+from bpy.types import Node
 
-class QuantumGateRXNode(bpy.types.Node, AnimationNode):
+class QuantumGateRXNode(Node, AnimationNode):
     bl_idname = "an_QuantumGateRXNode"
     bl_label = "Quantum Gate RX"
     errorHandlingType = "EXCEPTION"
