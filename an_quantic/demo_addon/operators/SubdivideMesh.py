@@ -11,13 +11,13 @@ class SubdivideMesh(Operator):
 
     @classmethod
     def poll(cls, context):
-        if(context.object == None): return False
+        if context.object == None: return False
         obj = bpy.context.active_object
-        return context.object.select_get() and obj.type == "MESH"
+        return (context.object.select_get()) and (obj.type == "MESH")
 
     def execute(self, context):
         obj = bpy.context.active_object
-        if(self.hasSubsurfModifier(obj)):
+        if self.hasSubsurfModifier(obj):
             obj.modifiers["an_q_demo_subdivide_op"].levels = self.number
         else:
             obj.modifiers.new("an_q_demo_subdivide_op", 'SUBSURF')
@@ -30,6 +30,6 @@ class SubdivideMesh(Operator):
     @classmethod
     def hasSubsurfModifier(cls, obj):
         for modifier in obj.modifiers:
-            if(type(modifier).__name__ == "SubsurfModifier"):
+            if type(modifier).__name__ == "SubsurfModifier":
                 return True
         return False

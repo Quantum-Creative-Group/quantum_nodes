@@ -14,7 +14,7 @@ class ConnexionIBM(Operator):
     query: bpy.props.PointerProperty(name="Token", type=QueryProps)
 
     def execute(self, context):
-        if(bpy.context.scene.QueryProps.connected == False):
+        if bpy.context.scene.QueryProps.connected == False:
             try:
                 bpy.context.scene.QueryProps.error_msg = ""
                 IBMQ.enable_account(bpy.context.scene.QueryProps.query)

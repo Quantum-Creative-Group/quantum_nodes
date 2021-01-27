@@ -14,17 +14,17 @@ class AddAndDelGate(Operator):
     bl_description = "Add/Remove Gates"
     
     button: EnumProperty(
-        items=[
+        items = [
             ('add', '+', '+', '', 0),
             ('del', '-', '-', '', 1),
         ],
-        default='add'
+        default = 'add'
     )
 
     @classmethod
     def poll(cls, context):
-        if(context.object == None): return False
-        return context.object.select_get() and bpy.context.active_object == bpy.types.Scene.demo_manager.target
+        if context.object == None: return False
+        return (context.object.select_get()) and (bpy.context.active_object == bpy.types.Scene.demo_manager.target)
 
     def execute(self, context):
         dm = bpy.types.Scene.demo_manager
@@ -37,4 +37,3 @@ class AddAndDelGate(Operator):
             dm.getSelectedCircuit().popGate(bpy.types.Object.select_index)
             dm.updateNodeTree()
         return {'FINISHED'}
-

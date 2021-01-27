@@ -8,12 +8,12 @@ class DuplicateTarget(Operator):
 
     @classmethod
     def poll(cls, context):
-        if(context.object == None): return False
-        return context.object.select_get() and bpy.context.active_object == bpy.types.Scene.demo_manager.target
+        if context.object == None: return False
+        return (context.object.select_get()) and (bpy.context.active_object == bpy.types.Scene.demo_manager.target)
     
     def execute(self, context):
         dm = bpy.types.Scene.demo_manager
-        if(dm.ntm.main_node_tree != None):
+        if dm.ntm.main_node_tree != None:
             obj = dm.ntm.main_node_tree.nodes[dm.ntm.main_tree_id + "data_interface" + "_main"].value
             obj_name = obj.name.split(".")[0] + "_copy_" + dm.ntm.demo_id[:len(dm.ntm.demo_id) - 1]
 
@@ -27,4 +27,4 @@ class DuplicateTarget(Operator):
             for collection in bpy.data.collections.values():
                 if collection.name == name_collection_target:
                     collection.objects.link(copy_obj)
-        return{'FINISHED'}
+        return {'FINISHED'}
