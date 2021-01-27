@@ -1,5 +1,4 @@
 import bpy
-from bpy.props import *
 from qiskit import QuantumCircuit
 from animation_nodes.base_types import AnimationNodeSocket
 
@@ -24,5 +23,3 @@ class QuantumCircuitSocket(bpy.types.NodeSocket, AnimationNodeSocket):
         if isinstance(value, QuantumCircuit):
             return value, 0
         return cls.getDefaultValue(), 2
-
-  

@@ -1,5 +1,4 @@
 import bpy
-from bpy.props import *
 from qiskit import ClassicalRegister
 from animation_nodes.base_types import AnimationNodeSocket, PythonListSocket
 

@@ -1,6 +1,5 @@
 import bpy
 from numpy import complex128, ndarray
-from bpy.props import *
 from animation_nodes.data_structures import LongList
 from animation_nodes.base_types import AnimationNodeSocket, PythonListSocket
 
