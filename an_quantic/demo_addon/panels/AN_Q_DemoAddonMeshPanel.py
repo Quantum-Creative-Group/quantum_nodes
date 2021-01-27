@@ -9,12 +9,5 @@ class AN_Q_DemoAddonMeshPanel(bpy.types.Panel):
 
     def draw(self, context):
         row = self.layout.row()
-        row.menu("VIEW3D_MT_mesh_add", text="Meshes", icon="OUTLINER_OB_MESH")
+        row.menu("VIEW3D_MT_mesh_add", text = "Meshes", icon = "OUTLINER_OB_MESH")
         row.operator('dialog.number')
-
-#def register(): bpy.utils.register_class(QuantumMeshPanel)
-
-#def unregister(): bpy.utils.unregister_class(QuantumMeshPanel)
-
-# if __name__ == "__main__":
-#     register()
