@@ -7,7 +7,7 @@ from qiskit import *
 from qiskit.quantum_info.states import  DensityMatrix
 
 
-def plot_state_city(state):
+def edit_state_city(parent, state):
     rho = DensityMatrix(state)
     num = rho.num_qubits
     if num is None:
@@ -74,8 +74,8 @@ def plot_state_city(state):
     #--------------------------------------------------------------------
     
     #Faces-------------------------------------------------------------
-    mesh_faces = bpy.data.meshes.new('Faces')
-    faces = bpy.data.objects.new("Faces", mesh_faces)
+    mesh_faces = bpy.data.meshes.new('Quantume_City_Faces')
+    faces = bpy.data.objects.new("Quantume_City_Faces", mesh_faces)
     material_faces = bpy.data.materials.new("MyMaterialFaces")
     material_faces.diffuse_color = (1., 1., 1., 1.)
     mesh_faces.materials.append(material_faces)
@@ -320,17 +320,15 @@ def plot_state_city(state):
         bpy.context.view_layer.objects.active = text_objects_resuts_right["font_obj_{0}".format(i)]
         text_objects_resuts_right["font_obj_{0}".format(i)].select_set(True)
         
+    parent.select_set(False)
     bpy.context.view_layer.objects.active = faces 
     bpy.ops.object.join()
-    #bpy.ops.object.parent_set()
-
-quantumtest2 = QuantumCircuit(5) 
-quantumtest2.rx(3,0)
-#quantumtest2.rx(12,2)
-#quantumtest2.h(1)
-#quantumtest2.x(1)
-#quantumtest2.ry(1.67,0)
-backend2 = Aer.get_backend('statevector_simulator') # Tell Qiskit how to simulate our circuit
-result2 = execute(quantumtest2,backend2).result() # Do the simulation, returning the result
-out_state2 = result2.get_statevector()
-plot_state_city(out_state2)
+    bpy.ops.object.parent_set()
+    
+    bpy.ops.object.select_all(action='DESELECT')
+    parent.select_set(True)
+    faces.select_set(True)
+    bpy.context.view_layer.objects.active = parent 
+    bpy.ops.object.parent_set() 
+    parent.select_set(False)
+    faces.select_set(True)
