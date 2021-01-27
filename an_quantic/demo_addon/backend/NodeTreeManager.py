@@ -44,46 +44,46 @@ class NodeTreeManager:
             Retrieves the node where the gate is and removes the socket
             If the node isn't used anymore, deletes it
         """
-        # detects the modification
+        # Detects the modification
         modif = self.getModification(self.last_circuits, new_circuits)
         if modif != (None, None, None):
-            # identifies the node tree and builds the name of the gate
+            # Identifies the node tree and builds the name of the gate
             circuit_node_tree = bpy.data.node_groups[self.demo_id + "circuit_" + modif[2][0]]
             circuit_id = "_c" + modif[2][0]
             gate_name = self.demo_id + "gate_" + modif[1] + circuit_id
 
             if modif[0] == "ADD":
-                qubit_data = self.last_circuits[modif[2][0]].data[modif[2][1]] # data before modification
+                qubit_data = self.last_circuits[modif[2][0]].data[modif[2][1]]  # data before modification
                 existing_gate = GateNodesManager.getExistingGate(circuit_node_tree, modif[1], modif[2][1], qubit_data)
                 if existing_gate == None:
-                    # add a new gate
+                    # Add a new gate
                     new_gate = self.gf.createGate(gate_name, modif[1], modif[2][2], circuit_node_tree)
                     existing_gates = self.gf.getExistingGates(circuit_node_tree)
-                    if(len(existing_gates) > 0):
-                        # if there is a gate before
+                    if len(existing_gates) > 0:
+                        # If there is a gate before
                         gate_node_before = existing_gates[-1]
                         GateNodesManager.removeLink(gate_node_before.outputs[0], new_gate.output.inputs[0], circuit_node_tree)
                     GateNodesManager.addGate(new_gate, circuit_node_tree, modif[2][1])
                 else:
-                    # the gate already exists
+                    # The gate already exists
                     existing_gate.newInputSocket()
-                    # forces to update the tree (magic trick)
+                    # Forces to update the tree (magic trick)
                     bpy.context.scene.frame_set(bpy.data.scenes['Scene'].frame_current)
                     existing_gate.inputs[len(existing_gate.inputs) - 2].value = modif[2][1]
 
             elif modif[0] == "DEL":
-                # delete a gate
-                qubit_data = new_circuits[modif[2][0]].data[modif[2][1]] # data before modification      
+                # Delete a gate
+                qubit_data = new_circuits[modif[2][0]].data[modif[2][1]]    # data before modification      
                 existing_gate = GateNodesManager.getExistingGate(circuit_node_tree, modif[1], modif[2][1], qubit_data)
                 for socket in existing_gate.inputs:
                     if (type(socket).__name__ == "IntegerSocket") and (socket.value == modif[2][1]):
                         socket.remove()
                         break
-                # if the gate isn't used anymore
+                # If the gate isn't used anymore
                 if len(existing_gate.inputs) == 1:
                     GateNodesManager.removeGate(existing_gate, circuit_node_tree)
 
-        # sets last ciruits to the current circuits
+        # Sets last ciruits to the current circuits
         self.last_circuits = copy.deepcopy(new_circuits)
 
     def resetAllGates(self):
@@ -100,10 +100,10 @@ class NodeTreeManager:
         """
         Removes all the demo node trees
         """
-        # removes the copy
+        # Removes the copy
         self.main_node_tree.nodes[self.main_tree_id + "obj_instancer" + "_main"].inputs[1].object = None
-        bpy.ops.an.execute_tree(name=self.main_tree_id+"an_q")
         # TODO: not sure about that "refresh"
+        bpy.ops.an.execute_tree(name=self.main_tree_id+"an_q")
         for node_tree in bpy.data.node_groups:
             if (self.demo_id in node_tree.name) or (self.main_tree_id in node_tree.name):
                 bpy.data.node_groups.remove(node_tree)
@@ -119,10 +119,10 @@ class NodeTreeManager:
             q_index = 0
             for qubit in new_circuits[circ_name].data:
                 if len(qubit) > len(last_circuits[circ_name].data[q_index]):
-                    # the user pushed a new gate
+                    # The user pushed a new gate
                     return "ADD", qubit[-1], (circ_name, q_index, len(qubit) -1)
                 elif len(qubit) < len(last_circuits[circ_name].data[q_index]):
-                    # the user deleted a gate
+                    # The user deleted a gate
                     last_qubit = last_circuits[circ_name].data[q_index]
                     return "DEL", last_qubit[-1], (circ_name, q_index, len(last_qubit) - 1)
                 q_index += 1

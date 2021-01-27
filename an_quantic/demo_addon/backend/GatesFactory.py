@@ -27,11 +27,11 @@ class GatesFactory:
         grp_out = circuit_tree.nodes[self.demo_id + "grp_out" + circuit_id]
         # TODO: not sure that this code should be here (spacing management)
         if nb_existing_gates + 1 > (c2h.location[0] - h2c.location[0])/self.spacing:
-            # moves to the right the output nodes so the node tree is still readable
+            # Moves to the right the output nodes so the node tree is still readable
             c2h.location[0] += self.spacing
             grp_out.location[0] += self.spacing
         elif (c2h.location[0] - h2c.location[0]) / self.spacing > nb_existing_gates + 1:
-            # if there is more space than needed
+            # If there is more space than needed
             nb_del_space = int((c2h.location[0] - h2c.location[0])/self.spacing - (nb_existing_gates + 1))
             for i in range(nb_del_space):
                 c2h.location[0] -= self.spacing

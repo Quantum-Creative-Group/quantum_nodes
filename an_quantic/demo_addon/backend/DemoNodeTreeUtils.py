@@ -1,11 +1,11 @@
 import bpy
 
-def genereateMultiplyAll(context, demo_id):
+def generateMultiplyAll(context, demo_id):
     context.new_node_tree(type="an_AnimationNodeTree", name=demo_id+"multiply_all")
     node_tree = bpy.data.node_groups[demo_id+"multiply_all"]
     node_tree_id = "_ma"
 
-    # auto-execution parameters
+    # Auto-execution parameters
     node_tree.autoExecution.enabled = False
 
     # Loop input node
@@ -46,7 +46,7 @@ def generateMaxValue(context, demo_id):
     node_tree = bpy.data.node_groups[demo_id+"max_values"]
     node_tree_id = "_mv"
 
-    # auto-execution parameters
+    # Auto-execution parameters
     node_tree.autoExecution.enabled = False
 
     # Group input node
@@ -85,7 +85,7 @@ def generateMaxValue(context, demo_id):
     # Linking everything
         # Group in output to math input
     node_tree.links.new(grp_in.outputs[0], math_abs.inputs[0])
-        # Math output to Numer List Math
+        # Math output to Number List Math
     node_tree.links.new(math_abs.outputs[0], n_list_math.inputs[0])
         # Number List Math output to Group out input
     node_tree.links.new(n_list_math.outputs[0], grp_out.inputs[0])
@@ -95,7 +95,7 @@ def generateNegative(context, demo_id):
     node_tree = bpy.data.node_groups[demo_id+"negative"]
     node_tree_id = "_neg"
 
-    # auto-execution parameters
+    # Auto-execution parameters
     node_tree.autoExecution.enabled = False
 
     # Loop input node
@@ -134,7 +134,7 @@ def generateNegative(context, demo_id):
     switch.inputs[2].value = -1.00
 
     # Linking everything
-        # Loop in outputs to compare input
+        # Loop in output to compare input
     node_tree.links.new(loop_in.outputs[2], compare.inputs[0])
         # Compare output to switch condition input
     node_tree.links.new(compare.outputs[0], switch.inputs[0])
@@ -173,7 +173,7 @@ def generateMeshData(context, demo_id):
     node_tree.nodes["Invoke Subprogram"].name = node_name
     inv_mult_all = node_tree.nodes[node_name]
     inv_mult_all.location = (160, 200)
-        # set subprogram
+        # Set subprogram
     inv_mult_all_inp = bpy.data.node_groups[demo_id+"multiply_all"].nodes[demo_id + "loop_in" + "_ma"]
     inv_mult_all.subprogramIdentifier = inv_mult_all_inp.identifier
 
@@ -183,7 +183,7 @@ def generateMeshData(context, demo_id):
     node_tree.nodes["Invoke Subprogram"].name = node_name
     inv_neg = node_tree.nodes[node_name]
     inv_neg.location = (-40, 0)
-        # set subprogram
+        # Set subprogram
     inv_neg_inp = bpy.data.node_groups[demo_id+"negative"].nodes[demo_id + "loop_in" + "_neg"]
     inv_neg.subprogramIdentifier = inv_neg_inp.identifier
 
@@ -193,7 +193,7 @@ def generateMeshData(context, demo_id):
     node_tree.nodes["Invoke Subprogram"].name = node_name
     inv_mv = node_tree.nodes[node_name]
     inv_mv.location = (-40, -160)
-        # set subprogram
+        # Set subprogram
     inv_mv_inp = bpy.data.node_groups[demo_id+"max_values"].nodes[demo_id + "grp_in" + "_mv"]
     inv_mv.subprogramIdentifier = inv_mv_inp.identifier
 
@@ -205,7 +205,7 @@ def generateMeshData(context, demo_id):
     math_mult.location = (460, 0)
     math_mult.operation = 'MULTIPLY'
 
-    # forces to update socket inputs/outputs (tada !)
+    # forces to update socket inputs/outputs (tada!)
     # TODO: find a better solution
     bpy.context.scene.frame_set(bpy.data.scenes['Scene'].frame_current)
     # Linking everything
@@ -230,7 +230,7 @@ def generateCircuit(context, demo_id, circuit_id):
     node_tree = bpy.data.node_groups[demo_id+"circuit_"+circuit_id]
     node_tree_id = "_c" + circuit_id
 
-    # auto-execution parameters
+    # Auto-execution parameters
     node_tree.autoExecution.enabled = False
 
     # Group input node
@@ -273,7 +273,7 @@ def generateMainNodeTree(context, main_tree_id, obj):
     node_tree = bpy.data.node_groups[main_tree_id+"an_q"]
     node_tree_id = "_main"
 
-    # auto-execution parameters
+    # Auto-execution parameters
     node_tree.autoExecution.enabled = False
     node_tree.autoExecution.SceneUpdate = False
     node_tree.autoExecution.treeChanged = True
@@ -303,7 +303,7 @@ def generateMainNodeTree(context, main_tree_id, obj):
         node_tree.nodes["Invoke Subprogram"].name = node_name
         inv_circuits[circ_name] = node_tree.nodes[node_name]
         inv_circuits[circ_name].location = (-200, 500 + offset*(-350))
-            # set subprogram
+            # Set subprogram
         subprog_inp = bpy.data.node_groups["an_q_demo_"+"circuit_"+circ_name].nodes["an_q_demo_" + "grp_in" + "_c"+circ_name]
         inv_circuits[circ_name].subprogramIdentifier = subprog_inp.identifier
     
@@ -315,7 +315,7 @@ def generateMainNodeTree(context, main_tree_id, obj):
         node_tree.nodes["Invoke Subprogram"].name = node_name
         inv_mesh_data_circuits[circ_name] = node_tree.nodes[node_name]
         inv_mesh_data_circuits[circ_name].location = (200, 500 + offset*(-500))
-            # set subprogram
+            # Set subprogram
         subprog_inp = bpy.data.node_groups["an_q_demo_"+"mesh_data"].nodes["an_q_demo_" + "grp_in" + "_md"]
         inv_mesh_data_circuits[circ_name].subprogramIdentifier = subprog_inp.identifier
 

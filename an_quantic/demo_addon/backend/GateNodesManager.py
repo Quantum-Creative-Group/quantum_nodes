@@ -21,15 +21,15 @@ class GateNodesManager:
         Removes the given gate node
         Creates a new link between the input and output of the deleted node
         """
-        # saves the input and output
+        # Saves the input and output
         inp = gate_node.originNodes[0].outputs[0]
         out = gate_node.outputs[0].directTargets[0]
         cls.removeLink(gate_node.originNodes[0].outputs[0], gate_node.inputs[len(gate_node.inputs) - 1], circuit_tree)
         cls.removeLink(gate_node.outputs[0], gate_node.outputs[0].directTargets[0], circuit_tree)
-        # links the saved output and input
+        # Links the saved output and input
         circuit_tree.links.new(inp, out)
         gate_node.remove()
-        # forces to update the tree (magic trick)
+        # Forces to update the tree (magic trick)
         # TODO: find a better solution
         bpy.context.scene.frame_set(bpy.data.scenes['Scene'].frame_current)
 
@@ -38,11 +38,11 @@ class GateNodesManager:
         """
         Returns the gate if it already exists
         """
-        # finds the first node that contains a gate of the corresponding circuit
+        # Finds the first node that contains a gate of the corresponding circuit
         # so let's start looking from this index for a potential existing gate
         min_gate_index = 0
         if len(qubit_data) > 0:
-            # only when there are already gates in the node tree
+            # Only when there are already gates in the node tree
             for node in circuit_tree.nodes:
                 if "gate_" in node.name:
                     if not cls.qubitIndexInGate(q_index, node):
@@ -50,15 +50,15 @@ class GateNodesManager:
                     else:
                         break
         
-        # finds where the potential existing gate should (at least) 
+        # Finds where the potential existing gate should (at least) 
         # be placed from the previous min_gate_index
-        last_gate_type = "" # last_gate_type is used to counter redundancy (ex: q1 --|H|--|H|--)
+        last_gate_type = "" # Last_gate_type is used to counter redundancy (ex: q1 --|H|--|H|--)
         for g in qubit_data:
             if (g != gate_type) and (last_gate_type != g):
                 min_gate_index += 1
             last_gate_type = g
 
-        # searches for the potential existing gate with these conditions :
+        # Searches for the potential existing gate with these conditions:
         # gate_index >= min_gate_index and "gate_T" in node.name
         gate_index = 0
         for node in circuit_tree.nodes:
