@@ -3,8 +3,10 @@ from qiskit import IBMQ
 from bpy.types import Operator
 
 class QueryProps(bpy.types.PropertyGroup):
+    error_msg: bpy.props.StringProperty(default="")
+    connected: bpy.props.BoolProperty(default=False)
     query: bpy.props.StringProperty(default="")
-
+    
 class ConnexionIBM(Operator):
     bl_idname = "object.connexion_ibm"
     bl_label = "ConnexionIBM"
@@ -12,12 +14,14 @@ class ConnexionIBM(Operator):
     query: bpy.props.PointerProperty(name="Token", type=QueryProps)
 
     def execute(self, context):
-        try:
-            IBMQ.enable_account(bpy.context.scene.QueryProps.query)
-            return {'FINISHED'}
-        except Exception as e:
-            error_msg = ""
-            for msg in e.args:
-                error_msg += msg + "\n"
-            print(error_msg)
-            return {'CANCELLED'}
+        if(bpy.context.scene.QueryProps.connected == False):
+            try:
+                bpy.context.scene.QueryProps.error_msg = ""
+                IBMQ.enable_account(bpy.context.scene.QueryProps.query)
+                bpy.context.scene.QueryProps.connected = True
+                return {'FINISHED'}
+            except Exception as e:
+                bpy.context.scene.QueryProps.error_msg = e.args[0].split(".")[4]
+                bpy.context.scene.QueryProps.connected = False
+                return {'CANCELLED'}
+        return {'FINISHED'}

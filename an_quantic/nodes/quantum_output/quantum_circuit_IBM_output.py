@@ -79,7 +79,7 @@ class QuantumCircuitIBMOutputStateNode(bpy.types.Node, AnimationNode):
             self.raiseErrorMessage("This system is offline for now")
         if (quantum_circuit.num_qubits > backend.configuration().n_qubits):
             self.raiseErrorMessage("This system doesn't compute enough qubits: " + str(backend.configuration().n_qubits))
-            
+
         qobj = assemble(transpile(quantum_circuit, backend=backend), backend=backend)
         job = backend.run(qobj)
         start_time = time.time()
