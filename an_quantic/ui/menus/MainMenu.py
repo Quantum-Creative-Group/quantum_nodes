@@ -26,7 +26,7 @@ class MainMenu(Menu):
         layout.menu("AN_MT_quantum_gates", text = "Quantum Gates", icon = "SHADING_BBOX")
         layout.menu("AN_MT_complex", text = "Complex Numbers", icon = "MESH_UVSPHERE")
         layout.separator()
-        layout.menu("AN_MT_quantum_qu_heightmap", text = "Quantum Heightmap", icon = "ORIENTATION_VIEW")
+        layout.menu("AN_MT_quantum_qu_blur", text = "Quantum Blur", icon = "ORIENTATION_VIEW")
         layout.menu("AN_MT_quantum_init_qu_circuit", text = "Init Quantum Circuit", icon = "KEYINGSET")
         layout.menu("AN_MT_quantum_qu_output", text = "Quantum Output", icon = "ORIENTATION_NORMAL")
         layout.separator()

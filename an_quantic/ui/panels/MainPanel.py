@@ -45,7 +45,7 @@ class MainPanel(Panel):
         row.menu("AN_MT_quantum_gates", text = "Gates", icon = "SHADING_BBOX")
         row.menu("AN_MT_complex", text = "Complex Nb", icon_value = qubit.icon_id)
         row = box.row()
-        row.menu("AN_MT_quantum_qu_heightmap", text = "Heightmap", icon = "ORIENTATION_VIEW")
+        row.menu("AN_MT_quantum_qu_blur", text = "Qu Blur", icon = "ORIENTATION_VIEW")
         row.menu("AN_MT_quantum_init_qu_circuit", text = "Init Circuit", icon = "KEYINGSET")
         row = box.row()
         row.menu("AN_MT_quantum_qu_output", text = "Qu Output", icon = "ORIENTATION_NORMAL")

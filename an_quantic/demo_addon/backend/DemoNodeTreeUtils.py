@@ -241,19 +241,19 @@ def generateCircuit(context, demo_id, circuit_id):
     grp_in.location = (-400, 0)
     grp_in.subprogramName = demo_id + "circuit_" + circuit_id
 
-    # Heightmap to quantum circuit node
-    node_tree.nodes.new(type="an_HeightmapToQuantumCircuitNode")
+    # Quantum Blur Input node
+    node_tree.nodes.new(type="an_QuantumBlurInputNode")
     node_name = demo_id + "hmap_to_qu_cir" + node_tree_id
-    node_tree.nodes["Heightmap To Quantum Circuit"].name = node_name
-    heightmap_to_circuit = node_tree.nodes[node_name]
-    heightmap_to_circuit.location = (-180, 0)
+    node_tree.nodes["Quantum Blur Input"].name = node_name
+    quantum_blur_input = node_tree.nodes[node_name]
+    quantum_blur_input.location = (-180, 0)
 
-    # Quantum circuit to heightmap node
-    node_tree.nodes.new(type="an_QuantumCircuitToHeightmapNode")
+    # Quantum Blur Output node
+    node_tree.nodes.new(type="an_QuantumBlurOutputNode")
     node_name = demo_id + "qu_cir_to_hmap" + node_tree_id
-    node_tree.nodes["Quantum Circuit To Heightmap"].name = node_name
-    circuit_to_heightmap = node_tree.nodes[node_name]
-    circuit_to_heightmap.location = (800, 0)
+    node_tree.nodes["Quantum Blur Output"].name = node_name
+    quantum_blur_output = node_tree.nodes[node_name]
+    quantum_blur_output.location = (800, 0)
 
     # Group output node
     node_tree.nodes.new(type="an_GroupOutputNode")
@@ -264,9 +264,9 @@ def generateCircuit(context, demo_id, circuit_id):
     grp_out.newGroupOutput("Float List", "Results")
 
     # Linking everything
-    node_tree.links.new(grp_in.outputs[0], heightmap_to_circuit.inputs[0])
-    node_tree.links.new(heightmap_to_circuit.outputs[0], circuit_to_heightmap.inputs[0])
-    node_tree.links.new(circuit_to_heightmap.outputs[0], grp_out.inputs[0])
+    node_tree.links.new(grp_in.outputs[0], quantum_blur_input.inputs[0])
+    node_tree.links.new(quantum_blur_input.outputs[0], quantum_blur_output.inputs[0])
+    node_tree.links.new(quantum_blur_output.outputs[0], grp_out.inputs[0])
 
 def generateMainNodeTree(context, main_tree_id, obj):
     bpy.ops.node.new_node_tree(type="an_AnimationNodeTree", name=main_tree_id+"an_q")

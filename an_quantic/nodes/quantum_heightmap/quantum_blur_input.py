@@ -3,9 +3,9 @@ from ... lib.quantumblur import height2circuit
 from animation_nodes.base_types import AnimationNode
 from math import ceil, sqrt
 
-class HeightmapToQuantumCircuitNode(bpy.types.Node, AnimationNode):
-    bl_idname = "an_HeightmapToQuantumCircuitNode"
-    bl_label = "Heightmap To Quantum Circuit"
+class QuantumBlurInputNode(bpy.types.Node, AnimationNode):
+    bl_idname = "an_QuantumBlurInputNode"
+    bl_label = "Quantum Blur Input"
 
     def create(self):
         self.newInput("Float List", "Floats", "floats")

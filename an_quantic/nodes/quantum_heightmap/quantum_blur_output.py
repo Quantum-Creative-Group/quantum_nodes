@@ -4,9 +4,9 @@ from animation_nodes.base_types import AnimationNode
 from animation_nodes.data_structures import DoubleList
 from math import ceil, sqrt
 
-class QuantumCircuitToHeightmapNode(bpy.types.Node, AnimationNode):
-    bl_idname = "an_QuantumCircuitToHeightmapNode"
-    bl_label = "Quantum Circuit To Heightmap"
+class QuantumBlurOutputNode(bpy.types.Node, AnimationNode):
+    bl_idname = "an_QuantumBlurOutputNode"
+    bl_label = "Quantum Blur Output"
 
     def create(self):
         self.newInput("Quantum Circuit", "Quantum Circuit", "qc")
