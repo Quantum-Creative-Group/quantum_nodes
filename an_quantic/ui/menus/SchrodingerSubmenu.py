@@ -7,4 +7,4 @@ class SchrodingerSubmenu(Menu):
     bl_label = "Schrödinger Simulation"
     
     def draw(self, context):
-        insertNode(self.layout, "an_SchrodingerEquationSimulation", "Schrödinger Equation Simulation")
+        insertNode(self.layout, "an_SchrodingerEquationSimulationNode", "Schrödinger Equation Simulation")
