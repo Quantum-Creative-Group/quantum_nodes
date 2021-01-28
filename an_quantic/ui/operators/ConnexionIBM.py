@@ -17,7 +17,11 @@ class ConnexionIBM(Operator):
                 bpy.context.scene.QueryProps.connected = True
                 return {'FINISHED'}
             except Exception as e:
-                bpy.context.scene.QueryProps.error_msg = e.args[0].split(".")[4]
+                if (e.args[0].split(".")[4] == "connection"):
+                    bpy.context.scene.QueryProps.error_msg = "Please verify your internet connection"
+                else:
+                    bpy.context.scene.QueryProps.error_msg = e.args[0].split(".")[4]
+                print(e.args)
                 bpy.context.scene.QueryProps.connected = False
                 return {'CANCELLED'}
         return {'FINISHED'}

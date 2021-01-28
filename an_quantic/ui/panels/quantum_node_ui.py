@@ -9,7 +9,7 @@ class InsertNodeUI(bpy.types.Panel):
     bl_idname = "AN_PT_InsertNodeUI"
     bl_space_type = "NODE_EDITOR"
     bl_region_type = "UI"
-    bl_category = "QuantumNode"
+    bl_category = "Quantum Node"
 
     # TODO: tries to load your account if it's already saved on yout computer
     # def __init__(self):
