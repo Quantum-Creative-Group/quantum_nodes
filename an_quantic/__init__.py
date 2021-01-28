@@ -1,6 +1,6 @@
 '''
 Copyright (C) 2020 QuantumNodes
-<YOUR EMAIL>
+felix.olart56@gmail.com
 
 Created by QuantumNodes
 
@@ -20,11 +20,11 @@ Created by QuantumNodes
 
 bl_info = {
     "name": "Quantum Nodes",
-    "author": "Quantum Nodes",
+    "author": "Quantum Creative Group",
     "version": (0, 0, 1),
     "blender": (2, 91, 0),
     "location": "Animation Nodes",
-    "description": "Schrödinger Simulation for Animation Node",
+    "description": "Animation Nodes extension which add quantum tools",
     "warning": "",
     "doc_url": "",
     "tracker_url": "",
