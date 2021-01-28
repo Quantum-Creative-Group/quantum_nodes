@@ -2,6 +2,7 @@ import bpy
 from ... lib.quantumblur import circuit2height
 from animation_nodes.base_types import AnimationNode
 from animation_nodes.data_structures import DoubleList
+from math import ceil, sqrt
 
 class QuantumCircuitToHeightmapNode(bpy.types.Node, AnimationNode):
     bl_idname = "an_QuantumCircuitToHeightmapNode"
@@ -16,7 +17,7 @@ class QuantumCircuitToHeightmapNode(bpy.types.Node, AnimationNode):
             floats = DoubleList()
             dictFloats = {}
             dictFloats = circuit2height(qc)
-            n = int(math.ceil(math.sqrt(len(dictFloats))))
+            n = int(ceil(sqrt(len(dictFloats))))
             for i in range(n):
                 for j in range(n):
                     floats.append(dictFloats[i,j])

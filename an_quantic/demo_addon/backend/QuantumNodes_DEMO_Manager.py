@@ -43,7 +43,12 @@ class QuantumNodes_DEMO_Manager():
         # Sets new target
         self.setNewCircuits(new_target)
         self.target = new_target
-        self.ntm.updateTarget(new_target)
+        target_updated = self.ntm.updateTarget(new_target)
+        if not target_updated:
+            # the target has not been updated because the node trees
+            # do not exist anymore, so, reset eveything
+            self.target = None
+            self.nt_initialized = False
 
     def setNewCircuits(self, obj):
         """

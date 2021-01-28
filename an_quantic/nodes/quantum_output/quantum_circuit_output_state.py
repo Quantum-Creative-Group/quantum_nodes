@@ -13,9 +13,9 @@ class QuantumCircuitOutputStateNode(bpy.types.Node, AnimationNode):
 
     def execute(self, quantum_circuit):
         try:
-            backend = Aer.get_backend('statevector_simulator')
-            job = execute(quantum_circuit, backend)
-            result = job.result()
-            return result.get_statevector(quantum_circuit,quantum_circuit.num_qubits)
+            backend = Aer.get_backend('statevector_simulator') # Tell Qiskit how to simulate our circuit
+            result = execute(quantum_circuit,backend).result() # Do the simulation, returning the result
+            out_state = result.get_statevector()
+            return out_state
         except:
             return

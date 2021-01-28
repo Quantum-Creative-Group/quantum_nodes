@@ -11,14 +11,17 @@ class IBMConnexion(Operator):
     query: PointerProperty(name = "Token", type = QueryProperties)
 
     def execute(self, context):
-        if context.scene.QueryProps.connected == False:
+        if bpy.context.scene.QueryProps.connected == False:
             try:
-                context.scene.QueryProps.error_msg = ""
-                IBMQ.enable_account(context.scene.QueryProps.query)
-                context.scene.QueryProps.connected = True
+                bpy.context.scene.QueryProps.error_msg = ""
+                IBMQ.enable_account(bpy.context.scene.QueryProps.query)
+                bpy.context.scene.QueryProps.connected = True
                 return {'FINISHED'}
             except Exception as e:
-                context.scene.QueryProps.error_msg = e.args[0].split(".")[4]
-                context.scene.QueryProps.connected = False
+                if (e.args[0].split(".")[4] == "connection"):
+                    bpy.context.scene.QueryProps.error_msg = "Please verify your internet connection"
+                else:
+                    bpy.context.scene.QueryProps.error_msg = e.args[0].split(".")[4]
+                bpy.context.scene.QueryProps.connected = False
                 return {'CANCELLED'}
         return {'FINISHED'}
