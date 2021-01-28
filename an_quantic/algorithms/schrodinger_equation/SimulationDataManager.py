@@ -7,14 +7,14 @@ from numpy import pi
 
 class SimulationDataManager:
 	def __init__(self):
-		self._x_axis, self._y_axis = None, None
-		self._v_x, self._v_y = None, None
-		self._wave_function = None
-		self._potential_wall = 1e10
-		self._potential_boundary = None
-		self._laplace_matrix = None
-		self._h1, self._hx, self._hy = None, None, None
-		self._x, self._y = None, None
+		self.x_axis, self.y_axis = None, None
+		self.v_x, self.v_y = None, None
+		self.wave_function = None
+		self.potential_wall = 1e10
+		self.potential_boundary = None
+		self.laplace_matrix = None
+		self.h1, self.hx, self.hy = None, None, None
+		self.x, self.y = None, None
 
 	@classmethod
 	def xConcatenate(cls, MM, N):

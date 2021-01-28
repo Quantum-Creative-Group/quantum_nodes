@@ -9,22 +9,25 @@ class HeightmapToQuantumCircuitNode(bpy.types.Node, AnimationNode):
     bl_label = "Heightmap To Quantum Circuit"
 
     def create(self):
-        self.newInput("Vector 2D List", "Heightmap", "heightmap")
-        self.newOutput("Quantum Circuit", "Quantum Circuit 1", "quantum_circuit_1")
-        self.newOutput("Quantum Circuit", "Quantum Circuit 2", "quantum_circuit_2")
-        self.newOutput("Quantum Circuit", "Quantum Circuit 3", "quantum_circuit_3")
+        self.newInput("Float List", "Floats", "floats")
+        self.newOutput("Quantum Circuit", "Quantum Circuit", "quantum_circuit")
 
-    def execute(self, heightmap):
-        if heightmap == {} or heightmap == Vector((0,0)):
-            return {}, {}, {}
+    def execute(self, floats):
+        if floats == [] :
+            return 0
         # heights = _image2heights(image)
-        circuits = []
-        for height in heightmap:
-            circuits.append( height2circuit(height) )
+        dictFloats = {}
+        n = int(math.ceil(math.sqrt(len(floats))))
+        iterator = 0
+        for i in range(n):
+            for j in range(n):
+                if iterator < len(floats):
+                    dictFloats[i,j] = float(format(abs(floats[iterator]), '.3f'))
+                else:
+                    dictFloats[i,j] = 0.0
+                iterator += 1
+        circuit = height2circuit(dictFloats)
 
-        qc_1 = circuits[0]
-        qc_2 = circuits[1]
-        qc_3 = circuits[2]
-        return qc_1, qc_2, qc_3
+        return circuit
 
         

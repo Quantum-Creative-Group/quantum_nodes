@@ -385,7 +385,7 @@ def probs2height(probs, size=None, log=False):
     for bitstring in probs:
         if bitstring in grid:
             height[grid[bitstring]] = float(probs[bitstring])/max_h
-            
+         
     # take logs if required
     if log:
         min_h = min([height[pos] for pos in height if height[pos] !=0])

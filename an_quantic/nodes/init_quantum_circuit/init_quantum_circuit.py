@@ -14,7 +14,7 @@ class InitQuantumCircuitNode(bpy.types.Node, AnimationNode):
     bl_idname = "an_InitQuantumCircuitNode"
     bl_label = "Init Quantum Circuit"
 
-    mode = EnumProperty(name = "Mode", default = "QNUMBER",
+    mode : EnumProperty(name = "Mode", default = "QNUMBER",
         items = modeItems, update = AnimationNode.refresh)
 
     def create(self):

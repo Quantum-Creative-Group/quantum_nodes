@@ -2,25 +2,27 @@ import bpy
 from qiskit import *
 from ... lib.quantumblur import *
 from animation_nodes.base_types import AnimationNode
+from animation_nodes.data_structures import DoubleList
 
 class QuantumCircuitToHeightmapNode(bpy.types.Node, AnimationNode):
     bl_idname = "an_QuantumCircuitToHeightmapNode"
     bl_label = "Quantum Circuit To Heightmap"
 
     def create(self):
-        self.newInput("Quantum Circuit", "Quantum Circuit 1", "qc_1")
-        self.newInput("Quantum Circuit", "Quantum Circuit 2", "qc_2")
-        self.newInput("Quantum Circuit", "Quantum Circuit 3", "qc_3")
-        self.newOutput("Vector 2D List", "Heightmap", "heightmap")
+        self.newInput("Quantum Circuit", "Quantum Circuit", "qc")
+        self.newOutput("Float List", "Floats", "floats")
         
 
-    def execute(self, qc_1, qc_2, qc_3):
+    def execute(self, qc):
         try:
-            heights = []
-            heights.append( circuit2height(qc_1) )
-            heights.append( circuit2height(qc_2) )
-            heights.append( circuit2height(qc_3) )
-            
-            return heights
+            floats = DoubleList()
+            dictFloats = {}
+            dictFloats = circuit2height(qc)
+            n = int(math.ceil(math.sqrt(len(dictFloats))))
+            #iterator = 0
+            for i in range(n):
+                for j in range(n):
+                    floats.append(dictFloats[i,j])
+            return floats
         except:
-            return
+            return 

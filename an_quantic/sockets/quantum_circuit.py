@@ -1,7 +1,7 @@
 import bpy
 from bpy.props import *
 from qiskit import QuantumCircuit
-from .. base_types import AnimationNodeSocket
+from animation_nodes.base_types import AnimationNodeSocket
 
 class QuantumCircuitSocket(bpy.types.NodeSocket, AnimationNodeSocket):
     bl_idname = "an_QuantumCircuitSocket"
