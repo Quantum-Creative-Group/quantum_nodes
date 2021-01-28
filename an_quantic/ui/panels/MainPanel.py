@@ -87,7 +87,7 @@ def register():
     # loads a preview thumbnail of a file and stores it in the previews collection
     pcoll.load("my_icon", os.path.join(my_icons_dir, "discord.png"), 'IMAGE')
     pcoll.load("addon_logo", os.path.join(my_icons_dir, "discord.png"), 'IMAGE')
-    pcoll.load("qubit", os.path.join(my_icons_dir, "discord.png"), 'IMAGE')
+    pcoll.load("qubit", os.path.join(my_icons_dir, "complex_c.png"), 'IMAGE')
     preview_collections["main"] = pcoll
     
     bpy.types.Scene.QueryProps = bpy.props.PointerProperty(type = QueryProperties)
