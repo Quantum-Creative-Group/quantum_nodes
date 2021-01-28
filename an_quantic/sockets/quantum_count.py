@@ -1,6 +1,5 @@
 import bpy
-from bpy.props import *
-from qiskit import *
+from qiskit.result.counts import Counts
 from animation_nodes.base_types import AnimationNodeSocket, PythonListSocket
 
 class QuantumCountSocket(bpy.types.NodeSocket, AnimationNodeSocket):
@@ -14,10 +13,6 @@ class QuantumCountSocket(bpy.types.NodeSocket, AnimationNodeSocket):
     @classmethod
     def getDefaultValue(cls):
         return None
-
-#    @classmethod
-#    def getCopyExpression(cls):
-#        return "value.copy()"
 
     @classmethod
     def correctValue(cls, value):
@@ -33,10 +28,6 @@ class QuantumCountListSocket(bpy.types.NodeSocket, PythonListSocket):
     drawColor = (0.18, 0.32, 1, 0.5)
     storable = True
     comparable = False
-
-#    @classmethod
-#    def getCopyExpression(cls):
-#        return "[element.copy() for element in value]"
 
     @classmethod
     def correctValue(cls, value):

@@ -5,7 +5,6 @@ from . DemoNodeTreeUtils import *
 from . GatesFactory import GatesFactory
 from . GateNodesManager import GateNodesManager
 
-
 class NodeTreeManager:
     def __init__(self):
         self.demo_id = "an_q_demo_"
@@ -18,7 +17,7 @@ class NodeTreeManager:
         """
         Generates the demo node trees
         """
-        genereateMultiplyAll(bpy.ops.node, self.demo_id)
+        generateMultiplyAll(bpy.ops.node, self.demo_id)
         generateMaxValue(bpy.ops.node, self.demo_id)
         generateNegative(bpy.ops.node, self.demo_id)
         generateMeshData(bpy.ops.node, self.demo_id)
@@ -31,8 +30,13 @@ class NodeTreeManager:
         """
         Updates the target of the quantum circuits
         """
-        self.main_node_tree.nodes[self.main_tree_id + "mesh_obj_input" + "_main"].inputs[0].object = obj
-        self.main_node_tree.nodes[self.main_tree_id + "obj_instancer" + "_main"].inputs[1].object = obj
+        updated = False
+        for node_group in bpy.data.node_groups:
+            if self.main_tree_id + "an_q" in node_group.name:
+                self.main_node_tree.nodes[self.main_tree_id + "mesh_obj_input" + "_main"].inputs[0].object = obj
+                self.main_node_tree.nodes[self.main_tree_id + "obj_instancer" + "_main"].inputs[1].object = obj
+                updated = True
+        return updated
     
     def update(self, new_circuits):
         """
@@ -91,22 +95,25 @@ class NodeTreeManager:
         Resets all the gate nodes in the node trees (for each circuit)
         """
         for circ_name in ["x", "y", "z"]:
-            circuit_node_tree = bpy.data.node_groups[self.demo_id + "circuit_" + circ_name]
-            for gate_node in circuit_node_tree.nodes:
-                if "gate" in gate_node.name:
-                    GateNodesManager.removeGate(gate_node, circuit_node_tree)
+            for node_group in bpy.data.node_groups:
+                if self.demo_id + "circuit_" + circ_name == node_group.name :
+                    for gate_node in node_group.nodes:
+                        if "gate" in gate_node.name:
+                            GateNodesManager.removeGate(gate_node, node_group)
     
     def removeAllTrees(self):
         """
         Removes all the demo node trees
         """
-        # Removes the copy
-        self.main_node_tree.nodes[self.main_tree_id + "obj_instancer" + "_main"].inputs[1].object = None
-        # TODO: not sure about that "refresh"
-        bpy.ops.an.execute_tree(name=self.main_tree_id+"an_q")
-        for node_tree in bpy.data.node_groups:
-            if (self.demo_id in node_tree.name) or (self.main_tree_id in node_tree.name):
-                bpy.data.node_groups.remove(node_tree)
+        for node_group in bpy.data.node_groups:
+            if self.main_tree_id + "an_q" in node_group.name:
+                # Removes the copy
+                self.main_node_tree.nodes[self.main_tree_id + "obj_instancer" + "_main"].inputs[1].object = None
+                # TODO: not sure about that "refresh"
+                bpy.ops.an.execute_tree(name = self.main_tree_id + "an_q")
+                for node_tree in bpy.data.node_groups:
+                    if (self.demo_id in node_tree.name) or (self.main_tree_id in node_tree.name):
+                        bpy.data.node_groups.remove(node_tree)
     
     @classmethod
     def getModification(cls, last_circuits, new_circuits):

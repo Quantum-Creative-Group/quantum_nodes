@@ -1,5 +1,6 @@
 '''
-Copyright (C) 2021 QuantumNodes
+Copyright (C) 2020 QuantumNodes
+felix.olart56@gmail.com
 
 Created by Quantum-Creative-Group
 
@@ -18,12 +19,12 @@ Created by Quantum-Creative-Group
 '''
 
 bl_info = {
-    "name": "Quantic Nodes",
-    "author": "Quantum-Creative-Group",
+    "name": "Quantum Nodes",
+    "author": "Quantum Creative Group",
     "version": (0, 0, 1),
     "blender": (2, 91, 0),
     "location": "Animation Nodes",
-    "description": "No desciption available yet",
+    "description": "Animation Nodes extension which add quantum tools",
     "warning": "",
     "doc_url": "",
     "tracker_url": "",

@@ -14,6 +14,11 @@ from .. operators.DeleteTarget import DeleteTarget
 from bpy.props import PointerProperty
 from bpy.types import Panel
 
+# TODO: find a way to allow undo for the addon
+# def undo_addon_handler(scene):
+#     dm = scene.demo_manager
+#     print(dm)
+
 class AN_Q_DemoAddon(bpy.types.Panel):
     bl_idname = "AN_Q_PT_addon_demo_ui"
     bl_label = "AN_Q Demo addon"
@@ -43,8 +48,12 @@ class AN_Q_DemoAddon(bpy.types.Panel):
         row = self.addRow(1)
         row.label(text="Target", icon="MESH_CUBE")
         row = self.addRow(1)
-        if(obj != None): row.prop(obj, "name")
-        else: row.label(text="Select a target")
+
+        # These two lines causes a crash on undo (invalid object) (segfault)
+        # TODO: find a solution for this bug
+        # if(obj != None): row.prop(obj, "name")
+        # else: row.label(text="Select a target")
+
         row.operator('object.delete_target', text = '', icon="CANCEL")
         row.operator('object.select_object', text = '', icon="EYEDROPPER")
         row = self.addRow(1)
@@ -65,7 +74,7 @@ class AN_Q_DemoAddon(bpy.types.Panel):
             # ---------- Qubit selection ----------
 
             box.label(text = "Select QuBit", icon = "LIGHTPROBE_GRID")
-            box.operator('dialog.select_qubit', text = "q"+str(bpy.types.Object.select_index + 1), icon = "VIEWZOOM")
+            box.operator('dialog.select_qubit', text = "q" + str(bpy.types.Object.select_index + 1), icon = "VIEWZOOM")
  
             # ---------- Gate selection ----------
         
@@ -110,6 +119,7 @@ def register():
     # (it is possible to set a poll function if needed for selected_axis)
     bpy.types.Scene.selected_axis = PointerProperty(type = SelectAxis)
     bpy.types.Scene.demo_manager = QuantumNodes_DEMO_Manager()
+    # bpy.app.handlers.undo_pre.append(undo_addon_handler)
 
 if __name__ == "__main__":
     register()

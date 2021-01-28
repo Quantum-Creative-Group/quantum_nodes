@@ -1,18 +1,12 @@
 import bpy, os
 import bpy.utils.previews
-
-from bpy.types import (Menu)
-import bpy.utils.previews
-
-from typing import Optional
-
-from animation_nodes.ui.node_menu import insertNode
+from bpy.types import Menu
 from animation_nodes.utils.nodes import getAnimationNodeTrees
 
 def drawMenu(self, context):
     pcoll = preview_collections["main"]
     my_icon = pcoll["my_icon"]
-    
+
     if context.space_data.tree_type != "an_AnimationNodeTree": return
 
     layout = self.layout
@@ -21,34 +15,31 @@ def drawMenu(self, context):
     if len(getAnimationNodeTrees()) == 0: return
 
     layout.separator()
-    layout.menu("AN_MT_quantic_extension_menu", text = "Quantic Extension Menu", icon_value=my_icon.icon_id)
+    layout.menu("AN_MT_quantum_nodes_menu", text = "Quantum Nodes", icon_value = my_icon.icon_id)
 
-class QuanticExtensionMenu(Menu):
-    bl_idname = "AN_MT_quantic_extension_menu"
-    bl_label = "Quantic Extension Menu"
+class MainMenu(Menu):
+    bl_idname = "AN_MT_quantum_nodes_menu"
+    bl_label = "Quantum Nodes"
     
-
     def draw(self, context):
         layout = self.layout
-
-        layout.menu("AN_MT_quantic_gates", text = "Quantum Gates", icon = "SHADING_BBOX")
-        layout.menu("AN_MT_quantic_complex", text = "Complex Numbers", icon = "MESH_UVSPHERE")
+        layout.menu("AN_MT_quantum_gates", text = "Quantum Gates", icon = "SHADING_BBOX")
+        layout.menu("AN_MT_complex", text = "Complex Numbers", icon = "MESH_UVSPHERE")
         layout.separator()
-        layout.menu("AN_MT_quantic_qu_heightmap", text = "Quantum Heightmap", icon = "ORIENTATION_VIEW")
-        layout.menu("AN_MT_quantic_init_qu_circuit", text = "Init Quantum Circuit", icon = "KEYINGSET")
-        layout.menu("AN_MT_quantic_qu_output", text = "Quantum Output", icon = "ORIENTATION_NORMAL")
+        layout.menu("AN_MT_quantum_qu_heightmap", text = "Quantum Heightmap", icon = "ORIENTATION_VIEW")
+        layout.menu("AN_MT_quantum_init_qu_circuit", text = "Init Quantum Circuit", icon = "KEYINGSET")
+        layout.menu("AN_MT_quantum_qu_output", text = "Quantum Output", icon = "ORIENTATION_NORMAL")
         layout.separator()
-        layout.menu("AN_MT_quantic_schrodinger_simulation", text = "Schrödinger Simulation", icon = "OPTIONS")
+        layout.menu("AN_MT_schrodinger_simulation", text = "Schrödinger Simulation", icon = "OPTIONS")
 
 preview_collections = {}
 
 def register():
     bpy.types.NODE_MT_add.append(drawMenu)
     pcoll = bpy.utils.previews.new()
-    # path to the folder where the icon is
-    # the path is calculated relative to this py file inside the addon folder
+    # path to the folder where the icons aren. Computes the path relatively this py file
     my_icons_dir = os.path.join(os.path.dirname(__file__), "../icons")
-    # load a preview thumbnail of a file and store in the previews collection
+    # loads a preview thumbnail of a file and stores it in the previews collection
     pcoll.load("my_icon", os.path.join(my_icons_dir, "discord.png"), 'IMAGE')
     preview_collections["main"] = pcoll
 

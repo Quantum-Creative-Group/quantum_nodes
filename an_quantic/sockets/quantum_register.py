@@ -1,5 +1,4 @@
 import bpy
-from bpy.props import *
 from qiskit import QuantumRegister
 from animation_nodes.base_types import AnimationNodeSocket, PythonListSocket
 
@@ -15,16 +14,11 @@ class QuantumRegisterSocket(bpy.types.NodeSocket, AnimationNodeSocket):
     def getDefaultValue(cls):
         return QuantumRegister(1)
 
-#    @classmethod
-#    def getCopyExpression(cls):
-#        return "value.copy()"
-
     @classmethod
     def correctValue(cls, value):
         if isinstance(value, QuantumRegister):
             return value, 0
         return cls.getDefaultValue(), 2
-
 
 class QuantumRegisterListSocket(bpy.types.NodeSocket, PythonListSocket):
     bl_idname = "an_QuantumRegisterListSocket"
@@ -34,10 +28,6 @@ class QuantumRegisterListSocket(bpy.types.NodeSocket, PythonListSocket):
     drawColor = (0.18, 0.32, 1, 0.5)
     storable = True
     comparable = False
-
-#    @classmethod
-#    def getCopyExpression(cls):
-#        return "[element.copy() for element in value]"
 
     @classmethod
     def correctValue(cls, value):

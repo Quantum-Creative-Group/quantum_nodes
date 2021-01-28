@@ -22,7 +22,9 @@ class SelectObject(Operator):
                 self.report({'INFO'}, "AN_Q_DEMO : target successfully updated")
             dm.initializeDemoNodeTree()
             dm.setNewTarget(bpy.context.active_object)
-            bpy.ops.an.execute_tree(name=dm.ntm.main_tree_id+"an_q")
+            for node_group in bpy.data.node_groups:
+                if dm.ntm.main_tree_id + "an_q" in node_group.name:
+                    bpy.ops.an.execute_tree(name = dm.ntm.main_tree_id + "an_q")
         
         # forces to redraw the view (magic trick)
         # TODO: find a better solution for it
@@ -33,6 +35,6 @@ class SelectObject(Operator):
         dm = bpy.types.Scene.demo_manager
         if (context.active_object != dm.target) and (dm.target != None) and (context.active_object.type == 'MESH'):
             return context.window_manager.invoke_confirm(self, event)
-        self.execute(context) # not sure about that lol
+        self.execute(context)   # not sure about that lol
         # TODO: there must be a better solution
         return {'FINISHED'}

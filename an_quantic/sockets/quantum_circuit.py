@@ -1,5 +1,4 @@
 import bpy
-from bpy.props import *
 from qiskit import QuantumCircuit
 from animation_nodes.base_types import AnimationNodeSocket
 
@@ -15,14 +14,8 @@ class QuantumCircuitSocket(bpy.types.NodeSocket, AnimationNodeSocket):
     def getDefaultValue(cls):
         return QuantumCircuit(1,1)
 
-#    @classmethod
-#    def getCopyExpression(cls):
-#        return "value.copy()"
-
     @classmethod
     def correctValue(cls, value):
         if isinstance(value, QuantumCircuit):
             return value, 0
         return cls.getDefaultValue(), 2
-
-  

@@ -1,15 +1,17 @@
 import bpy
 import time
+from bpy.props import BoolProperty, IntProperty, EnumProperty
 from qiskit import IBMQ
-from qiskit import execute
 from qiskit.compiler import transpile, assemble
 from qiskit.providers.jobstatus import JobStatus, JOB_FINAL_STATES
 from animation_nodes.base_types import AnimationNode
-from bpy.props import * # ...Property
 from animation_nodes.events import propertyChanged
 from animation_nodes.events import executionCodeChanged
 
 class Provider():
+    """
+    Used as attribute in the node IBM Output
+    """
     def __init__(self):
         self.provider = None
 
@@ -21,10 +23,10 @@ class Provider():
 
 class QuantumCircuitIBMOutputStateNode(bpy.types.Node, AnimationNode):
     bl_idname = "an_QuantumCircuitIBMOutputStateNode"
-    bl_label = "Quantum Circuit IBM Output State"
+    bl_label = "Quantum Circuit IBM Output"
     bl_width_default = 210
     errorHandlingType = "EXCEPTION"
-    _provider = Provider()
+    provider = Provider()
 
     initialized: BoolProperty(name = "Initialized", default = False,
         description = "If the node has been initialized")
@@ -33,7 +35,10 @@ class QuantumCircuitIBMOutputStateNode(bpy.types.Node, AnimationNode):
         description = "The number of remaining jobs for a backend")
 
     def item_callback(self, context):
-        return [ (sys.name(), sys.name(), "number of qubits: " + str(sys.configuration().n_qubits)) for sys in self._provider.get_provider().backends() ]
+        if self.initialized:
+            return [ (sys.name(), sys.name(), "number of qubits: " + str(sys.configuration().n_qubits)) for sys in self._provider.get_provider().backends() ]
+        else:
+            return[]
 
     backendMenu: EnumProperty(
         items = item_callback,
@@ -41,23 +46,20 @@ class QuantumCircuitIBMOutputStateNode(bpy.types.Node, AnimationNode):
         description = "Choose a system",
         update = AnimationNode.refresh,
         get = None,
-        set = None)
+        set = None)           
 
-    def __init__(self):
+    def setup(self):                            # disables auto-load at creation
+        node_tree = bpy.context.space_data.edit_tree
+        node_tree.autoExecution.enabled = False
         if not self.initialized:
             if IBMQ.active_account() == None:   # test if the IBMQ account is already loaded
                 try:
                     IBMQ.load_account()
-                except Exception as e:
-                    error_msg = ""
-                    for msg in e.args:
-                        error_msg += msg + "\n"
-                    self.raiseErrorMessage(error_msg)
-            self.initialized = True
-
-    def setup(self):
-        node_tree = bpy.context.space_data.edit_tree
-        node_tree.autoExecution.enabled = False
+                    self.initialized = True
+                except:
+                    
+                    self.raiseErrorMessage("You are not connected to any IBM account. Please enter your token in the Quantum Node panel or check your internet connection.")
+                    bpy.ops.wm.call_panel(name="AN_PT_InsertNodeUI")
 
     def create(self):
         self.newInput("Quantum Circuit", "Quantum Circuit", "quantum_circuit")
@@ -73,20 +75,25 @@ class QuantumCircuitIBMOutputStateNode(bpy.types.Node, AnimationNode):
         node_tree.execute()
 
     def execute(self, quantum_circuit):
-        backend = self._provider.get_provider().get_backend(self.backendMenu)
-        self.remaining_jobs = backend.remaining_jobs_count()
-        if backend.status().operational == False:
-            self.raiseErrorMessage("This system is offline for now")
-        if (quantum_circuit.num_qubits > backend.configuration().n_qubits):
-            self.raiseErrorMessage("This system doesn't compute enough qubits: " + str(backend.configuration().n_qubits))
-
-        qobj = assemble(transpile(quantum_circuit, backend=backend), backend=backend)
-        job = backend.run(qobj)
-        start_time = time.time()
-        job_status = job.status()
-        while job_status not in JOB_FINAL_STATES:
-            print(f'Status @ {time.time()-start_time:0.0f} s: {job_status.name},'
-                f' est. queue position: {job.queue_position()}')
+        if self.initialized:
+            backend = self._provider.get_provider().get_backend(self.backendMenu)
+            self.remaining_jobs = backend.remaining_jobs_count()
+            if backend.status().operational == False:
+                self.raiseErrorMessage("This system is offline for now")
+            if (quantum_circuit.num_qubits > backend.configuration().n_qubits):
+                self.raiseErrorMessage("This system doesn't compute enough qubits: " + str(backend.configuration().n_qubits))
+            # Prepare the job
+            qobj = assemble(transpile(quantum_circuit, backend=backend), backend=backend)
+            job = backend.run(qobj)
+            # Display the progress
+            start_time = time.time()
             job_status = job.status()
-        result = job.result()
-        return result.get_counts()
+            while job_status not in JOB_FINAL_STATES:
+                print(f'Status @ {time.time()-start_time:0.0f} s: {job_status.name},'
+                    f' est. queue position: {job.queue_position()}')
+                job_status = job.status()
+            # Handle the result
+            result = job.result()
+            return result.get_counts()
+        else:
+            return
