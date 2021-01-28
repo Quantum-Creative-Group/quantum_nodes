@@ -19,7 +19,7 @@ class EditStateCityNode(bpy.types.Node, AnimationNode):
     def execute(self,quantum_circuit, state_city):
         if state_city is None:
             return
-        if (state_city.name != "Quantume_City_Faces") :
+        if (state_city.name != "Quantume_City_Faces"):
             return 
         try:
             backend = Aer.get_backend('statevector_simulator')
@@ -30,6 +30,6 @@ class EditStateCityNode(bpy.types.Node, AnimationNode):
             for i in range (len(state_city.children)):
                 bpy.data.objects.remove(state_city.children[0])
             bpy.data.objects.remove(state_city)
-            editStateCity(parent,out_state)       
+            editStateCity(parent,out_state)
         except:
             return

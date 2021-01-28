@@ -50,6 +50,7 @@ class AN_Q_DemoAddon(bpy.types.Panel):
         row = self.addRow(1)
 
         # These two lines causes a crash on undo (invalid object) (segfault)
+        # TODO: find a solution for this bug
         # if(obj != None): row.prop(obj, "name")
         # else: row.label(text="Select a target")
 
@@ -73,7 +74,7 @@ class AN_Q_DemoAddon(bpy.types.Panel):
             # ---------- Qubit selection ----------
 
             box.label(text = "Select QuBit", icon = "LIGHTPROBE_GRID")
-            box.operator('dialog.select_qubit', text = "q"+str(bpy.types.Object.select_index + 1), icon = "VIEWZOOM")
+            box.operator('dialog.select_qubit', text = "q" + str(bpy.types.Object.select_index + 1), icon = "VIEWZOOM")
  
             # ---------- Gate selection ----------
         
