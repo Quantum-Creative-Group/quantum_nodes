@@ -1,51 +1,148 @@
-# Quantum Creative
-Project of a Blender add-on in Python 3 using Qiskit.
+# Quantum Nodes
+This is an extension of [Animation Nodes](https://github.com/JacquesLucke/animation_nodes) for [Blender](https://github.com/blender).
 
-## Installation On Linux
-### Animation Nodes
-Follow these steps to use Animation Nodes :
+Quantum Nodes provides you amazing tools to incorporate quantum computation into your creation process. It even allows you to send your quantum circuits to real qubits provided by [IBM](https://www.ibm.com/quantum-computing/experience).
 
-* First download Animation Nodes from the official website : https://animation-nodes.com/
-* Install it in Blender Preferences Panel (go to Edit/Preferences/Add-Ons) :
+Built using [Qiskit](https://github.com/Qiskit) and [Anaconda](https://github.com/Anaconda-Platform)
 
-![Preferences Panel image](assets/readme_pictures/preferences_panel.png)
+## Table of contents :bookmark_tabs:
+1. Installation
+   * [Linux](#linux)
+   * [Windows]()
+   * [Mac]()
+2. Contribute to our project
 
+### Installation :computer:
+#### Linux
+1. Downloading everything (almost)
+2. Pre-requisite installations
+3. Installation of the Blender add-ons
 
-### Quantum Creative
-#### Prerequisite
+###### Downloading everything
+* <ins>Download *Blender*</ins>
+  You can do it from the website, but doing it using the terminal is recommended for this tutorial.
+  Through the website:
 
-Qiskit and PIL have to be installed on your machine and Blender has to use your version of Python Anaconda. If it is not done yet you can follow the step by step tutorial :
+  ![](https://gitlab.com/quantum-creative-group/quantum_nodes/-/raw/assets/download_blender.png)
 
-* Install Anaconda 3.8 from the official website : https://www.anaconda.com/products/individual
+  Using the terminal:
+  * `sudo add-apt-repository ppa:thomas-schiex/blender`
+  * `sudo apt-get update`
+  * `sudo apt-get install blender`
+* <ins>Download *Anaconda*</ins>
+  Again, you can do it from the website, but doing it using the terminal is recommended for this tutorial.
+  From the website: https://www.anaconda.com/products/individual#linux
 
-* Then install the required libraries :
+  ![](https://gitlab.com/quantum-creative-group/quantum_nodes/-/raw/assets/download_anaconda_linux_step2.png)
 
-```
-conda activate
+  Using the terminal:
+  * `cd /tmp`
+  * `curl https://repo.anaconda.com/archive/Anaconda3-2020.11-Linux-x86_64.sh --output anaconda.sh`
+  See available versions [here](https://docs.anaconda.com/anaconda/install/hashes/lin-3-64/)
+  * (Recommended) Compare your hash: `sha256sum anaconda.sh`
+  See official hashes [here](https://docs.anaconda.com/anaconda/install/hashes/lin-3-64/)
+  * `bash anaconda.sh`
+  * During the installation:
+  → Do you approve the license terms? [yes|no] → “yes”
+  → Anaconda3 will now be installed into this location: in this tutorial, we use the default location.
+  → Do you wish the installer to initialize Anaconda3 → “yes”
+  * `source ~/.bashrc`
+* <ins>Download *Animation Nodes*</ins>
+  From the website: https://animation-nodes.com/#download
 
-pip install numpy
-pip install qiskit
-pip install pillow
-```
+  ![](https://gitlab.com/quantum-creative-group/quantum_nodes/-/raw/assets/download_animation_nodes_step1.png)
 
-* Go to /usr/share/blender/*blender-version*/ and open a terminal :
+  ![]()
 
-```
-sudo ln -s ~/anaconda3/ . && sudo mv anaconda3 python
-```
-It's ready ! Blender is now using Anaconda 3 with your libraries to run.
+* <ins>Download *Quantum Nodes*</ins>
+  Download it from our repository
 
-* Download the ZIP file from Gitlab (you can download from "master" but a version with more content but a little bit less stable is available on the "dev" branch)
-* Copy the content of quantum-creative/an_quantic/sockets in /home/*username*/.config/blender/2.91/scripts/addons/animation_nodes/sockets
+  ![](https://gitlab.com/quantum-creative-group/quantum_nodes/-/raw/assets/download_quantum_nodes_step2.png)
 
-![Animation Nodes Folder image](assets/readme_pictures/animation_nodes_folder.png)
+###### Pre-requisite installations
+* <ins>Install *Blender*</ins>
+  * If downloaded from the website (not recommended here):
+  → As [mentioned here](https://docs.blender.org/manual/en/latest/getting_started/installing/linux.html), uncompress the content of the downloaded .tar.xz at the desired location (e.g. ~/software or usr/local)
+  * If downloaded using the terminal: it's already done :ok_hand:
 
-* Then do the same as Animation Nodes and install our extension in Blender
-* Finally, you can find our extension in the Animation Nodes Panel and start messing around with it ! More nodes and features will be available in next updates. 
+  → Launch it to check if everything went well :wink:
+  
+* <ins>Install *Anaconda*</ins>
+  * If downloaded through the web page :
+    * Open a new terminal where you saved the file and enter: `bash Anaconda3-2020.11-Linux-x86_64.sh`
+    * During the installation:
+      → Do you approve the license terms? [yes|no] → “yes”
+      → Anaconda3 will now be installed into this location: in this tutorial, we use the default location.
+      → Do you wish the installer to initialize Anaconda3 → “yes”
+    * At the end: `source ~/.bashrc`
+  * If downloaded using the terminal: it's already done :ok_hand:
 
-![Animation Nodes Quantum Menu image](assets/readme_pictures/quantum_menu.png)
+* <ins>*Anaconda* environment and *Blender*</ins>
+  In this part, we will create a new conda environment, install the necessary packages and then, tell *Blender* to use our environment instead of the python that comes with by default.
+  * Open a new terminal
+    Go where your Blender installation files are. By default (when installed using the terminal), the files are located here: `cd /usr/share/blender/2.91/`
+  * Deactivate the current python version: `mv python _python`
+  * Create a new anaconda environment:
+    **Warning**: as [mentioned here](https://docs.blender.org/api/current/info_tips_and_tricks.html), the python version ([major and minor](https://linuxize.com/post/how-to-check-python-version/)) must match the one that Blender comes with. For *Blender* 2.91.2, python 3.7 is ok.
+    → Enter : `conda create --name=blender python=3.7`
+    → During the installation, type `y` to proceed when `Proceed ([y]/n) ?` appears.
+    → When the installation is finished, enter: `conda activate blender`
+  * Link the conda environment to Blender:
+    If you have installed *Anaconda* with the default parameters as we did in this tutorial, your conda env’ should be installed here : ~/anaconda3/envs/blender/
+    → Enter in the terminal (replace with your custom path) :
+    `sudo ln -s ~/anaconda3/envs/blender/ .` ← **⚠** don’t forget the `space` + `.` at the end
+    This creates a junction between the python folder in the Blender files and the folder in the *Anaconda* environments files.
+    → Rename this junction : `sudo mv blender python`
+  * Install the needed python packages for *Quantum Nodes*:
+    ```
+    pip install pillow
+    pip install scipy
+    pip install qiskit
+    ```
+  * Then, open *Blender*, go to scripting and type in the python console: `import qiskit`
+    If Blender **does not** find Qiskit, you need to follow the next steps:
+    → Go here (using the terminal): `cd ~`
+    → Enter: `sudo nano .bashrc`
+    → Go at the end of the file (using the arrows) and add this in a new line: `export PYTHONNOUSERSITE=True`
+    → Close the document : (`ctrl + x` then `y` and `enter`)
+    Reopen *Blender*, it should now find Qiskit.
 
-## Contribute to our project
+###### Installation of the Blender add-ons
+* <ins>Preparations</ins>
+  * Extract “quantum_nodes” folder from: `quantum-creative-master-quantum_nodes.zip`
+  
+  ![](https://gitlab.com/quantum-creative-group/quantum_nodes/-/raw/assets/install_quantum_nodes_linux_step0.png)
+
+  * The problem is that *Gitlab* encapsulates the downloaded folder inside another folder so *Blender* can not see it.
+  Zip the extracted folder:
+
+  ![](https://gitlab.com/quantum-creative-group/quantum_nodes/-/raw/assets/install_quantum_nodes_linux_step01.png)
+
+  ![](https://gitlab.com/quantum-creative-group/quantum_nodes/-/raw/assets/install_quantum_nodes_linux_step2.png)
+
+* <ins>In *Blender*</ins>
+  * Open *Blender*
+  Go in: `edit > preferences`
+
+  ![](https://gitlab.com/quantum-creative-group/quantum_nodes/-/raw/assets/install_an_and_qn_step1.png)
+
+   * Go to the add-on panel and click on `install`
+    
+  ![](https://gitlab.com/quantum-creative-group/quantum_nodes/-/raw/assets/install_an_and_qn_step1.5.png)
+
+  * Select *Animation Nodes*
+  
+  ![](https://gitlab.com/quantum-creative-group/quantum_nodes/-/raw/assets/install_an_and_qn_step2.png)
+
+  * Click on `install add-on`. Don't forget to activate it (click on the checkbox):
+
+  ![](https://gitlab.com/quantum-creative-group/quantum_nodes/-/blob/assets/install_an_and_qn_step3.png)
+
+  * Repeat the three last steps to install *Quantum Nodes*
+  
+  **The end, enjoy** :blush:
+
+## Contribute to our project :wrench:
 
 If you want to contribute you can use your favorite IDE our you can use Visual Studio Code that has a very interesting Extension for Blender Development made by Jacques Lucke :
 
