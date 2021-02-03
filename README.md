@@ -1,5 +1,5 @@
 # Quantum Nodes
-This is an extension of [*Animation Nodes*](https://github.com/JacquesLucke/animation_nodes) for [*Blender*](https://github.com/blender).
+Quantum Nodes is an extension of [*Animation Nodes*](https://github.com/JacquesLucke/animation_nodes) for [*Blender*](https://github.com/blender).
 
 Quantum Nodes provides you amazing tools to incorporate quantum computation into your creative process.<br>
 It even allows you to send your quantum circuits to real qubits provided by [*IBM*](https://www.ibm.com/quantum-computing/experience).
@@ -21,17 +21,18 @@ Built using [*Qiskit*](https://github.com/Qiskit) and [*Anaconda*](https://githu
 
 ###### Downloading everything - Linux
 * <ins>Download *Blender*</ins><br>
-  You can do it from the website, but doing it using the terminal is recommended for this tutorial.<br>
-  From the website: https://www.blender.org/download/
-
-  <p align="center">
-  <img src="https://gitlab.com/quantum-creative-group/quantum_nodes/-/raw/assets/download_blender.png" alt="Blender website" height="200px"/>
-  </p>
 
   Using the terminal:
   * `sudo add-apt-repository ppa:thomas-schiex/blender`
   * `sudo apt-get update`
   * `sudo apt-get install blender`<br><br>
+
+  You can do it from the website, but doing it using the terminal is recommended for this tutorial.<br>
+  From the website: https://www.blender.org/download/
+
+  <p align="center">
+  <img src="https://gitlab.com/quantum-creative-group/quantum_nodes/-/raw/assets/download_blender_linux.png" alt="Blender website" height="200px"/>
+  </p>
 
 * <ins>Download *Anaconda*</ins><br>
   From the website: https://www.anaconda.com/products/individual
@@ -199,21 +200,111 @@ Built using [*Qiskit*](https://github.com/Qiskit) and [*Anaconda*](https://githu
 
 * <ins>Download *Quantum Nodes*</ins><br>
   Download it from our repository
+
   <p align="center">
   <img src="https://gitlab.com/quantum-creative-group/quantum_nodes/-/raw/assets/download_quantum_nodes_step2.png" alt="Quantum Nodes repository, download" height="200px"/>
   </p>
 
+###### Pre-requisite installations - Windows
+* <ins>Install *Blender*</ins>
+  * Double click on the previously downloaded file: `blender-2.91.2-windows64.msi`
+  * Follow along the instructions given during the installation.<br>
+  You can choose your own location to put the installation files of Blender. This tutorial uses the default location.<br>
+  * Launch it to check if everything went well :wink:
+  
+* <ins>Install *Anaconda*</ins>
+  * Double click on the previously downloaded file: `Anaconda3-2020.11-Windows-x86_64.exe`
+  * Follow along the instructions given during the installation.<br>
+  At this step, make sure to uncheck the second option (the text then appears in red):<br><br>
+
+  <p align="center">
+  <img src="https://gitlab.com/quantum-creative-group/quantum_nodes/-/raw/assets/install_anaconda_step1.png" alt="Install Anaconda Windows" height="300px"/>
+  </p>
+
+  * Launch the anaconda navigator to check if everything went well :wink:<br><br>
+
+  <p align="center">
+  <img src="https://gitlab.com/quantum-creative-group/quantum_nodes/-/raw/assets/install_anaconda_step2.png" alt="Install Anaconda Windows" height="100px"/>
+  </p>
+
+* <ins>*Anaconda* environment and *Blender*</ins><br>
+  In this part, we will create a new conda environment and install the necessary packages.<br>
+  Then, we will tell *Blender* to use our environment instead of the python that comes with by default.<br>
+
+  * Launch the anaconda prompt in administrator mode (`LEFT SHIFT + right click`):<br><br>
+  
+  <p align="center">
+  <img src="https://gitlab.com/quantum-creative-group/quantum_nodes/-/raw/assets/create_conda_env_step1.png" alt="Install Anaconda Windows" height="100px"/>
+  </p>
+
+  * Go where your Blender installation files are (using cd).<br>
+  By default, the files are located here : `C:\Program Files\Blender Foundation\Blender 2.91\2.91`<br>
+  So enter : `cd C:\Program Files\Blender Foundation\Blender 2.91\2.91`<br>
+
+  * Deactivate the current python version: `rename python _python`<br>
+
+  * Create a new *Anaconda* environment:<br>
+  **Warning**: as [mentioned here](https://docs.blender.org/api/current/info_tips_and_tricks.html#bundled-python-extensions), the python version ([major and minor](https://linuxize.com/post/how-to-check-python-version/)) must match the one that Blender comes with.<br>
+  For *Blender* 2.91.2, python 3.7 is ok.<br>
+  → Enter : `conda create --name=blender python=3.7`<br>
+  → During the installation, type `y` to proceed when `Proceed ([y]/n) ?` appears.<br>
+  → When the installation is finished, enter: `conda activate blender`<br>
+
+  * Link the *Anaconda* environment to *Blender*:<br>
+  If you have installed *Anaconda* with the default parameters as we did in this tutorial, your conda env’ should be installed here : `C:\Users\your_username\anaconda3\envs\blender`<br>
+  → Enter (replace with your custom path) : `mklink /j python “C:\Users\your_username\anaconda3\envs\blender”`<br>
+  This creates a junction between the python folder in the *Blender* files and the folder in the *Anaconda* environments files.<br>
+
+  * Install the needed python packages for *Quantum Nodes*:
+    ```
+    pip install pillow
+    pip install scipy
+    pip install qiskit
+    ```
+* <ins>Windows environment variables</ins><br>
+  * Launch the environment variables manager:<br><br>
+
+  <p align="center">
+  <img src="https://gitlab.com/quantum-creative-group/quantum_nodes/-/raw/assets/install_env_variables_step1.png" alt="Install Anaconda Windows" height="250px"/>
+  </p>
+
+  * Then, click on “Environment variables”:<br><br>
+
+  <p align="center">
+  <img src="https://gitlab.com/quantum-creative-group/quantum_nodes/-/raw/assets/install_env_variables_step2.png" alt="Install Anaconda Windows" height="250px"/>
+  </p>
+
+  * Click on “edit / modify” (you can either edit the system variables or the current user variables):<br><br>
+
+  <p align="center">
+  <img src="https://gitlab.com/quantum-creative-group/quantum_nodes/-/raw/assets/install_env_variables_step3.png" alt="Install Anaconda Windows" height="250px"/>
+  </p>
+
+  * Finally, add the following paths to the variable:<br><br>
+
+  <p align="center">
+  <img src="https://gitlab.com/quantum-creative-group/quantum_nodes/-/raw/assets/install_env_variables_step4.png" alt="Install Anaconda Windows" height="100px"/>
+  </p>
+
+  `C:\Program Files\Blender Foundation\Blender 2.91\2.91\python`<br>
+  `C:\Program Files\Blender Foundation\Blender 2.91\2.91\python\DLLs`<br>
+  `C:\Program Files\Blender Foundation\Blender 2.91\2.91\python\Library\bin`<br>
+  
+  * Then click on `ok`, `ok`, `ok` to close everything :wink:
+
+###### Installation of the Blender add-ons - Linux
+* <ins>Preparations</ins>
 
 #### Mac
 
-Working in progress ...
+Work in progress ...
 
 ## Contribute to our project :wrench:
 
 If you want to contribute you can use your favorite IDE our you can use Visual Studio Code that has a very interesting Extension for Blender Development made by Jacques Lucke :
 
 * First you have to clone our repo
-* Open Visual Studio Code and install *Blender Development* :
+* Open Visual Studio Code and install *Blender Development*:
 
   <p align="center">
   <img src="https://gitlab.com/quantum-creative-group/quantum_nodes/-/raw/assets/blender_dev.png" alt="Blender dev VSCode extension" height="200px"/>
