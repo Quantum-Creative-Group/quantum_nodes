@@ -86,7 +86,7 @@ Built using [*Qiskit*](https://github.com/Qiskit) and [*Anaconda*](https://githu
   * Deactivate the current python version: `mv python _python`<br>
 
   * Create a new *Anaconda* environment:<br>
-  **Warning**: as [mentioned here](https://docs.blender.org/api/current/info_tips_and_tricks.html), the python version ([major and minor](https://linuxize.com/post/how-to-check-python-version/)) must match the one that Blender comes with.<br>
+  **Warning**: as [mentioned here](https://docs.blender.org/api/current/info_tips_and_tricks.html#bundled-python-extensions), the python version ([major and minor](https://linuxize.com/post/how-to-check-python-version/)) must match the one that Blender comes with.<br>
   For *Blender* 2.91.2, python 3.7 is ok.<br>
   → Enter : `conda create --name=blender python=3.7`<br>
   → During the installation, type `y` to proceed when `Proceed ([y]/n) ?` appears.<br>
@@ -110,7 +110,7 @@ Built using [*Qiskit*](https://github.com/Qiskit) and [*Anaconda*](https://githu
   → Enter: `sudo nano .bashrc`<br>
   → Go at the end of the file (using the arrows) and add this in a new line: `export PYTHONNOUSERSITE=True`<br>
   → Close the document : (`ctrl + x` then `y` and `enter`)<br>
-  Reopen *Blender*, it should now find Qiskit.<br>
+  Reopen *Blender*, it should now find *Qiskit*.<br>
 
 ###### Installation of the Blender add-ons
 * <ins>Preparations</ins>
