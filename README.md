@@ -89,7 +89,7 @@ Built using [*Qiskit*](https://github.com/Qiskit) and [*Anaconda*](https://githu
   * Deactivate the current python version: `mv python _python`<br>
 
   * Create a new *Anaconda* environment:<br>
-  **Warning**: as [mentioned here](https://docs.blender.org/api/current/info_tips_and_tricks.html#bundled-python-extensions), the python version ([major and minor](https://linuxize.com/post/how-to-check-python-version/)) must match the one that Blender comes with.<br>
+  **Warning**: as [mentioned here](https://docs.blender.org/api/current/info_tips_and_tricks.html#bundled-python-extensions), the python version ([major and minor](https://linuxize.com/post/how-to-check-python-version/)) must match the one that *Blender* comes with.<br>
   For *Blender* 2.91.2, python 3.7 is ok.<br>
   → Enter : `conda create --name=blender python=3.7`<br>
   → During the installation, type `y` to proceed when `Proceed ([y]/n) ?` appears.<br>
@@ -209,7 +209,7 @@ Built using [*Qiskit*](https://github.com/Qiskit) and [*Anaconda*](https://githu
 * <ins>Install *Blender*</ins>
   * Double click on the previously downloaded file: `blender-2.91.2-windows64.msi`
   * Follow along the instructions given during the installation.<br>
-  You can choose your own location to put the installation files of Blender. This tutorial uses the default location.<br>
+  You can choose your own location to put the installation files of *Blender*. This tutorial uses the default location.<br>
   * Launch it to check if everything went well :wink:
   
 * <ins>Install *Anaconda*</ins>
@@ -237,14 +237,14 @@ Built using [*Qiskit*](https://github.com/Qiskit) and [*Anaconda*](https://githu
   <img src="https://gitlab.com/quantum-creative-group/quantum_nodes/-/raw/assets/create_conda_env_step1.png" alt="Install Anaconda Windows" height="100px"/>
   </p>
 
-  * Go where your Blender installation files are (using cd).<br>
+  * Go where your *Blender* installation files are (using cd).<br>
   By default, the files are located here : `C:\Program Files\Blender Foundation\Blender 2.91\2.91`<br>
   So enter : `cd C:\Program Files\Blender Foundation\Blender 2.91\2.91`<br>
 
   * Deactivate the current python version: `rename python _python`<br>
 
   * Create a new *Anaconda* environment:<br>
-  **Warning**: as [mentioned here](https://docs.blender.org/api/current/info_tips_and_tricks.html#bundled-python-extensions), the python version ([major and minor](https://linuxize.com/post/how-to-check-python-version/)) must match the one that Blender comes with.<br>
+  **Warning**: as [mentioned here](https://docs.blender.org/api/current/info_tips_and_tricks.html#bundled-python-extensions), the python version ([major and minor](https://linuxize.com/post/how-to-check-python-version/)) must match the one that *Blender* comes with.<br>
   For *Blender* 2.91.2, python 3.7 is ok.<br>
   → Enter : `conda create --name=blender python=3.7`<br>
   → During the installation, type `y` to proceed when `Proceed ([y]/n) ?` appears.<br>
@@ -292,8 +292,63 @@ Built using [*Qiskit*](https://github.com/Qiskit) and [*Anaconda*](https://githu
   
   * Then click on `ok`, `ok`, `ok` to close everything :wink:
 
-###### Installation of the Blender add-ons - Linux
+###### Installation of the Blender add-ons - Windows
 * <ins>Preparations</ins>
+  * Extract `quantum_nodes` folder from: `quantum-creative-master-quantum_nodes.zip`<br>
+
+
+  <p align="center">
+  <img src="https://gitlab.com/quantum-creative-group/quantum_nodes/-/raw/assets/install_an_and_qn_step0.png" alt="Quantum Nodes folders" height="200px"/>
+  </p>
+
+
+  * The problem is that *Gitlab* encapsulates the downloaded folder inside another folder so *Blender* can not see it.
+  Zip the extracted folder:<br>
+
+
+  <p align="center">
+  <img src="https://gitlab.com/quantum-creative-group/quantum_nodes/-/raw/assets/install_an_and_qn_step01.png" alt="Quantum Nodes zip" height="100px"/>
+  <img src="https://gitlab.com/quantum-creative-group/quantum_nodes/-/raw/assets/install_an_and_qn_step02.png" alt="Quantum Nodes folder" height="100px"/>
+  </p>
+
+
+* <ins>In *Blender*</ins>
+  * Open *Blender*<br>
+  Go in: `edit > preferences`<br>
+
+
+  <p align="center">
+  <img src="https://gitlab.com/quantum-creative-group/quantum_nodes/-/raw/assets/install_an_and_qn_step1.png" alt="Blender, preferences" height="300px"/>
+  </p>
+
+
+   * Go to the add-on panel and click on `install`<br>
+
+
+  <p align="center">
+  <img src="https://gitlab.com/quantum-creative-group/quantum_nodes/-/raw/assets/install_an_and_qn_step1.5.png" alt="Blender, preferences, install" height="75px"/>
+  </p>
+
+
+  * Select *Animation Nodes*<br>
+
+
+  <p align="center">
+  <img src="https://gitlab.com/quantum-creative-group/quantum_nodes/-/raw/assets/install_an_and_qn_step2.png" alt="Blender, preferences, install add-on" height="300px"/>
+  </p>
+
+
+  * Click on `install add-on`. Don't forget to activate it (click on the checkbox):<br>
+
+
+  <p align="center">
+  <img src="https://gitlab.com/quantum-creative-group/quantum_nodes/-/raw/assets/install_an_and_qn_step3.png" alt="Blender, preferences, install add-on" height="125px"/>
+  </p>
+
+
+  * Repeat the three last steps to install *Quantum Nodes*
+  
+  **The end, enjoy** :blush:
 
 #### Mac
 
