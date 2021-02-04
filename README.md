@@ -15,11 +15,11 @@ Built using [*Qiskit*](https://github.com/Qiskit) and [*Anaconda*](https://githu
 
 ### Installation :computer:
 #### Linux
-1. [Downloading everything](#downloading-everything-linux) (almost)
-2. [Pre-requisite installations](#pre-requisite-installations-linux)
-3. [Installation of the *Blender* add-ons](#installation-of-the-blender-add-ons-linux)
+1. [Download everything](#download-everything-linux) (almost)
+2. [Prerequisite installations](#prerequisite-installations-linux)
+3. [Installation of *Blender* add-ons](#installation-of-blender-addons-linux)
 
-###### Downloading everything - Linux
+###### Download everything - Linux
 * <ins>Download *Blender*</ins><br>
 
   Using the terminal:
@@ -27,7 +27,7 @@ Built using [*Qiskit*](https://github.com/Qiskit) and [*Anaconda*](https://githu
   * `sudo apt-get update`
   * `sudo apt-get install blender`<br><br>
 
-  You can do it from the website, but doing it using the terminal is recommended for this tutorial.<br>
+  You can do it from the website, but it is not recommended for this tutorial.<br>
   From the website: https://www.blender.org/download/
 
   <p align="center">
@@ -41,7 +41,7 @@ Built using [*Qiskit*](https://github.com/Qiskit) and [*Anaconda*](https://githu
   <img src="https://gitlab.com/quantum-creative-group/quantum_nodes/-/raw/assets/download_anaconda_linux_step2.png" alt="Anaconda website, download page" height="200px"/>
   </p>
 
-  Using the terminal:
+  Or using the terminal:
   * `cd /tmp`
   * `curl https://repo.anaconda.com/archive/Anaconda3-2020.11-Linux-x86_64.sh --output anaconda.sh`<br>
   See available versions [here](https://docs.anaconda.com/anaconda/install/hashes/lin-3-64/)
@@ -52,8 +52,8 @@ Built using [*Qiskit*](https://github.com/Qiskit) and [*Anaconda*](https://githu
   From the website: https://animation-nodes.com/#download
 
   <p align="center">
-  <img src="https://gitlab.com/quantum-creative-group/quantum_nodes/-/raw/assets/download_animation_nodes_step1.png" alt="Animation Nodes website" height="150px"/>
-  <img src="https://gitlab.com/quantum-creative-group/quantum_nodes/-/raw/assets/download_animation_nodes_linux.png" alt="Animation Nodes website, download page" height="150px"/>
+  <img src="https://gitlab.com/quantum-creative-group/quantum_nodes/-/raw/assets/download_animation_nodes_step1.png" alt="Animation Nodes website" height="100px"/>
+  <img src="https://gitlab.com/quantum-creative-group/quantum_nodes/-/raw/assets/download_animation_nodes_linux.png" alt="Animation Nodes website, download page" height="100px"/>
   </p>
 
 * <ins>Download *Quantum Nodes*</ins><br>
@@ -62,24 +62,24 @@ Built using [*Qiskit*](https://github.com/Qiskit) and [*Anaconda*](https://githu
   <img src="https://gitlab.com/quantum-creative-group/quantum_nodes/-/raw/assets/download_quantum_nodes_step2.png" alt="Quantum Nodes repository, download" height="200px"/>
   </p>
 
-###### Pre-requisite installations - Linux
+###### Prerequisite installations - Linux
 * <ins>Install *Blender*</ins>
+  * If downloaded using the terminal: it's already done :ok_hand:
   * If downloaded from the website (not recommended here):<br>
   → As [mentioned here](https://docs.blender.org/manual/en/latest/getting_started/installing/linux.html), uncompress the content of the downloaded `.tar.xz` at the desired location (e.g. `~/software` or `usr/local`)
-  * If downloaded using the terminal: it's already done :ok_hand:
 
   → Launch it to check if everything went well :wink:
   
 * <ins>Install *Anaconda*</ins>
-  * Where the file is saved: `bash file_name.sh`
+  * Open a new terminal where the file is saved. Then enter: `bash file_name.sh`
   * During the installation:<br>
   → `Do you approve the license terms? [yes|no]` → `yes`<br>
-  → Anaconda3 will now be installed at this location: in this tutorial, we use the default location.<br>
+  → You can choose a custom location for the *Anaconda* installation files. However, this tutorial uses the default location (recommended).<br>
   → `Do you wish the installer to initialize Anaconda3?` → `yes`
   * At the end: `source ~/.bashrc`<br><br>
 
 * <ins>*Anaconda* environment and *Blender*</ins><br>
-  In this part, we will create a new conda environment and install the necessary packages.<br>
+  In this part, we will create a new conda environment and install the necessary packages for *Quantum Nodes*.<br>
   Then, we will tell *Blender* to use our environment instead of the python that comes with by default.<br>
 
   * Open a new terminal:<br>
@@ -96,8 +96,8 @@ Built using [*Qiskit*](https://github.com/Qiskit) and [*Anaconda*](https://githu
   → When the installation is finished, enter: `conda activate blender`<br>
 
   * Link the *Anaconda* environment to *Blender*:<br>
-  If you have installed *Anaconda* with the default parameters as we did in this tutorial, your conda env’ should be installed here : `~/anaconda3/envs/blender/`<br>
-  → Enter in the terminal (replace with your custom path) : `sudo ln -s ~/anaconda3/envs/blender/ python`<br>
+  If you have installed *Anaconda* with the default parameters, as we did in this tutorial, your conda env’ should be installed here: `~/anaconda3/envs/blender/`<br>
+  → Enter in the terminal (replace with your custom path): `sudo ln -s ~/anaconda3/envs/blender/ python`<br>
   This creates a junction between the python folder in the *Blender* files and the folder in the *Anaconda* environments files.<br>
 
   * Install the needed python packages for *Quantum Nodes*:
@@ -115,7 +115,7 @@ Built using [*Qiskit*](https://github.com/Qiskit) and [*Anaconda*](https://githu
   → Close the document : (`ctrl + x` then `y` and `enter`)<br>
   Reopen *Blender*, it should now find *Qiskit*.<br>
 
-###### Installation of the Blender add-ons - Linux
+###### Installation of *Blender* addons - Linux
 * <ins>Preparations</ins>
   * Extract `quantum_nodes` folder from: `quantum-creative-master-quantum_nodes.zip`<br>
 
@@ -130,14 +130,14 @@ Built using [*Qiskit*](https://github.com/Qiskit) and [*Anaconda*](https://githu
 
 
   <p align="center">
-  <img src="https://gitlab.com/quantum-creative-group/quantum_nodes/-/raw/assets/install_quantum_nodes_linux_step01.png" alt="Quantum Nodes zip" height="200px"/>
-  <img src="https://gitlab.com/quantum-creative-group/quantum_nodes/-/raw/assets/install_quantum_nodes_linux_step2.png" alt="Quantum Nodes folder" height="200px"/>
+  <img src="https://gitlab.com/quantum-creative-group/quantum_nodes/-/raw/assets/install_quantum_nodes_linux_step01.png" alt="Quantum Nodes zip" height="120px"/>
+  <img src="https://gitlab.com/quantum-creative-group/quantum_nodes/-/raw/assets/install_quantum_nodes_linux_step2.png" alt="Quantum Nodes folder" height="120px"/>
   </p>
 
 
 * <ins>In *Blender*</ins>
   * Open *Blender*<br>
-  Go in: `edit > preferences`<br>
+  Go to: `edit > preferences`<br>
 
 
   <p align="center">
@@ -174,11 +174,11 @@ Built using [*Qiskit*](https://github.com/Qiskit) and [*Anaconda*](https://githu
   **The end, enjoy** :blush:
 
 #### Windows
-1. [Downloading everything](#downloading-everything-windows) (almost)
-2. [Pre-requisite installations](#pre-requisite-installations-windows)
-3. [Installation of the *Blender* add-ons](#installation-of-the-blender-add-ons-windows) (same as Linux)
+1. [Download everything](#download-everything-windows) (almost)
+2. [Prerequisite installations](#prerequisite-installations-windows)
+3. [Installation of *Blender* addons](#installation-of-blender-addons-windows) (same as Linux)
 
-###### Downloading everything - Windows
+###### Download everything - Windows
 * <ins>Download *Blender*</ins>: https://www.blender.org/download/
 
   <p align="center">
@@ -205,7 +205,7 @@ Built using [*Qiskit*](https://github.com/Qiskit) and [*Anaconda*](https://githu
   <img src="https://gitlab.com/quantum-creative-group/quantum_nodes/-/raw/assets/download_quantum_nodes_step2.png" alt="Quantum Nodes repository, download" height="200px"/>
   </p>
 
-###### Pre-requisite installations - Windows
+###### Prerequisite installations - Windows
 * <ins>Install *Blender*</ins>
   * Double click on the previously downloaded file: `blender-2.91.2-windows64.msi`
   * Follow along the instructions given during the installation.<br>
@@ -228,7 +228,7 @@ Built using [*Qiskit*](https://github.com/Qiskit) and [*Anaconda*](https://githu
   </p>
 
 * <ins>*Anaconda* environment and *Blender*</ins><br>
-  In this part, we will create a new conda environment and install the necessary packages.<br>
+  In this part, we will create a new conda environment and install the necessary packages for Quantum Nodes.<br>
   Then, we will tell *Blender* to use our environment instead of the python that comes with by default.<br>
 
   * Launch the anaconda prompt in administrator mode (`LEFT SHIFT + right click`):<br><br>
@@ -251,7 +251,7 @@ Built using [*Qiskit*](https://github.com/Qiskit) and [*Anaconda*](https://githu
   → When the installation is finished, enter: `conda activate blender`<br>
 
   * Link the *Anaconda* environment to *Blender*:<br>
-  If you have installed *Anaconda* with the default parameters as we did in this tutorial, your conda env’ should be installed here : `C:\Users\your_username\anaconda3\envs\blender`<br>
+  If you have installed *Anaconda* with the default parameters, as we did in this tutorial, your conda env’ should be installed here : `C:\Users\your_username\anaconda3\envs\blender`<br>
   → Enter (replace with your custom path) : `mklink /j python “C:\Users\your_username\anaconda3\envs\blender”`<br>
   This creates a junction between the python folder in the *Blender* files and the folder in the *Anaconda* environments files.<br>
 
@@ -292,7 +292,7 @@ Built using [*Qiskit*](https://github.com/Qiskit) and [*Anaconda*](https://githu
   
   * Then click on `ok`, `ok`, `ok` to close everything :wink:
 
-###### Installation of the Blender add-ons - Windows
+###### Installation of *Blender* addons - Windows
 * <ins>Preparations</ins>
   * Extract `quantum_nodes` folder from: `quantum-creative-master-quantum_nodes.zip`<br>
 
@@ -314,7 +314,7 @@ Built using [*Qiskit*](https://github.com/Qiskit) and [*Anaconda*](https://githu
 
 * <ins>In *Blender*</ins>
   * Open *Blender*<br>
-  Go in: `edit > preferences`<br>
+  Go to: `edit > preferences`<br>
 
 
   <p align="center">
