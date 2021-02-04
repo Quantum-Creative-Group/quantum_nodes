@@ -194,8 +194,8 @@ Built using [*Qiskit*](https://github.com/Qiskit) and [*Anaconda*](https://githu
 * <ins>Download *Animation Nodes*</ins>: https://animation-nodes.com/#download
 
   <p align="center">
-  <img src="https://gitlab.com/quantum-creative-group/quantum_nodes/-/raw/assets/download_animation_nodes_step1.png" alt="Animation Nodes website" height="150px"/>
-  <img src="https://gitlab.com/quantum-creative-group/quantum_nodes/-/raw/assets/download_animation_nodes_step2.png" alt="Animation Nodes website, download page" height="150px"/>
+  <img src="https://gitlab.com/quantum-creative-group/quantum_nodes/-/raw/assets/download_animation_nodes_step1.png" alt="Animation Nodes website" height="100px"/>
+  <img src="https://gitlab.com/quantum-creative-group/quantum_nodes/-/raw/assets/download_animation_nodes_step2.png" alt="Animation Nodes website, download page" height="100px"/>
   </p>
 
 * <ins>Download *Quantum Nodes*</ins><br>
@@ -298,7 +298,7 @@ Built using [*Qiskit*](https://github.com/Qiskit) and [*Anaconda*](https://githu
 
 
   <p align="center">
-  <img src="https://gitlab.com/quantum-creative-group/quantum_nodes/-/raw/assets/install_an_and_qn_step0.png" alt="Quantum Nodes folders" height="200px"/>
+  <img src="https://gitlab.com/quantum-creative-group/quantum_nodes/-/raw/assets/install_an_and_qn_step0.png" alt="Quantum Nodes folders" height="150px"/>
   </p>
 
 
@@ -307,8 +307,8 @@ Built using [*Qiskit*](https://github.com/Qiskit) and [*Anaconda*](https://githu
 
 
   <p align="center">
-  <img src="https://gitlab.com/quantum-creative-group/quantum_nodes/-/raw/assets/install_an_and_qn_step01.png" alt="Quantum Nodes zip" height="100px"/>
-  <img src="https://gitlab.com/quantum-creative-group/quantum_nodes/-/raw/assets/install_an_and_qn_step02.png" alt="Quantum Nodes folder" height="100px"/>
+  <img src="https://gitlab.com/quantum-creative-group/quantum_nodes/-/raw/assets/install_an_and_qn_step01.png" alt="Quantum Nodes zip" height="80px"/>
+  <img src="https://gitlab.com/quantum-creative-group/quantum_nodes/-/raw/assets/install_an_and_qn_step02.png" alt="Quantum Nodes folder" height="80px"/>
   </p>
 
 
