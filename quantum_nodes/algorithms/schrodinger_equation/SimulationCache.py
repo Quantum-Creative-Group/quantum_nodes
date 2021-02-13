@@ -20,7 +20,7 @@ class SimulationCache:
         self.last_computed_frame = None
 
     def processFrame(self, d, inp):
-        """Computes the next frame.
+        """Compute the next frame.
         This method is only an implementation of the plot_animation() function taken from the source code.
 
         :param d: Simulation data manager
@@ -43,7 +43,7 @@ class SimulationCache:
         d.wave_function = d.yDeconcatenate(U_selon_y_plus, inp.dimension)
     
     def getFrame(self, frame, d, inp):
-        """Returns the requested data at the given frame.
+        """Return the requested data at the given frame.
         Manages the situations where several frames need to be
         calculated in order to return the requested data.
 

@@ -3,7 +3,7 @@ from numpy import sin, cos, exp, pi, tan, log, sinh, cosh, tanh, sinc, sqrt, cbr
 from numpy import pi, e
 
 class SimulationInputsManager:
-	"""This class Manages all the user inputs.
+	"""This class manages all the user inputs.
 	All these methods are taken from field.py.
 	Source code : https://github.com/Azercoco/Python-2D-Simulation-of-Schrodinger-Equation/blob/master/field.py
 	"""

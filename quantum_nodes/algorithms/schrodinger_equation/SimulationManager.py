@@ -45,7 +45,7 @@ class SimulationManager:
         self.initialize()
         
     def initialize(self):
-        """Initializes the data needed for the simulation.
+        """Initialize the data needed for the simulation.
         This method is only an implementation of the init function taken from the source code.
         """
         d = self.data      # data container
@@ -111,7 +111,7 @@ class SimulationManager:
         self.cache.last_computed_frame = 0
 
     def getFrameData(self, frame):
-        """Returns the data from the requested frame.
+        """Return the data from the requested frame.
 
         :param frame: the requested frame
         :type frame: int
