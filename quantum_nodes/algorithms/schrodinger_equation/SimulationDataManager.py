@@ -1,11 +1,11 @@
 import numpy as np
 from numpy import pi
 
-# This class manages all the data needed to compute the next frame
-# All these methods are taken from util.py
-# source code : https://github.com/Azercoco/Python-2D-Simulation-of-Schrodinger-Equation/blob/master/util.py
-
 class SimulationDataManager:
+	"""This class manages all the data needed to compute the next frame.
+	All these methods are taken from util.py.
+	Source code : https://github.com/Azercoco/Python-2D-Simulation-of-Schrodinger-Equation/blob/master/util.py
+	"""
 	def __init__(self):
 		self.x_axis, self.y_axis = None, None
 		self.v_x, self.v_y = None, None

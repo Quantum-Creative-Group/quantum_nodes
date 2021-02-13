@@ -6,27 +6,27 @@ import scipy.sparse
 import scipy.sparse.linalg
 import sys
 
-# This class is used to store all the computed frames
-# and to determine the ones that need to be computed
-# when the user is asking the data for a specific frame
-
 class SimulationCache:
+    """This class is used to store all the computed frames
+    and to determine the ones that need to be computed
+    when the user is asking the data for a specific frame.
+    """
     def __init__(self, max_frame):
-        """
-        @parameter :
-        max_frame - integer - the length of the simulation, in frames
+        """        
+        :param max_frame: the length of the simulation, in frames
+        :type max_frame: int
         """
         self.data = np.empty((max_frame), np.ndarray)
         self.last_computed_frame = None
-    
-    def __processFrame(self, d, inp):
-        """
-        Computes the next frame.
+
+    def processFrame(self, d, inp):
+        """Computes the next frame.
         This method is only an implementation of the plot_animation() function taken from the source code.
-         
-        @parameters : 
-        d   - SimulationDataManager
-        inp - SimulationInputsManager
+
+        :param d: Simulation data manager
+        :type d: SimulationDataManager
+        :param inp: Simulation inputs manager
+        :type inp: SimulationInputsManager
         """
         vector_selon_x = d.xConcatenate(d.wave_function, inp.dimension)
         vector_derive_y_selon_x = d.xConcatenate(d.dySquare(d.wave_function, inp.dimension, inp.step), inp.dimension)
@@ -42,17 +42,21 @@ class SimulationCache:
 
         d.wave_function = d.yDeconcatenate(U_selon_y_plus, inp.dimension)
     
-
     def getFrame(self, frame, d, inp):
-        """
-        Returns the requested data at the given frame.
+        """Returns the requested data at the given frame.
         Manages the situations where several frames need to be
         calculated in order to return the requested data.
 
-        @parameters :
-        frame   - integer - index of the frame
-        d       - SimulationDataManager
-        inp     - SimulationInputsManager
+        :param frame: index of the frame
+        :type frame: int
+        :param d: Simulation data manager
+        :type d: SimulationDataManager
+        :param inp: Simulation inputs manager
+        :type inp: SimulationInputsManager
+        :raises e: whenever something wrong happends during the frame computation
+        :raises IndexError: frame index out of range
+        :return: requested data at the given frame
+        :rtype: 2d numpy array of numpy.complex128
         """
         if (frame >= 0):
             if (frame <= self.last_computed_frame):
@@ -64,7 +68,7 @@ class SimulationCache:
                 frames_to_compute = frame - self.last_computed_frame
                 try:
                     for frame in range(frames_to_compute):
-                        self.__processFrame(d, inp)
+                        self.processFrame(d, inp)
                         self.last_computed_frame += 1
                         self.data[self.last_computed_frame] = d.wave_function
                 except Exception as e:
