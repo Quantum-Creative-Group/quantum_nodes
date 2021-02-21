@@ -1,7 +1,4 @@
 import numpy as np
-from numpy import pi
-import scipy.linalg
-import scipy as sp
 import scipy.sparse
 import scipy.sparse.linalg
 import sys

@@ -1,14 +1,9 @@
 import numpy as np
-from numpy import pi
-import scipy.linalg
 import scipy as sp
-import scipy.sparse
-import scipy.sparse.linalg
-import sys
 
-from . SimulationDataManager import SimulationDataManager
-from . SimulationInputsManager import SimulationInputsManager
-from . SimulationCache import SimulationCache
+from . simulation_data_manager import SimulationDataManager
+from . simulation_inputs_manager import SimulationInputsManager
+from . simulation_cache import SimulationCache
 
 class SimulationManager:
     """This is an implementation of the 2D simulation of Schrödinger equation.

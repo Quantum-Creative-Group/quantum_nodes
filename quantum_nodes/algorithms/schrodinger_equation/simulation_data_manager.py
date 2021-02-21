@@ -1,5 +1,4 @@
 import numpy as np
-from numpy import pi
 
 class SimulationDataManager:
 	"""This class manages all the data needed to compute the next frame.

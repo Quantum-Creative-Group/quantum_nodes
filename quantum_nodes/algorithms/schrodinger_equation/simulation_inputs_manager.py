@@ -1,6 +1,4 @@
 import numpy as np
-from numpy import sin, cos, exp, pi, tan, log, sinh, cosh, tanh, sinc, sqrt, cbrt, angle, real, imag, abs, arcsin, arccos, arctan, arcsinh, arccosh, arctanh
-from numpy import pi, e
 
 class SimulationInputsManager:
 	"""This class manages all the user inputs.
@@ -57,7 +55,7 @@ class SimulationInputsManager:
 		return not(all(new_inputs[i] == current_inputs[i] for i in range(np.size(current_inputs))))
 
 	@classmethod
-	def __verifyPotentialExpr(cls, expr):
+	def verifyPotentialExpr(cls, expr):
 		x, y = 0, 0
 		try:
 			test = eval(expr)
@@ -65,7 +63,7 @@ class SimulationInputsManager:
 		except:
 			# unable to evaluate the given potential formula
 			# expression set to "0" by default
-			raise ValueError("ERROR::SimulationInputsManager::__verifyPotentialExpr()\nUnable to evaluate the given expression")
+			raise ValueError("ERROR::SimulationInputsManager::verifyPotentialExpr()\nUnable to evaluate the given expression")
 	
 	def setPotential(self, expr):
 		"""Set the potential expression.
@@ -73,13 +71,13 @@ class SimulationInputsManager:
 		:param expr: boolean expression in function of x and y
 		:type expr: string
 		"""
-		if self.__verifyPotentialExpr(expr):
+		if self.verifyPotentialExpr(expr):
 			self.potential_expr = expr
 		else:
 			self.potential_expr = "0"
 
 	@classmethod
-	def __verifyObstacleExpr(cls, expr):
+	def verifyObstacleExpr(cls, expr):
 		x, y = 0, 0
 		try:
 			test = eval(expr)
@@ -87,7 +85,7 @@ class SimulationInputsManager:
 		except:
 			# unable to evaluate the given obstacle formula
 			# expression set to "False" by default
-			raise ValueError("ERROR::SimulationInputsManager::__verifyObstacleExpr()\nUnable to evaluate the given expression")
+			raise ValueError("ERROR::SimulationInputsManager::verifyObstacleExpr()\nUnable to evaluate the given expression")
 	
 	def setObstacle(self, expr):
 		"""Set the obstacle expression.
@@ -95,19 +93,19 @@ class SimulationInputsManager:
 		:param expr: boolean expression in function of x and y
 		:type expr: string
 		"""
-		if self.__verifyObstacleExpr(expr):
+		if self.verifyObstacleExpr(expr):
 			self.obstacle_expr = expr
 		else:
 			self.obstacle_expr = "False"
 	
 	def isObstacle(self, x, y):
-		if self.__verifyObstacleExpr(self.obstacle_expr):
+		if self.verifyObstacleExpr(self.obstacle_expr):
 			return eval(self.obstacle_expr)
 		else:
 			return False
 	
 	def getPotential(self, x, y):
-		if self.__verifyPotentialExpr(self.potential_expr):
+		if self.verifyPotentialExpr(self.potential_expr):
 			return eval(self.potential_expr)
 		else:
 			return 0 + 0j
