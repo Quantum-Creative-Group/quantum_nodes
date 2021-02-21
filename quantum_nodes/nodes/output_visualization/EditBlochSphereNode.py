@@ -36,19 +36,22 @@ class EditBlochSphereNode(bpy.types.Node, AnimationNode):
     def execute(self, qubit_index, output_state, bloch_sphere):
         if bloch_sphere is None:
             return
-        #getting the angles for displaying the vector
-        bloch_data = _bloch_multivector_data(output_state)
-        theta = get_angles(bloch_data[qubit_index][0],bloch_data[qubit_index][1],bloch_data[qubit_index][2])[1]
-        phi = get_angles(bloch_data[qubit_index][0],bloch_data[qubit_index][1],bloch_data[qubit_index][2])[2]
-        #finding the vector mesh in the list of the block sphere childrens
-        for i in range (len(bloch_sphere.children)):
-            if (bloch_sphere.children[i].name == "Vector"): #mettre bloch_sphere_vector pour moins d'ambiguité
-                vector = bloch_sphere.children[i]
-        #the changes only need to be applied if the angles are deferent
-        if (abs(vector.rotation_euler[1]-theta)<(10**-6) and abs(vector.rotation_euler[2]-phi)<(10**-6)):
+        try:
+            #getting the angles for displaying the vector
+            bloch_data = _bloch_multivector_data(output_state)
+            theta = get_angles(bloch_data[qubit_index][0],bloch_data[qubit_index][1],bloch_data[qubit_index][2])[1]
+            phi = get_angles(bloch_data[qubit_index][0],bloch_data[qubit_index][1],bloch_data[qubit_index][2])[2]
+            #finding the vector mesh in the list of the block sphere childrens
+            for i in range (len(bloch_sphere.children)):
+                if (bloch_sphere.children[i].name == "Vector"): #mettre bloch_sphere_vector pour moins d'ambiguité
+                    vector = bloch_sphere.children[i]
+            #the changes only need to be applied if the angles are deferent
+            if (abs(vector.rotation_euler[1]-theta)<(10**-6) and abs(vector.rotation_euler[2]-phi)<(10**-6)):
+                return
+            else:
+                bpy.context.view_layer.objects.active = vector
+                vector.select_set(True)
+                vector.rotation_euler = (0.0, theta, phi)
+                vector.select_set(False)
+        except:
             return
-        else:
-            bpy.context.view_layer.objects.active = vector
-            vector.select_set(True)
-            vector.rotation_euler = (0.0, theta, phi)
-            vector.select_set(False)

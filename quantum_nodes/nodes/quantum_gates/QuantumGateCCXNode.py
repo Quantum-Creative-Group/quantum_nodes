@@ -24,6 +24,12 @@ class QuantumGateCCXNode(Node, AnimationNode):
             self.raiseErrorMessage("The second controle qubit index must be lower than " + str(input.num_qubits))
         elif target_qubit >= input.num_qubits:
             self.raiseErrorMessage("The target qubit index must be lower than " + str(input.num_qubits))
+        elif controle_qubit_1 < 0:
+            self.raiseErrorMessage("The first controle qubit index must be positive")
+        elif controle_qubit_2 < 0:
+            self.raiseErrorMessage("The second controle qubit index must be positive")
+        elif target_qubit < 0:
+            self.raiseErrorMessage("The target qubit index must be positive")
         elif controle_qubit_1 == controle_qubit_2:
             self.raiseErrorMessage("The two controle qubits must be different")
         elif controle_qubit_1 == target_qubit:

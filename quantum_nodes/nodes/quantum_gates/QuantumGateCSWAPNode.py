@@ -24,6 +24,12 @@ class QuantumGateCSWAPNode(Node, AnimationNode):
             self.raiseErrorMessage("The second qubit index must be lower than " + str(input.num_qubits))
         elif control_qubit >= input.num_qubits:
             self.raiseErrorMessage("The control qubit index must be lower than " + str(input.num_qubits))
+        elif first_qubit < 0:
+            self.raiseErrorMessage("The first qubit index must be positive")
+        elif second_qubit < 0:
+            self.raiseErrorMessage("The second qubit index must be positive")
+        elif control_qubit < 0:
+            self.raiseErrorMessage("The control qubit index must be positive")
         elif first_qubit == second_qubit:
             self.raiseErrorMessage("The two qubits must be different")
         elif first_qubit == control_qubit:
