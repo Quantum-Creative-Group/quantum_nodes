@@ -12,7 +12,4 @@ class InitClassicalRegisterNode(Node, AnimationNode):
         self.newOutput("Classical Register", "Classical Register", "classical_register")
 
     def execute(self, number_of_bits):
-        try:
-            return ClassicalRegister(number_of_bits)
-        except:
-            return
+        return ClassicalRegister(number_of_bits)

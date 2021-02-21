@@ -12,7 +12,4 @@ class InitQuantumRegisterNode(Node, AnimationNode):
         self.newOutput("Quantum Register", "Quantum Register", "quantum_register")
 
     def execute(self, number_of_qubits):
-        try:
-            return QuantumRegister(number_of_qubits)
-        except:
-            return
+        return QuantumRegister(number_of_qubits)

@@ -45,25 +45,13 @@ class InitQuantumCircuitNode(Node, AnimationNode):
             return "execute_QCRegister"
 
     def execute_QNumber(self, number_of_qubits):
-        try:
-            return QuantumCircuit(number_of_qubits)
-        except:
-            return
+        return QuantumCircuit(number_of_qubits)
 
     def execute_QCNumber(self, number_of_qubits,number_of_bits):
-        try:
-            return QuantumCircuit(number_of_qubits,number_of_bits)
-        except:
-            return
+        return QuantumCircuit(number_of_qubits,number_of_bits
         
     def execute_QRegister(self, quantum_register):
-        try:
-            return QuantumCircuit(quantum_register)
-        except:
-            return
+        return QuantumCircuit(quantum_register)
 
     def execute_QCRegister(self, quantum_register,classical_register):
-        try:
-            return QuantumCircuit(quantum_register,classical_register)
-        except:
-            return
+        return QuantumCircuit(quantum_register,classical_register)
