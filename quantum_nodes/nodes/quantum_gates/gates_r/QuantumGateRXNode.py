@@ -18,9 +18,7 @@ class QuantumGateRXNode(Node, AnimationNode):
     def execute(self, input, angle, qubit_index):
         if qubit_index >= input.num_qubits:
             self.raiseErrorMessage("The qubit index must be lower than " + str(input.num_qubits))
-        try:
+        else:
             input.rx(angle,qubit_index)
             return input
-        except:
-            return
             

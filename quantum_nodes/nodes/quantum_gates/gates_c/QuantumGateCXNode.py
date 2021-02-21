@@ -21,8 +21,6 @@ class QuantumGateCXNode(Node, AnimationNode):
             self.raiseErrorMessage("The target qubit index must be lower than " + str(input.num_qubits))
         if controle_qubit == target_qubit:
             self.raiseErrorMessage("The controle qubit must be different from the target qubit")
-        try:
+        else:
             input.cx(controle_qubit, target_qubit)
             return input
-        except:
-            return
