@@ -1,7 +1,7 @@
 import bpy
 from animation_nodes.base_types import AnimationNode
 
-from ... algorithms.schrodinger_equation.SimulationManager import SimulationManager
+from ... algorithms.schrodinger_equation.simulation_manager import SimulationManager
 
 class SchrodingerEquationSimulationNode(bpy.types.Node, AnimationNode):
     bl_idname = "an_SchrodingerEquationSimulationNode"
@@ -11,8 +11,8 @@ class SchrodingerEquationSimulationNode(bpy.types.Node, AnimationNode):
 
     def create(self):
         self.newInput("Integer", "Frame rate", "frame_rate", value = 25, minValue = 0)
-        self.newInput("Float", "Duration", "duration", value = 5, minValue = 0)
-        self.newInput("Float", "Δt", "delta_t", value = 0.125, minValue = 0)
+        self.newInput("Float", "Duration", "duration", value = 5., minValue = 0.)
+        self.newInput("Float", "Δt", "delta_t", value = 0.125, minValue = 0.)
 
         self.newInput("Integer", "Dimension (N)", "dimension", value = 10, minValue = 1)
         self.newInput("Integer", "Size", "size", value = 10, minValue = 0)
