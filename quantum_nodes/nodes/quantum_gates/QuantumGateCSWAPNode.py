@@ -18,20 +18,18 @@ class QuantumGateCSWAPNode(Node, AnimationNode):
     def execute(self, input, first_qubit, second_qubit, control_qubit):
         if input.num_qubits < 3:
             self.raiseErrorMessage("There has to be at least three qubits in the circuit to use this gate")
-        if first_qubit >= input.num_qubits:
+        elif first_qubit >= input.num_qubits:
             self.raiseErrorMessage("The first qubit index must be lower than " + str(input.num_qubits))
-        if second_qubit >= input.num_qubits:
+        elif second_qubit >= input.num_qubits:
             self.raiseErrorMessage("The second qubit index must be lower than " + str(input.num_qubits))
-        if control_qubit >= input.num_qubits:
+        elif control_qubit >= input.num_qubits:
             self.raiseErrorMessage("The control qubit index must be lower than " + str(input.num_qubits))
-        if first_qubit == second_qubit:
+        elif first_qubit == second_qubit:
             self.raiseErrorMessage("The two qubits must be different")
-        if first_qubit == control_qubit:
+        elif first_qubit == control_qubit:
             self.raiseErrorMessage("The first qubit must be different from the control qubit")
-        if second_qubit == control_qubit:
+        elif second_qubit == control_qubit:
             self.raiseErrorMessage("The second qubit must be different from the control qubit")
-        try:
+        else:
             input.cswap(control_qubit, first_qubit, second_qubit)
             return input
-        except:
-            return
