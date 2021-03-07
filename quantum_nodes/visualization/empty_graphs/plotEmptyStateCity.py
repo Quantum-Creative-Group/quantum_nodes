@@ -3,7 +3,6 @@ import bmesh
 import mathutils
 import math
 import numpy as np
-from qiskit import *
 from qiskit.quantum_info.states import DensityMatrix
 
 def plotEmptyStateCity():      
