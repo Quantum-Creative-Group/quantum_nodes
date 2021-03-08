@@ -4,7 +4,7 @@ import mathutils
 import math
 import numpy as np
 from qiskit.visualization.utils import _bloch_multivector_data
-from .graphs_utils import creatMultipleText, creatMesh
+from .. utils.graphs_utils import creatMultipleText, creatMesh
 
     
 def plotEmptyHistogram(): 

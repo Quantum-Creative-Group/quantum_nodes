@@ -3,7 +3,7 @@ import bmesh
 import mathutils
 import math
 import numpy as np
-from .graphs_utils import creatFont, creatMesh
+from .. utils.graphs_utils import creatFont, creatMesh
     
 def plotEmptyBlochSphere():   
     bpy.ops.object.select_all(action='DESELECT') #deselect all object
