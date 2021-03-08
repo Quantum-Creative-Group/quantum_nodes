@@ -71,7 +71,7 @@ def plotEmptyBlochSphere():
     #--------------------------------------------------------------------
 
     #Vector-------------------------------------------------------------
-    mesh_vector, vector = creatMesh("QuantumBlochLightVector", 0.73, 0.04, 0.04, 1.)  
+    mesh_vector, vector = creatMesh("QuantumBlochVector", 0.73, 0.04, 0.04, 1.)  
 
     bm = bmesh.new()
     bmesh.ops.create_cone(bm, cap_ends=False, cap_tris=False, segments=20, diameter1=0.1, diameter2=0., depth=0.2)
