@@ -36,7 +36,7 @@ class QuantumCircuitIBMOutputStateNode(bpy.types.Node, AnimationNode):
 
     def item_callback(self, context):
         if self.initialized:
-            return [ (sys.name(), sys.name(), "number of qubits: " + str(sys.configuration().n_qubits)) for sys in self._provider.get_provider().backends() ]
+            return [ (sys.name(), sys.name(), "number of qubits: " + str(sys.configuration().n_qubits)) for sys in self.provider.get_provider().backends() ]
         else:
             return[]
 
@@ -46,7 +46,15 @@ class QuantumCircuitIBMOutputStateNode(bpy.types.Node, AnimationNode):
         description = "Choose a system",
         update = AnimationNode.refresh,
         get = None,
-        set = None)           
+        set = None)
+
+    outputItems = [
+        ("COUNTS", "Get counts", "Useful for representations, such as histograms"),
+        ("STATE_VECTOR", "Get state vector", "Useful for")
+    ]
+
+    outputMenu = EnumProperty(name = "Output", default = "COUNTS",
+        items = outputItems, update = AnimationNode.refresh)
 
     def setup(self):                            # disables auto-load at creation
         node_tree = bpy.context.space_data.edit_tree
@@ -66,6 +74,7 @@ class QuantumCircuitIBMOutputStateNode(bpy.types.Node, AnimationNode):
         self.newOutput("Generic", "Output State", "output_state")
 
     def draw(self, layout):
+        layout.prop(self, "outputMenu")
         layout.prop(self, "backendMenu")
         layout.label(text = "Number of jobs remaining: " + str(self.remaining_jobs), icon = "INFO")
         self.invokeFunction(layout, "executeTree", text = "Send")
@@ -76,7 +85,7 @@ class QuantumCircuitIBMOutputStateNode(bpy.types.Node, AnimationNode):
 
     def execute(self, quantum_circuit):
         if self.initialized:
-            backend = self._provider.get_provider().get_backend(self.backendMenu)
+            backend = self.provider.get_provider().get_backend(self.backendMenu)
             self.remaining_jobs = backend.remaining_jobs_count()
             if backend.status().operational == False:
                 self.raiseErrorMessage("This system is offline for now")
@@ -94,6 +103,9 @@ class QuantumCircuitIBMOutputStateNode(bpy.types.Node, AnimationNode):
                 job_status = job.status()
             # Handle the result
             result = job.result()
-            return result.get_counts()
+            if (self.outputMenu == "COUNTS"):
+                return result.get_counts()
+            if (self.outputMenu == "STATE_VECTOR"):
+                return result.get_statevector()
         else:
             return
