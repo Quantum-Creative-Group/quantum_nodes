@@ -49,8 +49,8 @@ class QuantumCircuitIBMOutputStateNode(bpy.types.Node, AnimationNode):
         set = None)
 
     outputItems = [
-        ("COUNTS", "Get counts", "Useful for representations, such as histograms"),
-        ("STATE_VECTOR", "Get state vector", "Useful for")
+        ("COUNTS", "Get counts", "Useful for representations"),
+        ("STATE_VECTOR", "Get state vector", "Returns a state vector")
     ]
 
     outputMenu = EnumProperty(name = "Output", default = "COUNTS",
@@ -106,6 +106,7 @@ class QuantumCircuitIBMOutputStateNode(bpy.types.Node, AnimationNode):
             if (self.outputMenu == "COUNTS"):
                 return result.get_counts()
             if (self.outputMenu == "STATE_VECTOR"):
+                # doesn't work ==> use SnapshotStateVector
                 return result.get_statevector()
         else:
             return
