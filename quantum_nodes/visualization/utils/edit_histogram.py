@@ -4,7 +4,7 @@ import mathutils
 import numpy as np
 from qiskit import *
 from qiskit.visualization.utils import _bloch_multivector_data
-from ..empty_graphs.plotEmptyHistogram import plotHistogram
+from ..empty_graphs.plot_empty_histogram import plotHistogram
 
 def editHistogram(parent, _counts, _shots):
     #data
