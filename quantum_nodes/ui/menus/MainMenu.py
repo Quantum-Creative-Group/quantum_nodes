@@ -31,7 +31,7 @@ class MainMenu(Menu):
         layout.separator()
         layout.menu("AN_MT_quantum_qu_blur", text = "Quantum Blur", icon = "ORIENTATION_VIEW")
         layout.menu("AN_MT_quantum_init_qu_circuit", text = "Init Quantum Circuit", icon = "KEYINGSET")
-        layout.menu("AN_MT_quantum_qu_output", text = "Quantum Output", icon = "ORIENTATION_NORMAL")
+        layout.menu("AN_MT_quantum_all_qu_output", text = "Quantum Output", icon = "ORIENTATION_NORMAL")
         layout.separator()
         layout.menu("AN_MT_schrodinger_simulation", text = "Schrödinger Simulation", icon = "OPTIONS")
 

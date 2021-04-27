@@ -6,7 +6,12 @@ from ... visualization.empty_graphs.plot_empty_state_city import plotEmptyStateC
 class StateCityInstancer(Operator):
     bl_idname = "object.state_city_instancer"
     bl_label = "Create a state city"
+    bl_description = "WIP : Plot empty state city"
     bl_options = {'REGISTER', 'UNDO'}
+
+    @classmethod
+    def poll(cls, context):
+        return False
 
     def execute(self, context):
         plotEmptyStateCity()
