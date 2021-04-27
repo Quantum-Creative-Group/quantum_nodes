@@ -21,10 +21,10 @@ from bpy.types import Panel
 
 class AN_Q_DemoAddon(bpy.types.Panel):
     bl_idname = "AN_Q_PT_addon_demo_ui"
-    bl_label = "AN_Q Demo addon"
+    bl_label = "QN Demo"
     bl_space_type = "VIEW_3D"
     bl_region_type = "UI"
-    bl_category = "AN_Q_DEMO"
+    bl_category = "QN Demo"
 
     bpy.types.Object.select_index = 0
   
@@ -110,9 +110,9 @@ class AN_Q_DemoAddon(bpy.types.Panel):
             row.operator(SwitchToAn.bl_idname, text = "Advanced (Quantum Magic)", icon = "PLUS")
             row = self.addRow(4)
 
-            row.operator('wm.url_open', text = "Need Help ?", icon = 'BOOKMARKS').url = 'https://elgoog.im/'
+            row.operator('wm.url_open', text = "Need Help ?", icon = 'BOOKMARKS').url = 'https://quantum-creative-group.gitlab.io/quantum_nodes_manual/'
             row = self.addRow(1)
-            row.operator('wm.url_open', text = "Creation gallery", icon = 'FUND').url = 'https://www.instagram.com/theo_goatyeah'
+            row.operator('wm.url_open', text = "Creation gallery", icon = 'FUND').url = 'https://www.instagram.com/quantumnodes/'
 
 def register():
     # PointerProperty : https://docs.blender.org/api/current/bpy.props.html

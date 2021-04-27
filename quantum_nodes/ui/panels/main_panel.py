@@ -5,7 +5,7 @@ from animation_nodes.ui.node_menu import insertNode
 from .. properties.query_properties import QueryProperties
 
 class MainPanel(Panel):
-    bl_label = "Quantum Node Panel"
+    bl_label = "Quantum Nodes"
     bl_idname = "AN_PT_MainPanel"
     bl_space_type = "NODE_EDITOR"
     bl_region_type = "UI"
@@ -24,12 +24,12 @@ class MainPanel(Panel):
 
         # icons
         pcoll = preview_collections["main"]
-        qubit = pcoll["qubit"]
+        complex_icon = pcoll["complex_icon"]
 
-        # templates / visualizations
+        # tools
         box = layout.box()
         row = box.row()
-        row.label(text = "Templates", icon = 'EXPERIMENTAL')
+        row.label(text = "Tools", icon = 'TOOL_SETTINGS')
         row = box.row()
         row.operator('nodes.insert', text = 'Wootton QB', icon = "TRACKING")
         row.operator('object.bloch_sphere_instancer', text='Bloch sphere', icon="SPHERE")
@@ -43,7 +43,7 @@ class MainPanel(Panel):
         row.label(text = "Nodes", icon = 'NODE')
         row = box.row()
         row.menu("AN_MT_quantum_gates", text = "Gates", icon = "SHADING_BBOX")
-        row.menu("AN_MT_complex", text = "Complex Nb", icon_value = qubit.icon_id)
+        row.menu("AN_MT_complex", text = "Complex Nb", icon_value = complex_icon.icon_id)
         row = box.row()
         row.menu("AN_MT_quantum_qu_blur", text = "Qu Blur", icon = "ORIENTATION_VIEW")
         row.menu("AN_MT_quantum_init_qu_circuit", text = "Init Circuit", icon = "KEYINGSET")
@@ -76,7 +76,9 @@ class MainPanel(Panel):
         # help button
         row = layout.row()
         row = layout.row()
-        row.operator('wm.url_open', text = "Need Help ?", icon = 'BOOKMARKS').url = 'https://elgoog.im/'
+        row.operator('wm.url_open', text = "Need Help ?", icon = 'BOOKMARKS').url = 'https://quantum-creative-group.gitlab.io/quantum_nodes_manual/'
+        row = layout.row()
+        row.operator('wm.url_open', text = "Creation gallery", icon = 'FUND').url = 'https://www.instagram.com/quantumnodes/'
 
 preview_collections = {}
 
@@ -85,9 +87,7 @@ def register():
     # path to the folder where the icons aren. Computes the path relatively this py file
     my_icons_dir = os.path.join(os.path.dirname(__file__), "../icons")
     # loads a preview thumbnail of a file and stores it in the previews collection
-    pcoll.load("my_icon", os.path.join(my_icons_dir, "discord.png"), 'IMAGE')
-    pcoll.load("addon_logo", os.path.join(my_icons_dir, "discord.png"), 'IMAGE')
-    pcoll.load("qubit", os.path.join(my_icons_dir, "complex_c.png"), 'IMAGE')
+    pcoll.load("complex_icon", os.path.join(my_icons_dir, "complex_c.png"), 'IMAGE')
     preview_collections["main"] = pcoll
     
     bpy.types.Scene.QueryProps = bpy.props.PointerProperty(type = QueryProperties)

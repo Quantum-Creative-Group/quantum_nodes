@@ -5,7 +5,7 @@ class AN_Q_DemoAddonMeshPanel(bpy.types.Panel):
     bl_label = "Add a new mesh"
     bl_space_type = "VIEW_3D"
     bl_region_type = "UI"
-    bl_category = "AN_Q_DEMO"
+    bl_category = "QN Demo"
 
     def draw(self, context):
         row = self.layout.row()

@@ -19,7 +19,7 @@ class SelectObject(Operator):
         dm = bpy.types.Scene.demo_manager
         if dm.target != bpy.context.active_object:
             if dm.target != None:
-                self.report({'INFO'}, "AN_Q_DEMO : target successfully updated")
+                self.report({'INFO'}, "QN Demo: target successfully updated")
             dm.initializeDemoNodeTree()
             dm.setNewTarget(bpy.context.active_object)
             for node_group in bpy.data.node_groups:

@@ -12,7 +12,7 @@ class ResetCircuits(Operator):
         return (context.object.select_get()) and (bpy.context.active_object == bpy.types.Scene.demo_manager.target)
     
     def execute(self, context):
-        self.report({'INFO'}, "AN_Q_DEMO : quantum circuits successfully reset")
+        self.report({'INFO'}, "QN Demo: quantum circuits successfully reset")
         dm = bpy.types.Scene.demo_manager
         dm.resetCircuits()
         dm.setNewCircuits(dm.target)

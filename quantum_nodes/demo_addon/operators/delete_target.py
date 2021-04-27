@@ -7,7 +7,7 @@ class DeleteTarget(Operator):
     bl_description = "Deletes the current target"
     
     def execute(self, context):
-        self.report({'INFO'}, "AN_Q_DEMO: target successfully removed")
+        self.report({'INFO'}, "QN Demo: target successfully removed")
         if bpy.types.Scene.demo_manager.target != None:
             bpy.types.Scene.demo_manager.removeAll()
         return {'FINISHED'}
