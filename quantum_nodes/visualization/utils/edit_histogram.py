@@ -1,12 +1,9 @@
 import bpy
 import bmesh
 import mathutils
-import math
 import numpy as np
-from qiskit import *
-from qiskit.visualization.utils import _bloch_multivector_data
 
-def editHistogram(parent, _counts, _shots): 
+def editHistogram(parent, _counts, _shots):
     #data
     keys = list(_counts)
     nb_cubes = len(keys)
