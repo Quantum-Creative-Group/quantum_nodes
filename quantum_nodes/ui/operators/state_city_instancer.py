@@ -1,7 +1,7 @@
 import bpy
 from bpy.types import Operator
 from bpy.props import StringProperty
-from ... visualization.empty_graphs.plotEmptyStateCity import plotEmptyStateCity
+from ... visualization.empty_graphs.plot_empty_state_city import plotEmptyStateCity
 
 class StateCityInstancer(Operator):
     bl_idname = "object.state_city_instancer"
