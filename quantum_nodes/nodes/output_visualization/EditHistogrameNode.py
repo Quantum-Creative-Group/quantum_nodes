@@ -6,7 +6,7 @@ import numpy as np
 from qiskit import *
 import math
 from animation_nodes.base_types import AnimationNode
-from ... visualization.utils.editHistogram import editHistogram
+from ... visualization.utils.edit_histogram import editHistogram
 
 class EditHistogrameNode(bpy.types.Node, AnimationNode):
     bl_idname = "an_EditHistogrameNode"

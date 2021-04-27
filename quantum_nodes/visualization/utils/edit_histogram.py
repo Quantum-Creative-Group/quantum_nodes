@@ -2,12 +2,9 @@ import bpy
 import bmesh
 import mathutils
 import numpy as np
-<<<<<<< HEAD:quantum_nodes/visualization/utils/editHistogram.py
 from qiskit import *
 from qiskit.visualization.utils import _bloch_multivector_data
 from ..empty_graphs.plotEmptyHistogram import plotHistogram
-=======
->>>>>>> 0e8e036aa93aa0b05e7a20c921303a0aa9bc1584:quantum_nodes/visualization/utils/edit_histogram.py
 
 def editHistogram(parent, _counts, _shots):
     #data
