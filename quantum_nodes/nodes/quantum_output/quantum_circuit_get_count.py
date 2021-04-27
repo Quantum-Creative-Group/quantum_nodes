@@ -14,7 +14,10 @@ class QuantumCircuitGetCountNode(bpy.types.Node, AnimationNode):
         self.newOutput("Quantum Count", "Counts", "counts")
 
     def execute(self, quantum_circuit, shots):
-        try:
+        # attention il manque la possibilité de faire le nombre de shots qu'on veut.
+        if(shots < 1):
+            self.raiseErrorMessage("The number of shots must be superior to 1")
+        if quantum_circuit.num_clbits < 1:
+            self.raiseErrorMessage("There has to be at least one classical bit in the circuit to get the count")
+        else:
             return execute(quantum_circuit,Aer.get_backend('qasm_simulator')).result().get_counts()
-        except:
-            return

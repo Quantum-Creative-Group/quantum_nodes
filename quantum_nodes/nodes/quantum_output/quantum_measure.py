@@ -41,8 +41,5 @@ class QuantumMeasureNode(bpy.types.Node, AnimationNode):
             return
 
     def execute_All(self,input_quantum_circuit):
-        try:
-            input_quantum_circuit.measure_all()
-            return input_quantum_circuit
-        except:
-            return
+        input_quantum_circuit.measure_all()
+        return input_quantum_circuit

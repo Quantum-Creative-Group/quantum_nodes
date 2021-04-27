@@ -14,6 +14,7 @@ modeItems = [
 class InitQuantumCircuitNode(Node, AnimationNode):
     bl_idname = "an_InitQuantumCircuitNode"
     bl_label = "Init Quantum Circuit"
+    errorHandlingType = "EXCEPTION"
 
     mode: EnumProperty(name = "Mode", default = "QNUMBER",
         items = modeItems, update = AnimationNode.refresh)
@@ -45,25 +46,23 @@ class InitQuantumCircuitNode(Node, AnimationNode):
             return "execute_QCRegister"
 
     def execute_QNumber(self, number_of_qubits):
-        try:
+        if(number_of_qubits<1):
+            self.raiseErrorMessage("The number of qubits must be superior to 1")
+        else:
             return QuantumCircuit(number_of_qubits)
-        except:
-            return
 
     def execute_QCNumber(self, number_of_qubits,number_of_bits):
-        try:
-            return QuantumCircuit(number_of_qubits,number_of_bits)
-        except:
+        if(number_of_qubits<1):
+            self.raiseErrorMessage("The number of qubits must be superior to 1")
             return
+        if(number_of_bits<1):
+            self.raiseErrorMessage("The number of bits must be superior to 1")
+            return
+        else:
+            return QuantumCircuit(number_of_qubits,number_of_bits)
         
     def execute_QRegister(self, quantum_register):
-        try:
-            return QuantumCircuit(quantum_register)
-        except:
-            return
+        return QuantumCircuit(quantum_register)
 
     def execute_QCRegister(self, quantum_register,classical_register):
-        try:
-            return QuantumCircuit(quantum_register,classical_register)
-        except:
-            return
+        return QuantumCircuit(quantum_register,classical_register)

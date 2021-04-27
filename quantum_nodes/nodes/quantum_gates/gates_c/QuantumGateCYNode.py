@@ -17,12 +17,16 @@ class QuantumGateCYNode(Node, AnimationNode):
     def execute(self, input, controle_qubit, target_qubit):
         if input.num_qubits < 2:
             self.raiseErrorMessage("There has to be at least two qubits in the circuit to use this gate")
-        if target_qubit >= input.num_qubits:
+        elif controle_qubit >= input.num_qubits:
+            self.raiseErrorMessage("The controle qubit index must be lower than " + str(input.num_qubits))
+        elif target_qubit >= input.num_qubits:
             self.raiseErrorMessage("The target qubit index must be lower than " + str(input.num_qubits))
-        if controle_qubit == target_qubit:
+        elif controle_qubit == target_qubit:
             self.raiseErrorMessage("The controle qubit must be different from the target qubit")
-        try:
+        elif controle_qubit < 0:
+            self.raiseErrorMessage("The controle qubit index must be positive")
+        elif target_qubit < 0:
+            self.raiseErrorMessage("The target qubit index must be positive")
+        else:
             input.cy(controle_qubit, target_qubit)
             return input
-        except:
-            return

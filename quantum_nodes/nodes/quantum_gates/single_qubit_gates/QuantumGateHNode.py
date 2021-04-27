@@ -34,13 +34,15 @@ class QuantumGateHNode(Node, AnimationNode):
         return socketMapping
 
     def getExecutionCode(self, required):
-        for i in range(len(self.inputs) - 1) :
-            yield "try:"
-            yield f"    if element_{i} < inputCircuit.num_qubits:"
-            yield f"        inputCircuit.h(element_{i})"
-            yield "except:"
+        for i in range(len(self.inputs) - 1):
+            yield f"if element_{i} >= inputCircuit.num_qubits:"
             yield "    output_circuit = inputCircuit"
-            yield "    self.raiseErrorMessage(\"Qubit Index can't be larger than the number of qubits in the Input Circuit.\")"
+            yield "    self.raiseErrorMessage(\"The qubit index must be lower than \" + str(inputCircuit.num_qubits))"
+            yield f"if element_{i} < 0:"
+            yield "    output_circuit = inputCircuit"
+            yield "    self.raiseErrorMessage(\"The qubit index must be positive.\")"
+            yield "else:"
+            yield f"    inputCircuit.h(element_{i})"
         yield "output_circuit = inputCircuit"
 
     def newInputSocket(self):
