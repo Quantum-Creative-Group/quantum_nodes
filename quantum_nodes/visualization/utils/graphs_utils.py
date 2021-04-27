@@ -1,26 +1,26 @@
 import bpy
 import bmesh
-import math
-import numpy as np
-import mathutils
+from mathutils import Vector
+from math import sqrt
+from numpy import (pi, arccos, arctan)
 
 def get_angles(x, y, z):
-    r = math.sqrt(x**2 + y**2 + z**2)
+    r = sqrt(x**2 + y**2 + z**2)
     if (r<10**-15):
         theta = 0
         phi = 0
     else :
-        theta = np.arccos(z/r)
+        theta = arccos(z/r)
         if (x==0):
             if(y > 0):
-                phi = np.pi/2
+                phi = pi/2
             else:
-                phi = -np.pi/2
+                phi = -pi/2
         else:
             if(x> 0):
-                phi = np.arctan (y/x)
+                phi = arctan (y/x)
             else:
-                phi = np.arctan (y/x) + np.pi
+                phi = arctan (y/x) + pi
     return r, theta, phi
     
 def creatFont(body, position_x, position_y, position_z, 
@@ -86,10 +86,10 @@ def historamCityDrawAxes(mesh, my_range, scale_x, scale_y, scale_z,
     bm = bmesh.new()
     for i in range (my_range) :
         if (i !=0) :
-            bmesh.ops.scale(bm, verts = bm.verts, vec = mathutils.Vector((1/scale_x, 1/scale_y, 1/scale_z)))
+            bmesh.ops.scale(bm, verts = bm.verts, vec = Vector((1/scale_x, 1/scale_y, 1/scale_z)))
         bmesh.ops.create_cube(bm, size=1)
-        bmesh.ops.scale(bm, verts = bm.verts, vec = mathutils.Vector((scale_x, scale_y, scale_z)))
-        bmesh.ops.translate(bm, verts = bm.verts, vec = mathutils.Vector((translate1_x, translate1_y, translate1_z)))
-    bmesh.ops.translate(bm, verts = bm.verts, vec = mathutils.Vector((translate2_x, translate2_y, translate2_z))) 
+        bmesh.ops.scale(bm, verts = bm.verts, vec = Vector((scale_x, scale_y, scale_z)))
+        bmesh.ops.translate(bm, verts = bm.verts, vec = Vector((translate1_x, translate1_y, translate1_z)))
+    bmesh.ops.translate(bm, verts = bm.verts, vec = Vector((translate2_x, translate2_y, translate2_z))) 
     bm.to_mesh(mesh)
     bm.free()

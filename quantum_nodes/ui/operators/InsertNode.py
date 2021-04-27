@@ -11,6 +11,12 @@ def createNodeTree(context, operator, gp_name):
 class InsertNode(Operator):
     bl_idname = "nodes.insert"
     bl_label = "Add Node Tree"
+    bl_description = "WIP : QuantumBlur template"
+
+    # WIP operator
+    @classmethod
+    def poll(cls, context):
+        return False
 
     def execute(self, context):
         custom_node_name = "Quantum_Node_Tree_"

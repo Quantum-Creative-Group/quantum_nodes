@@ -48,7 +48,7 @@ class MainPanel(Panel):
         row.menu("AN_MT_quantum_qu_blur", text = "Qu Blur", icon = "ORIENTATION_VIEW")
         row.menu("AN_MT_quantum_init_qu_circuit", text = "Init Circuit", icon = "KEYINGSET")
         row = box.row()
-        row.menu("AN_MT_quantum_qu_output", text = "Qu Output", icon = "ORIENTATION_NORMAL")
+        row.menu("AN_MT_quantum_all_qu_output", text = "Qu Output", icon = "ORIENTATION_NORMAL")
         row.menu("AN_MT_schrodinger_simulation", text = "Schrödinger", icon = "OPTIONS")
         row = layout.row()
         row = layout.row()

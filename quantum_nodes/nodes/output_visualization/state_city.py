@@ -1,16 +1,12 @@
 import bpy
-import bmesh
-import mathutils
-import math
-import numpy as np
-from qiskit import *
-import math
+from bpy.types import Node
+from qiskit import (Aer, execute)
 from animation_nodes.base_types import AnimationNode
-from ... visualization.utils.editStateCity import editStateCity
+from ... visualization.utils.edit_state_city import editStateCity
 
-class EditStateCityNode(bpy.types.Node, AnimationNode):
-    bl_idname = "an_EditStateCityNode"
-    bl_label = "Edit State City"
+class StateCityNode(Node, AnimationNode):
+    bl_idname = "an_StateCityNode"
+    bl_label = "State City"
 
     def create(self):
         self.newInput("Quantum Circuit", "Quantum Circuit", "quantum_circuit")
@@ -19,7 +15,7 @@ class EditStateCityNode(bpy.types.Node, AnimationNode):
     def execute(self,quantum_circuit, state_city):
         if state_city is None:
             return
-        if (state_city.name != "Quantume_City_Faces"):
+        if (state_city.name != "QuantumCityFaces"):
             return 
         try:
             backend = Aer.get_backend('statevector_simulator')

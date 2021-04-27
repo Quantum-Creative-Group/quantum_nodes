@@ -1,10 +1,8 @@
 import bpy
 import bmesh
-import mathutils
-import math
-import numpy as np
-from qiskit import *
-from qiskit.quantum_info.states import  DensityMatrix
+from mathutils import Vector
+from numpy import pi
+from qiskit.quantum_info.states import DensityMatrix
 
 def editStateCity(parent, state):
     rho = DensityMatrix(state)
@@ -61,13 +59,13 @@ def editStateCity(parent, state):
                 resize = 0.5/cube_size
             translate = cube_size/2
             if (j != 0):
-                bmesh.ops.translate(bm, verts = bm.verts, vec = mathutils.Vector((-1.0, 0.0, 0.0)))
-                bmesh.ops.scale(bm, verts = bm.verts, vec = mathutils.Vector((1/resize, 1/resize, 1)))
-                bmesh.ops.translate(bm, verts = bm.verts, vec = mathutils.Vector((0.0, 0.0, -translate)))
+                bmesh.ops.translate(bm, verts = bm.verts, vec = Vector((-1.0, 0.0, 0.0)))
+                bmesh.ops.scale(bm, verts = bm.verts, vec = Vector((1/resize, 1/resize, 1)))
+                bmesh.ops.translate(bm, verts = bm.verts, vec = Vector((0.0, 0.0, -translate)))
             bmesh.ops.create_cube(bm, size=cube_size)
-            bmesh.ops.scale(bm, verts = bm.verts, vec = mathutils.Vector((resize, resize, 1.)))
-            bmesh.ops.translate(bm, verts = bm.verts, vec = mathutils.Vector((0.0, 0.0, translate)))   
-        bmesh.ops.translate(bm, verts = bm.verts, vec = mathutils.Vector((-0.5, i+0.5, size))) 
+            bmesh.ops.scale(bm, verts = bm.verts, vec = Vector((resize, resize, 1.)))
+            bmesh.ops.translate(bm, verts = bm.verts, vec = Vector((0.0, 0.0, translate)))   
+        bmesh.ops.translate(bm, verts = bm.verts, vec = Vector((-0.5, i+0.5, size))) 
         bm.to_mesh(mesh_cube)
         bm.free()
     #--------------------------------------------------------------------
@@ -85,18 +83,18 @@ def editStateCity(parent, state):
     
     bm = bmesh.new()
     bmesh.ops.create_cube(bm, size=1)
-    bmesh.ops.scale(bm, verts = bm.verts, vec = mathutils.Vector((T, Z, X)))  
-    bmesh.ops.translate(bm, verts = bm.verts, vec = mathutils.Vector((-Y+0.5, Z/2, X/2)))
-    bmesh.ops.translate(bm, verts = bm.verts, vec = mathutils.Vector(((Y-1.)/2, 0.0, -X/2)))
-    bmesh.ops.scale(bm, verts = bm.verts, vec = mathutils.Vector((1/Y, 1/T, 1/X))) 
+    bmesh.ops.scale(bm, verts = bm.verts, vec = Vector((T, Z, X)))  
+    bmesh.ops.translate(bm, verts = bm.verts, vec = Vector((-Y+0.5, Z/2, X/2)))
+    bmesh.ops.translate(bm, verts = bm.verts, vec = Vector(((Y-1.)/2, 0.0, -X/2)))
+    bmesh.ops.scale(bm, verts = bm.verts, vec = Vector((1/Y, 1/T, 1/X))) 
     bmesh.ops.create_cube(bm, size=1)
-    bmesh.ops.scale(bm, verts = bm.verts, vec = mathutils.Vector((Y, T, X))) 
-    bmesh.ops.translate(bm, verts = bm.verts, vec = mathutils.Vector((-(Y-1.)/2, 0.0, X/2)))
-    bmesh.ops.translate(bm, verts = bm.verts, vec = mathutils.Vector(((Y-1.)/2, -Z/2, 0.0)))
-    bmesh.ops.scale(bm, verts = bm.verts, vec = mathutils.Vector((1/Y, 1/Z, 1/T))) 
+    bmesh.ops.scale(bm, verts = bm.verts, vec = Vector((Y, T, X))) 
+    bmesh.ops.translate(bm, verts = bm.verts, vec = Vector((-(Y-1.)/2, 0.0, X/2)))
+    bmesh.ops.translate(bm, verts = bm.verts, vec = Vector(((Y-1.)/2, -Z/2, 0.0)))
+    bmesh.ops.scale(bm, verts = bm.verts, vec = Vector((1/Y, 1/Z, 1/T))) 
     bmesh.ops.create_cube(bm, size=1)
-    bmesh.ops.scale(bm, verts = bm.verts, vec = mathutils.Vector((Y, Z, T))) 
-    bmesh.ops.translate(bm, verts = bm.verts, vec = mathutils.Vector((-(Y-1.)/2, Z/2, 0.0)))
+    bmesh.ops.scale(bm, verts = bm.verts, vec = Vector((Y, Z, T))) 
+    bmesh.ops.translate(bm, verts = bm.verts, vec = Vector((-(Y-1.)/2, Z/2, 0.0)))
     bm.to_mesh(mesh_faces)
     bm.free()
     
@@ -112,8 +110,8 @@ def editStateCity(parent, state):
     
     bm = bmesh.new()
     bmesh.ops.create_cube(bm, size=1)
-    bmesh.ops.scale(bm, verts = bm.verts, vec = mathutils.Vector((Y, Z, T)))
-    bmesh.ops.translate(bm, verts = bm.verts, vec = mathutils.Vector((-(Y-1.)/2, Z/2, size)))
+    bmesh.ops.scale(bm, verts = bm.verts, vec = Vector((Y, Z, T)))
+    bmesh.ops.translate(bm, verts = bm.verts, vec = Vector((-(Y-1.)/2, Z/2, size)))
     bm.to_mesh(mesh_transparent_face)
     bm.free()
     #--------------------------------------------------------------------
@@ -149,11 +147,11 @@ def editStateCity(parent, state):
     bm = bmesh.new()
     for i in range (19) :
         if (i !=0) :
-            bmesh.ops.scale(bm, verts = bm.verts, vec = mathutils.Vector((1/T,1/Y , 1/T)))
+            bmesh.ops.scale(bm, verts = bm.verts, vec = Vector((1/T,1/Y , 1/T)))
         bmesh.ops.create_cube(bm, size=1)
-        bmesh.ops.scale(bm, verts = bm.verts, vec = mathutils.Vector((T,Y , T)))
-        bmesh.ops.translate(bm, verts = bm.verts, vec = mathutils.Vector((0.0, 0.0, size/10)))
-    bmesh.ops.translate(bm, verts = bm.verts, vec = mathutils.Vector((-Y+0.51, Y/2, 0.0))) 
+        bmesh.ops.scale(bm, verts = bm.verts, vec = Vector((T,Y , T)))
+        bmesh.ops.translate(bm, verts = bm.verts, vec = Vector((0.0, 0.0, size/10)))
+    bmesh.ops.translate(bm, verts = bm.verts, vec = Vector((-Y+0.51, Y/2, 0.0))) 
     bm.to_mesh(mesh_axes_front)
     bm.free()
     
@@ -164,11 +162,11 @@ def editStateCity(parent, state):
     bm = bmesh.new()
     for i in range (19):
         if (i !=0):
-            bmesh.ops.scale(bm, verts = bm.verts, vec = mathutils.Vector((1/Y,1/T,1/T)))
+            bmesh.ops.scale(bm, verts = bm.verts, vec = Vector((1/Y,1/T,1/T)))
         bmesh.ops.create_cube(bm, size=1)
-        bmesh.ops.scale(bm, verts = bm.verts, vec = mathutils.Vector((Y,T,T)))
-        bmesh.ops.translate(bm, verts = bm.verts, vec = mathutils.Vector((0.0, 0.0,size/10)))
-    bmesh.ops.translate(bm, verts = bm.verts, vec = mathutils.Vector((-(Y-1.)/2,T, 0.0))) 
+        bmesh.ops.scale(bm, verts = bm.verts, vec = Vector((Y,T,T)))
+        bmesh.ops.translate(bm, verts = bm.verts, vec = Vector((0.0, 0.0,size/10)))
+    bmesh.ops.translate(bm, verts = bm.verts, vec = Vector((-(Y-1.)/2,T, 0.0))) 
     bm.to_mesh(mesh_axes_left)
     bm.free()
     
@@ -179,11 +177,11 @@ def editStateCity(parent, state):
     bm = bmesh.new()
     for i in range (nb_cubes):
         if (i !=0):
-            bmesh.ops.scale(bm, verts = bm.verts, vec = mathutils.Vector((1/T,1/T,1/X)))
+            bmesh.ops.scale(bm, verts = bm.verts, vec = Vector((1/T,1/T,1/X)))
         bmesh.ops.create_cube(bm, size=1)
-        bmesh.ops.scale(bm, verts = bm.verts, vec = mathutils.Vector((T,T,X)))
-        bmesh.ops.translate(bm, verts = bm.verts, vec = mathutils.Vector((0.0,(Y-0.5)/nb_cubes, 0.0)))
-    bmesh.ops.translate(bm, verts = bm.verts, vec = mathutils.Vector((-Y+0.51,-0.5, X/2))) 
+        bmesh.ops.scale(bm, verts = bm.verts, vec = Vector((T,T,X)))
+        bmesh.ops.translate(bm, verts = bm.verts, vec = Vector((0.0,(Y-0.5)/nb_cubes, 0.0)))
+    bmesh.ops.translate(bm, verts = bm.verts, vec = Vector((-Y+0.51,-0.5, X/2))) 
     bm.to_mesh(mesh_axes_vertical_front)
     bm.free()
     
@@ -194,11 +192,11 @@ def editStateCity(parent, state):
     bm = bmesh.new()
     for i in range (nb_cubes):
         if (i !=0):
-            bmesh.ops.scale(bm, verts = bm.verts, vec = mathutils.Vector((1/T,1/T,1/X)))
+            bmesh.ops.scale(bm, verts = bm.verts, vec = Vector((1/T,1/T,1/X)))
         bmesh.ops.create_cube(bm, size=1)
-        bmesh.ops.scale(bm, verts = bm.verts, vec = mathutils.Vector((T,T,X)))
-        bmesh.ops.translate(bm, verts = bm.verts, vec = mathutils.Vector(((Y-0.5)/nb_cubes,0.0,0.0)))
-    bmesh.ops.translate(bm, verts = bm.verts, vec = mathutils.Vector((-Y,T, X/2))) 
+        bmesh.ops.scale(bm, verts = bm.verts, vec = Vector((T,T,X)))
+        bmesh.ops.translate(bm, verts = bm.verts, vec = Vector(((Y-0.5)/nb_cubes,0.0,0.0)))
+    bmesh.ops.translate(bm, verts = bm.verts, vec = Vector((-Y,T, X/2))) 
     bm.to_mesh(mesh_axes_vertical_left)
     bm.free()
     
@@ -209,11 +207,11 @@ def editStateCity(parent, state):
     bm = bmesh.new()
     for i in range (nb_cubes):
         if (i !=0):
-            bmesh.ops.scale(bm, verts = bm.verts, vec = mathutils.Vector((1/Y,1/T,1/T)))
+            bmesh.ops.scale(bm, verts = bm.verts, vec = Vector((1/Y,1/T,1/T)))
         bmesh.ops.create_cube(bm, size=1)
-        bmesh.ops.scale(bm, verts = bm.verts, vec = mathutils.Vector((Y,T,T)))
-        bmesh.ops.translate(bm, verts = bm.verts, vec = mathutils.Vector((0.0,(Y-0.5)/nb_cubes,0.0)))
-    bmesh.ops.translate(bm, verts = bm.verts, vec = mathutils.Vector((-Y/2+0.5,-0.5, T))) 
+        bmesh.ops.scale(bm, verts = bm.verts, vec = Vector((Y,T,T)))
+        bmesh.ops.translate(bm, verts = bm.verts, vec = Vector((0.0,(Y-0.5)/nb_cubes,0.0)))
+    bmesh.ops.translate(bm, verts = bm.verts, vec = Vector((-Y/2+0.5,-0.5, T))) 
     bm.to_mesh(mesh_axes_bottom_vertical)
     bm.free()
     
@@ -224,11 +222,11 @@ def editStateCity(parent, state):
     bm = bmesh.new()
     for i in range (nb_cubes):
         if (i !=0):
-            bmesh.ops.scale(bm, verts = bm.verts, vec = mathutils.Vector((1/T,1/Y,1/T)))
+            bmesh.ops.scale(bm, verts = bm.verts, vec = Vector((1/T,1/Y,1/T)))
         bmesh.ops.create_cube(bm, size=1)
-        bmesh.ops.scale(bm, verts = bm.verts, vec = mathutils.Vector((T,Y,T)))
-        bmesh.ops.translate(bm, verts = bm.verts, vec = mathutils.Vector(((Y-0.5)/nb_cubes, 0.0,0.0)))
-    bmesh.ops.translate(bm, verts = bm.verts, vec = mathutils.Vector((-Y,Z/2, T))) 
+        bmesh.ops.scale(bm, verts = bm.verts, vec = Vector((T,Y,T)))
+        bmesh.ops.translate(bm, verts = bm.verts, vec = Vector(((Y-0.5)/nb_cubes, 0.0,0.0)))
+    bmesh.ops.translate(bm, verts = bm.verts, vec = Vector((-Y,Z/2, T))) 
     bm.to_mesh(mesh_axes_bottom_horizontal)
     bm.free()
     
@@ -244,7 +242,7 @@ def editStateCity(parent, state):
         else :
             curves_front["font_curve_{0}".format(i)].body = str((i-10)/10)
         text_objects_front["font_obj_{0}".format(i)] = bpy.data.objects.new("Font Object"+str(i), curves_front["font_curve_{0}".format(i)])
-        text_objects_front["font_obj_{0}".format(i)].rotation_euler = (np.pi/2,0,np.pi/2)
+        text_objects_front["font_obj_{0}".format(i)].rotation_euler = (pi/2,0,pi/2)
         text_objects_front["font_obj_{0}".format(i)].scale = (0.3,0.3,0.3)
         text_objects_front["font_obj_{0}".format(i)].location = (-Y+0.5,Y+0.1 ,(size*i)/10 - 0.07)
         bpy.context.collection.objects.link(text_objects_front["font_obj_{0}".format(i)])
@@ -260,7 +258,7 @@ def editStateCity(parent, state):
         else :
             curves_left["font_curve_{0}".format(i)].body = str((i-10)/10)
         text_objects_left["font_obj_{0}".format(i)] = bpy.data.objects.new("Font Object"+str(i), curves_left["font_curve_{0}".format(i)])
-        text_objects_left["font_obj_{0}".format(i)].rotation_euler = (np.pi/2,0,np.pi)
+        text_objects_left["font_obj_{0}".format(i)].rotation_euler = (pi/2,0,pi)
         text_objects_left["font_obj_{0}".format(i)].scale = (0.3,0.3,0.3)
         text_objects_left["font_obj_{0}".format(i)].location = (1.,0.0,(size*i)/10 - 0.07)
         bpy.context.collection.objects.link(text_objects_left["font_obj_{0}".format(i)])
@@ -273,7 +271,7 @@ def editStateCity(parent, state):
         curves_resuts_right["font_curve_{0}".format(i)] = bpy.data.curves.new(type="FONT",name="Font Curve" +str(i))
         curves_resuts_right["font_curve_{0}".format(i)].body = column_names[i]
         text_objects_resuts_right["font_obj_{0}".format(i)] = bpy.data.objects.new("Font Object"+str(i), curves_resuts_right["font_curve_{0}".format(i)])
-        text_objects_resuts_right["font_obj_{0}".format(i)].rotation_euler = (0,0,np.pi)
+        text_objects_resuts_right["font_obj_{0}".format(i)].rotation_euler = (0,0,pi)
         text_objects_resuts_right["font_obj_{0}".format(i)].scale = (0.3,0.3,0.3)
         text_objects_resuts_right["font_obj_{0}".format(i)].location = ((0.2)*num+0.5,i*((Y-0.5)/nb_cubes)+0.6,0.0)
         bpy.context.collection.objects.link(text_objects_resuts_right["font_obj_{0}".format(i)])
@@ -286,7 +284,7 @@ def editStateCity(parent, state):
         curves_resuts_right["font_curve_{0}".format(i)] = bpy.data.curves.new(type="FONT",name="Font Curve" +str(i))
         curves_resuts_right["font_curve_{0}".format(i)].body = column_names[i]
         text_objects_resuts_right["font_obj_{0}".format(i)] = bpy.data.objects.new("Font Object"+str(i), curves_resuts_right["font_curve_{0}".format(i)])
-        text_objects_resuts_right["font_obj_{0}".format(i)].rotation_euler = (0,0,np.pi)
+        text_objects_resuts_right["font_obj_{0}".format(i)].rotation_euler = (0,0,pi)
         text_objects_resuts_right["font_obj_{0}".format(i)].scale = (0.3,0.3,0.3)
         text_objects_resuts_right["font_obj_{0}".format(i)].location = ((0.2)*num+0.5,i*((Y-0.5)/nb_cubes)+0.6,X/2)
         bpy.context.collection.objects.link(text_objects_resuts_right["font_obj_{0}".format(i)])
@@ -299,7 +297,7 @@ def editStateCity(parent, state):
         curves_resuts_right["font_curve_{0}".format(i)] = bpy.data.curves.new(type="FONT",name="Font Curve" +str(i))
         curves_resuts_right["font_curve_{0}".format(i)].body = row_names[i]
         text_objects_resuts_right["font_obj_{0}".format(i)] = bpy.data.objects.new("Font Object"+str(i), curves_resuts_right["font_curve_{0}".format(i)])
-        text_objects_resuts_right["font_obj_{0}".format(i)].rotation_euler = (0,0,-np.pi/2)
+        text_objects_resuts_right["font_obj_{0}".format(i)].rotation_euler = (0,0,-pi/2)
         text_objects_resuts_right["font_obj_{0}".format(i)].scale = (0.3,0.3,0.3)
         text_objects_resuts_right["font_obj_{0}".format(i)].location = (-i*((Y-0.5)/nb_cubes)-0.6,Z+((0.3)*num+0.5)/2,0.0)
         bpy.context.collection.objects.link(text_objects_resuts_right["font_obj_{0}".format(i)])
@@ -312,7 +310,7 @@ def editStateCity(parent, state):
         curves_resuts_right["font_curve_{0}".format(i)] = bpy.data.curves.new(type="FONT",name="Font Curve" +str(i))
         curves_resuts_right["font_curve_{0}".format(i)].body = row_names[i]
         text_objects_resuts_right["font_obj_{0}".format(i)] = bpy.data.objects.new("Font Object"+str(i), curves_resuts_right["font_curve_{0}".format(i)])
-        text_objects_resuts_right["font_obj_{0}".format(i)].rotation_euler = (0,0,-np.pi/2)
+        text_objects_resuts_right["font_obj_{0}".format(i)].rotation_euler = (0,0,-pi/2)
         text_objects_resuts_right["font_obj_{0}".format(i)].scale = (0.3,0.3,0.3)
         text_objects_resuts_right["font_obj_{0}".format(i)].location = (-i*((Y-0.5)/nb_cubes)-0.6,Z+((0.3)*num+0.5)/2,X/2)
         bpy.context.collection.objects.link(text_objects_resuts_right["font_obj_{0}".format(i)])
