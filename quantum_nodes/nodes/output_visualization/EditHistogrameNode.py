@@ -20,7 +20,7 @@ class EditHistogrameNode(bpy.types.Node, AnimationNode):
     def execute(self, shots, quantum_circuit, histograme):
         if histograme is None:
             return
-        if (histograme.name != "Quantume_Faces") :
+        if (histograme.name != "QuantumHistogrameFaces") :
             return 
         try:
             quantum_circuit.measure_all()
