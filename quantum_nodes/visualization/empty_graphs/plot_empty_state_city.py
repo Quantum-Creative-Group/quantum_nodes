@@ -1,8 +1,7 @@
 import bpy
 import bmesh
-import mathutils
-import math
-import numpy as np
+from mathutils import Vector
+from numpy import pi
 from .. utils.graphs_utils import creatMultipleTextCity, creatMesh, historamCityDrawAxes
 
 def plotEmptyStateCity():      
@@ -42,18 +41,18 @@ def plotEmptyStateCity():
     
     bm = bmesh.new()
     bmesh.ops.create_cube(bm, size=1)
-    bmesh.ops.scale(bm, verts = bm.verts, vec = mathutils.Vector((T, Z, X)))  
-    bmesh.ops.translate(bm, verts = bm.verts, vec = mathutils.Vector((-Y+0.5, Z/2, X/2)))
-    bmesh.ops.translate(bm, verts = bm.verts, vec = mathutils.Vector(((Y-1.)/2, 0.0, -X/2)))
-    bmesh.ops.scale(bm, verts = bm.verts, vec = mathutils.Vector((1/Y, 1/T, 1/X))) 
+    bmesh.ops.scale(bm, verts = bm.verts, vec = Vector((T, Z, X)))  
+    bmesh.ops.translate(bm, verts = bm.verts, vec = Vector((-Y+0.5, Z/2, X/2)))
+    bmesh.ops.translate(bm, verts = bm.verts, vec = Vector(((Y-1.)/2, 0.0, -X/2)))
+    bmesh.ops.scale(bm, verts = bm.verts, vec = Vector((1/Y, 1/T, 1/X))) 
     bmesh.ops.create_cube(bm, size=1)
-    bmesh.ops.scale(bm, verts = bm.verts, vec = mathutils.Vector((Y, T, X))) 
-    bmesh.ops.translate(bm, verts = bm.verts, vec = mathutils.Vector((-(Y-1.)/2, 0.0, X/2)))
-    bmesh.ops.translate(bm, verts = bm.verts, vec = mathutils.Vector(((Y-1.)/2, -Z/2, 0.0)))
-    bmesh.ops.scale(bm, verts = bm.verts, vec = mathutils.Vector((1/Y, 1/Z, 1/T))) 
+    bmesh.ops.scale(bm, verts = bm.verts, vec = Vector((Y, T, X))) 
+    bmesh.ops.translate(bm, verts = bm.verts, vec = Vector((-(Y-1.)/2, 0.0, X/2)))
+    bmesh.ops.translate(bm, verts = bm.verts, vec = Vector(((Y-1.)/2, -Z/2, 0.0)))
+    bmesh.ops.scale(bm, verts = bm.verts, vec = Vector((1/Y, 1/Z, 1/T))) 
     bmesh.ops.create_cube(bm, size=1)
-    bmesh.ops.scale(bm, verts = bm.verts, vec = mathutils.Vector((Y, Z, T))) 
-    bmesh.ops.translate(bm, verts = bm.verts, vec = mathutils.Vector((-(Y-1.)/2, Z/2, 0.0)))
+    bmesh.ops.scale(bm, verts = bm.verts, vec = Vector((Y, Z, T))) 
+    bmesh.ops.translate(bm, verts = bm.verts, vec = Vector((-(Y-1.)/2, Z/2, 0.0)))
     bm.to_mesh(mesh_faces)
     bm.free()
     
@@ -61,8 +60,8 @@ def plotEmptyStateCity():
     
     bm = bmesh.new()
     bmesh.ops.create_cube(bm, size=1)
-    bmesh.ops.scale(bm, verts = bm.verts, vec = mathutils.Vector((Y, Z, T)))
-    bmesh.ops.translate(bm, verts = bm.verts, vec = mathutils.Vector((-(Y-1.)/2, Z/2, size)))
+    bmesh.ops.scale(bm, verts = bm.verts, vec = Vector((Y, Z, T)))
+    bmesh.ops.translate(bm, verts = bm.verts, vec = Vector((-(Y-1.)/2, Z/2, size)))
     bm.to_mesh(mesh_transparent_face)
     bm.free()
     #--------------------------------------------------------------------
@@ -89,8 +88,8 @@ def plotEmptyStateCity():
     #--------------------------------------------------------------------
     
     #Text
-    creatMultipleTextCity("QuantumHistogramCity", -Y+0.5, Y+0.1, np.pi/2, 0, np.pi/2, size)
-    creatMultipleTextCity("QuantumHistogramCity", 1., 0.0, np.pi/2, 0, np.pi, size)  
+    creatMultipleTextCity("QuantumHistogramCity", -Y+0.5, Y+0.1, pi/2, 0, pi/2, size)
+    creatMultipleTextCity("QuantumHistogramCity", 1., 0.0, pi/2, 0, pi, size)
         
     parent.select_set(False)
     bpy.context.view_layer.objects.active = faces 

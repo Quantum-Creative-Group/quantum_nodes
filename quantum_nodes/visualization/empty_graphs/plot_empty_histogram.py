@@ -1,8 +1,7 @@
 import bpy
 import bmesh
-import mathutils
-import math
-import numpy as np
+from mathutils import Vector
+from numpy import pi
 from qiskit.visualization.utils import _bloch_multivector_data
 from .. utils.graphs_utils import creatMultipleText, creatMesh
 
@@ -30,18 +29,18 @@ def plotEmptyHistogram():
     
     bm = bmesh.new()
     bmesh.ops.create_cube(bm, size=1)
-    bmesh.ops.scale(bm, verts = bm.verts, vec = mathutils.Vector((T, Z, X)))  
-    bmesh.ops.translate(bm, verts = bm.verts, vec = mathutils.Vector((-H, Z/2, X/2)))
-    bmesh.ops.translate(bm, verts = bm.verts, vec = mathutils.Vector((-0.1, 0.0, -X/2)))
-    bmesh.ops.scale(bm, verts = bm.verts, vec = mathutils.Vector((1/Y, 1/T, 1/X))) 
+    bmesh.ops.scale(bm, verts = bm.verts, vec = Vector((T, Z, X)))  
+    bmesh.ops.translate(bm, verts = bm.verts, vec = Vector((-H, Z/2, X/2)))
+    bmesh.ops.translate(bm, verts = bm.verts, vec = Vector((-0.1, 0.0, -X/2)))
+    bmesh.ops.scale(bm, verts = bm.verts, vec = Vector((1/Y, 1/T, 1/X))) 
     bmesh.ops.create_cube(bm, size=1)
-    bmesh.ops.scale(bm, verts = bm.verts, vec = mathutils.Vector((Y, T, X))) 
-    bmesh.ops.translate(bm, verts = bm.verts, vec = mathutils.Vector((0.1, 0.0, X/2)))
-    bmesh.ops.translate(bm, verts = bm.verts, vec = mathutils.Vector((-0.1, -Z/2, 0.0)))
-    bmesh.ops.scale(bm, verts = bm.verts, vec = mathutils.Vector((1/Y, 1/Z, 1/T))) 
+    bmesh.ops.scale(bm, verts = bm.verts, vec = Vector((Y, T, X))) 
+    bmesh.ops.translate(bm, verts = bm.verts, vec = Vector((0.1, 0.0, X/2)))
+    bmesh.ops.translate(bm, verts = bm.verts, vec = Vector((-0.1, -Z/2, 0.0)))
+    bmesh.ops.scale(bm, verts = bm.verts, vec = Vector((1/Y, 1/Z, 1/T))) 
     bmesh.ops.create_cube(bm, size=1)
-    bmesh.ops.scale(bm, verts = bm.verts, vec = mathutils.Vector((Y, Z, T))) 
-    bmesh.ops.translate(bm, verts = bm.verts, vec = mathutils.Vector((0.1, Z/2, 0.0)))
+    bmesh.ops.scale(bm, verts = bm.verts, vec = Vector((Y, Z, T))) 
+    bmesh.ops.translate(bm, verts = bm.verts, vec = Vector((0.1, Z/2, 0.0)))
     bm.to_mesh(mesh_faces)
     bm.free()
     #--------------------------------------------------------------------
@@ -52,11 +51,11 @@ def plotEmptyHistogram():
     bm = bmesh.new()
     for i in range (10) :
         if (i !=0) :
-            bmesh.ops.scale(bm, verts = bm.verts, vec = mathutils.Vector((1/T,1/nb_cubes , 1/T)))
+            bmesh.ops.scale(bm, verts = bm.verts, vec = Vector((1/T,1/nb_cubes , 1/T)))
         bmesh.ops.create_cube(bm, size=1)
-        bmesh.ops.scale(bm, verts = bm.verts, vec = mathutils.Vector((T,nb_cubes , T)))
-        bmesh.ops.translate(bm, verts = bm.verts, vec = mathutils.Vector((0.0, 0.0, size/10)))
-    bmesh.ops.translate(bm, verts = bm.verts, vec = mathutils.Vector((-(H-T), nb_cubes/2, 0.0))) 
+        bmesh.ops.scale(bm, verts = bm.verts, vec = Vector((T,nb_cubes , T)))
+        bmesh.ops.translate(bm, verts = bm.verts, vec = Vector((0.0, 0.0, size/10)))
+    bmesh.ops.translate(bm, verts = bm.verts, vec = Vector((-(H-T), nb_cubes/2, 0.0))) 
     bm.to_mesh(mesh_axes_front)
     bm.free()
     
@@ -65,18 +64,18 @@ def plotEmptyHistogram():
     bm = bmesh.new()
     for i in range (10):
         if (i !=0):
-            bmesh.ops.scale(bm, verts = bm.verts, vec = mathutils.Vector((1/Y,1/T,1/T)))
+            bmesh.ops.scale(bm, verts = bm.verts, vec = Vector((1/Y,1/T,1/T)))
         bmesh.ops.create_cube(bm, size=1)
-        bmesh.ops.scale(bm, verts = bm.verts, vec = mathutils.Vector((Y,T,T)))
-        bmesh.ops.translate(bm, verts = bm.verts, vec = mathutils.Vector((0.0, 0.0,size/10)))
-    bmesh.ops.translate(bm, verts = bm.verts, vec = mathutils.Vector((0.1,T, 0.0))) 
+        bmesh.ops.scale(bm, verts = bm.verts, vec = Vector((Y,T,T)))
+        bmesh.ops.translate(bm, verts = bm.verts, vec = Vector((0.0, 0.0,size/10)))
+    bmesh.ops.translate(bm, verts = bm.verts, vec = Vector((0.1,T, 0.0))) 
     bm.to_mesh(mesh_axes_left)
     bm.free()
     #--------------------------------------------------------------------
     
     #Text------------------------------------------------------------------    
-    creatMultipleText("QuantumHistogramFontRight", -0.25,nb_cubes+0.1, np.pi/2,0,np.pi/2,size)
-    creatMultipleText("QuantumHistogramFontLeft", Y+0.1,0.0, np.pi/2,0,np.pi,size)
+    creatMultipleText("QuantumHistogramFontRight", -0.25,nb_cubes+0.1, pi/2,0,pi/2,size)
+    creatMultipleText("QuantumHistogramFontLeft", Y+0.1,0.0, pi/2,0,pi,size)
     #---------------------------------------------------------------------
         
     parent.select_set(False)
