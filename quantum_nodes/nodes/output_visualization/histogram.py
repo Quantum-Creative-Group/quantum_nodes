@@ -27,7 +27,7 @@ class HistogramNode(Node, AnimationNode):
             parent = histogram.parent
             for i in range (len(histogram.children)):
                 bpy.data.objects.remove(histogram.children[0])
-            #bpy.data.objects.remove(histogram)
+            bpy.data.objects.remove(histogram)
             editHistogram(parent, counts, shots)
         except:
             return
