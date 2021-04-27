@@ -26,12 +26,12 @@ class MainMenu(Menu):
         pcoll = preview_collections["main"]
         complex_icon = pcoll["c_icon"]
         layout = self.layout
-        layout.menu("AN_MT_quantum_gates", text = "Quantum Gates", icon = "SHADING_BBOX")
-        layout.menu("AN_MT_complex", text = "Complex Numbers", icon_value = complex_icon.icon_id)
-        layout.separator()
-        layout.menu("AN_MT_quantum_qu_blur", text = "Quantum Blur", icon = "ORIENTATION_VIEW")
         layout.menu("AN_MT_quantum_init_qu_circuit", text = "Init Quantum Circuit", icon = "KEYINGSET")
+        layout.menu("AN_MT_quantum_gates", text = "Quantum Gates", icon = "SHADING_BBOX")
         layout.menu("AN_MT_quantum_all_qu_output", text = "Quantum Output", icon = "ORIENTATION_NORMAL")
+        layout.menu("AN_MT_quantum_qu_blur", text = "Quantum Blur", icon = "ORIENTATION_VIEW")
+        layout.separator()
+        layout.menu("AN_MT_complex", text = "Complex Numbers", icon_value = complex_icon.icon_id)
         layout.separator()
         layout.menu("AN_MT_schrodinger_simulation", text = "Schrödinger Simulation", icon = "OPTIONS")
 

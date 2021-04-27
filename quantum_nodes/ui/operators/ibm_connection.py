@@ -2,7 +2,7 @@ import bpy
 from qiskit import IBMQ
 from bpy.types import Operator
 from bpy.props import PointerProperty
-from .. properties.QueryProperties import QueryProperties
+from .. properties.query_properties import QueryProperties
     
 class IBMConnexion(Operator):
     bl_idname = "object.ibm_connexion"

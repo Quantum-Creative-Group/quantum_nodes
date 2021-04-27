@@ -1,11 +1,11 @@
-import bpy, os, sys
+import bpy
 import math
 import copy
 
-from . CircuitManager import CircuitManager
-from . NodeTreeManager import NodeTreeManager
+from . circuit_manager import CircuitManager
+from . node_tree_manager import NodeTreeManager
 
-class QuantumNodes_DEMO_Manager():
+class QuantumNodesDEMOManager():
     # TODO: find a way to save these data
 
     def __init__(self):

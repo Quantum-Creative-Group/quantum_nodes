@@ -2,7 +2,7 @@ import bpy, os
 import bpy.utils.previews
 from bpy.types import Panel
 from animation_nodes.ui.node_menu import insertNode
-from .. properties.QueryProperties import QueryProperties
+from .. properties.query_properties import QueryProperties
 
 class MainPanel(Panel):
     bl_label = "Quantum Node Panel"

@@ -1,9 +1,9 @@
 import bpy
 import copy
 
-from . DemoNodeTreeUtils import *
-from . GatesFactory import GatesFactory
-from . GateNodesManager import GateNodesManager
+from . demo_node_tree_utils import *
+from . gates_factory import GatesFactory
+from . gate_nodes_manager import GateNodesManager
 
 class NodeTreeManager:
     def __init__(self):

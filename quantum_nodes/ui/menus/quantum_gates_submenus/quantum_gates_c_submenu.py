@@ -11,3 +11,5 @@ class QuantumGatsCSubmenu(Menu):
         insertNode(layout, "an_QuantumGateCXNode", "Quantum Gate CX")
         insertNode(layout, "an_QuantumGateCYNode", "Quantum Gate CY")
         insertNode(layout, "an_QuantumGateCZNode", "Quantum Gate CZ")
+        insertNode(layout, "an_QuantumGateCCXNode", "Quantum Gate CCX")
+        insertNode(layout, "an_QuantumGateCSWAPNode", "Quantum Gate CSWAP")

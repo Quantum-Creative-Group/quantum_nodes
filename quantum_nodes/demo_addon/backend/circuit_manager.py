@@ -1,4 +1,4 @@
-import bpy, os, sys
+import bpy
 
 class CircuitManager():
 

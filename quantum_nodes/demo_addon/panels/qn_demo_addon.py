@@ -1,15 +1,15 @@
 import math
 import bpy, os, sys
 
-from .. backend.QuantumNodes_DEMO_Manager import QuantumNodes_DEMO_Manager
-from .. operators.SwitchToAn import SwitchToAn
-from .. properties.SelectAxis import SelectAxis
-from .. operators.AddGateButton import AddGateButton
-from .. operators.AddAndDelGate import AddAndDelGate
-from .. operators.SelectQubit import SelectQubit
-from .. operators.ApplyQuantumCircuit import ApplyQuantumCircuit
-from .. operators.ResetCircuits import ResetCircuits
-from .. operators.DeleteTarget import DeleteTarget
+from .. backend.quantum_nodes_demo_manager import QuantumNodesDEMOManager
+from .. operators.switch_to_an import SwitchToAn
+from .. properties.select_axis import SelectAxis
+from .. operators.add_gate_button import AddGateButton
+from .. operators.add_and_del_gate import AddAndDelGate
+from .. operators.select_qubit import SelectQubit
+from .. operators.apply_quantum_circuit import ApplyQuantumCircuit
+from .. operators.reset_circuits import ResetCircuits
+from .. operators.delete_target import DeleteTarget
 
 from bpy.props import PointerProperty
 from bpy.types import Panel
@@ -118,7 +118,7 @@ def register():
     # PointerProperty : https://docs.blender.org/api/current/bpy.props.html
     # (it is possible to set a poll function if needed for selected_axis)
     bpy.types.Scene.selected_axis = PointerProperty(type = SelectAxis)
-    bpy.types.Scene.demo_manager = QuantumNodes_DEMO_Manager()
+    bpy.types.Scene.demo_manager = QuantumNodesDEMOManager()
     # bpy.app.handlers.undo_pre.append(undo_addon_handler)
 
 if __name__ == "__main__":

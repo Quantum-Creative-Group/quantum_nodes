@@ -1,5 +1,5 @@
 import bpy
-from . Gate import Gate
+from . gate import Gate
 
 class GatesFactory:
     def __init__(self, start_left, spacing, demo_id):
