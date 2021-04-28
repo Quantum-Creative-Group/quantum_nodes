@@ -1,6 +1,6 @@
-import bpy
+from bpy.types import Panel
 
-class AN_Q_DemoAddonMeshPanel(bpy.types.Panel):
+class AN_Q_DemoAddonMeshPanel(Panel):
     bl_idname = "AN_Q_PT_DemoAddonMeshPanel"
     bl_label = "Add a new mesh"
     bl_space_type = "VIEW_3D"

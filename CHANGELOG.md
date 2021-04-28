@@ -48,14 +48,14 @@ First release of the add-on. This version implements the first nodes. See the *a
     * Output state
     * Measure
 
-* **James Wootton QuantumBlur**
+* **James Wootton [QuantumBlur](https://github.com/qiskit-community/QuantumBlur)**
   * QuantumBlur input
   * QuantumBlur output
 
 * **Numpy complex128**
   * Split complex128
 
-* **2D simulation of Schrödinger equation**
+* **Azercoco [2D simulation of Schrödinger equation](https://github.com/Azercoco/Python-2D-Simulation-of-Schrodinger-Equation)**
   * Schrödinger equation simulation
 
 #### Sockets
@@ -90,12 +90,12 @@ First release of the add-on. This version implements the first nodes. See the *a
     * Select qubit
     * Add a gate (H, X or Y)
   * Visualize the circuit
-  * Reset circuits button
-  * Apply button
-  * Duplicate button
-  * Advanced button (redirection to the animation nodes editor)
+  * Reset circuits
+  * Apply quantum algorithm
+  * Duplicate creation
+  * Advanced (redirection to the animation nodes editor)
   * 'Need help ?' button
-  * Creation gallery button
+  * 'Creation gallery' button
 
 ### Fixed
 

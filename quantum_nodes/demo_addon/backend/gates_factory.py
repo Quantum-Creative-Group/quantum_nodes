@@ -1,4 +1,3 @@
-import bpy
 from . gate import Gate
 
 class GatesFactory:

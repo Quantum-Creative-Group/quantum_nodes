@@ -1,9 +1,8 @@
-import bpy
-from qiskit import Aer
-from qiskit import execute
+from bpy.types import Node
+from qiskit import (Aer, execute)
 from animation_nodes.base_types import AnimationNode
 
-class QuantumCircuitGetCountNode(bpy.types.Node, AnimationNode):
+class QuantumCircuitGetCountNode(Node, AnimationNode):
     bl_idname = "an_QuantumCircuitGetCountNode"
     bl_label = "Quantum Circuit Get Count"
     errorHandlingType = "EXCEPTION"

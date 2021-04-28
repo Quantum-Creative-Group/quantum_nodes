@@ -1,8 +1,8 @@
-import bpy
+from bpy.types import NodeSocket
 from qiskit import ClassicalRegister
 from animation_nodes.base_types import AnimationNodeSocket, PythonListSocket
 
-class ClassicalRegisterSocket(bpy.types.NodeSocket, AnimationNodeSocket):
+class ClassicalRegisterSocket(NodeSocket, AnimationNodeSocket):
     bl_idname = "an_ClassicalRegisterSocket"
     bl_label = "Classical Register Socket"
     dataType = "Classical Register"
@@ -20,7 +20,7 @@ class ClassicalRegisterSocket(bpy.types.NodeSocket, AnimationNodeSocket):
             return value, 0
         return cls.getDefaultValue(), 2
 
-class ClassicalRegisterListSocket(bpy.types.NodeSocket, PythonListSocket):
+class ClassicalRegisterListSocket(NodeSocket, PythonListSocket):
     bl_idname = "an_ClassicalRegisterListSocket"
     bl_label = "ClassicalRegister List Socket"
     dataType = "ClassicalRegister List"

@@ -1,6 +1,5 @@
-import bpy
-import math
 import copy
+from math import (ceil, log)
 
 from . circuit_manager import CircuitManager
 from . node_tree_manager import NodeTreeManager
@@ -55,7 +54,7 @@ class QuantumNodesDEMOManager():
         Sets the new circuit
         The size depends on the number of vertices of the target
         """
-        self.nb_qubits = int(math.ceil(math.log(len(obj.data.vertices)) / math.log(2)))
+        self.nb_qubits = int(ceil(log(len(obj.data.vertices)) / log(2)))
         for circuit_name in list(self.circuits.keys()): self.circuits[circuit_name] = CircuitManager(self.nb_qubits, self.max_gates)
         self.ntm.last_circuits = copy.deepcopy(self.circuits)
     

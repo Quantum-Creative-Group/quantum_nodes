@@ -1,4 +1,3 @@
-import bpy
 from qiskit import execute
 from math import pi
 from animation_nodes.base_types import AnimationNode

@@ -1,10 +1,10 @@
-import bpy
+from bpy.types import Node
 from ... lib.quantumblur import circuit2height
 from animation_nodes.base_types import AnimationNode
 from animation_nodes.data_structures import DoubleList
 from math import ceil, sqrt
 
-class QuantumBlurOutputNode(bpy.types.Node, AnimationNode):
+class QuantumBlurOutputNode(Node, AnimationNode):
     bl_idname = "an_QuantumBlurOutputNode"
     bl_label = "Quantum Blur Output"
 

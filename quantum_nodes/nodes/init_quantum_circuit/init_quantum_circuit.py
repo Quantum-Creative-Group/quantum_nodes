@@ -1,4 +1,3 @@
-import bpy
 from qiskit import QuantumCircuit
 from bpy.props import EnumProperty
 from animation_nodes.base_types import AnimationNode
