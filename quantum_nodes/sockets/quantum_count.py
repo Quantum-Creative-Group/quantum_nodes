@@ -1,8 +1,8 @@
-import bpy
+from bpy.types import NodeSocket
 from qiskit.result.counts import Counts
 from animation_nodes.base_types import AnimationNodeSocket, PythonListSocket
 
-class QuantumCountSocket(bpy.types.NodeSocket, AnimationNodeSocket):
+class QuantumCountSocket(NodeSocket, AnimationNodeSocket):
     bl_idname = "an_QuantumCountSocket"
     bl_label = "Quantum Count Socket"
     dataType = "Quantum Count"
@@ -20,7 +20,7 @@ class QuantumCountSocket(bpy.types.NodeSocket, AnimationNodeSocket):
             return value, 0
         return cls.getDefaultValue(), 2
 
-class QuantumCountListSocket(bpy.types.NodeSocket, PythonListSocket):
+class QuantumCountListSocket(NodeSocket, PythonListSocket):
     bl_idname = "an_QuantumCountListSocket"
     bl_label = "Quantum Count List Socket"
     dataType = "Quantum Count List"
