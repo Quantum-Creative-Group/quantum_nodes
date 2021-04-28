@@ -1,6 +1,6 @@
 '''
-Copyright (C) 2020 QuantumNodes
-felix.olart56@gmail.com
+Copyright (C) 2021 Quantum Creative Group
+contact@quantum-nodes.com
 
 Created by Quantum-Creative-Group
 
@@ -15,18 +15,18 @@ Created by Quantum-Creative-Group
     GNU General Public License for more details.
 
     You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+    along with this program. If not, see <http://www.gnu.org/licenses/>.
 '''
 
 bl_info = {
     "name": "Quantum Nodes",
     "author": "Quantum Creative Group",
-    "version": (0, 0, 1),
-    "blender": (2, 91, 0),
-    "location": "Animation Nodes",
-    "description": "Animation Nodes extension which add quantum tools",
-    "warning": "",
-    "doc_url": "",
+    "version": (0, 1, 0),
+    "blender": (2, 92, 0),
+    "location": "Animation Nodes Editor",
+    "description": "Animation Nodes extension which implements quantum computing tools.",
+    "warning": "This version is still in development.",
+    "doc_url": "https://quantum-creative-group.gitlab.io/quantum_nodes_manual/",
     "tracker_url": "",
     "category": "Nodes",
 }
