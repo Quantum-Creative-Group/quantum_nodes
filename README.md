@@ -3,7 +3,7 @@ Quantum Nodes is an extension of [Animation Nodes](https://github.com/JacquesLuc
 <br/>
 This add-on offers tools to incorporate quantum computing into your creation process.
 
-It even allows you to send your quantum circuits to real qubits provided by [IBM](https://www.ibm.com/quantum-computing/experience).
+It even allows you to send your quantum circuits to real qubits provided by [IBM](https://quantum-computing.ibm.com/).
 
 Get started with Quantum Nodes by reading the [documentation](https://quantum-creative-group.gitlab.io/quantum_nodes_manual/).
 
