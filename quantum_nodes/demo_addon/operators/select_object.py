@@ -9,9 +9,11 @@ class SelectObject(Operator):
 
     @classmethod
     def poll(cls, context):
+        forbidden_names = ["QuantumBlochSphere", "QuantumBlochSphereParent", "QuantumHistogramParent", "QuantumCityParent"]
         if context.object == None: return False
         return (context.object.select_get()) and (context.active_object.type == 'MESH')\
-            and ("Animation Nodes" not in context.active_object.users_collection[0].name)
+            and ("Animation Nodes" not in context.active_object.users_collection[0].name)\
+                and context.active_object.name not in forbidden_names
             # TODO: improve security on third condition 
             # (blender crashes when the created object is selected as the new target)
 

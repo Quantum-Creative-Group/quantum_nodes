@@ -1,4 +1,3 @@
-import bpy
 from numpy import complex128
 from animation_nodes.base_types import AnimationNode
 from bpy.types import Node

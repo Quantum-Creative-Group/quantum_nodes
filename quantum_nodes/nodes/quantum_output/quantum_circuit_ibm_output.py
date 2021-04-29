@@ -1,5 +1,6 @@
 import bpy
 import time
+from bpy.types import Node
 from bpy.props import BoolProperty, IntProperty, EnumProperty
 from qiskit import IBMQ
 from qiskit.compiler import transpile, assemble
@@ -21,7 +22,7 @@ class Provider():
         return self.provider
 
 
-class QuantumCircuitIBMOutputStateNode(bpy.types.Node, AnimationNode):
+class QuantumCircuitIBMOutputStateNode(Node, AnimationNode):
     bl_idname = "an_QuantumCircuitIBMOutputStateNode"
     bl_label = "Quantum Circuit IBM Output"
     bl_width_default = 210

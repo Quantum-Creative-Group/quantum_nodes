@@ -1,4 +1,3 @@
-import bpy
 from qiskit import QuantumRegister
 from animation_nodes.base_types import AnimationNode
 from bpy.types import Node

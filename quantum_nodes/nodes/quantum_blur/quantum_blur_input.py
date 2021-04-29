@@ -1,9 +1,9 @@
-import bpy
+from bpy.types import Node
 from ... lib.quantumblur import height2circuit
 from animation_nodes.base_types import AnimationNode
 from math import ceil, sqrt
 
-class QuantumBlurInputNode(bpy.types.Node, AnimationNode):
+class QuantumBlurInputNode(Node, AnimationNode):
     bl_idname = "an_QuantumBlurInputNode"
     bl_label = "Quantum Blur Input"
 

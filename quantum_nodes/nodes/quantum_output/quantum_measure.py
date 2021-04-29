@@ -1,5 +1,4 @@
-import bpy
-from qiskit import execute
+from bpy.types import Node
 from bpy.props import EnumProperty
 from animation_nodes.base_types import AnimationNode
 
@@ -8,7 +7,7 @@ modeItems = [
     ("ALL", "Measure all qubits", "Measure all qubits", "", 1)
 ]
 
-class QuantumMeasureNode(bpy.types.Node, AnimationNode):
+class QuantumMeasureNode(Node, AnimationNode):
     bl_idname = "an_QuantumMeasureNode"
     bl_label = "Quantum Measure"
 

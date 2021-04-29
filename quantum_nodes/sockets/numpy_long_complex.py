@@ -1,9 +1,9 @@
-import bpy
+from bpy.types import NodeSocket
 from numpy import complex128, ndarray
 from animation_nodes.data_structures import LongList
 from animation_nodes.base_types import AnimationNodeSocket, PythonListSocket
 
-class Complex128Socket(bpy.types.NodeSocket, AnimationNodeSocket):
+class Complex128Socket(NodeSocket, AnimationNodeSocket):
     bl_idname = "an_Complex128Socket"
     bl_label = "Complex128 Socket"
     dataType = "Complex128"
@@ -22,7 +22,7 @@ class Complex128Socket(bpy.types.NodeSocket, AnimationNodeSocket):
             return value, 0
         return cls.getDefaultValue(), 2
 
-class Complex128ListSocket(bpy.types.NodeSocket, PythonListSocket):
+class Complex128ListSocket(NodeSocket, PythonListSocket):
     bl_idname = "an_Complex128ListSocket"
     bl_label = "Complex128 List Socket"
     dataType = "Complex128 List"

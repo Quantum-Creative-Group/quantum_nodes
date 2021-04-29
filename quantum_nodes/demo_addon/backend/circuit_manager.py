@@ -1,5 +1,3 @@
-import bpy
-
 class CircuitManager():
 
     def __init__(self, nb_qubits, mg):
