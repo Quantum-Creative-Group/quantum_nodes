@@ -36,6 +36,8 @@ class MainPanel(Panel):
         row = box.row()
         row.operator('object.histogram_instancer', text='Histogram', icon="SEQ_HISTOGRAM")
         row.operator('object.state_city_instancer', text='State City', icon="SNAP_VERTEX")
+        row = box.row()
+        row.operator('object.qgan_histogram_instancer', text='qGAN Histogram', icon="SEQ_HISTOGRAM")
         
         # menu
         box = layout.box()
@@ -50,6 +52,8 @@ class MainPanel(Panel):
         row = box.row()
         row.menu("AN_MT_quantum_all_qu_output", text = "Qu Output", icon = "ORIENTATION_NORMAL")
         row.menu("AN_MT_schrodinger_simulation", text = "Schrödinger", icon = "OPTIONS")
+        # row = box.row()
+        # row.menu("AN_MT_quantum_all_qu_output", text = "qGAN", icon = "OPTIONS")
         row = layout.row()
         row = layout.row()
 
