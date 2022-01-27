@@ -6,10 +6,6 @@ import numpy as np
 seed = 71
 np.random.seed = seed
 
-#import matplotlib.pyplot as plt # TO BE REMOVED
-
-#%matplotlib inline # TO BE REMOVED
-
 from qiskit import QuantumRegister, QuantumCircuit, BasicAer
 # from qiskit.circuit.library import TwoLocal, UniformDistribution #deprecated
 from qiskit.circuit.library import TwoLocal
