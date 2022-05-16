@@ -1,5 +1,5 @@
 '''
-Copyright (C) 2021 Quantum Creative Group
+Copyright (C) 2021-2022 Quantum Creative Group
 contact@quantum-nodes.com
 
 Created by Quantum-Creative-Group
