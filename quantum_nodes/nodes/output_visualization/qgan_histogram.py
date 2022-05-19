@@ -78,8 +78,6 @@ class QganHistogramNode(Node, AnimationNode):
             samples_g = np.array(samples_g)
             samples_g = samples_g.flatten()
             cum_prob_g = np.cumsum(prob_g)
-            #num_bins = len(prob_g) # seems useless
-            #plt.xticks(np.arange(min(samples_g), max(samples_g) + 1, 1.0)) # TO BE REMOVED (was for matplotlib graph)
             simulationCounts = {}
             for i in range(len(cum_prob_g)) :
                 simulationCounts[str(samples_g[i])] = cum_prob_g[i]

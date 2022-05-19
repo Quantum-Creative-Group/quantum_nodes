@@ -116,13 +116,13 @@ def editQganHistogram(parent, _targetCounts, _simulationCounts):
         
     curves_results_diffs = {}
     text_objects_results_diffs = {}
-    for i in range (nb_cubes):
+    for i in range (nb_cubes): # or nb_cubes, 0, -1
         targetSimuDiff = _simulationCounts[simulationKeys[i]] - _targetCounts[targetKeys[i]]  # Difference between target and simulation "probabilities"
         targetSimuMax = max(_targetCounts[targetKeys[i]], _simulationCounts[simulationKeys[i]]) # To place diff value at the top of each rectangle
         curves_results_diffs["font_curve_{0}".format(i)] = bpy.data.curves.new(type="FONT",name="Font Curve" +str(i))
         curves_results_diffs["font_curve_{0}".format(i)].body = str(targetSimuDiff)
         text_objects_results_diffs["font_obj_{0}".format(i)] = bpy.data.objects.new("Font Object"+str(i), curves_results_diffs["font_curve_{0}".format(i)])
-        text_objects_results_diffs["font_obj_{0}".format(i)].rotation_euler = (pi/2,-pi/2,pi/2)
+        text_objects_results_diffs["font_obj_{0}".format(i)].rotation_euler = (pi/2,-pi/2,pi/2) # not this pi is the problem
         text_objects_results_diffs["font_obj_{0}".format(i)].scale = (0.2,0.2,0.2)
         text_objects_results_diffs["font_obj_{0}".format(i)].location = (0.05,(nb_cubes-i)-0.4, targetSimuMax*size + 0.2)
         bpy.context.collection.objects.link(text_objects_results_diffs["font_obj_{0}".format(i)])
@@ -131,13 +131,13 @@ def editQganHistogram(parent, _targetCounts, _simulationCounts):
         
     curves_results = {}
     text_objects_results = {}
-    for i in range (nb_cubes):
+    for i in range (nb_cubes): # or nb_cubes, 0, -1
         curves_results["font_curve_{0}".format(i)] = bpy.data.curves.new(type="FONT",name="Font Curve" +str(i))
         curves_results["font_curve_{0}".format(i)].body = targetKeys[i]
         text_objects_results["font_obj_{0}".format(i)] = bpy.data.objects.new("Font Object"+str(i), curves_results["font_curve_{0}".format(i)])
-        text_objects_results["font_obj_{0}".format(i)].rotation_euler = (pi/2,-pi,-pi/2)
+        text_objects_results["font_obj_{0}".format(i)].rotation_euler = (-pi/2,-pi,-pi/2) # x = pi/2 is for the correct direction
         text_objects_results["font_obj_{0}".format(i)].scale = (0.2,0.2,0.2)
-        text_objects_results["font_obj_{0}".format(i)].location = (Y+0.01,(nb_cubes-i)-0.7, 0.0)
+        text_objects_results["font_obj_{0}".format(i)].location = (Y+0.01,(nb_cubes-i)-0.7, 0.0) # 3rd arg was 0.0
         bpy.context.collection.objects.link(text_objects_results["font_obj_{0}".format(i)])
         bpy.context.view_layer.objects.active = text_objects_results["font_obj_{0}".format(i)]
         text_objects_results["font_obj_{0}".format(i)].select_set(True)

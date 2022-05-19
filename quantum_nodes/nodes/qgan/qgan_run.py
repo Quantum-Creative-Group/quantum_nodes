@@ -35,13 +35,18 @@ class RunQGAN(bpy.types.Node, AnimationNode):
 
     # No inputs at the moment, later: input data (mesh, etc.)
     def create(self):
+        #self.newInput("Object", "Training Object 1", "trainingObject", defaultDrawType = "PROPERTY_ONLY")
+        
         self.newOutput("Integer", "Nb of Epochs", "numEpochs") # For G_loss and D_loss, and relative entropy graphs
         #self.newOutput("List", "Bounds", "bounds") # For simulation vs target comparison graph # TO UNCOMMENT
         self.newOutput("QGAN", "qGAN", "qgan") # To be able to get outputs of the qGAN generator in qgan_histogram.py # TO UNCOMMENT
         #self.newOutput("Float", "Float test", "testFloat") # DEBUG
         #self.newOutput("Integer", "Integer test", "testInt") # DEBUG
+        #self.newOutput("dict_items", "Training Results", "result.items()") # -> To separate in multiple outputs (one for each value of the dict) ; use result.items() instead of variable?
+        self.newOutput("Float", "Relative Entropy", "rel_entropy")
 
-    def execute(self):
+
+    def execute(self): # , trainingObject
 
         # Default return values
         #if numEpochs is None or bounds is None:
@@ -113,21 +118,19 @@ class RunQGAN(bpy.types.Node, AnimationNode):
 
 
         # ------------- RUN THE QGAN TRAINING --------------
-
         # Run qGAN
         result = qgan.run(quantum_instance)
 
         print("Training results:")
         for key, value in result.items():
-            print(f"  {key} : {value}") # TODO : Print this data in a viewer node in Blender
+            print(f"  {key} : {value}") # Print this data in a viewer node in Blender in addition to Relative Entropy?
+            if(key == "rel_entr"):
+                rel_entropy = value
 
-        #------------ DEBUG -------------
-        testFloat = 42.0
-        testInt = 2
-
+        training_results = result.items()
 
         #return num_epochs, bounds, qgan # TO UNCOMMENT
-        return num_epochs, qgan
+        return num_epochs, qgan, rel_entropy
 
         # ------------- TRAINING PROGRESS AND OUTCOME --------------
         

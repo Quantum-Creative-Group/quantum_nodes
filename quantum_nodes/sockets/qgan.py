@@ -14,7 +14,7 @@ class QganSocket(NodeSocket, AnimationNodeSocket):
 
     @classmethod
     def getDefaultValue(cls):
-        return QGAN([1], np.array([1.0, 2.0]), [2], 0.5, 1, snapshot_dir=None)
+        return QGAN([1], np.array([1.0, 2.0]), [2], 1, 1, snapshot_dir=None) #second to last 1 was 0.5
 
     @classmethod
     def correctValue(cls, value):
