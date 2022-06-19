@@ -4,8 +4,8 @@ include:
 
 
 stages:
-  - style-docstring
-  - prepare-addon
+  - style-docstring-check
+  - upload
   - release
 
 
@@ -15,8 +15,8 @@ variables:
   PACKAGE_REGISTRY_URL: "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/${MODULE}/${VERSION}"
 
 
-style-docstring:
-  stage: style-docstring
+style-docstring-check:
+  stage: style-docstring-check
 
   image: python:latest
 
@@ -30,8 +30,8 @@ style-docstring:
     - pre-commit run --all-files
 
 
-prepare-addon:
-  stage: prepare-addon
+upload:
+  stage: upload
 
   image: python:latest
 
@@ -39,10 +39,10 @@ prepare-addon:
     - .tag_only
 
   needs:
-    - job: style-docstring
+    - job: style-docstring-check
 
   before_script:
-    - echo GE_JOB_ID=$CI_JOB_ID >> prepare_addon.env
+    - echo GE_JOB_ID=$CI_JOB_ID >> upload_report.env
 
   script:
     - apt-get update
@@ -54,7 +54,7 @@ prepare-addon:
 
   artifacts:
     reports:
-      dotenv: prepare_addon.env
+      dotenv: upload_report.env
 
 
 release:
@@ -66,8 +66,11 @@ release:
     - .tag_only
 
   needs:
-    - job: prepare-addon
+    - job: upload
       artifacts: true
+
+  script:
+    - echo "Running release job for ${VERSION}"
 
   release:
     name: "Quantum Nodes ${VERSION}"
