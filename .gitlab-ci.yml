@@ -1,0 +1,79 @@
+include:
+  # Metada shared by many jobs
+  - local: .gitlab/rules.yml
+
+
+stages:
+  - style-docstring
+  - prepare-addon
+  - release
+
+
+variables:
+  MODULE: quantum_nodes
+  VERSION: $CI_COMMIT_TAG
+  PACKAGE_REGISTRY_URL: "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/${MODULE}/${VERSION}"
+
+
+style-docstring:
+  stage: style-docstring
+
+  image: python:latest
+
+  extends:
+    - .run_auto
+
+  before_script:
+    - pip install pre-commit
+
+  script:
+    - pre-commit run --all-files
+
+
+prepare-addon:
+  stage: prepare-addon
+
+  image: python:latest
+
+  extends:
+    - .tag_only
+
+  needs:
+    - job: style-docstring
+
+  before_script:
+    - echo GE_JOB_ID=$CI_JOB_ID >> prepare_addon.env
+
+  script:
+    - apt-get update
+    - apt-get install -y zip unzip
+    - zip -r ${MODULE} ${MODULE}
+    - mv ${MODULE}.zip ${MODULE}_${VERSION//./_}.zip
+    - |
+      curl --header "JOB-TOKEN: ${CI_JOB_TOKEN}" -- upload-file ${MODULE}_${VERSION//./_}.zip ${PACKAGE_REGISTRY_URL}/${MODULE}_${VERSION//./_}.zip
+
+  artifacts:
+    reports:
+      dotenv: prepare_addon.env
+
+
+release:
+  stage: release
+
+  image: registry.gitlab.com/gitlab-org/release-cli:latest
+
+  extends:
+    - .tag_only
+
+  needs:
+    - job: prepare-addon
+      artifacts: true
+
+  release:
+    name: "Quantum Nodes ${VERSION}"
+    description: "Minimal Blender version required: 2.92"
+    tag_name: ${VERSION}
+    assets:
+      links:
+        - name: "Download Quantum Nodes ${VERSION}"
+          url: ${PACKAGE_REGISTRY_URL}/${MODULE}_${VERSION//./_}.zip
