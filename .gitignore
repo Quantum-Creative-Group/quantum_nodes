@@ -9,4 +9,4 @@ quantum_nodes/animation_nodes/
 
 # Others
 Tests Python/
-__pycache__/*
+**/__pycache__
