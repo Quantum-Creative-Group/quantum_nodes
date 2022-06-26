@@ -23,9 +23,9 @@ np.random.seed = seed
 
 from qiskit import QuantumRegister, QuantumCircuit, BasicAer
 from qiskit.circuit.library import TwoLocal
-from qiskit_finance.circuit.library import UniformDistribution # does not seem to be needed
+# from qiskit_finance.circuit.library import UniformDistribution # does not seem to be needed
 from qiskit.utils import QuantumInstance, algorithm_globals
-from qiskit_machine_learning.algorithms import NumPyDiscriminator, QGAN # needed?
+# from qiskit_machine_learning.algorithms import NumPyDiscriminator, QGAN # needed?
 
 algorithm_globals.random_seed = seed
 
