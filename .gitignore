@@ -1,4 +1,12 @@
-**/__pycache__
+# VSCode
 .vscode
+
+# Docs
 quantum_nodes_manual/
+
+# Animation Nodes
+quantum_nodes/animation_nodes/
+
+# Others
 Tests Python/
+**/__pycache__

@@ -1,0 +1,17 @@
+# Rules for where jobs can run
+
+.run_auto:
+  rules:
+    - if: $CI_MERGE_REQUEST_ID # Run when pushed in merge request
+      when: always
+    - if: $CI_COMMIT_TAG # Run when a tag is created
+      when: on_success
+    - when: never
+
+.tag_only:
+  rules:
+    - if: $CI_MERGE_REQUEST_ID # Do not run in merge requests
+      when: never
+    - if: $CI_COMMIT_TAG # Run when a tag is created
+      when: on_success
+    - when: never

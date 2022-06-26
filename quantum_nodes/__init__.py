@@ -1,5 +1,5 @@
 '''
-Copyright (C) 2021 Quantum Creative Group
+Copyright (C) 2021-2022 Quantum Creative Group
 contact@quantum-nodes.com
 
 Created by Quantum-Creative-Group
@@ -37,7 +37,7 @@ from . import auto_load
 
 try: import animation_nodes
 except:
-    animation_nodes = addon_utils.enable("animation_nodes", default_set = False, persistent = True)
+    animation_nodes = addon_utils.enable("animation_nodes", default_set = False, persistent = True, handle_error = None)
     if not animation_nodes:
         raise Exception("Could not load Animation Nodes.")
 
