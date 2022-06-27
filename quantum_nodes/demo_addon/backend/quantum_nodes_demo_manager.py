@@ -62,7 +62,7 @@ class QuantumNodesDEMOManager():
 
     def updateNodeTree(self):
         """
-        Updates the node tree so that it correponds to the represented circuits in the UI.
+        Updates the node tree so that it corresponds to the represented circuits in the UI.
         """
         self.ntm.update(self.circuits)
 

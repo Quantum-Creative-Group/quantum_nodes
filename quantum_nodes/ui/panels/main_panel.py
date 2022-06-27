@@ -59,7 +59,7 @@ class MainPanel(Panel):
         row = layout.row()
         row = layout.row()
 
-        # IMBQ API connexion
+        # IMBQ API connection
         props = bpy.context.scene.QueryProps
 
         col = layout.column(align=True)

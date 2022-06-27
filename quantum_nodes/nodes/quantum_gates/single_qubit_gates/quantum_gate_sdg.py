@@ -50,7 +50,7 @@ class QuantumGateSDGNode(Node, AnimationNode):
         socket.dataIsModified = True
         socket.display.text = True
         socket.text = "Qubit Index"
-        socket.removeable = True
+        socket.removable = True
         socket.moveable = True
         socket.defaultDrawType = "PREFER_PROPERTY"
         socket.moveUp()

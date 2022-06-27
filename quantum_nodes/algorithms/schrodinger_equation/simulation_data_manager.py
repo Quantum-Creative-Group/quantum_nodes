@@ -97,7 +97,7 @@ class SimulationDataManager:
         a, air = 0, step * step / 2
         for i in range(N - 1):
             for j in range(N - 1):
-                AA, AB, BA, BB = MM[i][j], MM[i][j + 1], MM[i + 1][j], MM[i + 1][j + 1]
-                a += air * (AA + AB + BA) / 3
-                a += air * (BB + AB + BA) / 3
+                a, b, c, d = MM[i][j], MM[i][j + 1], MM[i + 1][j], MM[i + 1][j + 1]
+                a += air * (a + b + c) / 3
+                a += air * (d + b + c) / 3
         return a

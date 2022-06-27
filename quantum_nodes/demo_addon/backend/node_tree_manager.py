@@ -92,7 +92,7 @@ class NodeTreeManager:
                 if len(existing_gate.inputs) == 1:
                     GateNodesManager.removeGate(existing_gate, circuit_node_tree)
 
-        # Sets last ciruits to the current circuits
+        # Sets last circuits to the current circuits
         self.last_circuits = copy.deepcopy(new_circuits)
 
     def resetAllGates(self):
@@ -123,7 +123,7 @@ class NodeTreeManager:
     @classmethod
     def getModification(cls, last_circuits, new_circuits):
         """
-        Returns the informations about the modification done on the circuits.
+        Returns the information about the modification done on the circuits.
 
         Returns : action, gate_type, (circuit name, qubit index, gate index).
         """

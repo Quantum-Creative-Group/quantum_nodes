@@ -9,7 +9,7 @@ class GatesFactory:
 
     def createGate(self, gate_name, gate_type, gate_index, circuit_tree):
         """
-        Stores all the useful informations to add a new node to the circuit node tree.\
+        Stores all the useful information to add a new node to the circuit node tree.\
         Also moves the output nodes to the right if more space is needed.
         """
         existing_gates = self.getExistingGates(circuit_tree)

@@ -402,7 +402,7 @@ def generateMainNodeTree(context, main_tree_id, obj):
         # Separate vector outputs to invoke circuit_(x/y/z)
     for index, circ_name in [(0, "x"), (1, "y"), (2, "z")]:
         node_tree.links.new(sep_vecs.outputs[index], inv_circuits[circ_name].inputs[0])
-        # Mesh object output out to Seperate vector inp
+        # Mesh object output out to Separate vector inp
     node_tree.links.new(mesh_obj_inp.outputs[1], sep_vecs.inputs[0])
     # Separate vector outputs to invoke mesh_data_c(x/y/z)
     for index, circ_name in [(0, "x"), (1, "y"), (2, "z")]:

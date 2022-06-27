@@ -22,7 +22,7 @@ class BlochSphereNode(Node, AnimationNode):
             bloch_data = _bloch_multivector_data(output_state)
             theta = get_angles(bloch_data[qubit_index][0], bloch_data[qubit_index][1], bloch_data[qubit_index][2])[1]
             phi = get_angles(bloch_data[qubit_index][0], bloch_data[qubit_index][1], bloch_data[qubit_index][2])[2]
-            # finding the vector mesh in the list of the block sphere childrens
+            # finding the vector mesh in the list of the block sphere children
             for i in range(len(bloch_sphere.children)):
                 if (bloch_sphere.children[i].name ==
                         "QuantumBlochVector"):  # TODO: put bloch_sphere_vector so it is less ambiguous
