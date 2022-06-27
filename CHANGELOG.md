@@ -1,8 +1,27 @@
 # Change log
 
+## [0.1.1] - 2021-04-28
+
+Fixes one bug (partially). This release also exists to test the new CI/CD pipeline
+and to update the installation tutorial of the documentation.
+
+<details><summary>Details</summary>
+
+### Fixed
+
+- Error on creating new Bloch Sphere (!34)
+
+</details>
+
+------------------------------------------------------------------------------------------
+
 ## [0.1.0] - 2021-04-28
 
-First release of the add-on. This version implements the first nodes. See the *added* section for more details.
+First release of the add-on.
+This version implements the first nodes.
+See the *added* section for more details.
+
+<details><summary>Details</summary>
 
 ### Added
 
@@ -100,3 +119,5 @@ First release of the add-on. This version implements the first nodes. See the *a
 ### Fixed
 
 ### Changed
+
+</details>
