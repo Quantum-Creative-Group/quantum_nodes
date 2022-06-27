@@ -8,7 +8,7 @@ class IBMConnexion(Operator):
     bl_idname = "object.ibm_connexion"
     bl_label = "IBMConnexion"
     bl_description = "Enter your token to log yourself"
-    query: PointerProperty(name = "Token", type = QueryProperties)
+    query: PointerProperty(type = QueryProperties, name = "Token")
 
     def execute(self, context):
         if bpy.context.scene.QueryProps.connected == False:
