@@ -1,0 +1,2 @@
+[codespell]
+skip = *.pyc,*.txt,*.gif,*.png,*.jpg,*.js,*.html,*.doctree,*.ipynb,.git/*,*.yml
