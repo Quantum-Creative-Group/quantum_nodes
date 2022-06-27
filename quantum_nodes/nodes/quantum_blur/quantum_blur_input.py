@@ -3,6 +3,7 @@ from ... lib.quantumblur import height2circuit
 from animation_nodes.base_types import AnimationNode
 from math import ceil, sqrt
 
+
 class QuantumBlurInputNode(Node, AnimationNode):
     bl_idname = "an_QuantumBlurInputNode"
     bl_label = "Quantum Blur Input"
@@ -20,9 +21,9 @@ class QuantumBlurInputNode(Node, AnimationNode):
         for i in range(n):
             for j in range(n):
                 if iterator < len(floats):
-                    dictFloats[i,j] = float(format(abs(floats[iterator]), '.3f'))
+                    dictFloats[i, j] = float(format(abs(floats[iterator]), '.3f'))
                 else:
-                    dictFloats[i,j] = 0.0
+                    dictFloats[i, j] = 0.0
                 iterator += 1
         circuit = height2circuit(dictFloats)
         return circuit

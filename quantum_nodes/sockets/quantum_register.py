@@ -2,6 +2,7 @@ from bpy.types import NodeSocket
 from qiskit import QuantumRegister
 from animation_nodes.base_types import AnimationNodeSocket, PythonListSocket
 
+
 class QuantumRegisterSocket(NodeSocket, AnimationNodeSocket):
     bl_idname = "an_QuantumRegisterSocket"
     bl_label = "Quantum Register Socket"
@@ -19,6 +20,7 @@ class QuantumRegisterSocket(NodeSocket, AnimationNodeSocket):
         if isinstance(value, QuantumRegister):
             return value, 0
         return cls.getDefaultValue(), 2
+
 
 class QuantumRegisterListSocket(NodeSocket, PythonListSocket):
     bl_idname = "an_QuantumRegisterListSocket"

@@ -18,6 +18,7 @@ from bpy.types import Panel
 #     dm = scene.demo_manager
 #     print(dm)
 
+
 class AN_Q_DemoAddon(bpy.types.Panel):
     bl_idname = "AN_Q_PT_addon_demo_ui"
     bl_label = "QN Demo"
@@ -26,11 +27,12 @@ class AN_Q_DemoAddon(bpy.types.Panel):
     bl_category = "QN Demo"
 
     bpy.types.Object.select_index = 0
-  
+
     def addRow(self, n):
-        for i in range(n): row = self.layout.row()
+        for i in range(n):
+            row = self.layout.row()
         return row
-    
+
     def draw(self, context):
         # ---------- Initialization ----------
 
@@ -53,31 +55,31 @@ class AN_Q_DemoAddon(bpy.types.Panel):
         # if(obj != None): row.prop(obj, "name")
         # else: row.label(text="Select a target")
 
-        row.operator('object.delete_target', text = '', icon="CANCEL")
-        row.operator('object.select_object', text = '', icon="EYEDROPPER")
+        row.operator('object.delete_target', text='', icon="CANCEL")
+        row.operator('object.select_object', text='', icon="EYEDROPPER")
         row = self.addRow(1)
-       
+
         # ---------- Settings section ----------
 
-        if obj != None:
+        if obj is not None:
             box = layout.box()
             box.label(text="Settings", icon="SETTINGS")
 
             # ---------- Axis selection ----------
 
-            box.label(text = "Axis", icon = 'ORIENTATION_LOCAL')
+            box.label(text="Axis", icon='ORIENTATION_LOCAL')
             row = box.row()
-            row.prop(context.scene.selected_axis, "axis", icon = 'ORIENTATION_LOCAL', expand = True)
+            row.prop(context.scene.selected_axis, "axis", icon='ORIENTATION_LOCAL', expand=True)
             row = self.addRow(1)
 
             # ---------- Qubit selection ----------
 
-            box.label(text = "Select QuBit", icon = "LIGHTPROBE_GRID")
-            box.operator('dialog.select_qubit', text = "q" + str(bpy.types.Object.select_index + 1), icon = "VIEWZOOM")
- 
+            box.label(text="Select QuBit", icon="LIGHTPROBE_GRID")
+            box.operator('dialog.select_qubit', text="q" + str(bpy.types.Object.select_index + 1), icon="VIEWZOOM")
+
             # ---------- Gate selection ----------
-        
-            box.label(text = "Quantum Gates", icon = 'SNAP_VERTEX')
+
+            box.label(text="Quantum Gates", icon='SNAP_VERTEX')
             row = box.row()
             row.operator('object.add_and_del_gate', text='+').button = 'add'
             row.operator('object.add_and_del_gate', text='-').button = 'del'
@@ -94,31 +96,39 @@ class AN_Q_DemoAddon(bpy.types.Panel):
                         gate_display += "|" + gate.upper() + "|---"
                     box.label(text=gate_display)
 
-            else :                                        
+            else:
                 box.label(text="Select a correct object")
-            
+
             row = box.row()
-            row.operator("object.reset_quantum_circuits", text = "Reset circuits", icon="RECOVER_LAST")
+            row.operator("object.reset_quantum_circuits", text="Reset circuits", icon="RECOVER_LAST")
 
             # ---------- End buttons ----------
 
             row = self.addRow(2)
-            row.operator(ApplyQuantumCircuit.bl_idname, text = "Apply", icon = "CHECKMARK")
-            row.operator("object.duplicate_target", text = "Duplicate", icon = "DUPLICATE")
+            row.operator(ApplyQuantumCircuit.bl_idname, text="Apply", icon="CHECKMARK")
+            row.operator("object.duplicate_target", text="Duplicate", icon="DUPLICATE")
             row = self.addRow(1)
-            row.operator(SwitchToAn.bl_idname, text = "Advanced (Quantum Magic)", icon = "PLUS")
+            row.operator(SwitchToAn.bl_idname, text="Advanced (Quantum Magic)", icon="PLUS")
             row = self.addRow(4)
 
-            row.operator('wm.url_open', text = "Need Help ?", icon = 'BOOKMARKS').url = 'https://quantum-creative-group.gitlab.io/quantum_nodes_manual/'
+            row.operator(
+                'wm.url_open',
+                text="Need Help ?",
+                icon='BOOKMARKS').url = 'https://quantum-creative-group.gitlab.io/quantum_nodes_manual/'
             row = self.addRow(1)
-            row.operator('wm.url_open', text = "Creation gallery", icon = 'FUND').url = 'https://www.instagram.com/quantumnodes/'
+            row.operator(
+                'wm.url_open',
+                text="Creation gallery",
+                icon='FUND').url = 'https://www.instagram.com/quantumnodes/'
+
 
 def register():
     # PointerProperty : https://docs.blender.org/api/current/bpy.props.html
     # (it is possible to set a poll function if needed for selected_axis)
-    bpy.types.Scene.selected_axis = PointerProperty(type = SelectAxis)
+    bpy.types.Scene.selected_axis = PointerProperty(type=SelectAxis)
     bpy.types.Scene.demo_manager = QuantumNodesDEMOManager()
     # bpy.app.handlers.undo_pre.append(undo_addon_handler)
+
 
 if __name__ == "__main__":
     register()

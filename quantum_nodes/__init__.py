@@ -35,9 +35,10 @@ import bpy
 import addon_utils
 from . import auto_load
 
-try: import animation_nodes
-except:
-    animation_nodes = addon_utils.enable("animation_nodes", default_set = False, persistent = True)
+try:
+    import animation_nodes
+except BaseException:
+    animation_nodes = addon_utils.enable("animation_nodes", default_set=False, persistent=True, handle_error=None)
     if not animation_nodes:
         raise Exception("Could not load Animation Nodes.")
 
@@ -45,8 +46,10 @@ auto_load.init()
 
 animation_nodes.sockets.info.updateSocketInfo()
 
+
 def register():
     auto_load.register()
+
 
 def unregister():
     auto_load.unregister()

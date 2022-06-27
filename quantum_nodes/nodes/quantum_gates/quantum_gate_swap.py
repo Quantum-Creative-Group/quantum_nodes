@@ -2,6 +2,7 @@ from qiskit import execute
 from animation_nodes.base_types import AnimationNode
 from bpy.types import Node
 
+
 class QuantumGateSWAPNode(Node, AnimationNode):
     bl_idname = "an_QuantumGateSWAPNode"
     bl_label = "Quantum Gate SWAP"
@@ -9,8 +10,8 @@ class QuantumGateSWAPNode(Node, AnimationNode):
 
     def create(self):
         self.newInput("Quantum Circuit", "Input Circuit", "input")
-        self.newInput("Integer", "First Qubit Index", "first_qubit", value = 0, minValue = 0)
-        self.newInput("Integer", "Second Qubit Index", "second_qubit", value = 1, minValue = 0)
+        self.newInput("Integer", "First Qubit Index", "first_qubit", value=0, minValue=0)
+        self.newInput("Integer", "Second Qubit Index", "second_qubit", value=1, minValue=0)
         self.newOutput("Quantum Circuit", "Output Circuit", "output")
 
     def execute(self, input, first_qubit, second_qubit):
@@ -27,5 +28,5 @@ class QuantumGateSWAPNode(Node, AnimationNode):
         elif first_qubit == second_qubit:
             self.raiseErrorMessage("The first qubit must be different from the second one")
         else:
-            input.swap(first_qubit,second_qubit)
+            input.swap(first_qubit, second_qubit)
             return input

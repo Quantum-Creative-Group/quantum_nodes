@@ -2,6 +2,7 @@ import bpy
 from bpy.types import Operator
 from bpy.props import IntProperty
 
+
 class SubdivideMesh(Operator):
     bl_idname = "dialog.number"
     bl_label = "Subdivide"
@@ -11,7 +12,8 @@ class SubdivideMesh(Operator):
 
     @classmethod
     def poll(cls, context):
-        if context.object == None: return False
+        if context.object is None:
+            return False
         obj = bpy.context.active_object
         return (context.object.select_get()) and (obj.type == "MESH")
 

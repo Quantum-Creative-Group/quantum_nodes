@@ -3,6 +3,7 @@ from numpy import complex128, ndarray
 from animation_nodes.data_structures import LongList
 from animation_nodes.base_types import AnimationNodeSocket, PythonListSocket
 
+
 class Complex128Socket(NodeSocket, AnimationNodeSocket):
     bl_idname = "an_Complex128Socket"
     bl_label = "Complex128 Socket"
@@ -13,7 +14,7 @@ class Complex128Socket(NodeSocket, AnimationNodeSocket):
 
     @classmethod
     def getDefaultValue(cls):
-        return complex128(0. + 0.*1j)
+        return complex128(0. + 0. * 1j)
 
     @classmethod
     def correctValue(cls, value):
@@ -21,6 +22,7 @@ class Complex128Socket(NodeSocket, AnimationNodeSocket):
         if isinstance(value, complex128):
             return value, 0
         return cls.getDefaultValue(), 2
+
 
 class Complex128ListSocket(NodeSocket, PythonListSocket):
     bl_idname = "an_Complex128ListSocket"

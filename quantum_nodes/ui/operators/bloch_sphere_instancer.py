@@ -2,6 +2,7 @@ from bpy.types import Operator
 from bpy.props import StringProperty
 from ... visualization.empty_graphs.plot_empty_bloch_sphere import plotEmptyBlochSphere
 
+
 class BlochSphereInstancer(Operator):
     bl_idname = "object.bloch_sphere_instancer"
     bl_label = "Create a new Bloch sphere"

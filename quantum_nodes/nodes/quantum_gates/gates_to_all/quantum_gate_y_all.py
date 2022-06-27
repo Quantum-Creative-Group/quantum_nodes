@@ -2,6 +2,7 @@ from qiskit import execute
 from animation_nodes.base_types import AnimationNode
 from bpy.types import Node
 
+
 class QuantumGateYToAllNode(Node, AnimationNode):
     bl_idname = "an_QuantumGateYToAllNode"
     bl_label = "Quantum Gate Y to All Circuit"
@@ -15,5 +16,5 @@ class QuantumGateYToAllNode(Node, AnimationNode):
             for j in range(input.num_qubits):
                 input.y(j)
             return input
-        except:
+        except BaseException:
             return

@@ -1,0 +1,7 @@
+wheel
+pillow
+pre_commit
+fake_bpy_module_latest
+qiskit
+qiskit_finance
+qiskit_machine_learning
