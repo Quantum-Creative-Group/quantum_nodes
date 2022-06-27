@@ -1,12 +1,12 @@
 class Gate:
-    def __init__(self, t, n, i, loc, inp = None, out = None):
+    def __init__(self, t, n, i, loc, inp=None, out=None):
         self.type = t
         self.name = n
         self.index = i
         self.location = loc
         self.input = inp
         self.output = out
-    
+
     def __str__(self):
         ostream = "TYPE : " + self.type + "\n"
         ostream += "NAME : " + self.name + "\n"

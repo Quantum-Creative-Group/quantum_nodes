@@ -16,7 +16,7 @@ def templateInsertion(context, operator, custom_node_name):
     node_tree.nodes["Split complex128"].name = "split_c"
     node_tree.nodes["split_c"].location[0] = -175
     node_tree.nodes["split_c"].location[1] = -150
-    
+
     bpy.data.node_groups[custom_node_name].nodes.new(type="an_FloatMathNode")
     node_tree.nodes["Float Math"].name = "math_square_1"
     node_tree.nodes["math_square_1"].location[0] = 0
@@ -29,7 +29,7 @@ def templateInsertion(context, operator, custom_node_name):
     node_tree.nodes["math_square_2"].location[0] = 0
     node_tree.nodes["math_square_2"].location[1] = -200
     node_tree.nodes["math_square_2"].operation = 'POWER'
-    node_tree.nodes["math_square_2"].inputs[1].value = 2        
+    node_tree.nodes["math_square_2"].inputs[1].value = 2
 
     bpy.data.node_groups[custom_node_name].nodes.new(type="an_FloatMathNode")
     node_tree.nodes["Float Math"].name = "math_add"
@@ -56,12 +56,12 @@ def templateInsertion(context, operator, custom_node_name):
     node_tree.nodes["combine_vec"].inputs[1].value = 0
     node_tree.nodes["combine_vec"].location[0] = 700
     node_tree.nodes["combine_vec"].location[1] = -150
-    
-    bpy.data.node_groups[custom_node_name].nodes.new(type = "an_LoopGeneratorOutputNode")
+
+    bpy.data.node_groups[custom_node_name].nodes.new(type="an_LoopGeneratorOutputNode")
     node_tree.nodes["Loop Generator Output"].name = "loop_out"
     node_tree.nodes["loop_out"].location[0] = 875
     node_tree.nodes["loop_out"].location[1] = -150
-        # ---------- LINKS ----------
+    # ---------- LINKS ----------
     node_tree.links.new(node_tree.nodes["loop_in"].outputs[2], node_tree.nodes["split_c"].inputs[0])
     node_tree.links.new(node_tree.nodes["split_c"].outputs[0], node_tree.nodes["math_square_1"].inputs[0])
     node_tree.links.new(node_tree.nodes["split_c"].outputs[1], node_tree.nodes["math_square_2"].inputs[0])

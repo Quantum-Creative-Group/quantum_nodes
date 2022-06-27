@@ -10,20 +10,21 @@ modeItems = [
     ("QCREGISTER", "Quantum and Classical Registers", "Create quantum circuit from quantum and classical register", "", 3)
 ]
 
+
 class InitQuantumCircuitNode(Node, AnimationNode):
     bl_idname = "an_InitQuantumCircuitNode"
     bl_label = "Init Quantum Circuit"
     errorHandlingType = "EXCEPTION"
 
-    mode: EnumProperty(name = "Mode", default = "QNUMBER",
-        items = modeItems, update = AnimationNode.refresh)
+    mode: EnumProperty(name="Mode", default="QNUMBER",
+                       items=modeItems, update=AnimationNode.refresh)
 
     def create(self):
         if self.mode == "QNUMBER":
-            self.newInput("Integer", "Number Of Qubits", "number_of_qubits", value = 1, minValue = 1)
+            self.newInput("Integer", "Number Of Qubits", "number_of_qubits", value=1, minValue=1)
         if self.mode == "QCNUMBER":
-            self.newInput("Integer", "Number Of Qubits", "number_of_qubits", value = 1, minValue = 1)
-            self.newInput("Integer", "Number Of Bits", "number_of_bits", value = 1, minValue = 1)
+            self.newInput("Integer", "Number Of Qubits", "number_of_qubits", value=1, minValue=1)
+            self.newInput("Integer", "Number Of Bits", "number_of_bits", value=1, minValue=1)
         if self.mode == "QREGISTER":
             self.newInput("Quantum Register", "Quantum Register", "quantum_register")
         if self.mode == "QCREGISTER":
@@ -45,23 +46,23 @@ class InitQuantumCircuitNode(Node, AnimationNode):
             return "execute_QCRegister"
 
     def execute_QNumber(self, number_of_qubits):
-        if(number_of_qubits<1):
+        if(number_of_qubits < 1):
             self.raiseErrorMessage("The number of qubits must be superior to 1")
         else:
             return QuantumCircuit(number_of_qubits)
 
-    def execute_QCNumber(self, number_of_qubits,number_of_bits):
-        if(number_of_qubits<1):
+    def execute_QCNumber(self, number_of_qubits, number_of_bits):
+        if(number_of_qubits < 1):
             self.raiseErrorMessage("The number of qubits must be superior to 1")
             return
-        if(number_of_bits<1):
+        if(number_of_bits < 1):
             self.raiseErrorMessage("The number of bits must be superior to 1")
             return
         else:
-            return QuantumCircuit(number_of_qubits,number_of_bits)
-        
+            return QuantumCircuit(number_of_qubits, number_of_bits)
+
     def execute_QRegister(self, quantum_register):
         return QuantumCircuit(quantum_register)
 
-    def execute_QCRegister(self, quantum_register,classical_register):
-        return QuantumCircuit(quantum_register,classical_register)
+    def execute_QCRegister(self, quantum_register, classical_register):
+        return QuantumCircuit(quantum_register, classical_register)

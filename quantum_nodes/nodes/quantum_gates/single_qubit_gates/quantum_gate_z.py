@@ -2,6 +2,7 @@ from qiskit import execute
 from animation_nodes.base_types import AnimationNode
 from bpy.types import Node
 
+
 class QuantumGateZNode(Node, AnimationNode):
     bl_idname = "an_QuantumGateZNode"
     bl_label = "Quantum Gate Z"
@@ -14,26 +15,26 @@ class QuantumGateZNode(Node, AnimationNode):
         self.newOutput("Quantum Circuit", "Output Circuit", "output_circuit")
 
     def draw(self, layout):
-        row = layout.row(align = True)
+        row = layout.row(align=True)
         self.invokeFunction(row, "newInputSocket",
-            text = "Add Other Gate",
-            description = "Create a new input socket",
-            icon = "PLUS")
+                            text="Add Other Gate",
+                            description="Create a new input socket",
+                            icon="PLUS")
         self.invokeFunction(row, "removeUnlinkedInputs",
-            description = "Remove unlinked inputs",
-            confirm = True,
-            icon = "X")
+                            description="Remove unlinked inputs",
+                            confirm=True,
+                            icon="X")
 
     def getInputSocketVariables(self):
         socketMapping = {}
         socketMapping["input_circuit"] = "inputCircuit"
         for i, socket in enumerate(self.inputs[:]):
             if socket.name != "Input Circuit":
-                socketMapping[socket.identifier] = "element_"+str(i)
+                socketMapping[socket.identifier] = "element_" + str(i)
         return socketMapping
 
     def getExecutionCode(self, required):
-        for i in range(len(self.inputs) - 1) :
+        for i in range(len(self.inputs) - 1):
             yield f"if element_{i} >= inputCircuit.num_qubits:"
             yield "    output_circuit = inputCircuit"
             yield "    self.raiseErrorMessage(\"The qubit index must be lower than \" + str(inputCircuit.num_qubits))"
@@ -45,7 +46,7 @@ class QuantumGateZNode(Node, AnimationNode):
         yield "output_circuit = inputCircuit"
 
     def newInputSocket(self):
-        socket = self.newInput("Integer","Qubit Index", minValue = 0)
+        socket = self.newInput("Integer", "Qubit Index", minValue=0)
         socket.dataIsModified = True
         socket.display.text = True
         socket.text = "Qubit Index"

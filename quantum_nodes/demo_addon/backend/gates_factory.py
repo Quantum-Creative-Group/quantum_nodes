@@ -1,15 +1,16 @@
 from . gate import Gate
 
+
 class GatesFactory:
     def __init__(self, start_left, spacing, demo_id):
         self.start_loc_left = start_left
         self.spacing = spacing
         self.demo_id = demo_id
-    
+
     def createGate(self, gate_name, gate_type, gate_index, circuit_tree):
         """
-        Stores all the useful informations to add a new node to the circuit node tree
-        Also moves the output nodes to the right if more space is needed
+        Stores all the useful informations to add a new node to the circuit node tree.\
+        Also moves the output nodes to the right if more space is needed.
         """
         existing_gates = self.getExistingGates(circuit_tree)
         nb_existing_gates = len(existing_gates)
@@ -25,23 +26,23 @@ class GatesFactory:
         c2h = circuit_tree.nodes[self.demo_id + "qu_cir_to_hmap" + circuit_id]
         grp_out = circuit_tree.nodes[self.demo_id + "grp_out" + circuit_id]
         # TODO: not sure that this code should be here (spacing management)
-        if nb_existing_gates + 1 > (c2h.location[0] - h2c.location[0])/self.spacing:
+        if nb_existing_gates + 1 > (c2h.location[0] - h2c.location[0]) / self.spacing:
             # Moves to the right the output nodes so the node tree is still readable
             c2h.location[0] += self.spacing
             grp_out.location[0] += self.spacing
         elif (c2h.location[0] - h2c.location[0]) / self.spacing > nb_existing_gates + 1:
             # If there is more space than needed
-            nb_del_space = int((c2h.location[0] - h2c.location[0])/self.spacing - (nb_existing_gates + 1))
+            nb_del_space = int((c2h.location[0] - h2c.location[0]) / self.spacing - (nb_existing_gates + 1))
             for i in range(nb_del_space):
                 c2h.location[0] -= self.spacing
                 grp_out.location[0] -= self.spacing
-        
+
         out = circuit_tree.nodes[self.demo_id + "qu_cir_to_hmap" + circuit_id]
         return Gate(gate_type.upper(), "index_" + str(gate_index) + "_" + gate_name, gate_index, location, inp, out)
-    
+
     def getExistingGates(self, circuit_tree):
         """
-        Returns all the existing gate nodes in the circuit
+        Returns all the existing gate nodes in the circuit.
         """
         existing_gates = []
         for node in circuit_tree.nodes:

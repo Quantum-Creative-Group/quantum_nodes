@@ -4,6 +4,7 @@ from qiskit_machine_learning.algorithms import QGAN
 from animation_nodes.base_types import AnimationNodeSocket
 import numpy as np
 
+
 class QganSocket(NodeSocket, AnimationNodeSocket):
     bl_idname = "an_QganSocket"
     bl_label = "qGAN Socket"
@@ -14,7 +15,7 @@ class QganSocket(NodeSocket, AnimationNodeSocket):
 
     @classmethod
     def getDefaultValue(cls):
-        return QGAN([1], np.array([1.0, 2.0]), [2], 1, 1, snapshot_dir=None) #second to last 1 was 0.5
+        return QGAN([1], np.array([1.0, 2.0]), [2], 1, 1, snapshot_dir=None)  # second to last 1 was 0.5
 
     @classmethod
     def correctValue(cls, value):

@@ -2,6 +2,7 @@ from qiskit import execute
 from animation_nodes.base_types import AnimationNode
 from bpy.types import Node
 
+
 class QuantumGateCCXNode(Node, AnimationNode):
     bl_idname = "an_QuantumGateCCXNode"
     bl_label = "Quantum Gate CCX"
@@ -9,9 +10,9 @@ class QuantumGateCCXNode(Node, AnimationNode):
 
     def create(self):
         self.newInput("Quantum Circuit", "Input Circuit", "input")
-        self.newInput("Integer", "First Controle Qubit Index", "controle_qubit_1", value = 0, minValue = 0)
-        self.newInput("Integer", "Second Controle Qubit Index", "controle_qubit_2", value = 1, minValue = 0)
-        self.newInput("Integer", "Target Qubit Index", "target_qubit", value = 2, minValue = 0)
+        self.newInput("Integer", "First Controle Qubit Index", "controle_qubit_1", value=0, minValue=0)
+        self.newInput("Integer", "Second Controle Qubit Index", "controle_qubit_2", value=1, minValue=0)
+        self.newInput("Integer", "Target Qubit Index", "target_qubit", value=2, minValue=0)
         self.newOutput("Quantum Circuit", "Output Circuit", "output")
 
     def execute(self, input, controle_qubit_1, controle_qubit_2, target_qubit):
@@ -36,5 +37,5 @@ class QuantumGateCCXNode(Node, AnimationNode):
         elif controle_qubit_2 == target_qubit:
             self.raiseErrorMessage("The second controle qubit must be different from the target qubit")
         else:
-            input.ccx(controle_qubit_1, controle_qubit_2,target_qubit)
+            input.ccx(controle_qubit_1, controle_qubit_2, target_qubit)
             return input

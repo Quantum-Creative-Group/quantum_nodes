@@ -1,10 +1,11 @@
 from bpy.types import Menu
 from animation_nodes.ui.node_menu import insertNode
 
+
 class QuantumGatesSingleQubitSubmenu(Menu):
     bl_idname = "AN_MT_quantum_gates_single_qubit"
     bl_label = "Single Qubit Gates"
-    
+
     def draw(self, context):
         layout = self.layout
         insertNode(layout, "an_QuantumGateHNode", "Quantum Gate H")

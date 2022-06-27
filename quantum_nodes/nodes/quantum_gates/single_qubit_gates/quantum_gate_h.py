@@ -2,6 +2,7 @@ from qiskit import execute
 from animation_nodes.base_types import AnimationNode
 from bpy.types import Node
 
+
 class QuantumGateHNode(Node, AnimationNode):
     bl_idname = "an_QuantumGateHNode"
     bl_label = "Quantum Gate H"
@@ -11,18 +12,18 @@ class QuantumGateHNode(Node, AnimationNode):
     def setup(self):
         self.newInput("Quantum Circuit", "Input Circuit", "input_circuit")
         self.newInputSocket()
-        self.newOutput("Quantum Circuit", "Output Circuit", "output_circuit") 
+        self.newOutput("Quantum Circuit", "Output Circuit", "output_circuit")
 
     def draw(self, layout):
-        row = layout.row(align = True)
+        row = layout.row(align=True)
         self.invokeFunction(row, "newInputSocket",
-            text = "Add Other Gate",
-            description = "Create a new input socket",
-            icon = "PLUS")
+                            text="Add Other Gate",
+                            description="Create a new input socket",
+                            icon="PLUS")
         self.invokeFunction(row, "removeUnlinkedInputs",
-            description = "Remove unlinked inputs",
-            confirm = True,
-            icon = "X")
+                            description="Remove unlinked inputs",
+                            confirm=True,
+                            icon="X")
 
     def getInputSocketVariables(self):
         socketMapping = {}
@@ -45,7 +46,7 @@ class QuantumGateHNode(Node, AnimationNode):
         yield "output_circuit = inputCircuit"
 
     def newInputSocket(self):
-        socket = self.newInput("Integer","Qubit Index", minValue = 0)
+        socket = self.newInput("Integer", "Qubit Index", minValue=0)
         socket.dataIsModified = True
         socket.display.text = True
         socket.text = "Qubit Index"

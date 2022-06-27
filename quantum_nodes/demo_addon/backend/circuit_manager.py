@@ -5,7 +5,7 @@ class CircuitManager():
         self.data = [[] for i in range(nb_qubits)]
 
     def pushGate(self, q_index, gate):
-       if len(self.data[q_index]) < self.max_gates:
+        if len(self.data[q_index]) < self.max_gates:
             self.data[q_index].append(gate)
 
     def popGate(self, q_index):
@@ -14,6 +14,6 @@ class CircuitManager():
 
     def reset(self):
         self.data.clear()
-    
+
     def __str__(self):
         return str(self.data)

@@ -2,6 +2,7 @@ from qiskit import execute
 from animation_nodes.base_types import AnimationNode
 from bpy.types import Node
 
+
 class QuantumGateCHNode(Node, AnimationNode):
     bl_idname = "an_QuantumGateCHNode"
     bl_label = "Quantum Gate CH"
@@ -9,8 +10,8 @@ class QuantumGateCHNode(Node, AnimationNode):
 
     def create(self):
         self.newInput("Quantum Circuit", "Input Circuit", "input")
-        self.newInput("Integer", "Controle Qubit Index", "controle_qubit", value = 0, minValue = 0)
-        self.newInput("Integer", "Target Qubit Index", "target_qubit", value = 1, minValue = 0)
+        self.newInput("Integer", "Controle Qubit Index", "controle_qubit", value=0, minValue=0)
+        self.newInput("Integer", "Target Qubit Index", "target_qubit", value=1, minValue=0)
         self.newOutput("Quantum Circuit", "Output Circuit", "output")
 
     def execute(self, input, controle_qubit, target_qubit):

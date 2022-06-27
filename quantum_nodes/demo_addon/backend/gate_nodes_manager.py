@@ -1,11 +1,12 @@
 import bpy
 
+
 class GateNodesManager:
 
     @classmethod
     def addGate(cls, new_gate, circuit_tree, q_index):
         """
-        Adds a new gate in the given circuit node tree
+        Adds a new gate in the given circuit node tree.
         """
         circuit_tree.nodes.new(type="an_QuantumGate" + new_gate.type + "Node")
         gate_node = circuit_tree.nodes["Quantum Gate " + new_gate.type]
@@ -14,12 +15,12 @@ class GateNodesManager:
         gate_node.inputs[0].value = q_index
         circuit_tree.links.new(new_gate.input.outputs[0], gate_node.inputs[1])
         circuit_tree.links.new(gate_node.outputs[0], new_gate.output.inputs[0])
-    
+
     @classmethod
     def removeGate(cls, gate_node, circuit_tree):
         """
-        Removes the given gate node
-        Creates a new link between the input and output of the deleted node
+        Removes the given gate node.\
+        Creates a new link between the input and output of the deleted node.
         """
         # Saves the input and output
         inp = gate_node.originNodes[0].outputs[0]
@@ -36,7 +37,7 @@ class GateNodesManager:
     @classmethod
     def getExistingGate(cls, circuit_tree, gate_type, q_index, qubit_data):
         """
-        Returns the gate if it already exists
+        Returns the gate if it already exists.
         """
         # Finds the first node that contains a gate of the corresponding circuit
         # so let's start looking from this index for a potential existing gate
@@ -49,10 +50,10 @@ class GateNodesManager:
                         min_gate_index += 1
                     else:
                         break
-        
-        # Finds where the potential existing gate should (at least) 
+
+        # Finds where the potential existing gate should (at least)
         # be placed from the previous min_gate_index
-        last_gate_type = "" # last_gate_type is used to counter redundancy (ex: q1 --|H|--|H|--)
+        last_gate_type = ""  #  last_gate_type is used to counter redundancy (ex: q1 --|H|--|H|--)
         for g in qubit_data:
             if (g != gate_type) and (last_gate_type != g):
                 min_gate_index += 1
@@ -69,20 +70,20 @@ class GateNodesManager:
                 gate_index += 1
 
         return None
-    
+
     @classmethod
     def removeLink(cls, inp, out, node_tree):
         """
-        Removes the link between the given input and output
+        Removes the link between the given input and output.
         """
         for link in node_tree.links:
             if (link.from_socket == inp) and (link.to_socket == out):
                 node_tree.links.remove(link)
-    
+
     @classmethod
     def qubitIndexInGate(cls, q_index, node):
         """
-        Returns True if the q_index is a value of one of the sockets
+        Returns True if the q_index is a value of one of the sockets.
         """
         for socket in node.inputs:
             if (type(socket).__name__ == "IntegerSocket") and (q_index == socket.value):
