@@ -80,3 +80,7 @@ release:
       links:
         - name: "Download Quantum Nodes ${VERSION}"
           url: ${PACKAGE_REGISTRY_URL}/${MODULE}_${VERSION//./_}.zip
+        - name: "Documentation"
+          url: https://quantum-creative-group.gitlab.io/quantum_nodes_manual/
+        - name: "Website"
+          url: https://quantum-nodes.com/

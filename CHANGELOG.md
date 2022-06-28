@@ -2,8 +2,8 @@
 
 ## [0.1.1] - 2021-04-28
 
-Fixes one bug (partially). This release also exists to test the new CI/CD pipeline
-and to update the installation tutorial of the documentation.
+Fixes one bug (partially). This release is created to test the new CI/CD pipeline
+and to update the installation tutorial in the documentation.
 
 <details><summary>Details</summary>
 
