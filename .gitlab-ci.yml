@@ -50,7 +50,7 @@ upload:
     - zip -r ${MODULE} ${MODULE}
     - mv ${MODULE}.zip ${MODULE}_${VERSION//./_}.zip
     - |
-      curl --header "JOB-TOKEN: ${CI_JOB_TOKEN}" -- upload-file ${MODULE}_${VERSION//./_}.zip ${PACKAGE_REGISTRY_URL}/${MODULE}_${VERSION//./_}.zip
+      curl --header "JOB-TOKEN: ${CI_JOB_TOKEN}" --upload-file ${MODULE}_${VERSION//./_}.zip ${PACKAGE_REGISTRY_URL}/${MODULE}_${VERSION//./_}.zip
 
   artifacts:
     reports:
