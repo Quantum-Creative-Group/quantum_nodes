@@ -21,7 +21,7 @@ Created by Quantum-Creative-Group
 bl_info = {
     "name": "Quantum Nodes",
     "author": "Quantum Creative Group",
-    "version": (0, 1, 0),
+    "version": (0, 1, 1),
     "blender": (2, 92, 0),
     "location": "Animation Nodes Editor",
     "description": "Animation Nodes extension which implements quantum computing tools.",
