@@ -59,7 +59,7 @@ class SimulationCache:
             inp (SimulationInputsManager): simulation inputs manager
 
         Raises:
-            e: whenever something wrong happends during the frame computation
+            e: whenever something wrong happens during the frame computation
             IndexError: frame index out of range
 
         Returns:
