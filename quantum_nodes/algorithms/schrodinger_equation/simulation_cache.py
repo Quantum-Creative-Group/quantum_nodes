@@ -31,7 +31,7 @@ class SimulationCache:
 
         Args:
             d (SimulationDataManager): simulation data manager
-            inp (SimulationInputsManager): simulation unputs manager
+            inp (SimulationInputsManager): simulation inputs manager
         """
 
         vector_selon_x = d.xConcatenate(d.wave_function, inp.dimension)
