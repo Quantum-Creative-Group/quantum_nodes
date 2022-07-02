@@ -12,6 +12,6 @@ Find more information on [www.quantum-nodes.com](https://www.quantum-nodes.com)
 
 <a href="https://quantum-nodes.com">
   <p align="center">
-      <img src="https://quantum-nodes.com/wp-content/uploads/2021/04/representative_image_quantum_nodes.jpg" alt="Representative image quantum nodes" width="700px">
+      <img src="https://quantum-nodes.com/wp-content/uploads/2022/07/representative_image_quantum_nodes-scaled.jpg" alt="Representative image quantum nodes" width="700px">
   <p>
 </a>
