@@ -85,7 +85,7 @@ class QuantumCircuitIBMOutputStateNode(Node, AnimationNode):
             self.remaining_jobs = backend.remaining_jobs_count()
             if backend.status().operational is False:
                 self.raiseErrorMessage("This system is offline for now")
-            if (quantum_circuit.num_qubits > backend.configuration().n_qubits):
+            if quantum_circuit.num_qubits > backend.configuration().n_qubits:
                 self.raiseErrorMessage("This system doesn't compute enough\
                     qubits: " + str(backend.configuration().n_qubits))
             # Prepare the job

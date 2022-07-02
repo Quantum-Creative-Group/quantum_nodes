@@ -50,7 +50,7 @@ class QganHistogramNode(Node, AnimationNode):
         # if qganHistogram is None or qgan is None:
         if qganHistogram is None:
             return
-        if (qganHistogram.name != "QuantumQganHistogramFaces"):
+        if qganHistogram.name != "QuantumQganHistogramFaces":
             return
         try:
             # quantum_circuit.measure_all()

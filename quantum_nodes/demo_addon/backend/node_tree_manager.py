@@ -90,7 +90,7 @@ class NodeTreeManager:
                 qubit_data = new_circuits[modif[2][0]].data[modif[2][1]]    # data before modification
                 existing_gate = GateNodesManager.getExistingGate(circuit_node_tree, modif[1], modif[2][1], qubit_data)
                 for socket in existing_gate.inputs:
-                    if (type(socket).__name__ == "IntegerSocket") and (socket.value == modif[2][1]):
+                    if type(socket).__name__ == "IntegerSocket" and socket.value == modif[2][1]:
                         socket.remove()
                         break
                 # If the gate isn't used anymore
@@ -118,7 +118,7 @@ class NodeTreeManager:
                 # TODO: not sure about that "refresh"
                 bpy.ops.an.execute_tree(name=self.main_tree_id + "an_q")
                 for node_tree in bpy.data.node_groups:
-                    if (self.demo_id in node_tree.name) or (self.main_tree_id in node_tree.name):
+                    if self.demo_id in node_tree.name or self.main_tree_id in node_tree.name:
                         bpy.data.node_groups.remove(node_tree)
 
     @classmethod

@@ -101,8 +101,8 @@ class SimulationManager:
                 if inp.isObstacle(d.x_axis[j], d.y_axis[i]):
                     adj = d.getAdjPos(i, j, inp.dimension)
                     for xx, yy in adj:
-                        if (xx >= 0) and (yy >= 0) and (xx < inp.dimension) and (
-                                yy < inp.dimension) and (not inp.isObstacle(d.x_axis[yy], d.y_axis[xx])):
+                        if xx >= 0 and yy >= 0 and xx < inp.dimension and yy < inp.dimension and not inp.isObstacle(
+                                d.x_axis[yy], d.y_axis[xx]):
                             d.potential_boundary.append((i, j))
 
         self.cache.data[0] = d.wave_function     # stores the first frame in the cache

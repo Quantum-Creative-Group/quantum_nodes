@@ -1,7 +1,7 @@
+import sys
 import numpy as np
 import scipy.sparse
 import scipy.sparse.linalg
-import sys
 
 from . simulation_data_manager import SimulationDataManager
 from . simulation_inputs_manager import SimulationInputsManager
@@ -65,11 +65,11 @@ class SimulationCache:
             np.ndarray: requested data at the given frame
         """
 
-        if (frame >= 0):
-            if (frame <= self.last_computed_frame):
+        if frame >= 0:
+            if frame <= self.last_computed_frame:
                 # the frame has already been computed
                 return self.data[frame]
-            elif (frame <= inp.frame_rate * inp.duration):
+            elif frame <= inp.frame_rate * inp.duration:
                 # the frame is in the scope of the simulation
                 # but has not been computed yet
                 frames_to_compute = frame - self.last_computed_frame

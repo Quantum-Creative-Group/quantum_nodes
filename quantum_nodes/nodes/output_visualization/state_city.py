@@ -18,7 +18,7 @@ class StateCityNode(Node, AnimationNode):
     def execute(self, quantum_circuit, state_city):
         if state_city is None:
             return
-        if (state_city.name != "QuantumCityFaces"):
+        if state_city.name != "QuantumCityFaces":
             return
         try:
             backend = Aer.get_backend('statevector_simulator')

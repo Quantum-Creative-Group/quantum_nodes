@@ -21,7 +21,7 @@ class IBMConnexion(Operator):
                 bpy.context.scene.QueryProps.connected = True
                 return {'FINISHED'}
             except Exception as e:
-                if (e.args[0].split(".")[4] == "connection"):
+                if e.args[0].split(".")[4] == "connection":
                     bpy.context.scene.QueryProps.error_msg = "Please verify your internet connection"
                 else:
                     bpy.context.scene.QueryProps.error_msg = e.args[0].split(".")[4]

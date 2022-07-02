@@ -15,7 +15,7 @@ class InitClassicalRegisterNode(Node, AnimationNode):
         self.newOutput("Classical Register", "Classical Register", "classical_register")
 
     def execute(self, number_of_bits):
-        if (number_of_bits < 1):
+        if number_of_bits < 1:
             self.raiseErrorMessage("The number of bits must be superior to 1")
             return
         else:

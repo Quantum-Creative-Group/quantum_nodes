@@ -49,7 +49,7 @@ class GateNodesManager:
         # be placed from the previous min_gate_index
         last_gate_type = ""  #  last_gate_type is used to counter redundancy (ex: q1 --|H|--|H|--)
         for g in qubit_data:
-            if (g != gate_type) and (last_gate_type != g):
+            if g != gate_type and last_gate_type != g:
                 min_gate_index += 1
             last_gate_type = g
 
@@ -69,13 +69,13 @@ class GateNodesManager:
     def removeLink(cls, inp, out, node_tree):
         """Remove the link between the given input and output."""
         for link in node_tree.links:
-            if (link.from_socket == inp) and (link.to_socket == out):
+            if link.from_socket == inp and link.to_socket == out:
                 node_tree.links.remove(link)
 
     @classmethod
     def qubitIndexInGate(cls, q_index, node):
         """Return `True` if the q_index is a value of one of the sockets."""
         for socket in node.inputs:
-            if (type(socket).__name__ == "IntegerSocket") and (q_index == socket.value):
+            if type(socket).__name__ == "IntegerSocket" and q_index == socket.value:
                 return True
         return False

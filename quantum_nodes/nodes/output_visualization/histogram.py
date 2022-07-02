@@ -20,7 +20,7 @@ class HistogramNode(Node, AnimationNode):
     def execute(self, shots, quantum_circuit, histogram):
         if histogram is None:
             return
-        if (histogram.name != "QuantumHistogramFaces"):
+        if histogram.name != "QuantumHistogramFaces":
             return
         try:
             quantum_circuit.measure_all()

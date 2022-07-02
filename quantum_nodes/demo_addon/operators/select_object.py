@@ -41,7 +41,7 @@ class SelectObject(Operator):
 
     def invoke(self, context, event):
         dm = bpy.types.Scene.demo_manager
-        if (context.active_object != dm.target) and (dm.target is not None) and (context.active_object.type == 'MESH'):
+        if context.active_object != dm.target and dm.target is not None and context.active_object.type == 'MESH':
             return context.window_manager.invoke_confirm(self, event)
         self.execute(context)   # not sure about that lol
         # TODO: there must be a better solution

@@ -30,7 +30,7 @@ class BlochSphereNode(Node, AnimationNode):
                 if bloch_sphere.children[i].name == "QuantumBlochVector":
                     vector = bloch_sphere.children[i]
             # the changes only need to be applied if the angles are different
-            if (abs(vector.rotation_euler[1] - theta) < (1e-6) and abs(vector.rotation_euler[2] - phi) < (1e-6)):
+            if abs(vector.rotation_euler[1] - theta) < 1e-6 and abs(vector.rotation_euler[2] - phi) < 1e-6:
                 return
             else:
                 bpy.context.view_layer.objects.active = vector

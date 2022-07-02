@@ -60,7 +60,7 @@ def editStateCity(parent, state):
                 cube_size = scale * size
                 resize = 0.5 / cube_size
             translate = cube_size / 2
-            if (j != 0):
+            if j != 0:
                 bmesh.ops.translate(bm, verts=bm.verts, vec=Vector((-1.0, 0.0, 0.0)))
                 bmesh.ops.scale(bm, verts=bm.verts, vec=Vector((1 / resize, 1 / resize, 1)))
                 bmesh.ops.translate(bm, verts=bm.verts, vec=Vector((0.0, 0.0, -translate)))
@@ -148,7 +148,7 @@ def editStateCity(parent, state):
 
     bm = bmesh.new()
     for i in range(19):
-        if (i != 0):
+        if i != 0:
             bmesh.ops.scale(bm, verts=bm.verts, vec=Vector((1 / T, 1 / Y, 1 / T)))
         bmesh.ops.create_cube(bm, size=1)
         bmesh.ops.scale(bm, verts=bm.verts, vec=Vector((T, Y, T)))
@@ -163,7 +163,7 @@ def editStateCity(parent, state):
 
     bm = bmesh.new()
     for i in range(19):
-        if (i != 0):
+        if i != 0:
             bmesh.ops.scale(bm, verts=bm.verts, vec=Vector((1 / Y, 1 / T, 1 / T)))
         bmesh.ops.create_cube(bm, size=1)
         bmesh.ops.scale(bm, verts=bm.verts, vec=Vector((Y, T, T)))
@@ -178,7 +178,7 @@ def editStateCity(parent, state):
 
     bm = bmesh.new()
     for i in range(nb_cubes):
-        if (i != 0):
+        if i != 0:
             bmesh.ops.scale(bm, verts=bm.verts, vec=Vector((1 / T, 1 / T, 1 / X)))
         bmesh.ops.create_cube(bm, size=1)
         bmesh.ops.scale(bm, verts=bm.verts, vec=Vector((T, T, X)))
@@ -193,7 +193,7 @@ def editStateCity(parent, state):
 
     bm = bmesh.new()
     for i in range(nb_cubes):
-        if (i != 0):
+        if i != 0:
             bmesh.ops.scale(bm, verts=bm.verts, vec=Vector((1 / T, 1 / T, 1 / X)))
         bmesh.ops.create_cube(bm, size=1)
         bmesh.ops.scale(bm, verts=bm.verts, vec=Vector((T, T, X)))
@@ -208,7 +208,7 @@ def editStateCity(parent, state):
 
     bm = bmesh.new()
     for i in range(nb_cubes):
-        if (i != 0):
+        if i != 0:
             bmesh.ops.scale(bm, verts=bm.verts, vec=Vector((1 / Y, 1 / T, 1 / T)))
         bmesh.ops.create_cube(bm, size=1)
         bmesh.ops.scale(bm, verts=bm.verts, vec=Vector((Y, T, T)))
@@ -223,7 +223,7 @@ def editStateCity(parent, state):
 
     bm = bmesh.new()
     for i in range(nb_cubes):
-        if (i != 0):
+        if i != 0:
             bmesh.ops.scale(bm, verts=bm.verts, vec=Vector((1 / T, 1 / Y, 1 / T)))
         bmesh.ops.create_cube(bm, size=1)
         bmesh.ops.scale(bm, verts=bm.verts, vec=Vector((T, Y, T)))
@@ -239,7 +239,7 @@ def editStateCity(parent, state):
     text_objects_front = {}
     for i in range(21):
         curves_front["font_curve_{0}".format(i)] = bpy.data.curves.new(type="FONT", name="Font Curve" + str(i))
-        if (i < 10):
+        if i < 10:
             curves_front["font_curve_{0}".format(i)].body = str(-(10 - i) / 10)
         else:
             curves_front["font_curve_{0}".format(i)].body = str((i - 10) / 10)
@@ -256,7 +256,7 @@ def editStateCity(parent, state):
     text_objects_left = {}
     for i in range(21):
         curves_left["font_curve_{0}".format(i)] = bpy.data.curves.new(type="FONT", name="Font Curve" + str(i))
-        if (i < 10):
+        if i < 10:
             curves_left["font_curve_{0}".format(i)].body = str(-(10 - i) / 10)
         else:
             curves_left["font_curve_{0}".format(i)].body = str((i - 10) / 10)
