@@ -1,7 +1,14 @@
 import bpy
 import copy
 
-from . demo_node_tree_utils import *
+from . demo_node_tree_utils import (
+    generateMultiplyAll,
+    generateMaxValue,
+    generateNegative,
+    generateMeshData,
+    generateCircuit,
+    generateMainNodeTree,
+)
 from . gates_factory import GatesFactory
 from . gate_nodes_manager import GateNodesManager
 
@@ -50,7 +57,7 @@ class NodeTreeManager:
             Retrieves the node where the gate is and removes the socket.
             If the node isn't used anymore, deletes it.
         """
-        # Detects the modification
+        # Detects the modification
         modif = self.getModification(self.last_circuits, new_circuits)
         if modif != (None, None, None):
             # Identifies the node tree and builds the name of the gate
@@ -76,12 +83,12 @@ class NodeTreeManager:
                 else:
                     # The gate already exists
                     existing_gate.newInputSocket()
-                    # Forces to update the tree (magic trick)
+                    # Forces to update the tree (magic trick)
                     bpy.context.scene.frame_set(bpy.data.scenes['Scene'].frame_current)
                     existing_gate.inputs[len(existing_gate.inputs) - 2].value = modif[2][1]
 
             elif modif[0] == "DEL":
-                # Delete a gate
+                # Delete a gate
                 qubit_data = new_circuits[modif[2][0]].data[modif[2][1]]    # data before modification
                 existing_gate = GateNodesManager.getExistingGate(circuit_node_tree, modif[1], modif[2][1], qubit_data)
                 for socket in existing_gate.inputs:
@@ -131,7 +138,7 @@ class NodeTreeManager:
             q_index = 0
             for qubit in new_circuits[circ_name].data:
                 if len(qubit) > len(last_circuits[circ_name].data[q_index]):
-                    # The user pushed a new gate
+                    # The user pushed a new gate
                     return "ADD", qubit[-1], (circ_name, q_index, len(qubit) - 1)
                 elif len(qubit) < len(last_circuits[circ_name].data[q_index]):
                     # The user deleted a gate

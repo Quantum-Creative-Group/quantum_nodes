@@ -123,10 +123,10 @@ class SimulationManager:
         """
 
         try:
-            # returns a list of complex numbers rather than
-            # a matrix of complex numbers (list of list)
+            # returns a list of complex numbers rather than
+            # a matrix of complex numbers (list of list)
             # the shape of the output is :
-            # not formatted : wave_function[i] = [z_i1, z_i2, ... z_in] (shape n * n)
+            # not formatted : wave_function[i] = [z_i1, z_i2, ... z_in] (shape n * n)
             # formated_output = [z_11, ..., z_1n, z_21, ..., z_2n, ..., z_n1, ..., z_nn] (shape 1 * n)
             frame = self.cache.getFrame(frame, self.data, self.inputs)
             formated_output = frame[0]

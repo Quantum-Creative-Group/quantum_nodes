@@ -74,9 +74,9 @@ class SimulationInputsManager:
 
     @classmethod
     def verifyPotentialExpr(cls, expr):
-        x, y = 0, 0
+        # x, y = 0, 0
         try:
-            test = eval(expr)
+            eval(expr)
             return True
         except BaseException:
             # unable to evaluate the given potential formula
@@ -99,9 +99,9 @@ class SimulationInputsManager:
 
     @classmethod
     def verifyObstacleExpr(cls, expr):
-        x, y = 0, 0
+        # x, y = 0, 0
         try:
-            test = eval(expr)
+            eval(expr)
             return True
         except BaseException:
             # unable to evaluate the given obstacle formula

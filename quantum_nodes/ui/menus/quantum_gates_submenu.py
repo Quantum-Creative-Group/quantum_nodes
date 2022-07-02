@@ -13,5 +13,5 @@ class QuantumGatesSubmenu(Menu):
         layout.menu("AN_MT_quantum_gates_c", text="C Gates", icon="EVENT_C")
         layout.menu("AN_MT_quantum_gates_r", text="R Gates", icon="EVENT_R")
         # TODO: are these gates necessary now?
-        # layout.menu("AN_MT_quantum_gates_to_all", text = "Gates_To_All", icon = "OBJECT_ORIGIN")
+        # layout.menu("AN_MT_quantum_gates_to_all", text = "Gates_To_All", icon = "OBJECT_ORIGIN")
         layout.menu("AN_MT_quantum_gates_single_qubit", text="Single_Qubit_Gates", icon="DOT")

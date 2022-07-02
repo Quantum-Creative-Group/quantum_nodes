@@ -31,7 +31,7 @@ class QuantumCircuitIBMOutputStateNode(Node, AnimationNode):
     errorHandlingType = "EXCEPTION"
     provider = Provider()
 
-    initialized: BoolProperty(name="Initialized", default=False,
+    initialized: BoolProperty(name="Initialized", default=False, # noqa F821
                               description="If the node has been initialized")
 
     remaining_jobs: IntProperty(name="Remaining jobs",
@@ -46,7 +46,7 @@ class QuantumCircuitIBMOutputStateNode(Node, AnimationNode):
 
     backendMenu: EnumProperty(
         items=item_callback,
-        name="Backend",
+        name="Backend", # noqa F821
         description="Choose a system",
         update=AnimationNode.refresh,
         get=None,
@@ -62,8 +62,8 @@ class QuantumCircuitIBMOutputStateNode(Node, AnimationNode):
                     self.initialized = True
                 except BaseException:
 
-                    self.raiseErrorMessage(
-                        "You are not connected to any IBM account. Please enter your token in the Quantum Node panel or check your internet connection.")
+                    self.raiseErrorMessage("You are not connected to any IBM account.\
+                        Please enter your token in the Quantum Node panel or check your internet connection.")
                     bpy.ops.wm.call_panel(name="AN_PT_InsertNodeUI")
 
     def create(self):
@@ -83,11 +83,11 @@ class QuantumCircuitIBMOutputStateNode(Node, AnimationNode):
         if self.initialized:
             backend = self._provider.get_provider().get_backend(self.backendMenu)
             self.remaining_jobs = backend.remaining_jobs_count()
-            if backend.status().operational == False:
+            if backend.status().operational is False:
                 self.raiseErrorMessage("This system is offline for now")
             if (quantum_circuit.num_qubits > backend.configuration().n_qubits):
-                self.raiseErrorMessage("This system doesn't compute enough qubits: " +
-                                       str(backend.configuration().n_qubits))
+                self.raiseErrorMessage("This system doesn't compute enough\
+                    qubits: " + str(backend.configuration().n_qubits))
             # Prepare the job
             qobj = assemble(transpile(quantum_circuit, backend=backend), backend=backend)
             job = backend.run(qobj)

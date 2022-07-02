@@ -7,7 +7,7 @@ from .graphs_utils import creatMesh, creatMultipleText
 
 
 def editQganHistogram(parent, _targetCounts, _simulationCounts):
-   # data
+    # data
     targetKeys = list(_targetCounts)
     simulationKeys = list(_simulationCounts)
     nb_cubes = len(targetKeys)  # Nb of rectangles (for each quantity, i.e. target and simulation) in the histogram

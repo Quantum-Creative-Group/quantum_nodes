@@ -7,7 +7,8 @@ modeItems = [
     ("QNUMBER", "Number of Qubits", "Create quantum circuit from number of quibts", "", 0),
     ("QCNUMBER", "Number of Qubits and Bits", "Create quantum circuit from number of quibts and number of bits", "", 1),
     ("QREGISTER", "Quantum Register", "Create quantum circuit from quantum register", "", 2),
-    ("QCREGISTER", "Quantum and Classical Registers", "Create quantum circuit from quantum and classical register", "", 3)
+    ("QCREGISTER", "Quantum and Classical Registers", "Create quantum circuit from quantum\
+        and classical register", "", 3)
 ]
 
 
@@ -16,7 +17,7 @@ class InitQuantumCircuitNode(Node, AnimationNode):
     bl_label = "Init Quantum Circuit"
     errorHandlingType = "EXCEPTION"
 
-    mode: EnumProperty(name="Mode", default="QNUMBER",
+    mode: EnumProperty(name="Mode", default="QNUMBER", # noqa F821
                        items=modeItems, update=AnimationNode.refresh)
 
     def create(self):

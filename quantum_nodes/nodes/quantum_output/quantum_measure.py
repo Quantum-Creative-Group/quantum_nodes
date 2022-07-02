@@ -12,7 +12,7 @@ class QuantumMeasureNode(Node, AnimationNode):
     bl_idname = "an_QuantumMeasureNode"
     bl_label = "Quantum Measure"
 
-    mode: EnumProperty(name="Mode", default="ONE",
+    mode: EnumProperty(name="Mode", default="ONE", # noqa F821
                        items=modeItems, update=AnimationNode.refresh)
 
     def create(self):

@@ -123,7 +123,7 @@ class AN_Q_DemoAddon(bpy.types.Panel):
 
 
 def register():
-    # PointerProperty : https://docs.blender.org/api/current/bpy.props.html
+    # PointerProperty : https://docs.blender.org/api/current/bpy.props.html
     # (it is possible to set a poll function if needed for selected_axis)
     bpy.types.Scene.selected_axis = PointerProperty(type=SelectAxis)
     bpy.types.Scene.demo_manager = QuantumNodesDEMOManager()

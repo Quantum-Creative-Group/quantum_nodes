@@ -1,4 +1,4 @@
-'''
+"""
 Copyright (C) 2021-2022 Quantum Creative Group
 contact@quantum-nodes.com
 
@@ -16,7 +16,7 @@ Created by Quantum-Creative-Group
 
     You should have received a copy of the GNU General Public License
     along with this program. If not, see <http://www.gnu.org/licenses/>.
-'''
+"""
 
 bl_info = {
     "name": "Quantum Nodes",
@@ -28,7 +28,7 @@ bl_info = {
     "warning": "This version is still in development.",
     "doc_url": "https://quantum-creative-group.gitlab.io/quantum_nodes_manual/",
     "tracker_url": "",
-    "category": "Nodes",
+    "category": "Node",
 }
 
 import bpy

@@ -1,5 +1,5 @@
 from bpy.types import NodeSocket
-#from qiskit import QuantumCircuit
+# from qiskit import QuantumCircuit
 from qiskit_machine_learning.algorithms import QGAN
 from animation_nodes.base_types import AnimationNodeSocket
 import numpy as np

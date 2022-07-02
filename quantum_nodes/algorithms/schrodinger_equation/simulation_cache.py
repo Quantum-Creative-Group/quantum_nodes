@@ -71,8 +71,8 @@ class SimulationCache:
                 # the frame has already been computed
                 return self.data[frame]
             elif (frame <= inp.frame_rate * inp.duration):
-                # the frame is in the scope of the simulation
-                # but has not been computed yet
+                # the frame is in the scope of the simulation
+                # but has not been computed yet
                 frames_to_compute = frame - self.last_computed_frame
                 try:
                     for frame in range(frames_to_compute):
@@ -85,7 +85,7 @@ class SimulationCache:
                 return self.data[frame]
             else:
                 # the requested frame is not in the scope of the simulation
-                # return the last computed frame by default
+                # return the last computed frame by default
                 return self.data[self.last_computed_frame]
         else:
             # the requested frame is negative

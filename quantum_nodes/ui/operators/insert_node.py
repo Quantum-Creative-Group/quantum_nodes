@@ -15,7 +15,7 @@ class InsertNode(Operator):
     bl_label = "Add Node Tree"
     bl_description = "WIP : QuantumBlur template"
 
-    # WIP operator
+    # WIP operator
     @classmethod
     def poll(cls, context):
         return False

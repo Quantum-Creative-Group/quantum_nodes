@@ -24,8 +24,8 @@ class BlochSphereNode(Node, AnimationNode):
             phi = get_angles(bloch_data[qubit_index][0], bloch_data[qubit_index][1], bloch_data[qubit_index][2])[2]
             # finding the vector mesh in the list of the block sphere children
             for i in range(len(bloch_sphere.children)):
-                if (bloch_sphere.children[i].name ==
-                        "QuantumBlochVector"):  # TODO: put bloch_sphere_vector so it is less ambiguous
+                # TODO: put bloch_sphere_vector so it is less ambiguous
+                if bloch_sphere.children[i].name == "QuantumBlochVector":
                     vector = bloch_sphere.children[i]
             # the changes only need to be applied if the angles are different
             if (abs(vector.rotation_euler[1] - theta) < (1e-6) and abs(vector.rotation_euler[2] - phi) < (1e-6)):

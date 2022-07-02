@@ -36,7 +36,7 @@ class RunQGAN(bpy.types.Node, AnimationNode):
 
     # No inputs at the moment, later: input data (mesh, etc.)
     def create(self):
-        #self.newInput("Object", "Training Object 1", "trainingObject", defaultDrawType = "PROPERTY_ONLY")
+        # self.newInput("Object", "Training Object 1", "trainingObject", defaultDrawType = "PROPERTY_ONLY")
 
         self.newOutput("Integer", "Nb of Epochs", "numEpochs")  # For G_loss and D_loss, and relative entropy graphs
         # self.newOutput("List", "Bounds", "bounds") # For simulation vs target comparison graph # TO UNCOMMENT
@@ -74,7 +74,7 @@ class RunQGAN(bpy.types.Node, AnimationNode):
         bounds = np.array([0.0, 3.0])  # the "window" for histogram visualization
         # Set number of qubits per data dimension as list of k qubit values[#q_0,...,#q_k-1]
         num_qubits = [2]
-        k = len(num_qubits)
+        # k = len(num_qubits)
 
         # ------------- INITIALIZE THE QGAN --------------
 
@@ -129,7 +129,7 @@ class RunQGAN(bpy.types.Node, AnimationNode):
             if(key == "rel_entr"):
                 rel_entropy = value
 
-        training_results = result.items()
+        # training_results = result.items()
 
         # return num_epochs, bounds, qgan # TO UNCOMMENT
         return num_epochs, qgan, rel_entropy

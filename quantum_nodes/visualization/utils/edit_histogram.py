@@ -7,7 +7,7 @@ from .graphs_utils import creatMesh, creatMultipleText
 
 
 def editHistogram(parent, _counts, _shots):
-   # data
+    # data
     keys = list(_counts)
     nb_cubes = len(keys)
     X = 3.2

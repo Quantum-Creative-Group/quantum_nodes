@@ -34,8 +34,8 @@ class SelectObject(Operator):
                 if dm.ntm.main_tree_id + "an_q" in node_group.name:
                     bpy.ops.an.execute_tree(name=dm.ntm.main_tree_id + "an_q")
 
-        # forces to redraw the view (magic trick)
-        # TODO: find a better solution for it
+        # forces to redraw the view (magic trick)
+        # TODO: find a better solution for it
         bpy.context.scene.frame_set(bpy.data.scenes['Scene'].frame_current)
         return {'FINISHED'}
 
@@ -44,5 +44,5 @@ class SelectObject(Operator):
         if (context.active_object != dm.target) and (dm.target is not None) and (context.active_object.type == 'MESH'):
             return context.window_manager.invoke_confirm(self, event)
         self.execute(context)   # not sure about that lol
-        # TODO: there must be a better solution
+        # TODO: there must be a better solution
         return {'FINISHED'}

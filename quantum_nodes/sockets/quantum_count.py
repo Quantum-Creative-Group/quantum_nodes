@@ -17,7 +17,7 @@ class QuantumCountSocket(NodeSocket, AnimationNodeSocket):
 
     @classmethod
     def correctValue(cls, value):
-        if isinstance(value, qiskit.result.counts.Counts):
+        if isinstance(value, Counts):
             return value, 0
         return cls.getDefaultValue(), 2
 
@@ -34,6 +34,6 @@ class QuantumCountListSocket(NodeSocket, PythonListSocket):
     @classmethod
     def correctValue(cls, value):
         if isinstance(value, list):
-            if all(isinstance(element, qiskit.result.counts.Counts) for element in value):
+            if all(isinstance(element, Counts) for element in value):
                 return value, 0
         return cls.getDefaultValue(), 2

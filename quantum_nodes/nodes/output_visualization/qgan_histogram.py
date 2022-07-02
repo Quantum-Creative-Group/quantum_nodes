@@ -37,11 +37,11 @@ class QganHistogramNode(Node, AnimationNode):
     bl_label = "qGAN Histogram"
 
     def create(self):
-        #self.newInput("Integer", "Shots", "shots", value = 1024, minValue = 1)
-        #self.newInput("Quantum Circuit", "Quantum Circuit", "quantum_circuit")
+        # self.newInput("Integer", "Shots", "shots", value = 1024, minValue = 1)
+        # self.newInput("Quantum Circuit", "Quantum Circuit", "quantum_circuit")
         # self.newInput("Array", "Bounds", "bounds") # TO UNCOMMENT ASAP
         self.newInput("Object", "qGAN Histogram", "qganHistogram")
-        #self.newInput("Object", "Histogram", "histogram")
+        # self.newInput("Object", "Histogram", "histogram")
         self.newInput("QGAN", "qGAN", "qgan")
 
     def execute(self, qganHistogram, qgan):
@@ -52,9 +52,9 @@ class QganHistogramNode(Node, AnimationNode):
             return
         try:
             # quantum_circuit.measure_all()
-            #backend = Aer.get_backend('qasm_simulator')
-            #job = execute(quantum_circuit, backend, shots = shots)
-            #counts = job.result().get_counts(quantum_circuit)
+            # backend = Aer.get_backend('qasm_simulator')
+            # job = execute(quantum_circuit, backend, shots = shots)
+            # counts = job.result().get_counts(quantum_circuit)
 
             bounds = np.array([0.0, 3.0])  # TODO: DUPLICATE DECLARATION FROM qgan_run.py, THIS MUST BE REMOVED ASAP
 

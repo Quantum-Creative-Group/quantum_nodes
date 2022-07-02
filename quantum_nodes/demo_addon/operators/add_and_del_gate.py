@@ -17,10 +17,10 @@ class AddAndDelGate(Operator):
 
     button: EnumProperty(
         items=[
-            ('add', '+', '+', '', 0),
-            ('del', '-', '-', '', 1),
+            ('add', '+', '+', '', 0), # noqa F821
+            ('del', '-', '-', '', 1), # noqa F821
         ],
-        default='add'
+        default='add'# noqa F821
     )
 
     @classmethod
@@ -34,7 +34,7 @@ class AddAndDelGate(Operator):
         if self.button == 'add':
             wm = bpy.context.window_manager
             wm.popup_menu(drawGatesOperator, title="Options")
-            # Forces to redraw the view (magic trick)
+            # Forces to redraw the view (magic trick)
             bpy.context.scene.frame_set(bpy.data.scenes['Scene'].frame_current)
         else:
             dm.getSelectedCircuit().popGate(bpy.types.Object.select_index)

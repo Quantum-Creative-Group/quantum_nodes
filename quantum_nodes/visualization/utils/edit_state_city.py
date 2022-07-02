@@ -32,7 +32,7 @@ def editStateCity(parent, state):
     Y = nb_cubes + 0.5
     Z = nb_cubes + 0.5
     T = 0.01
-    H = 0.25
+    # H = 0.25
     column_names = [bin(i)[2:].zfill(num) for i in range(2**num)]
     row_names = [bin(i)[2:].zfill(num) for i in range(2**num)]
     bpy.ops.object.select_all(action='DESELECT')  # deselect all object
