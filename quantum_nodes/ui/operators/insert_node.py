@@ -1,11 +1,12 @@
 import bpy
 from bpy.types import Operator
+
 from ... node_templates.template1 import templateInsertion
 
 
 def createNodeTree(context, operator, gp_name):
     # uses the activated node tree
-    bpy.context.scene.use_nodes = True
+    context.scene.use_nodes = True
     QuantumTree = bpy.ops.node.new_node_tree(name=gp_name)
     return QuantumTree
 

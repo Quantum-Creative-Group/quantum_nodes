@@ -1,9 +1,10 @@
 import bpy
 import bmesh
-from mathutils import Vector
-from numpy import pi
-from qiskit.quantum_info.states import DensityMatrix
+
 import numpy as np
+from numpy import pi
+from mathutils import Vector
+from qiskit.quantum_info.states import DensityMatrix
 
 
 def editStateCity(parent, state):

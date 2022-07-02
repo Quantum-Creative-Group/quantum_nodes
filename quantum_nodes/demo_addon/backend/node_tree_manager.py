@@ -1,6 +1,8 @@
 import bpy
 import copy
 
+from . gates_factory import GatesFactory
+from . gate_nodes_manager import GateNodesManager
 from . demo_node_tree_utils import (
     generateMultiplyAll,
     generateMaxValue,
@@ -9,8 +11,6 @@ from . demo_node_tree_utils import (
     generateCircuit,
     generateMainNodeTree,
 )
-from . gates_factory import GatesFactory
-from . gate_nodes_manager import GateNodesManager
 
 
 class NodeTreeManager:

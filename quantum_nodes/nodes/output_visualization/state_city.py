@@ -1,7 +1,9 @@
 import bpy
 from bpy.types import Node
-from qiskit import (Aer, execute)
+
+from qiskit import Aer, execute
 from animation_nodes.base_types import AnimationNode
+
 from ... visualization.utils.edit_state_city import editStateCity
 
 

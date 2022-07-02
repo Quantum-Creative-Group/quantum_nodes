@@ -1,5 +1,5 @@
 import copy
-from math import (ceil, log)
+from math import ceil, log
 
 from . circuit_manager import CircuitManager
 from . node_tree_manager import NodeTreeManager

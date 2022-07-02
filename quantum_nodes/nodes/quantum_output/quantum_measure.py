@@ -1,11 +1,7 @@
 from bpy.types import Node
 from bpy.props import EnumProperty
-from animation_nodes.base_types import AnimationNode
 
-modeItems = [
-    ("ONE", "Measure on qubit", "Measure one qubit on a specific bit", "", 0),
-    ("ALL", "Measure all qubits", "Measure all qubits", "", 1)
-]
+from animation_nodes.base_types import AnimationNode
 
 
 class QuantumMeasureNode(Node, AnimationNode):
@@ -14,8 +10,15 @@ class QuantumMeasureNode(Node, AnimationNode):
     bl_idname = "an_QuantumMeasureNode"
     bl_label = "Quantum Measure"
 
-    mode: EnumProperty(name="Mode", default="ONE",  # noqa F821
-                       items=modeItems, update=AnimationNode.refresh)
+    mode: EnumProperty(
+        name="Mode",  # noqa F821
+        default="ONE",  # noqa F821
+        items=[
+            ("ONE", "Measure on qubit", "Measure one qubit on a specific bit", "", 0),  # noqa F821
+            ("ALL", "Measure all qubits", "Measure all qubits", "", 1)  # noqa F821
+        ],
+        update=AnimationNode.refresh
+    )
 
     def create(self):
         if self.mode == "ONE":

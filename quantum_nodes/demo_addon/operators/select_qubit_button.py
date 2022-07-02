@@ -13,5 +13,5 @@ class SelectQubitButton(Operator):
 
     def execute(self, context):
         bpy.types.Object.select_index = self.index
-        bpy.context.scene.frame_set(bpy.data.scenes['Scene'].frame_current)
+        context.scene.frame_set(context.scene.frame_current)
         return {'FINISHED'}

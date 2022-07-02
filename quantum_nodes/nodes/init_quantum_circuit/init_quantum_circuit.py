@@ -1,7 +1,8 @@
-from qiskit import QuantumCircuit
-from bpy.props import EnumProperty
-from animation_nodes.base_types import AnimationNode
 from bpy.types import Node
+from bpy.props import EnumProperty
+
+from qiskit import QuantumCircuit
+from animation_nodes.base_types import AnimationNode
 
 modeItems = [
     ("QNUMBER", "Number of Qubits", "Create quantum circuit from number of quibts", "", 0),

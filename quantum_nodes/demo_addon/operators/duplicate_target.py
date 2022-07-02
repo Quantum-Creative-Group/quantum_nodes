@@ -13,10 +13,10 @@ class DuplicateTarget(Operator):
     def poll(cls, context):
         if context.object is None:
             return False
-        return (context.object.select_get()) and (bpy.context.active_object == bpy.types.Scene.demo_manager.target)
+        return (context.object.select_get()) and (context.active_object == context.scene.demo_manager.target)
 
     def execute(self, context):
-        dm = bpy.types.Scene.demo_manager
+        dm = context.scene.demo_manager
         if dm.ntm.main_node_tree is not None:
             obj = dm.ntm.main_node_tree.nodes[dm.ntm.main_tree_id + "data_interface" + "_main"].value
             obj_name = obj.name.split(".")[0] + "_copy_" + dm.ntm.demo_id[:len(dm.ntm.demo_id) - 1]

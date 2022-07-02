@@ -1,8 +1,9 @@
 import bpy
-import os
 import bpy.utils.previews
 from bpy.types import Panel
-from animation_nodes.ui.node_menu import insertNode
+
+import os
+
 from .. properties.query_properties import QueryProperties
 
 
@@ -62,7 +63,7 @@ class MainPanel(Panel):
         row = layout.row()
 
         # IMBQ API connection
-        props = bpy.context.scene.QueryProps
+        props = context.scene.QueryProps
 
         col = layout.column(align=True)
         rowsub = col.row(align=True)

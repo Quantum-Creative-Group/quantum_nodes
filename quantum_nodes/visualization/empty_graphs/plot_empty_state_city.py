@@ -1,7 +1,9 @@
 import bpy
 import bmesh
-from mathutils import Vector
+
 from numpy import pi
+from mathutils import Vector
+
 from .. utils.graphs_utils import creatMultipleTextCity, creatMesh, historamCityDrawAxes
 
 

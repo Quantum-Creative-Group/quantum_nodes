@@ -1,6 +1,7 @@
+from bpy.types import Node
+
 from qiskit import ClassicalRegister
 from animation_nodes.base_types import AnimationNode
-from bpy.types import Node
 
 
 class InitClassicalRegisterNode(Node, AnimationNode):

@@ -31,7 +31,6 @@ bl_info = {
     "category": "Node",
 }
 
-import bpy
 import addon_utils
 from . import auto_load
 

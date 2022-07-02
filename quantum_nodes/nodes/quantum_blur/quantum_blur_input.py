@@ -1,7 +1,9 @@
 from bpy.types import Node
-from ... lib.quantumblur import height2circuit
-from animation_nodes.base_types import AnimationNode
+
 from math import ceil, sqrt
+from animation_nodes.base_types import AnimationNode
+
+from ... lib.quantumblur import height2circuit
 
 
 class QuantumBlurInputNode(Node, AnimationNode):

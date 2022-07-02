@@ -1,8 +1,9 @@
 import bpy
 import bmesh
-from mathutils import Vector
+
 from math import sqrt
-from numpy import (pi, arccos, arctan)
+from mathutils import Vector
+from numpy import pi, arccos, arctan
 
 
 def get_angles(x, y, z):

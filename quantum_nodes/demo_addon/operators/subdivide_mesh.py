@@ -1,4 +1,3 @@
-import bpy
 from bpy.types import Operator
 from bpy.props import IntProperty
 
@@ -16,11 +15,11 @@ class SubdivideMesh(Operator):
     def poll(cls, context):
         if context.object is None:
             return False
-        obj = bpy.context.active_object
+        obj = context.active_object
         return (context.object.select_get()) and (obj.type == "MESH")
 
     def execute(self, context):
-        obj = bpy.context.active_object
+        obj = context.active_object
         if self.hasSubsurfModifier(obj):
             obj.modifiers["an_q_demo_subdivide_op"].levels = self.number
         else:

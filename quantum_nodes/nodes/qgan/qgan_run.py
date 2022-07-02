@@ -11,22 +11,18 @@
 # that they have been altered from the originals.
 
 import bpy
-from animation_nodes.base_types import AnimationNode
 
 import numpy as np
+from qiskit import BasicAer
+from qiskit.circuit.library import TwoLocal
+from animation_nodes.base_types import AnimationNode
+from qiskit.utils import QuantumInstance, algorithm_globals
+from qiskit_finance.circuit.library import UniformDistribution
+# from qiskit.circuit.library import TwoLocal, UniformDistribution #deprecated
+from qiskit_machine_learning.algorithms import NumPyDiscriminator, QGAN
 
 seed = 71
 np.random.seed = seed
-
-from qiskit import QuantumRegister, QuantumCircuit, BasicAer
-# from qiskit.circuit.library import TwoLocal, UniformDistribution #deprecated
-from qiskit.circuit.library import TwoLocal
-
-from qiskit_finance.circuit.library import UniformDistribution
-
-from qiskit.utils import QuantumInstance, algorithm_globals
-from qiskit_machine_learning.algorithms import NumPyDiscriminator, QGAN
-
 algorithm_globals.random_seed = seed
 
 

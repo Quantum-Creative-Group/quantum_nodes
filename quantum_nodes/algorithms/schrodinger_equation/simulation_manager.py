@@ -1,9 +1,9 @@
 import numpy as np
 import scipy as sp
 
+from . simulation_cache import SimulationCache
 from . simulation_data_manager import SimulationDataManager
 from . simulation_inputs_manager import SimulationInputsManager
-from . simulation_cache import SimulationCache
 
 
 class SimulationManager:

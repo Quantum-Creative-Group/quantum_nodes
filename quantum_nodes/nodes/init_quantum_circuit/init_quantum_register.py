@@ -1,6 +1,7 @@
+from bpy.types import Node
+
 from qiskit import QuantumRegister
 from animation_nodes.base_types import AnimationNode
-from bpy.types import Node
 
 
 class InitQuantumRegisterNode(Node, AnimationNode):

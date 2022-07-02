@@ -1,4 +1,5 @@
 from bpy.types import Menu
+
 from animation_nodes.ui.node_menu import insertNode
 
 

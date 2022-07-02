@@ -1,7 +1,9 @@
 import bpy
 from bpy.types import Node
-from qiskit.visualization.utils import _bloch_multivector_data
+
 from animation_nodes.base_types import AnimationNode
+from qiskit.visualization.utils import _bloch_multivector_data
+
 from ... visualization.utils.graphs_utils import get_angles
 
 

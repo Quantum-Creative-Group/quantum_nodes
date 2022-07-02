@@ -1,7 +1,8 @@
 import bpy
-import os
 import bpy.utils.previews
 from bpy.types import Menu
+
+import os
 from animation_nodes.utils.nodes import getAnimationNodeTrees
 
 

@@ -1,17 +1,12 @@
 import bpy
+from bpy.types import Panel
+from bpy.props import PointerProperty
 
-from .. backend.quantum_nodes_demo_manager import QuantumNodesDEMOManager
 from .. operators.switch_to_an import SwitchToAn
 from .. properties.select_axis import SelectAxis
-from .. operators.add_gate_button import AddGateButton
-from .. operators.add_and_del_gate import AddAndDelGate
-from .. operators.select_qubit import SelectQubit
 from .. operators.apply_quantum_circuit import ApplyQuantumCircuit
-from .. operators.reset_circuits import ResetCircuits
-from .. operators.delete_target import DeleteTarget
+from .. backend.quantum_nodes_demo_manager import QuantumNodesDEMOManager
 
-from bpy.props import PointerProperty
-from bpy.types import Panel
 
 # TODO: find a way to allow undo for the addon
 # def undo_addon_handler(scene):
@@ -19,7 +14,7 @@ from bpy.types import Panel
 #     print(dm)
 
 
-class AN_Q_DemoAddon(bpy.types.Panel):
+class AN_Q_DemoAddon(Panel):
     """Main panel of the demo addon."""
 
     bl_idname = "AN_Q_PT_addon_demo_ui"
@@ -39,7 +34,7 @@ class AN_Q_DemoAddon(bpy.types.Panel):
         # ---------- Initialization ----------
 
         layout = self.layout
-        dm = bpy.types.Scene.demo_manager
+        dm = context.scene.demo_manager
         obj = dm.target
 
         # ---------- Updates selected circuit ----------
@@ -128,7 +123,7 @@ def register():
     # PointerProperty : https://docs.blender.org/api/current/bpy.props.html
     # (it is possible to set a poll function if needed for selected_axis)
     bpy.types.Scene.selected_axis = PointerProperty(type=SelectAxis)
-    bpy.types.Scene.demo_manager = QuantumNodesDEMOManager()
+    bpy.context.scene.demo_manager = QuantumNodesDEMOManager()
     # bpy.app.handlers.undo_pre.append(undo_addon_handler)
 
 

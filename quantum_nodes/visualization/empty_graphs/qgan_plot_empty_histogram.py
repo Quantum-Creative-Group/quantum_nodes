@@ -1,8 +1,9 @@
 import bpy
 import bmesh
-from mathutils import Vector
+
 from numpy import pi
-from qiskit.visualization.utils import _bloch_multivector_data
+from mathutils import Vector
+
 from .. utils.graphs_utils import creatMultipleText, creatMesh
 
 

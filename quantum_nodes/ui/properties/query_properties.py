@@ -1,5 +1,5 @@
 from bpy.types import PropertyGroup
-from bpy.props import (StringProperty, BoolProperty)
+from bpy.props import StringProperty, BoolProperty
 
 
 class QueryProperties(PropertyGroup):

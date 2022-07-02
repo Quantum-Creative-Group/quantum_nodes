@@ -1,5 +1,5 @@
 from bpy.types import Operator
-from bpy.props import StringProperty
+
 from ... visualization.empty_graphs.plot_empty_state_city import plotEmptyStateCity
 
 

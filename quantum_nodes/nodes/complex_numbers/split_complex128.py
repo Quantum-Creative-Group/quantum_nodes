@@ -1,6 +1,5 @@
-from numpy import complex128
-from animation_nodes.base_types import AnimationNode
 from bpy.types import Node
+from animation_nodes.base_types import AnimationNode
 
 
 class SplitComplex128Node(Node, AnimationNode):

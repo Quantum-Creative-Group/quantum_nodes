@@ -1,6 +1,6 @@
-from qiskit import execute
-from animation_nodes.base_types import AnimationNode
 from bpy.types import Node
+
+from animation_nodes.base_types import AnimationNode
 
 
 class QuantumGateCYNode(Node, AnimationNode):

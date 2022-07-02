@@ -1,5 +1,6 @@
 import bpy
 from bpy.types import Node
+
 from animation_nodes.base_types import AnimationNode
 
 from ... algorithms.schrodinger_equation.simulation_manager import SimulationManager

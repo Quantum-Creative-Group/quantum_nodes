@@ -1,6 +1,6 @@
 from bpy.types import NodeSocket
+
 from numpy import complex128, ndarray
-from animation_nodes.data_structures import LongList
 from animation_nodes.base_types import AnimationNodeSocket, PythonListSocket
 
 

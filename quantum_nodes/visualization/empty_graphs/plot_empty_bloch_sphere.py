@@ -1,8 +1,10 @@
 import bpy
 import bmesh
-from math import radians
-from mathutils import (Matrix, Vector)
+
 from numpy import pi
+from math import radians
+from mathutils import Matrix, Vector
+
 from .. utils.graphs_utils import creatFont, creatMesh
 
 
