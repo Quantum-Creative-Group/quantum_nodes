@@ -33,6 +33,8 @@ algorithm_globals.random_seed = seed
 
 
 class QganHistogramNode(Node, AnimationNode):
+    """Generate a new histogram."""
+
     bl_idname = "an_QganHistogramNode"
     bl_label = "qGAN Histogram"
 

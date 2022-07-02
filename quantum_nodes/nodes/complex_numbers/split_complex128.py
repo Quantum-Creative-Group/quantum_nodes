@@ -4,6 +4,8 @@ from bpy.types import Node
 
 
 class SplitComplex128Node(Node, AnimationNode):
+    """Implementation of the numpy double complex data type."""
+
     bl_idname = "an_SplitComplex128"
     bl_label = "Split complex128"
 

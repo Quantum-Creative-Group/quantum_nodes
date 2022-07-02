@@ -3,6 +3,8 @@ from animation_nodes.ui.node_menu import insertNode
 
 
 class AllOutputsSubmenu(Menu):
+    """Menu of all output gates nodes."""
+
     bl_idname = "AN_MT_quantum_all_qu_output"
     bl_label = "All Quantum Output"
 

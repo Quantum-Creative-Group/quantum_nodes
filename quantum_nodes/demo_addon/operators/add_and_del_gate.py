@@ -11,16 +11,18 @@ def drawGatesOperator(self, context):
 
 
 class AddAndDelGate(Operator):
+    """Add / Remove a gate."""
+
     bl_idname = "object.add_and_del_gate"
     bl_label = "Add And Delete Gate Operator"
     bl_description = "Add/Remove Gates"
 
     button: EnumProperty(
         items=[
-            ('add', '+', '+', '', 0), # noqa F821
-            ('del', '-', '-', '', 1), # noqa F821
+            ('add', '+', '+', '', 0),  # noqa F821
+            ('del', '-', '-', '', 1),  # noqa F821
         ],
-        default='add'# noqa F821
+        default='add'  # noqa F821
     )
 
     @classmethod

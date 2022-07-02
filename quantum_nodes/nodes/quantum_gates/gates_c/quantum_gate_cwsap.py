@@ -4,6 +4,8 @@ from bpy.types import Node
 
 
 class QuantumGateCSWAPNode(Node, AnimationNode):
+    """Apply quantum gate CSWAP to the circuit."""
+
     bl_idname = "an_QuantumGateCSWAPNode"
     bl_label = "Quantum Gate CSWAP"
     errorHandlingType = "EXCEPTION"

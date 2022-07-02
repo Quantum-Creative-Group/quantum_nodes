@@ -3,6 +3,8 @@ from bpy.types import Operator
 
 
 class ResetCircuits(Operator):
+    """Reset all circuits."""
+
     bl_idname = "object.reset_quantum_circuits"
     bl_label = "Reset circuits"
     bl_description = "Resets every quantum circuit"

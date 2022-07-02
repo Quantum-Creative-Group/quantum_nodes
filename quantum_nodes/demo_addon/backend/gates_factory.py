@@ -2,6 +2,8 @@ from . gate import Gate
 
 
 class GatesFactory:
+    """Generate new gates."""
+
     def __init__(self, start_left, spacing, demo_id):
         self.start_loc_left = start_left
         self.spacing = spacing

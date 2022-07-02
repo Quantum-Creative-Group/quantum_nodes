@@ -3,6 +3,8 @@ from bpy.types import Operator
 
 
 class DeleteTarget(Operator):
+    """Delete the current target (selected object)."""
+
     bl_idname = "object.delete_target"
     bl_label = "Delete Target"
     bl_description = "Deletes the current target"

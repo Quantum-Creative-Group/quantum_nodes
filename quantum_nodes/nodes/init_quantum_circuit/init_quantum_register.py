@@ -4,6 +4,8 @@ from bpy.types import Node
 
 
 class InitQuantumRegisterNode(Node, AnimationNode):
+    """Create and initialize a quantum register."""
+
     bl_idname = "an_InitQuantumRegisterNode"
     bl_label = "Init Quantum Register"
     errorHandlingType = "EXCEPTION"

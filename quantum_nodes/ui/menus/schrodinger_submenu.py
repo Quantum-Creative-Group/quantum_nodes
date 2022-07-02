@@ -3,6 +3,8 @@ from animation_nodes.ui.node_menu import insertNode
 
 
 class SchrodingerSubmenu(Menu):
+    """Menu of Schrödinger equation simulation nodes."""
+
     bl_idname = "AN_MT_schrodinger_simulation"
     bl_label = "Schrödinger Simulation"
 

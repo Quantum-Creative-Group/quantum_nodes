@@ -20,6 +20,8 @@ from bpy.types import Panel
 
 
 class AN_Q_DemoAddon(bpy.types.Panel):
+    """Main panel of the demo addon."""
+
     bl_idname = "AN_Q_PT_addon_demo_ui"
     bl_label = "QN Demo"
     bl_space_type = "VIEW_3D"

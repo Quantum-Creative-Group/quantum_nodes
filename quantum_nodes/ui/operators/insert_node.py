@@ -11,6 +11,8 @@ def createNodeTree(context, operator, gp_name):
 
 
 class InsertNode(Operator):
+    """Generate the example node tree which uses Quantum Blur."""
+
     bl_idname = "nodes.insert"
     bl_label = "Add Node Tree"
     bl_description = "WIP : QuantumBlur template"

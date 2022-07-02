@@ -4,6 +4,8 @@ from animation_nodes.base_types import AnimationNodeSocket, PythonListSocket
 
 
 class QuantumRegisterSocket(NodeSocket, AnimationNodeSocket):
+    """Quantum register socket."""
+
     bl_idname = "an_QuantumRegisterSocket"
     bl_label = "Quantum Register Socket"
     dataType = "Quantum Register"
@@ -23,6 +25,8 @@ class QuantumRegisterSocket(NodeSocket, AnimationNodeSocket):
 
 
 class QuantumRegisterListSocket(NodeSocket, PythonListSocket):
+    """List of quantum registers socket."""
+
     bl_idname = "an_QuantumRegisterListSocket"
     bl_label = "Quantum Register List Socket"
     dataType = "Quantum Register List"

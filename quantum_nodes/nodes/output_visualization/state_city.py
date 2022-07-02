@@ -6,6 +6,8 @@ from ... visualization.utils.edit_state_city import editStateCity
 
 
 class StateCityNode(Node, AnimationNode):
+    """Generate a new state city plot."""
+
     bl_idname = "an_StateCityNode"
     bl_label = "State City"
 

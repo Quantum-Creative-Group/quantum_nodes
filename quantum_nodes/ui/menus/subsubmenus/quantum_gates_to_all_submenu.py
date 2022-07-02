@@ -3,6 +3,8 @@ from animation_nodes.ui.node_menu import insertNode
 
 
 class QuantumGatesToAllSubmenu(Menu):
+    """Menu of gates 'to all circuit' nodes."""
+
     bl_idname = "AN_MT_quantum_gates_to_all"
     bl_label = "Gates To All"
 

@@ -1,5 +1,6 @@
 wheel
 pillow
+autopep8
 pre_commit
 fake_bpy_module_latest
 qiskit

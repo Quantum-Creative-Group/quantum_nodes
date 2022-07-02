@@ -3,7 +3,7 @@ from bpy.types import Operator
 
 
 class SelectObject(Operator):
-    """Setting a new target will erase the current circuits."""
+    """Select a new target object."""
 
     bl_idname = "object.select_object"
     bl_label = "Set a new target"

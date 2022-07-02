@@ -4,6 +4,8 @@ from bpy.props import IntProperty
 
 
 class SelectQubitButton(Operator):
+    """Button to select a qubit."""
+
     bl_idname = "object.select_qubit_button"
     bl_label = "Select qubit button Operator"
 

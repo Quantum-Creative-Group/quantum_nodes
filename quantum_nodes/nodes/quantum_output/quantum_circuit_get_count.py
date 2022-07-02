@@ -4,6 +4,8 @@ from animation_nodes.base_types import AnimationNode
 
 
 class QuantumCircuitGetCountNode(Node, AnimationNode):
+    """Execute the circuit on the qasm simulator and return counts of the result."""
+
     bl_idname = "an_QuantumCircuitGetCountNode"
     bl_label = "Quantum Circuit Get Count"
     errorHandlingType = "EXCEPTION"

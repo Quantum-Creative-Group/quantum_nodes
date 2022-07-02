@@ -7,6 +7,8 @@ from ... visualization.utils.edit_histogram import editHistogram
 
 
 class HistogramNode(Node, AnimationNode):
+    """Generate a new histogram."""
+
     bl_idname = "an_HistogramNode"
     bl_label = "Histogram"
 

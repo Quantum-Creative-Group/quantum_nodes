@@ -2,6 +2,7 @@ import bpy
 
 
 class GateNodesManager:
+    """Manage gates in a quantum circuit built with nodes."""
 
     @classmethod
     def addGate(cls, new_gate, circuit_tree, q_index):

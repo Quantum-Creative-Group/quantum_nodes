@@ -3,6 +3,8 @@ from animation_nodes.ui.node_menu import insertNode
 
 
 class QganSubmenu(Menu):
+    """Menu of QGAN related nodes."""
+
     bl_idname = "AN_MT_quantum_qu_gan"
     bl_label = "Quantum GAN"
 

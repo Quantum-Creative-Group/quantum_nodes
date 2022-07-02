@@ -23,13 +23,15 @@ class Provider():
 
 
 class QuantumCircuitIBMOutputStateNode(Node, AnimationNode):
+    """Output of the circuit sent to IBM computers."""
+
     bl_idname = "an_QuantumCircuitIBMOutputStateNode"
     bl_label = "Quantum Circuit IBM Output"
     bl_width_default = 210
     errorHandlingType = "EXCEPTION"
     provider = Provider()
 
-    initialized: BoolProperty(name="Initialized", default=False, # noqa F821
+    initialized: BoolProperty(name="Initialized", default=False,  # noqa F821
                               description="If the node has been initialized")
 
     remaining_jobs: IntProperty(name="Remaining jobs",
@@ -44,7 +46,7 @@ class QuantumCircuitIBMOutputStateNode(Node, AnimationNode):
 
     backendMenu: EnumProperty(
         items=item_callback,
-        name="Backend", # noqa F821
+        name="Backend",  # noqa F821
         description="Choose a system",
         update=AnimationNode.refresh,
         get=None,

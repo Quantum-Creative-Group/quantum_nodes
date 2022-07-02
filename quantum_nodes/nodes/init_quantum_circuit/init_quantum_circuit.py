@@ -13,11 +13,13 @@ modeItems = [
 
 
 class InitQuantumCircuitNode(Node, AnimationNode):
+    """Create and initialize a quantum circuit."""
+
     bl_idname = "an_InitQuantumCircuitNode"
     bl_label = "Init Quantum Circuit"
     errorHandlingType = "EXCEPTION"
 
-    mode: EnumProperty(name="Mode", default="QNUMBER", # noqa F821
+    mode: EnumProperty(name="Mode", default="QNUMBER",  # noqa F821
                        items=modeItems, update=AnimationNode.refresh)
 
     def create(self):

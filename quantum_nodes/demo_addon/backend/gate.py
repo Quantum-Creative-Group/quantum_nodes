@@ -1,4 +1,6 @@
 class Gate:
+    """Represent a gate node in a quantum circuit."""
+
     def __init__(self, t, n, i, loc, inp=None, out=None):
         self.type = t
         self.name = n

@@ -4,6 +4,8 @@ from animation_nodes.base_types import AnimationNodeSocket, PythonListSocket
 
 
 class ClassicalRegisterSocket(NodeSocket, AnimationNodeSocket):
+    """Classical register socket."""
+
     bl_idname = "an_ClassicalRegisterSocket"
     bl_label = "Classical Register Socket"
     dataType = "Classical Register"
@@ -23,6 +25,8 @@ class ClassicalRegisterSocket(NodeSocket, AnimationNodeSocket):
 
 
 class ClassicalRegisterListSocket(NodeSocket, PythonListSocket):
+    """List of classical registers socket."""
+
     bl_idname = "an_ClassicalRegisterListSocket"
     bl_label = "ClassicalRegister List Socket"
     dataType = "ClassicalRegister List"

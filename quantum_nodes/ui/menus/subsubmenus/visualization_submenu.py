@@ -3,6 +3,8 @@ from animation_nodes.ui.node_menu import insertNode
 
 
 class VisualizationSubmenu(Menu):
+    """Menu of data visualization nodes."""
+
     bl_idname = "AN_MT_quantum_visualization_tools"
     bl_label = "Visualization tools"
 

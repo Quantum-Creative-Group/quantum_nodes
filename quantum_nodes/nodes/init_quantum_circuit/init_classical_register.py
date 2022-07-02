@@ -4,6 +4,8 @@ from bpy.types import Node
 
 
 class InitClassicalRegisterNode(Node, AnimationNode):
+    """Create and initialize a classical register."""
+
     bl_idname = "an_InitClassicalRegisterNode"
     bl_label = "Init Classical Register"
     errorHandlingType = "EXCEPTION"

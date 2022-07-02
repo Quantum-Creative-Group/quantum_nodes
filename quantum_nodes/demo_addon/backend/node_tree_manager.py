@@ -14,6 +14,8 @@ from . gate_nodes_manager import GateNodesManager
 
 
 class NodeTreeManager:
+    """Manage a node tree generated from this add-on."""
+
     def __init__(self):
         self.demo_id = "an_q_demo_"
         self.main_tree_id = "DEMO_TREE_"

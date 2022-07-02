@@ -3,6 +3,8 @@ from animation_nodes.ui.node_menu import insertNode
 
 
 class ComplexSubmenu(Menu):
+    """Menu of complex numbers nodes."""
+
     bl_idname = "AN_MT_complex"
     bl_label = "Complex Numbers"
 

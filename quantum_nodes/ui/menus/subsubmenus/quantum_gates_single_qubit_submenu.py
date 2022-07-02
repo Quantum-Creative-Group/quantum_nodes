@@ -3,6 +3,8 @@ from animation_nodes.ui.node_menu import insertNode
 
 
 class QuantumGatesSingleQubitSubmenu(Menu):
+    """Menu of single qubits gates nodes."""
+
     bl_idname = "AN_MT_quantum_gates_single_qubit"
     bl_label = "Single Qubit Gates"
 

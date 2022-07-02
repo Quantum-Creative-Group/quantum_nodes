@@ -31,6 +31,8 @@ algorithm_globals.random_seed = seed
 
 
 class RunQGAN(bpy.types.Node, AnimationNode):
+    """Run a QGAN."""
+
     bl_idname = "an_qGAN"
     bl_label = "qGAN Processing"
 

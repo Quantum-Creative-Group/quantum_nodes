@@ -5,6 +5,8 @@ from math import ceil, sqrt
 
 
 class QuantumBlurInputNode(Node, AnimationNode):
+    """Input of the Quantum Blur algorithm."""
+
     bl_idname = "an_QuantumBlurInputNode"
     bl_label = "Quantum Blur Input"
 

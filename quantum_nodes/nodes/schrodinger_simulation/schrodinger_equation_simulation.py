@@ -6,6 +6,8 @@ from ... algorithms.schrodinger_equation.simulation_manager import SimulationMan
 
 
 class SchrodingerEquationSimulationNode(Node, AnimationNode):
+    """Return the state of the 2D Schrödinger Equation simulation at the current frame."""
+
     bl_idname = "an_SchrodingerEquationSimulationNode"
     bl_label = "Schrödinger Equation Simulation"
     errorHandlingType = "EXCEPTION"

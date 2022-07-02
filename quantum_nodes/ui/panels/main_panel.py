@@ -7,6 +7,8 @@ from .. properties.query_properties import QueryProperties
 
 
 class MainPanel(Panel):
+    """Main panel of Quantum Nodes."""
+
     bl_label = "Quantum Nodes"
     bl_idname = "AN_PT_MainPanel"
     bl_space_type = "NODE_EDITOR"

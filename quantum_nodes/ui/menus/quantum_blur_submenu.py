@@ -3,6 +3,8 @@ from animation_nodes.ui.node_menu import insertNode
 
 
 class QuantumBlurSubmenu(Menu):
+    """Menu of Quantum Blur nodes."""
+
     bl_idname = "AN_MT_quantum_qu_blur"
     bl_label = "Quantum Blur"
 

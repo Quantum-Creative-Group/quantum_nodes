@@ -4,11 +4,13 @@ from bpy.props import IntProperty
 
 
 class SubdivideMesh(Operator):
+    """Subdivide the selected mesh."""
+
     bl_idname = "dialog.number"
     bl_label = "Subdivide"
     bl_description = "Subdivides your object"
 
-    number: IntProperty(name="subs", default=2, min=1, max=5) # noqa F821
+    number: IntProperty(name="subs", default=2, min=1, max=5)  # noqa F821
 
     @classmethod
     def poll(cls, context):

@@ -4,6 +4,8 @@ from bpy.types import Node
 
 
 class QuantumGateYNode(Node, AnimationNode):
+    """Apply quantum gate Y to selected qubits."""
+
     bl_idname = "an_QuantumGateYNode"
     bl_label = "Quantum Gate Y"
     bl_width_default = 160

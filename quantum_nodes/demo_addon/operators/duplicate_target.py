@@ -3,6 +3,8 @@ from bpy.types import Operator
 
 
 class DuplicateTarget(Operator):
+    """Duplicate the selected object to get a copy of it."""
+
     bl_idname = "object.duplicate_target"
     bl_label = "Duplicate Target"
     bl_description = "Creates a brand new copy of your work"

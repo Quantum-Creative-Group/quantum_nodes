@@ -1,4 +1,5 @@
 class CircuitManager():
+    """Manage a quantum circuit."""
 
     def __init__(self, nb_qubits, mg):
         self.max_gates = mg

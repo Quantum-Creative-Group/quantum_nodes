@@ -4,6 +4,8 @@ from animation_nodes.ui.node_menu import insertNode
 
 
 class QuantumGatsRSubmenu(Menu):
+    """Menu of R gates nodes."""
+
     bl_idname = "AN_MT_quantum_gates_r"
     bl_label = "R Gates"
 

@@ -4,6 +4,8 @@ from bpy.types import Node
 
 
 class QuantumGateHToAllNode(Node, AnimationNode):
+    """Apply quantum gate H to all the circuit."""
+
     bl_idname = "an_QuantumGateHToAllNode"
     bl_label = "Quantum Gate H to All Circuit"
 

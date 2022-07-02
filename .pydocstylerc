@@ -25,5 +25,3 @@ ignore =
     D103,
     # Missing docstring in public method
     D102,
-    # Missing docstring in public class
-    D101,

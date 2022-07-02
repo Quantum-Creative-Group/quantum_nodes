@@ -5,6 +5,8 @@ from bpy.types import Node
 
 
 class QuantumGateRZNode(Node, AnimationNode):
+    """Apply quantum gate RZ to the circuit."""
+
     bl_idname = "an_QuantumGateRZNode"
     bl_label = "Quantum Gate RZ"
     errorHandlingType = "EXCEPTION"

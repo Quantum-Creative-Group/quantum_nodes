@@ -6,6 +6,8 @@ from ... visualization.utils.graphs_utils import get_angles
 
 
 class BlochSphereNode(Node, AnimationNode):
+    """Generate a new Bloch sphere."""
+
     bl_idname = "an_BlochSphereNode"
     bl_label = "Bloch Sphere"
 

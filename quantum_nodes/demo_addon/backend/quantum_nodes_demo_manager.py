@@ -6,6 +6,8 @@ from . node_tree_manager import NodeTreeManager
 
 
 class QuantumNodesDEMOManager():
+    """Manage of the demo panel."""
+
     # TODO: find a way to save these data
 
     def __init__(self):

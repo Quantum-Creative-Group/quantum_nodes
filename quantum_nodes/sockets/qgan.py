@@ -6,6 +6,8 @@ import numpy as np
 
 
 class QganSocket(NodeSocket, AnimationNodeSocket):
+    """QGAN socket."""
+
     bl_idname = "an_QganSocket"
     bl_label = "qGAN Socket"
     dataType = "QGAN"

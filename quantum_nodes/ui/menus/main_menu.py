@@ -23,6 +23,8 @@ def drawMenu(self, context):
 
 
 class MainMenu(Menu):
+    """Main menu of Quantum Nodes."""
+
     bl_idname = "AN_MT_quantum_nodes_menu"
     bl_label = "Quantum Nodes"
 

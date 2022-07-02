@@ -4,6 +4,8 @@ from bpy.types import Node
 
 
 class QuantumGateTDGToAllNode(Node, AnimationNode):
+    """Apply quantum gate TDG to all the circuit."""
+
     bl_idname = "an_QuantumGateTDGToAllNode"
     bl_label = "Quantum Gate TDG to All Circuit"
 

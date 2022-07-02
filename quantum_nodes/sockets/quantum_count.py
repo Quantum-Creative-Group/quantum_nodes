@@ -4,6 +4,8 @@ from animation_nodes.base_types import AnimationNodeSocket, PythonListSocket
 
 
 class QuantumCountSocket(NodeSocket, AnimationNodeSocket):
+    """Quantum count socket."""
+
     bl_idname = "an_QuantumCountSocket"
     bl_label = "Quantum Count Socket"
     dataType = "Quantum Count"
@@ -23,6 +25,8 @@ class QuantumCountSocket(NodeSocket, AnimationNodeSocket):
 
 
 class QuantumCountListSocket(NodeSocket, PythonListSocket):
+    """List of quantum counts socket."""
+
     bl_idname = "an_QuantumCountListSocket"
     bl_label = "Quantum Count List Socket"
     dataType = "Quantum Count List"

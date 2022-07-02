@@ -3,6 +3,8 @@ from animation_nodes.ui.node_menu import insertNode
 
 
 class CircuitsSubmenu(Menu):
+    """Menu of circuit related nodes."""
+
     bl_idname = "AN_MT_quantum_init_qu_circuit"
     bl_label = "Init Quantum Circuit"
 

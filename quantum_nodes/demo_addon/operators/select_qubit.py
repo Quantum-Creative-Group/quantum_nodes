@@ -10,6 +10,8 @@ def drawSelectQubitOperator(self, context):
 
 
 class SelectQubit(Operator):
+    """Select a qubit on which to add a new gate."""
+
     bl_idname = "dialog.select_qubit"
     bl_label = "Select a qubit"
     bl_description = "Select the qubit you want to modify"

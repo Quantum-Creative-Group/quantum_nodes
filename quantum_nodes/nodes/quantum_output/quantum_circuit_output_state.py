@@ -5,6 +5,8 @@ import numpy as np
 
 
 class QuantumCircuitOutputStateNode(Node, AnimationNode):
+    """Get statevector of the given circuit."""
+
     bl_idname = "an_QuantumCircuitOutputStateNode"
     bl_label = "Quantum Circuit Output State"
 

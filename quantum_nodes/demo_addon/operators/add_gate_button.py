@@ -4,6 +4,8 @@ from bpy.props import StringProperty
 
 
 class AddGateButton(Operator):
+    """Add a gate."""
+
     bl_idname = "object.add_gate_button"
     bl_label = "Add Gate Button Operator"
 
