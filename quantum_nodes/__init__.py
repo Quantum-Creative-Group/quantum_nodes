@@ -27,7 +27,7 @@ bl_info = {
     "description": "Animation Nodes extension which implements quantum computing tools.",
     "warning": "This version is still in development.",
     "doc_url": "https://quantum-creative-group.gitlab.io/quantum_nodes_manual/",
-    "tracker_url": "",
+    "tracker_url": "https://gitlab.com/quantum-creative-group/quantum_nodes/-/issues",
     "category": "Node",
 }
 

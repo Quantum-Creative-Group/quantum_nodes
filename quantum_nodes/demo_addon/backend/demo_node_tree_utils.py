@@ -125,7 +125,7 @@ def generateNegative(context, demo_id):
     compare = node_tree.nodes[node_name]
     compare.location = (225, 0)
     compare.compareType = 'A>B'
-    compare.inputs[1].value = 0.00
+    compare.inputs[1].value = 0
 
     # Switch node
     node_tree.nodes.new(type="an_SwitchNode")
@@ -311,7 +311,7 @@ def generateMainNodeTree(context, main_tree_id, obj):
         inv_circuits[circ_name].location = (-200, 500 + offset * (-350))
         # Set subprogram
         subprog_inp = bpy.data.node_groups["an_q_demo_" + "circuit_" + circ_name].nodes["an_q_\
-            demo_" + "grp_in" + "_c" + circ_name]
+demo_" + "grp_in" + "_c" + circ_name]
         inv_circuits[circ_name].subprogramIdentifier = subprog_inp.identifier
 
     inv_mesh_data_circuits = {"x": None, "y": None, "z": None}

@@ -123,7 +123,7 @@ def register():
     # PointerProperty : https://docs.blender.org/api/current/bpy.props.html
     # (it is possible to set a poll function if needed for selected_axis)
     bpy.types.Scene.selected_axis = PointerProperty(type=SelectAxis)
-    bpy.context.scene.demo_manager = QuantumNodesDEMOManager()
+    bpy.types.Scene.demo_manager = QuantumNodesDEMOManager()
     # bpy.app.handlers.undo_pre.append(undo_addon_handler)
 
 
