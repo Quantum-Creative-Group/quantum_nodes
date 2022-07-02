@@ -11,9 +11,7 @@ from animation_nodes.events import executionCodeChanged
 
 
 class Provider():
-    """
-    Used as attribute in the node IBM Output
-    """
+    """Used as attribute in the node IBM Output."""
 
     def __init__(self):
         self.provider = None

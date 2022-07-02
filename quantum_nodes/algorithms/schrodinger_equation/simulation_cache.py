@@ -8,10 +8,8 @@ from . simulation_inputs_manager import SimulationInputsManager
 
 
 class SimulationCache:
-    """
-    This class is used to store all the computed frames and to determine the ones that need to be computed\
-    when the user is asking the data for a specific frame.
-    """
+    """Store all the computed frames and to determine the ones that need to be computed\
+    when the user is asking the data for a specific frame."""
 
     def __init__(self, max_frame: int):
         """
@@ -26,7 +24,8 @@ class SimulationCache:
 
     def processFrame(self, d: SimulationDataManager, inp: SimulationInputsManager):
         """
-        Compute the next frame.\
+        Compute the next frame.
+
         This method is only an implementation of the plot_animation() function taken from the source code.
 
         Args:

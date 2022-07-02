@@ -3,10 +3,10 @@ import numpy as np
 
 class SimulationInputsManager:
     """
-    This class manages all the user inputs.
+    Manage all the user inputs.
 
     All these methods are taken from field.py.
-    Source code : https://github.com/Azercoco/Python-2D-Simulation-of-Schrodinger-Equation/blob/master/field.py
+    Source code: https://github.com/Azercoco/Python-2D-Simulation-of-Schrodinger-Equation/blob/master/field.py
     """
 
     def __init__(self, dim: int, size: int, center: np.ndarray, n_o_w: np.ndarray,

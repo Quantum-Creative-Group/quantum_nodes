@@ -20,24 +20,17 @@ class QuantumNodesDEMOManager():
         self.target = None
 
     def getSelectedCircuit(self):
-        """
-        Returns the circuit corresponding the selected axis in the UI.
-        It returns a CircuitManager, not a list.
-        """
+        """Return the circuit corresponding the selected axis in the UI. It returns a CircuitManager, not a list."""
         return self.circuits[self.selected_circuit]
 
     def initializeDemoNodeTree(self):
-        """
-        Builds the demo node tree and links the target to the tree.
-        """
+        """Build the demo node tree and links the target to the tree."""
         if not self.nt_initialized:
             self.ntm.generateNodeTree(self.target)
             self.nt_initialized = True
 
     def setNewTarget(self, new_target):
-        """
-        Sets the new target and resets everything (circuits in the UI + node trees).
-        """
+        """Set the new target and resets everything (circuits in the UI + node trees)."""
         # Resets circuits
         self.resetCircuits()
         # Sets new target
@@ -51,25 +44,18 @@ class QuantumNodesDEMOManager():
             self.nt_initialized = False
 
     def setNewCircuits(self, obj):
-        """
-        Sets the new circuit.
-        The size depends on the number of vertices of the target.
-        """
+        """Set the new circuit. The size depends on the number of vertices of the target."""
         self.nb_qubits = int(ceil(log(len(obj.data.vertices)) / log(2)))
         for circuit_name in list(self.circuits.keys()):
             self.circuits[circuit_name] = CircuitManager(self.nb_qubits, self.max_gates)
         self.ntm.last_circuits = copy.deepcopy(self.circuits)
 
     def updateNodeTree(self):
-        """
-        Updates the node tree so that it corresponds to the represented circuits in the UI.
-        """
+        """Update the node tree so that it corresponds to the represented circuits in the UI."""
         self.ntm.update(self.circuits)
 
     def resetCircuits(self):
-        """
-        Resets the circuits and the corresponding node trees.
-        """
+        """Reset circuits and the corresponding node trees."""
         for circuit_name in list(self.circuits.keys()):
             circuit = self.circuits[circuit_name]
             if circuit is not None:

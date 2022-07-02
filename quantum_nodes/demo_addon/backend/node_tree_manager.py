@@ -22,9 +22,7 @@ class NodeTreeManager:
         self.gf = GatesFactory(-200, 250, self.demo_id)
 
     def generateNodeTree(self, obj):
-        """
-        Generates the demo node trees.
-        """
+        """Generate the demo node trees."""
         generateMultiplyAll(bpy.ops.node, self.demo_id)
         generateMaxValue(bpy.ops.node, self.demo_id)
         generateNegative(bpy.ops.node, self.demo_id)
@@ -35,9 +33,7 @@ class NodeTreeManager:
         self.main_node_tree = bpy.data.node_groups[self.main_tree_id + "an_q"]
 
     def updateTarget(self, obj):
-        """
-        Updates the target of the quantum circuits.
-        """
+        """Update the target of the quantum circuits."""
         updated = False
         for node_group in bpy.data.node_groups:
             if self.main_tree_id + "an_q" in node_group.name:
@@ -48,7 +44,7 @@ class NodeTreeManager:
 
     def update(self, new_circuits):
         """
-        Updates the circuit node trees.
+        Update the circuit node trees.
 
         If "ADD" :
             Searches for a potential existing gate to insert the new one.
@@ -103,9 +99,7 @@ class NodeTreeManager:
         self.last_circuits = copy.deepcopy(new_circuits)
 
     def resetAllGates(self):
-        """
-        Resets all the gate nodes in the node trees (for each circuit).
-        """
+        """Reset all the gate nodes in the node trees (for each circuit)."""
         for circ_name in ["x", "y", "z"]:
             for node_group in bpy.data.node_groups:
                 if self.demo_id + "circuit_" + circ_name == node_group.name:
@@ -114,9 +108,7 @@ class NodeTreeManager:
                             GateNodesManager.removeGate(gate_node, node_group)
 
     def removeAllTrees(self):
-        """
-        Removes all the demo node trees.
-        """
+        """Remove all the demo node trees."""
         for node_group in bpy.data.node_groups:
             if self.main_tree_id + "an_q" in node_group.name:
                 # Removes the copy
@@ -130,9 +122,9 @@ class NodeTreeManager:
     @classmethod
     def getModification(cls, last_circuits, new_circuits):
         """
-        Returns the information about the modification done on the circuits.
+        Return the information about the modification done on the circuits.
 
-        Returns : action, gate_type, (circuit name, qubit index, gate index).
+        Returns: action, gate_type, (circuit name, qubit index, gate index).
         """
         for circ_name in ["x", "y", "z"]:
             q_index = 0

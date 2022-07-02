@@ -8,11 +8,11 @@ from . simulation_cache import SimulationCache
 
 class SimulationManager:
     """
-    This is an implementation of the 2D simulation of Schrödinger equation.
+    Implementation of the 2D simulation of Schrödinger equation.
 
     |   This code is just a new architecture to meet our needs (adapted for blender animation nodes).
     |   All the simulation computation is from Azercoco.
-    |   You can find his code here : https://github.com/Azercoco/Python-2D-Simulation-of-Schrodinger-Equation
+    |   You can find his code here: https://github.com/Azercoco/Python-2D-Simulation-of-Schrodinger-Equation
     """
 
     def __init__(self, dim: int, size: int, center: np.ndarray, n_o_w: np.ndarray,
@@ -110,13 +110,13 @@ class SimulationManager:
 
     def getFrameData(self, frame: int):
         """
-        Return the data from the requested frame.
+        Return data from the requested frame.
 
         Args:
             frame (int): the requested frame
 
         Raises:
-            e: whenever something goes wrong during the computation of the frame.s
+            e: whenever something goes wrong during the computation of the frames
 
         Returns:
             np.ndarray: state of the simulation at the given frame (list of numpy.complex128)

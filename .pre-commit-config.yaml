@@ -15,10 +15,11 @@ repos:
       "*.py *.rst *.md",
     ]
 
-# - repo: https://github.com/pycqa/pydocstyle
-#   rev: 6.1.1
-#   hooks:
-#   - id: pydocstyle
-#     args: [
-#       "-e"
-#     ]
+- repo: https://github.com/pycqa/pydocstyle
+  rev: 6.1.1
+  hooks:
+  - id: pydocstyle
+    exclude: quantum_nodes/lib/quantumblur.py
+    args: [
+      "-e"
+    ]
