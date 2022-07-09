@@ -6,13 +6,14 @@ from qiskit import IBMQ
 from .. properties.query_properties import QueryProperties
 
 
-class IBMConnexion(Operator):
+class IBMConnection(Operator):
     """IBM credentials management panel."""
 
-    bl_idname = "object.ibm_connexion"
-    bl_label = "IBMConnexion"
+    bl_idname = "object.ibm_connection"
+    bl_label = "IBMConnection"
     bl_description = "Enter your token to log yourself"
-    query: PointerProperty(type=QueryProperties, name="Token")  # noqa F821
+
+    query: PointerProperty(type=QueryProperties)
 
     def execute(self, context):
         if context.scene.QueryProps.connected is False:

@@ -18,11 +18,12 @@ class AddAndDelGate(Operator):
     bl_description = "Add/Remove Gates"
 
     button: EnumProperty(
+        name="Edit", # noqa F821
+        description="Add or remove quantum gates",
         items=[
             ('add', '+', '+', '', 0),  # noqa F821
             ('del', '-', '-', '', 1),  # noqa F821
         ],
-        default='add'  # noqa F821
     )
 
     @classmethod

@@ -9,7 +9,15 @@ class SubdivideMesh(Operator):
     bl_label = "Subdivide"
     bl_description = "Subdivides your object"
 
-    number: IntProperty(name="subs", default=2, min=1, max=5)  # noqa F821
+    number: IntProperty(
+        name="subs",  # noqa F821
+        description="Number of subdivisions to apply",
+        default=2,
+        soft_min=1,
+        min=1,
+        soft_max=5,
+        max=5,
+    )
 
     @classmethod
     def poll(cls, context):

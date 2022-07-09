@@ -30,13 +30,21 @@ class QuantumCircuitIBMOutputStateNode(Node, AnimationNode):
     errorHandlingType = "EXCEPTION"
     provider = Provider()
 
-    initialized: BoolProperty(name="Initialized", default=False,  # noqa F821
-                              description="If the node has been initialized")
+    initialized: BoolProperty(
+        name="Initialized",  # noqa F821
+        description="If the node has been initialized",
+        default=False,
+    )
 
-    remaining_jobs: IntProperty(name="Remaining jobs",
-                                description="The number of remaining jobs for a backend")
+    remaining_jobs: IntProperty(
+        name="Remaining jobs",
+        description="The number of remaining jobs for a backend",
+        default=0,
+        soft_min=0,
+        min=0,
+    )
 
-    def item_callback(self, context):
+    def item_callback(self, _context):
         if self.initialized:
             return [(sys.name(), sys.name(), "number of qubits: " + str(sys.configuration().n_qubits))
                     for sys in self._provider.get_provider().backends()]
@@ -44,12 +52,11 @@ class QuantumCircuitIBMOutputStateNode(Node, AnimationNode):
             return[]
 
     backendMenu: EnumProperty(
-        items=item_callback,
         name="Backend",  # noqa F821
         description="Choose a system",
+        items=item_callback,
         update=AnimationNode.refresh,
-        get=None,
-        set=None)
+    )
 
     def setup(self):                            # disables auto-load at creation
         node_tree = bpy.context.space_data.edit_tree

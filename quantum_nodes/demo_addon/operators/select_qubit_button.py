@@ -9,7 +9,13 @@ class SelectQubitButton(Operator):
     bl_idname = "object.select_qubit_button"
     bl_label = "Select qubit button Operator"
 
-    index: IntProperty(default=0)
+    index: IntProperty(
+        name="Index", # noqa F821
+        description="Index of the qubit",
+        default=0,
+        soft_min=0,
+        min=0
+    )
 
     def execute(self, context):
         bpy.types.Object.select_index = self.index

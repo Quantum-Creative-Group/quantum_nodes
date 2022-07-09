@@ -4,14 +4,6 @@ from bpy.props import EnumProperty
 from qiskit import QuantumCircuit
 from animation_nodes.base_types import AnimationNode
 
-modeItems = [
-    ("QNUMBER", "Number of Qubits", "Create quantum circuit from number of quibts", "", 0),
-    ("QCNUMBER", "Number of Qubits and Bits", "Create quantum circuit from number of quibts and number of bits", "", 1),
-    ("QREGISTER", "Quantum Register", "Create quantum circuit from quantum register", "", 2),
-    ("QCREGISTER", "Quantum and Classical Registers", "Create quantum circuit from quantum\
-        and classical register", "", 3)
-]
-
 
 class InitQuantumCircuitNode(Node, AnimationNode):
     """Create and initialize a quantum circuit."""
@@ -20,8 +12,20 @@ class InitQuantumCircuitNode(Node, AnimationNode):
     bl_label = "Init Quantum Circuit"
     errorHandlingType = "EXCEPTION"
 
-    mode: EnumProperty(name="Mode", default="QNUMBER",  # noqa F821
-                       items=modeItems, update=AnimationNode.refresh)
+    mode: EnumProperty(
+        name="Mode",  # noqa F821
+        description="Initialization mode",
+        default="QNUMBER",  # noqa F821
+        items=[
+            ("QNUMBER", "Number of Qubits", "Create quantum circuit from number of quibts", "", 0),  # noqa F821
+            ("QCNUMBER", "Number of Qubits and Bits", "Create quantum circuit from number of quibts\
+            and number of bits", "", 1),  # noqa F821
+            ("QREGISTER", "Quantum Register", "Create quantum circuit from quantum register", "", 2),  # noqa F821
+            ("QCREGISTER", "Quantum and Classical Registers", "Create quantum circuit from quantum and\
+            classical register", "", 3)  # noqa F821
+        ],
+        update=AnimationNode.refresh,
+    )
 
     def create(self):
         if self.mode == "QNUMBER":

@@ -70,7 +70,7 @@ class MainPanel(Panel):
         rowsub.label(text="Enter your IBM Account token", icon="PREFERENCES")
         rowsub = col.row(align=True)
         rowsub.prop(props, "query", text="")
-        rowsub.operator("object.ibm_connexion", text="Query")
+        rowsub.operator("object.ibm_connection", text="Query")
 
         if props.connected:
             box = layout.box()
