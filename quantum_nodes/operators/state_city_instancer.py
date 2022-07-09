@@ -1,6 +1,6 @@
 from bpy.types import Operator
 
-from ... visualization.empty_graphs.plot_empty_state_city import plotEmptyStateCity
+from .. visualization.empty_graphs.plot_empty_state_city import plotEmptyStateCity
 
 
 class StateCityInstancer(Operator):

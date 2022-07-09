@@ -1,6 +1,6 @@
 from bpy.types import Operator
 
-from ... visualization.empty_graphs.plot_empty_histogram import plotEmptyHistogram
+from .. visualization.empty_graphs.plot_empty_histogram import plotEmptyHistogram
 
 
 class HistogramInstancer(Operator):

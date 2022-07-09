@@ -1,6 +1,6 @@
 from bpy.types import Operator
 
-from ... visualization.empty_graphs.plot_empty_bloch_sphere import plotEmptyBlochSphere
+from .. visualization.empty_graphs.plot_empty_bloch_sphere import plotEmptyBlochSphere
 
 
 class BlochSphereInstancer(Operator):

@@ -1,6 +1,6 @@
 from bpy.types import Operator
 
-from ... visualization.empty_graphs.qgan_plot_empty_histogram import plotEmptyQganHistogram
+from .. visualization.empty_graphs.qgan_plot_empty_histogram import plotEmptyQganHistogram
 
 
 class HistogramInstancer(Operator):

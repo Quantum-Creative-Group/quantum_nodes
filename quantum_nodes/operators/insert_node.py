@@ -1,7 +1,7 @@
 import bpy
 from bpy.types import Operator
 
-from ... node_templates.template1 import templateInsertion
+from .. node_templates.template1 import templateInsertion
 
 
 def createNodeTree(context, operator, gp_name):

@@ -4,7 +4,7 @@ from bpy.types import Panel
 
 import os
 
-from .. properties.query_properties import QueryProperties
+from ... properties.query_properties import QueryProperties
 
 
 class MainPanel(Panel):
@@ -49,16 +49,16 @@ class MainPanel(Panel):
         row = box.row()
         row.label(text="Nodes", icon='NODE')
         row = box.row()
-        row.menu("AN_MT_quantum_gates", text="Gates", icon="SHADING_BBOX")
-        row.menu("AN_MT_complex", text="Complex Nb", icon_value=complex_icon.icon_id)
+        row.menu("QN_MT_quantum_gates", text="Gates", icon="SHADING_BBOX")
+        row.menu("QN_MT_complex_numbers", text="Complex Nb", icon_value=complex_icon.icon_id)
         row = box.row()
-        row.menu("AN_MT_quantum_qu_blur", text="Qu Blur", icon="ORIENTATION_VIEW")
-        row.menu("AN_MT_quantum_init_qu_circuit", text="Init Circuit", icon="KEYINGSET")
+        row.menu("QN_MT_quantum_blur", text="Qu Blur", icon="ORIENTATION_VIEW")
+        row.menu("QN_MT_init_quantum_circuits", text="Init Circuit", icon="KEYINGSET")
         row = box.row()
-        row.menu("AN_MT_quantum_all_qu_output", text="Qu Output", icon="ORIENTATION_NORMAL")
-        row.menu("AN_MT_schrodinger_simulation", text="Schrödinger", icon="OPTIONS")
+        row.menu("QN_MT_outputs", text="Qu Output", icon="ORIENTATION_NORMAL")
+        row.menu("QN_MT_schrodinger", text="Schrödinger", icon="OPTIONS")
         # row = box.row()
-        # row.menu("AN_MT_quantum_all_qu_output", text = "qGAN", icon = "OPTIONS")
+        # row.menu("QN_MT_outputs", text = "qGAN", icon = "OPTIONS")
         row = layout.row()
         row = layout.row()
 
