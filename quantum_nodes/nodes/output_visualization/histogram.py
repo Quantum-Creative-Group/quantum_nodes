@@ -1,12 +1,15 @@
 import bpy
 from bpy.types import Node
-from qiskit.pulse.builder import measure_all
-from qiskit import (Aer, execute)
+
+from qiskit import Aer, execute
 from animation_nodes.base_types import AnimationNode
+
 from ... visualization.utils.edit_histogram import editHistogram
 
 
 class HistogramNode(Node, AnimationNode):
+    """Generate a new histogram."""
+
     bl_idname = "an_HistogramNode"
     bl_label = "Histogram"
 
@@ -18,7 +21,7 @@ class HistogramNode(Node, AnimationNode):
     def execute(self, shots, quantum_circuit, histogram):
         if histogram is None:
             return
-        if (histogram.name != "QuantumHistogramFaces"):
+        if histogram.name != "QuantumHistogramFaces":
             return
         try:
             quantum_circuit.measure_all()

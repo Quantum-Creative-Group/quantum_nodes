@@ -1,13 +1,14 @@
 import bpy
 import bmesh
-from mathutils import Vector
+
 from numpy import pi
-from qiskit.visualization.utils import _bloch_multivector_data
+from mathutils import Vector
+
 from .graphs_utils import creatMesh, creatMultipleText
 
 
 def editQganHistogram(parent, _targetCounts, _simulationCounts):
-   # data
+    # data
     targetKeys = list(_targetCounts)
     simulationKeys = list(_simulationCounts)
     nb_cubes = len(targetKeys)  # Nb of rectangles (for each quantity, i.e. target and simulation) in the histogram
@@ -27,7 +28,7 @@ def editQganHistogram(parent, _targetCounts, _simulationCounts):
     for i in range(nb_cubes):
         scale = _targetCounts[targetKeys[i]]
         resize = 0.5 / (scale * size)
-        if (i != 0):
+        if i != 0:
             bmesh.ops.translate(bm, verts=bm.verts, vec=Vector((0.0, 1.0, 0.0)))
             bmesh.ops.scale(bm, verts=bm.verts, vec=Vector((1 / resize, 1 / resize, 1)))
             bmesh.ops.translate(bm, verts=bm.verts, vec=Vector((0.0, 0.0, (-scale * size) / 2)))
@@ -46,7 +47,7 @@ def editQganHistogram(parent, _targetCounts, _simulationCounts):
     for i in range(nb_cubes):
         scale = _simulationCounts[simulationKeys[i]]
         resize = 0.5 / (scale * size)
-        if (i != 0):
+        if i != 0:
             bmesh.ops.translate(bm, verts=bm.verts, vec=Vector((0.0, 1.0, 0.0)))
             bmesh.ops.scale(bm, verts=bm.verts, vec=Vector((1 / resize, 1 / resize, 1)))
             bmesh.ops.translate(bm, verts=bm.verts, vec=Vector((0.0, 0.0, (-scale * size) / 2)))
@@ -88,7 +89,7 @@ def editQganHistogram(parent, _targetCounts, _simulationCounts):
 
     bm = bmesh.new()
     for i in range(10):
-        if (i != 0):
+        if i != 0:
             bmesh.ops.scale(bm, verts=bm.verts, vec=Vector((1 / T, 1 / nb_cubes, 1 / T)))
         bmesh.ops.create_cube(bm, size=1)
         bmesh.ops.scale(bm, verts=bm.verts, vec=Vector((T, nb_cubes, T)))
@@ -101,7 +102,7 @@ def editQganHistogram(parent, _targetCounts, _simulationCounts):
 
     bm = bmesh.new()
     for i in range(10):
-        if (i != 0):
+        if i != 0:
             bmesh.ops.scale(bm, verts=bm.verts, vec=Vector((1 / Y, 1 / T, 1 / T)))
         bmesh.ops.create_cube(bm, size=1)
         bmesh.ops.scale(bm, verts=bm.verts, vec=Vector((Y, T, T)))

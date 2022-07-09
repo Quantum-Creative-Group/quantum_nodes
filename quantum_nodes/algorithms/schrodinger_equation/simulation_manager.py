@@ -1,18 +1,18 @@
 import numpy as np
 import scipy as sp
 
+from . simulation_cache import SimulationCache
 from . simulation_data_manager import SimulationDataManager
 from . simulation_inputs_manager import SimulationInputsManager
-from . simulation_cache import SimulationCache
 
 
 class SimulationManager:
     """
-    This is an implementation of the 2D simulation of Schrödinger equation.
+    Implementation of the 2D simulation of Schrödinger equation.
 
     |   This code is just a new architecture to meet our needs (adapted for blender animation nodes).
     |   All the simulation computation is from Azercoco.
-    |   You can find his code here : https://github.com/Azercoco/Python-2D-Simulation-of-Schrodinger-Equation
+    |   You can find his code here: https://github.com/Azercoco/Python-2D-Simulation-of-Schrodinger-Equation
     """
 
     def __init__(self, dim: int, size: int, center: np.ndarray, n_o_w: np.ndarray,
@@ -101,8 +101,8 @@ class SimulationManager:
                 if inp.isObstacle(d.x_axis[j], d.y_axis[i]):
                     adj = d.getAdjPos(i, j, inp.dimension)
                     for xx, yy in adj:
-                        if (xx >= 0) and (yy >= 0) and (xx < inp.dimension) and (
-                                yy < inp.dimension) and (not inp.isObstacle(d.x_axis[yy], d.y_axis[xx])):
+                        if xx >= 0 and yy >= 0 and xx < inp.dimension and yy < inp.dimension and not inp.isObstacle(
+                                d.x_axis[yy], d.y_axis[xx]):
                             d.potential_boundary.append((i, j))
 
         self.cache.data[0] = d.wave_function     # stores the first frame in the cache
@@ -110,23 +110,23 @@ class SimulationManager:
 
     def getFrameData(self, frame: int):
         """
-        Return the data from the requested frame.
+        Return data from the requested frame.
 
         Args:
             frame (int): the requested frame
 
         Raises:
-            e: whenever something goes wrong during the computation of the frame.s
+            e: whenever something goes wrong during the computation of the frames
 
         Returns:
             np.ndarray: state of the simulation at the given frame (list of numpy.complex128)
         """
 
         try:
-            # returns a list of complex numbers rather than
-            # a matrix of complex numbers (list of list)
+            # returns a list of complex numbers rather than
+            # a matrix of complex numbers (list of list)
             # the shape of the output is :
-            # not formatted : wave_function[i] = [z_i1, z_i2, ... z_in] (shape n * n)
+            # not formatted : wave_function[i] = [z_i1, z_i2, ... z_in] (shape n * n)
             # formated_output = [z_11, ..., z_1n, z_21, ..., z_2n, ..., z_n1, ..., z_nn] (shape 1 * n)
             frame = self.cache.getFrame(frame, self.data, self.inputs)
             formated_output = frame[0]

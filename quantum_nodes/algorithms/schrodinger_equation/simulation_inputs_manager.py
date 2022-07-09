@@ -3,10 +3,10 @@ import numpy as np
 
 class SimulationInputsManager:
     """
-    This class manages all the user inputs.
+    Manage all the user inputs.
 
     All these methods are taken from field.py.
-    Source code : https://github.com/Azercoco/Python-2D-Simulation-of-Schrodinger-Equation/blob/master/field.py
+    Source code: https://github.com/Azercoco/Python-2D-Simulation-of-Schrodinger-Equation/blob/master/field.py
     """
 
     def __init__(self, dim: int, size: int, center: np.ndarray, n_o_w: np.ndarray,
@@ -74,9 +74,9 @@ class SimulationInputsManager:
 
     @classmethod
     def verifyPotentialExpr(cls, expr):
-        x, y = 0, 0
+        # x, y = 0, 0
         try:
-            test = eval(expr)
+            eval(expr)
             return True
         except BaseException:
             # unable to evaluate the given potential formula
@@ -99,9 +99,9 @@ class SimulationInputsManager:
 
     @classmethod
     def verifyObstacleExpr(cls, expr):
-        x, y = 0, 0
+        # x, y = 0, 0
         try:
-            test = eval(expr)
+            eval(expr)
             return True
         except BaseException:
             # unable to evaluate the given obstacle formula

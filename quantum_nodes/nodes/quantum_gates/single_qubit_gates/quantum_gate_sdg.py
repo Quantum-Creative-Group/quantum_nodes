@@ -1,9 +1,11 @@
-from qiskit import execute
-from animation_nodes.base_types import AnimationNode
 from bpy.types import Node
+
+from animation_nodes.base_types import AnimationNode
 
 
 class QuantumGateSDGNode(Node, AnimationNode):
+    """Apply quantum gate SDG to selected qubits."""
+
     bl_idname = "an_QuantumGateSDGNode"
     bl_label = "Quantum Gate SDG"
     bl_width_default = 160

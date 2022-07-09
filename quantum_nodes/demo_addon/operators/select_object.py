@@ -3,7 +3,7 @@ from bpy.types import Operator
 
 
 class SelectObject(Operator):
-    """Setting a new target will erase the current circuits"""
+    """Select a new target object."""
 
     bl_idname = "object.select_object"
     bl_label = "Set a new target"
@@ -24,25 +24,25 @@ class SelectObject(Operator):
         # (blender crashes when the created object is selected as the new target)
 
     def execute(self, context):
-        dm = bpy.types.Scene.demo_manager
-        if dm.target != bpy.context.active_object:
+        dm = context.scene.demo_manager
+        if dm.target != context.active_object:
             if dm.target is not None:
                 self.report({'INFO'}, "QN Demo: target successfully updated")
             dm.initializeDemoNodeTree()
-            dm.setNewTarget(bpy.context.active_object)
+            dm.setNewTarget(context.active_object)
             for node_group in bpy.data.node_groups:
                 if dm.ntm.main_tree_id + "an_q" in node_group.name:
                     bpy.ops.an.execute_tree(name=dm.ntm.main_tree_id + "an_q")
 
-        # forces to redraw the view (magic trick)
-        # TODO: find a better solution for it
-        bpy.context.scene.frame_set(bpy.data.scenes['Scene'].frame_current)
+        # forces to redraw the view (magic trick)
+        # TODO: find a better solution for it
+        context.scene.frame_set(bpy.data.scenes['Scene'].frame_current)
         return {'FINISHED'}
 
     def invoke(self, context, event):
-        dm = bpy.types.Scene.demo_manager
-        if (context.active_object != dm.target) and (dm.target is not None) and (context.active_object.type == 'MESH'):
+        dm = context.scene.demo_manager
+        if context.active_object != dm.target and dm.target is not None and context.active_object.type == 'MESH':
             return context.window_manager.invoke_confirm(self, event)
         self.execute(context)   # not sure about that lol
-        # TODO: there must be a better solution
+        # TODO: there must be a better solution
         return {'FINISHED'}

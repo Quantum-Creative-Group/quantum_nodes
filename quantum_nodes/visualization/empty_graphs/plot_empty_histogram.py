@@ -1,8 +1,9 @@
 import bpy
 import bmesh
-from mathutils import Vector
+
 from numpy import pi
-from qiskit.visualization.utils import _bloch_multivector_data
+from mathutils import Vector
+
 from .. utils.graphs_utils import creatMultipleText, creatMesh
 
 
@@ -50,7 +51,7 @@ def plotEmptyHistogram():
 
     bm = bmesh.new()
     for i in range(10):
-        if (i != 0):
+        if i != 0:
             bmesh.ops.scale(bm, verts=bm.verts, vec=Vector((1 / T, 1 / nb_cubes, 1 / T)))
         bmesh.ops.create_cube(bm, size=1)
         bmesh.ops.scale(bm, verts=bm.verts, vec=Vector((T, nb_cubes, T)))
@@ -63,7 +64,7 @@ def plotEmptyHistogram():
 
     bm = bmesh.new()
     for i in range(10):
-        if (i != 0):
+        if i != 0:
             bmesh.ops.scale(bm, verts=bm.verts, vec=Vector((1 / Y, 1 / T, 1 / T)))
         bmesh.ops.create_cube(bm, size=1)
         bmesh.ops.scale(bm, verts=bm.verts, vec=Vector((Y, T, T)))

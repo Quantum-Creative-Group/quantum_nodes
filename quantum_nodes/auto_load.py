@@ -1,6 +1,4 @@
-import os
 import bpy
-import sys
 import typing
 import inspect
 import pkgutil
@@ -46,9 +44,10 @@ def unregister():
         if hasattr(module, "unregister"):
             module.unregister()
 
+# ------------------ #
+# - Import modules - #
+# ------------------ #
 
-# Import modules
-#################################################
 
 def get_all_submodules(directory):
     return list(iter_submodules(directory, directory.name))
@@ -69,8 +68,9 @@ def iter_submodule_names(path, root=""):
             yield root + module_name
 
 
-# Find classes to register
-#################################################
+# ---------------------------- #
+# - Find classes to register - #
+# ---------------------------- #
 
 def get_ordered_classes_to_register(modules):
     return toposort(get_register_deps_dict(modules))
@@ -133,8 +133,9 @@ def get_register_base_types():
     ])
 
 
-# Find order to register to solve dependencies
-#################################################
+# ------------------------------------------------ #
+# - Find order to register to solve dependencies - #
+# ------------------------------------------------ #
 
 def toposort(deps_dict):
     sorted_list = []

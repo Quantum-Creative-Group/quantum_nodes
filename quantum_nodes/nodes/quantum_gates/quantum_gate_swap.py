@@ -1,9 +1,11 @@
-from qiskit import execute
-from animation_nodes.base_types import AnimationNode
 from bpy.types import Node
+
+from animation_nodes.base_types import AnimationNode
 
 
 class QuantumGateSWAPNode(Node, AnimationNode):
+    """Apply quantum gate SWAP to selected qubits."""
+
     bl_idname = "an_QuantumGateSWAPNode"
     bl_label = "Quantum Gate SWAP"
     errorHandlingType = "EXCEPTION"

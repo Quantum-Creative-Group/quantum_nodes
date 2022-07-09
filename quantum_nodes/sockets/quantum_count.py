@@ -1,9 +1,12 @@
 from bpy.types import NodeSocket
+
 from qiskit.result.counts import Counts
 from animation_nodes.base_types import AnimationNodeSocket, PythonListSocket
 
 
 class QuantumCountSocket(NodeSocket, AnimationNodeSocket):
+    """Quantum count socket."""
+
     bl_idname = "an_QuantumCountSocket"
     bl_label = "Quantum Count Socket"
     dataType = "Quantum Count"
@@ -17,12 +20,14 @@ class QuantumCountSocket(NodeSocket, AnimationNodeSocket):
 
     @classmethod
     def correctValue(cls, value):
-        if isinstance(value, qiskit.result.counts.Counts):
+        if isinstance(value, Counts):
             return value, 0
         return cls.getDefaultValue(), 2
 
 
 class QuantumCountListSocket(NodeSocket, PythonListSocket):
+    """List of quantum counts socket."""
+
     bl_idname = "an_QuantumCountListSocket"
     bl_label = "Quantum Count List Socket"
     dataType = "Quantum Count List"
@@ -34,6 +39,6 @@ class QuantumCountListSocket(NodeSocket, PythonListSocket):
     @classmethod
     def correctValue(cls, value):
         if isinstance(value, list):
-            if all(isinstance(element, qiskit.result.counts.Counts) for element in value):
+            if all(isinstance(element, Counts) for element in value):
                 return value, 0
         return cls.getDefaultValue(), 2

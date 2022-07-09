@@ -1,11 +1,14 @@
 import bpy
 from bpy.types import Node
+
 from animation_nodes.base_types import AnimationNode
 
 from ... algorithms.schrodinger_equation.simulation_manager import SimulationManager
 
 
 class SchrodingerEquationSimulationNode(Node, AnimationNode):
+    """Return the state of the 2D Schrödinger Equation simulation at the current frame."""
+
     bl_idname = "an_SchrodingerEquationSimulationNode"
     bl_label = "Schrödinger Equation Simulation"
     errorHandlingType = "EXCEPTION"

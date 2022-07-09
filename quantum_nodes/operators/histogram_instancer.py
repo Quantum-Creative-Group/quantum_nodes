@@ -1,9 +1,11 @@
 from bpy.types import Operator
-from bpy.props import StringProperty
-from ... visualization.empty_graphs.plot_empty_histogram import plotEmptyHistogram
+
+from .. visualization.empty_graphs.plot_empty_histogram import plotEmptyHistogram
 
 
 class HistogramInstancer(Operator):
+    """Generate a new histogram for data visualization."""
+
     bl_idname = "object.histogram_instancer"
     bl_label = "Create a new histogram"
     bl_description = "Plot an empty histogram.\nUse the corresponding node to start visualizing"

@@ -1,7 +1,9 @@
 import bpy
 import bmesh
-from mathutils import Vector
+
 from numpy import pi
+from mathutils import Vector
+
 from .. utils.graphs_utils import creatMultipleTextCity, creatMesh, historamCityDrawAxes
 
 
@@ -25,7 +27,7 @@ def plotEmptyStateCity():
     Y = nb_cubes + 0.5
     Z = nb_cubes + 0.5
     T = 0.01
-    H = 0.25
+    # H = 0.25
 
     bpy.ops.object.select_all(action='DESELECT')  # deselect all object
 

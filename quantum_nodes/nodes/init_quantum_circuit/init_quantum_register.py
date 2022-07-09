@@ -1,9 +1,12 @@
+from bpy.types import Node
+
 from qiskit import QuantumRegister
 from animation_nodes.base_types import AnimationNode
-from bpy.types import Node
 
 
 class InitQuantumRegisterNode(Node, AnimationNode):
+    """Create and initialize a quantum register."""
+
     bl_idname = "an_InitQuantumRegisterNode"
     bl_label = "Init Quantum Register"
     errorHandlingType = "EXCEPTION"

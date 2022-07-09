@@ -2,12 +2,11 @@ import bpy
 
 
 class GateNodesManager:
+    """Manage gates in a quantum circuit built with nodes."""
 
     @classmethod
     def addGate(cls, new_gate, circuit_tree, q_index):
-        """
-        Adds a new gate in the given circuit node tree.
-        """
+        """Add a new gate in the given circuit node tree."""
         circuit_tree.nodes.new(type="an_QuantumGate" + new_gate.type + "Node")
         gate_node = circuit_tree.nodes["Quantum Gate " + new_gate.type]
         gate_node.name = new_gate.name
@@ -18,29 +17,24 @@ class GateNodesManager:
 
     @classmethod
     def removeGate(cls, gate_node, circuit_tree):
-        """
-        Removes the given gate node.\
-        Creates a new link between the input and output of the deleted node.
-        """
+        """Remove the given gate node. Create a new link between the input and output of the deleted node."""
         # Saves the input and output
         inp = gate_node.originNodes[0].outputs[0]
         out = gate_node.outputs[0].directTargets[0]
         cls.removeLink(gate_node.originNodes[0].outputs[0], gate_node.inputs[len(gate_node.inputs) - 1], circuit_tree)
         cls.removeLink(gate_node.outputs[0], gate_node.outputs[0].directTargets[0], circuit_tree)
-        # Links the saved output and input
+        # Links the saved output and input
         circuit_tree.links.new(inp, out)
         gate_node.remove()
-        # Forces to update the tree (magic trick)
+        # Forces to update the tree (magic trick)
         # TODO: find a better solution
         bpy.context.scene.frame_set(bpy.data.scenes['Scene'].frame_current)
 
     @classmethod
     def getExistingGate(cls, circuit_tree, gate_type, q_index, qubit_data):
-        """
-        Returns the gate if it already exists.
-        """
-        # Finds the first node that contains a gate of the corresponding circuit
-        # so let's start looking from this index for a potential existing gate
+        """Return the gate if it already exists."""
+        # Finds the first node that contains a gate of the corresponding circuit
+        # so let's start looking from this index for a potential existing gate
         min_gate_index = 0
         if len(qubit_data) > 0:
             # Only when there are already gates in the node tree
@@ -55,12 +49,12 @@ class GateNodesManager:
         # be placed from the previous min_gate_index
         last_gate_type = ""  #  last_gate_type is used to counter redundancy (ex: q1 --|H|--|H|--)
         for g in qubit_data:
-            if (g != gate_type) and (last_gate_type != g):
+            if g != gate_type and last_gate_type != g:
                 min_gate_index += 1
             last_gate_type = g
 
-        # Searches for the potential existing gate with these conditions:
-        # gate_index >= min_gate_index and "gate_T" in node.name
+        # Searches for the potential existing gate with these conditions:
+        # gate_index >= min_gate_index and "gate_T" in node.name
         gate_index = 0
         for node in circuit_tree.nodes:
             if "gate_" in node.name:
@@ -73,19 +67,15 @@ class GateNodesManager:
 
     @classmethod
     def removeLink(cls, inp, out, node_tree):
-        """
-        Removes the link between the given input and output.
-        """
+        """Remove the link between the given input and output."""
         for link in node_tree.links:
-            if (link.from_socket == inp) and (link.to_socket == out):
+            if link.from_socket == inp and link.to_socket == out:
                 node_tree.links.remove(link)
 
     @classmethod
     def qubitIndexInGate(cls, q_index, node):
-        """
-        Returns True if the q_index is a value of one of the sockets.
-        """
+        """Return `True` if the q_index is a value of one of the sockets."""
         for socket in node.inputs:
-            if (type(socket).__name__ == "IntegerSocket") and (q_index == socket.value):
+            if type(socket).__name__ == "IntegerSocket" and q_index == socket.value:
                 return True
         return False

@@ -1,18 +1,19 @@
 import bpy
 import bmesh
-from mathutils import Vector
+
 from math import sqrt
-from numpy import (pi, arccos, arctan)
+from mathutils import Vector
+from numpy import pi, arccos, arctan
 
 
 def get_angles(x, y, z):
     r = sqrt(x**2 + y**2 + z**2)
-    if (r < 10**-15):
+    if r < 1e-15:
         theta = 0
         phi = 0
     else:
         theta = arccos(z / r)
-        if (x == 0):
+        if x == 0:
             if(y > 0):
                 phi = pi / 2
             else:
@@ -74,7 +75,7 @@ def creatMultipleTextCity(my_name, position_x, position_y,
     text_objects_front = {}
     for i in range(21):
         curves_front["font_curve_{0}".format(i)] = bpy.data.curves.new(type="FONT", name=my_name + str(i))
-        if (i < 10):
+        if i < 10:
             curves_front["font_curve_{0}".format(i)].body = str(-(10 - i) / 10)
         else:
             curves_front["font_curve_{0}".format(i)].body = str((i - 10) / 10)
@@ -93,7 +94,7 @@ def historamCityDrawAxes(mesh, my_range, scale_x, scale_y, scale_z,
                          translate2_x, translate2_y, translate2_z):
     bm = bmesh.new()
     for i in range(my_range):
-        if (i != 0):
+        if i != 0:
             bmesh.ops.scale(bm, verts=bm.verts, vec=Vector((1 / scale_x, 1 / scale_y, 1 / scale_z)))
         bmesh.ops.create_cube(bm, size=1)
         bmesh.ops.scale(bm, verts=bm.verts, vec=Vector((scale_x, scale_y, scale_z)))

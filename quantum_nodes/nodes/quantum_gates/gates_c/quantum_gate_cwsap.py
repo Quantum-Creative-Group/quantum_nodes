@@ -1,9 +1,11 @@
-from qiskit import execute
-from animation_nodes.base_types import AnimationNode
 from bpy.types import Node
+
+from animation_nodes.base_types import AnimationNode
 
 
 class QuantumGateCSWAPNode(Node, AnimationNode):
+    """Apply quantum gate CSWAP to the circuit."""
+
     bl_idname = "an_QuantumGateCSWAPNode"
     bl_label = "Quantum Gate CSWAP"
     errorHandlingType = "EXCEPTION"

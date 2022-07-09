@@ -1,10 +1,12 @@
 from bpy.types import Node
-from qiskit import (Aer, execute)
+
+from qiskit import Aer, execute
 from animation_nodes.base_types import AnimationNode
-import numpy as np
 
 
 class QuantumCircuitOutputStateNode(Node, AnimationNode):
+    """Get statevector of the given circuit."""
+
     bl_idname = "an_QuantumCircuitOutputStateNode"
     bl_label = "Quantum Circuit Output State"
 

@@ -1,9 +1,11 @@
-from qiskit import execute
-from animation_nodes.base_types import AnimationNode
 from bpy.types import Node
+
+from animation_nodes.base_types import AnimationNode
 
 
 class QuantumGateSToAllNode(Node, AnimationNode):
+    """Apply quantum gate S to all the circuit."""
+
     bl_idname = "an_QuantumGateSToAllNode"
     bl_label = "Quantum Gate S to All Circuit"
 

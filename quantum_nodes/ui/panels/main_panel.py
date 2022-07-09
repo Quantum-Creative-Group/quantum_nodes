@@ -1,12 +1,15 @@
 import bpy
-import os
 import bpy.utils.previews
 from bpy.types import Panel
-from animation_nodes.ui.node_menu import insertNode
-from .. properties.query_properties import QueryProperties
+
+import os
+
+from ... properties.query_properties import QueryProperties
 
 
 class MainPanel(Panel):
+    """Main panel of Quantum Nodes."""
+
     bl_label = "Quantum Nodes"
     bl_idname = "AN_PT_MainPanel"
     bl_space_type = "NODE_EDITOR"
@@ -46,28 +49,28 @@ class MainPanel(Panel):
         row = box.row()
         row.label(text="Nodes", icon='NODE')
         row = box.row()
-        row.menu("AN_MT_quantum_gates", text="Gates", icon="SHADING_BBOX")
-        row.menu("AN_MT_complex", text="Complex Nb", icon_value=complex_icon.icon_id)
+        row.menu("QN_MT_quantum_gates", text="Gates", icon="SHADING_BBOX")
+        row.menu("QN_MT_complex_numbers", text="Complex Nb", icon_value=complex_icon.icon_id)
         row = box.row()
-        row.menu("AN_MT_quantum_qu_blur", text="Qu Blur", icon="ORIENTATION_VIEW")
-        row.menu("AN_MT_quantum_init_qu_circuit", text="Init Circuit", icon="KEYINGSET")
+        row.menu("QN_MT_quantum_blur", text="Qu Blur", icon="ORIENTATION_VIEW")
+        row.menu("QN_MT_init_quantum_circuits", text="Init Circuit", icon="KEYINGSET")
         row = box.row()
-        row.menu("AN_MT_quantum_all_qu_output", text="Qu Output", icon="ORIENTATION_NORMAL")
-        row.menu("AN_MT_schrodinger_simulation", text="Schrödinger", icon="OPTIONS")
+        row.menu("QN_MT_outputs", text="Qu Output", icon="ORIENTATION_NORMAL")
+        row.menu("QN_MT_schrodinger", text="Schrödinger", icon="OPTIONS")
         # row = box.row()
-        # row.menu("AN_MT_quantum_all_qu_output", text = "qGAN", icon = "OPTIONS")
+        # row.menu("QN_MT_outputs", text = "qGAN", icon = "OPTIONS")
         row = layout.row()
         row = layout.row()
 
         # IMBQ API connection
-        props = bpy.context.scene.QueryProps
+        props = context.scene.QueryProps
 
         col = layout.column(align=True)
         rowsub = col.row(align=True)
         rowsub.label(text="Enter your IBM Account token", icon="PREFERENCES")
         rowsub = col.row(align=True)
         rowsub.prop(props, "query", text="")
-        rowsub.operator("object.ibm_connexion", text="Query")
+        rowsub.operator("object.ibm_connection", text="Query")
 
         if props.connected:
             box = layout.box()

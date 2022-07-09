@@ -2,6 +2,8 @@ from . gate import Gate
 
 
 class GatesFactory:
+    """Generate new gates."""
+
     def __init__(self, start_left, spacing, demo_id):
         self.start_loc_left = start_left
         self.spacing = spacing
@@ -9,7 +11,8 @@ class GatesFactory:
 
     def createGate(self, gate_name, gate_type, gate_index, circuit_tree):
         """
-        Stores all the useful information to add a new node to the circuit node tree.\
+        Store all the useful information to add a new node to the circuit node tree.
+
         Also moves the output nodes to the right if more space is needed.
         """
         existing_gates = self.getExistingGates(circuit_tree)
@@ -41,9 +44,7 @@ class GatesFactory:
         return Gate(gate_type.upper(), "index_" + str(gate_index) + "_" + gate_name, gate_index, location, inp, out)
 
     def getExistingGates(self, circuit_tree):
-        """
-        Returns all the existing gate nodes in the circuit.
-        """
+        """Return all the existing gate nodes in the circuit."""
         existing_gates = []
         for node in circuit_tree.nodes:
             if "gate" in node.name:

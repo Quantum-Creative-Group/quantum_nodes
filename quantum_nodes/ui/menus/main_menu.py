@@ -1,7 +1,9 @@
 import bpy
-import os
 import bpy.utils.previews
 from bpy.types import Menu
+
+import os
+
 from animation_nodes.utils.nodes import getAnimationNodeTrees
 
 
@@ -19,26 +21,28 @@ def drawMenu(self, context):
         return
 
     layout.separator()
-    layout.menu("AN_MT_quantum_nodes_menu", text="Quantum Nodes", icon_value=qn_icon.icon_id)
+    layout.menu("QN_MT_quantum_nodes", text="Quantum Nodes", icon_value=qn_icon.icon_id)
 
 
-class MainMenu(Menu):
-    bl_idname = "AN_MT_quantum_nodes_menu"
+class QN_MT_MainMenu(Menu):
+    """Main menu of Quantum Nodes."""
+
+    bl_idname = "QN_MT_quantum_nodes"
     bl_label = "Quantum Nodes"
 
     def draw(self, context):
         pcoll = preview_collections["main"]
         complex_icon = pcoll["complex_icon"]
         layout = self.layout
-        layout.menu("AN_MT_quantum_init_qu_circuit", text="Init Quantum Circuit", icon="KEYINGSET")
-        layout.menu("AN_MT_quantum_gates", text="Quantum Gates", icon="SHADING_BBOX")
-        layout.menu("AN_MT_quantum_all_qu_output", text="Quantum Output", icon="ORIENTATION_NORMAL")
-        layout.menu("AN_MT_quantum_qu_blur", text="Quantum Blur", icon="ORIENTATION_VIEW")
-        # layout.menu("AN_MT_quantum_qu_gan", text = "Quantum GAN", icon = "OPTIONS") # Disable for the moment: WIP
+        layout.menu("QN_MT_init_quantum_circuits", text="Init Quantum Circuit", icon="KEYINGSET")
+        layout.menu("QN_MT_quantum_gates", text="Quantum Gates", icon="SHADING_BBOX")
+        layout.menu("QN_MT_outputs", text="Quantum Output", icon="ORIENTATION_NORMAL")
+        layout.menu("QN_MT_quantum_blur", text="Quantum Blur", icon="ORIENTATION_VIEW")
+        # layout.menu("QN_MT_qgan", text = "Quantum GAN", icon = "OPTIONS") # Disable for the moment: WIP
         layout.separator()
-        layout.menu("AN_MT_complex", text="Complex Numbers", icon_value=complex_icon.icon_id)
+        layout.menu("QN_MT_complex_numbers", text="Complex Numbers", icon_value=complex_icon.icon_id)
         layout.separator()
-        layout.menu("AN_MT_schrodinger_simulation", text="Schrödinger Simulation", icon="OPTIONS")
+        layout.menu("QN_MT_schrodinger", text="Schrödinger Simulation", icon="OPTIONS")
 
 
 preview_collections = {}

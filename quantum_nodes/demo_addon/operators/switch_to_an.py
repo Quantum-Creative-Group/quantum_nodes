@@ -3,6 +3,8 @@ from bpy.types import Operator
 
 
 class SwitchToAn(Operator):
+    """Switch to Animation Nodes."""
+
     bl_idname = "screen.switch_to_an"
     bl_label = "Redirects the user to the animation nodes editor"
     bl_description = "Behind the scenes"

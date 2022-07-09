@@ -1,11 +1,13 @@
 from bpy.types import NodeSocket
-#from qiskit import QuantumCircuit
+
+import numpy as np
 from qiskit_machine_learning.algorithms import QGAN
 from animation_nodes.base_types import AnimationNodeSocket
-import numpy as np
 
 
 class QganSocket(NodeSocket, AnimationNodeSocket):
+    """QGAN socket."""
+
     bl_idname = "an_QganSocket"
     bl_label = "qGAN Socket"
     dataType = "QGAN"

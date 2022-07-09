@@ -1,21 +1,24 @@
 import bpy
 from bpy.types import Operator
-from ... node_templates.template1 import templateInsertion
+
+from .. node_templates.template1 import templateInsertion
 
 
 def createNodeTree(context, operator, gp_name):
     # uses the activated node tree
-    bpy.context.scene.use_nodes = True
+    context.scene.use_nodes = True
     QuantumTree = bpy.ops.node.new_node_tree(name=gp_name)
     return QuantumTree
 
 
 class InsertNode(Operator):
+    """Generate the example node tree which uses Quantum Blur."""
+
     bl_idname = "nodes.insert"
     bl_label = "Add Node Tree"
     bl_description = "WIP : QuantumBlur template"
 
-    # WIP operator
+    # WIP operator
     @classmethod
     def poll(cls, context):
         return False

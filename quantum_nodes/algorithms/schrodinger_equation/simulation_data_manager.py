@@ -3,10 +3,10 @@ import numpy as np
 
 class SimulationDataManager:
     """
-    This class manages all the data needed to compute the next frame.
+    Manage all the data needed to compute the next frame.
 
     |   All these methods are taken from util.py.
-    |   Source code : https://github.com/Azercoco/Python-2D-Simulation-of-Schrodinger-Equation/blob/master/util.py
+    |   Source code: https://github.com/Azercoco/Python-2D-Simulation-of-Schrodinger-Equation/blob/master/util.py
     """
 
     def __init__(self):

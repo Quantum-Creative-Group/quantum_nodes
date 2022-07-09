@@ -10,51 +10,48 @@
 # copyright notice, and modified files need to carry a notice indicating
 # that they have been altered from the originals.
 
-import numpy as np
 import bpy
 from bpy.types import Node
-from qiskit.pulse.builder import measure_all
-from qiskit import (Aer, execute)
+
+import numpy as np
+from qiskit.utils import algorithm_globals
 from animation_nodes.base_types import AnimationNode
+# from qiskit_finance.circuit.library import UniformDistribution # does not seem to be needed
+# from qiskit_machine_learning.algorithms import NumPyDiscriminator, QGAN # needed?
+
 from ... visualization.utils.qgan_edit_histogram import editQganHistogram
 
 seed = 71
 np.random.seed = seed
-
-from qiskit import QuantumRegister, QuantumCircuit, BasicAer
-from qiskit.circuit.library import TwoLocal
-# from qiskit_finance.circuit.library import UniformDistribution # does not seem to be needed
-from qiskit.utils import QuantumInstance, algorithm_globals
-# from qiskit_machine_learning.algorithms import NumPyDiscriminator, QGAN # needed?
-
 algorithm_globals.random_seed = seed
 
+
 # Goal: Plot the CDF of the resulting distribution against the target distribution, i.e. log-normal
-
-
 class QganHistogramNode(Node, AnimationNode):
+    """Generate a new histogram."""
+
     bl_idname = "an_QganHistogramNode"
     bl_label = "qGAN Histogram"
 
     def create(self):
-        #self.newInput("Integer", "Shots", "shots", value = 1024, minValue = 1)
-        #self.newInput("Quantum Circuit", "Quantum Circuit", "quantum_circuit")
+        # self.newInput("Integer", "Shots", "shots", value = 1024, minValue = 1)
+        # self.newInput("Quantum Circuit", "Quantum Circuit", "quantum_circuit")
         # self.newInput("Array", "Bounds", "bounds") # TO UNCOMMENT ASAP
         self.newInput("Object", "qGAN Histogram", "qganHistogram")
-        #self.newInput("Object", "Histogram", "histogram")
+        # self.newInput("Object", "Histogram", "histogram")
         self.newInput("QGAN", "qGAN", "qgan")
 
     def execute(self, qganHistogram, qgan):
         # if qganHistogram is None or qgan is None:
         if qganHistogram is None:
             return
-        if (qganHistogram.name != "QuantumQganHistogramFaces"):
+        if qganHistogram.name != "QuantumQganHistogramFaces":
             return
         try:
             # quantum_circuit.measure_all()
-            #backend = Aer.get_backend('qasm_simulator')
-            #job = execute(quantum_circuit, backend, shots = shots)
-            #counts = job.result().get_counts(quantum_circuit)
+            # backend = Aer.get_backend('qasm_simulator')
+            # job = execute(quantum_circuit, backend, shots = shots)
+            # counts = job.result().get_counts(quantum_circuit)
 
             bounds = np.array([0.0, 3.0])  # TODO: DUPLICATE DECLARATION FROM qgan_run.py, THIS MUST BE REMOVED ASAP
 
