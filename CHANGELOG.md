@@ -1,5 +1,13 @@
 # Change log
 
+## [0.1.2] - WIP
+
+WIP
+
+<details><summary>Details</summary>
+
+</details>
+
 ## [0.1.1] - 2022-06-28
 
 Fixes one bug (partially). This release is created to test the new CI/CD pipeline
