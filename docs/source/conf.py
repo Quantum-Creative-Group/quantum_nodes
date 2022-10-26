@@ -11,10 +11,9 @@
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 import os
 import sys
-# Animation Nodes source code should be under quantum_nodes/quantum_nodes/
-sys.path.insert(0, os.path.abspath('../quantum_nodes/quantum_nodes/'))
 # Quantum Nodes source code
-sys.path.insert(0, os.path.abspath('../quantum_nodes/'))
+# Plus, Animation Nodes source code should be next to quantum_nodes/ folder
+sys.path.insert(0, os.path.abspath('../../'))
 # Filters for spelling
 sys.path.insert(0, os.path.abspath('.'))
 
@@ -25,7 +24,7 @@ copyright = '2021-2022, Quantum-Creative-Group'
 author = 'Quantum-Creative-Group'
 
 # The full version, including alpha/beta/rc tags
-release = '0.1.1'
+release = '0.1.2'
 
 # -- General configuration ---------------------------------------------------
 

@@ -1,11 +1,16 @@
 # VSCode
 .vscode
 
-# Doc build folders
+# Sphinx documentation
 docs/build/
+docs/source/developers_manual/code/
 
 # Animation Nodes
 animation_nodes/
 
 # Cache
 **/__pycache__
+
+# Blender
+*.pyc
+*.blend[1-9]

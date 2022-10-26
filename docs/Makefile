@@ -6,6 +6,7 @@ SPHINXOPTS    ?=
 SPHINXBUILD   ?= sphinx-build
 SOURCEDIR     = source
 BUILDDIR      = build
+MODULE        = quantum_nodes
 
 # Put it first so that "make" without argument is like "make help".
 help:
@@ -17,6 +18,6 @@ help:
 # "make mode" option.  $(O) is meant as a shortcut for $(SPHINXOPTS).
 # Rename ../quantum_nodes/__init__.py to ../quantum_nodes/___init__.py so it won't throw an exception when animation_nodes is not found
 %: Makefile
-	mv ../quantum_nodes/__init__.py ../quantum_nodes/___init__.py
+	mv ../$(MODULE)/__init__.py ../$(MODULE)/___init__.py
 	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
-	mv ../quantum_nodes/___init__.py ../quantum_nodes/__init__.py
+	mv ../$(MODULE)/___init__.py ../$(MODULE)/__init__.py

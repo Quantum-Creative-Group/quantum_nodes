@@ -6,3 +6,4 @@ Developers manual
 
     addon/index
     manual/index
+    code/quantum_nodes
