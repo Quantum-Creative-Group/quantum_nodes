@@ -1,5 +1,11 @@
 # VSCode
 .vscode
 
+# Doc build folders
+docs/build/
+
+# Animation Nodes
+animation_nodes/
+
 # Cache
 **/__pycache__

@@ -12,9 +12,23 @@ Find more information on [www.quantum-nodes.com](https://www.quantum-nodes.com)
 
 <a href="https://quantum-nodes.com">
   <p align="center">
-      <img src="https://quantum-nodes.com/wp-content/uploads/2022/07/representative_image_quantum_nodes-scaled.jpg" alt="Representative image quantum nodes" width="700px">
+      <img src="https://quantum-nodes.com/wp-content/uploads/2022/07/representative_image_quantum_nodes-scaled.jpg" alt="Representative image quantum nodes" width="500px">
   <p>
 </a>
+
+<br/><br/>
+
+## Documentation
+
+Here you will find both the user and developer manual for Quantum Nodes: [documentation](https://quantum-nodes.com).
+
+### Contributing
+Find more detailed instructions on the [dedicated page](https://quantum-creative-group.gitlab.io/quantum_nodes_manual/developers_manual/manual/index.html).
+
+* Fork the repository
+* Add useful information
+* Open a pull request to integrate your modifications into the official repository
+* Wait for your modifications to be reviewed and accepted
 
 ## Citing Quantum Nodes
 

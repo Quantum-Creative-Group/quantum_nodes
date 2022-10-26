@@ -1,0 +1,57 @@
+include:
+  - local: .gitlab/rules.yml
+
+
+stages:
+  - build
+  - deploy
+
+
+build:
+  stage: build
+
+  image: python:latest
+
+  extends:
+    - .run_auto_and_deploy
+
+  before_script:
+    - apt-get update
+    - apt-get install -y zip unzip libenchant-2-2
+
+    # Download Quantum Nodes source code
+    - curl https://gitlab.com/quantum-creative-group/quantum_nodes/-/archive/master/quantum_nodes-master.zip --output quantum_nodes.zip
+    - unzip quantum_nodes.zip
+    - mv quantum_nodes-master/ ../quantum_nodes
+
+    # Install requirements
+    - pip install -r requirements.txt
+
+  script:
+    - make html spelling
+    - mv build/html build_docs
+
+  artifacts:
+    paths:
+      - build_docs
+    expire_in: 1 hour
+
+
+pages:
+  stage: deploy
+
+  image: python:latest
+
+  needs:
+    - job: build
+      artifacts: true
+
+  extends:
+    - .run_deploy_only
+
+  script:
+    - mv build_docs public
+
+  artifacts:
+    paths:
+      - public
