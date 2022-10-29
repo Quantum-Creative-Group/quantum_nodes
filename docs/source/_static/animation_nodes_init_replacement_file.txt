@@ -51,19 +51,19 @@ if addonName != "animation_nodes":
     raise Exception(message)
 
 
-counter = 0
-for name in os.listdir(addonsDirectory):
-    name = name.lower()
-    if "animation" in name and "nodes" in name and not "test" in name:
-        counter += 1
+# counter = 0
+# for name in os.listdir(addonsDirectory):
+#     name = name.lower()
+#     if "animation" in name and "nodes" in name and not "test" in name:
+#         counter += 1
 
-if counter > 1:
-    message = ("\n\n"
-               "There are multiple versions of the Animation Nodes addon installed.\n"
-               "Please uninstall/remove all older versions of the addon.\n\n"
-               "Animation Nodes has been found more than once in this folder:\n"
-               "  {}").format(addonsDirectory)
-    raise Exception(message)
+# if counter > 1:
+#     message = ("\n\n"
+#                "There are multiple versions of the Animation Nodes addon installed.\n"
+#                "Please uninstall/remove all older versions of the addon.\n\n"
+#                "Animation Nodes has been found more than once in this folder:\n"
+#                "  {}").format(addonsDirectory)
+#     raise Exception(message)
 
 
 try:
