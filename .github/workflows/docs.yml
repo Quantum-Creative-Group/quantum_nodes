@@ -57,17 +57,18 @@ jobs:
         if: env.USE_CACHE == 'true'
         with:
           path: animation_nodes/
-          key: animation-nodes-source-code-${{ hashFiles('animations_nodes/__init__.py') }}
+          key: animation-nodes-source-code-${{ hashFiles('__init__.py') }}
 
       - name: Download and prepare animation nodes source code
         if: steps.cache.animation-nodes.cache-hit != 'true'
         run: |
+          ls
           wget https://github.com/JacquesLucke/animation_nodes/releases/download/master-cd-build/animation_nodes_v2_3_linux_py310.zip
           unzip animation_nodes_v2_3_linux_py310.zip
+          echo "Replace files in animation_nodes to fix doc build issues"
           rm animation_nodes/__init__.py
           cp docs/source/_static/animation_nodes_init_replacement_file.txt animation_nodes/__init__.py
           find animation_nodes/ -type f -name "*.py" -exec sed -i 's/return bpy.app.version/return bpy.app.version if bpy.app.version is not None else (2, 93, 0)/g' {} +
-
 
       - name: Check spelling
         run: |
