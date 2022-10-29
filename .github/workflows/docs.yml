@@ -72,6 +72,13 @@ jobs:
           ls
           ls quantum_nodes/
 
+      - name: Generate code documentation
+        run: |
+          cd docs
+          sphinx-apidoc -t "_templates/" --implicit-namespaces -d 1 -f -M -T -o source/developers_manual/code/ ../quantum_nodes "/*animation_nodes/*" "/*lib/*"
+          sed -i "1s/.*/Code documentation/" source/developers_manual/code/quantum_nodes.rst
+          sed -i "2s/.*/==================/" source/developers_manual/code/quantum_nodes.rst
+
       - name: Check spelling
         run: |
           cd docs
@@ -80,9 +87,6 @@ jobs:
       - name: Build documentation
         run: |
           cd docs
-          sphinx-apidoc -t "_templates/" --implicit-namespaces -d 1 -f -M -T -o source/developers_manual/code/ ../quantum_nodes "/*animation_nodes/*" "/*lib/*"
-          sed -i "1s/.*/Code documentation/" source/developers_manual/code/quantum_nodes.rst
-          sed -i "2s/.*/==================/" source/developers_manual/code/quantum_nodes.rst
           make html MODULE=quantum_nodes
 
       - name: Zip build
