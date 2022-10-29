@@ -62,7 +62,7 @@ jobs:
       - name: Download and prepare animation nodes source code
         if: steps.cache.animation-nodes.cache-hit != 'true'
         run: |
-          curl https://github.com/JacquesLucke/animation_nodes/releases/download/master-cd-build/animation_nodes_v2_3_linux_py310.zip -o animation_nodes_v2_3_linux_py310.zip
+          wget https://github.com/JacquesLucke/animation_nodes/releases/download/master-cd-build/animation_nodes_v2_3_linux_py310.zip
           unzip animation_nodes_v2_3_linux_py310.zip
           rm animation_nodes/__init__.py
           cp docs/source/_static/animation_nodes_init_replacement_file.txt animation_nodes/__init__.py
