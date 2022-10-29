@@ -16,7 +16,7 @@ class InitQuantumRegisterNode(Node, AnimationNode):
         self.newOutput("Quantum Register", "Quantum Register", "quantum_register")
 
     def execute(self, number_of_qubits):
-        if(number_of_qubits < 1):
+        if number_of_qubits < 1:
             self.raiseErrorMessage("The number of qubits must be superior to 1")
             return
         else:

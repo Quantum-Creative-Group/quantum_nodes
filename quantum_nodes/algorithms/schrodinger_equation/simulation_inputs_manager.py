@@ -70,7 +70,7 @@ class SimulationInputsManager:
         current_inputs = [self.dimension, self.size, self.center, self.number_of_waves,
                           self.spreading, self.potential_expr, self.obstacle_expr, self.frame_rate,
                           self.duration, self.delta_t]
-        return not(all(new_inputs[i] == current_inputs[i] for i in range(np.size(current_inputs))))
+        return not (all(new_inputs[i] == current_inputs[i] for i in range(np.size(current_inputs))))
 
     @classmethod
     def verifyPotentialExpr(cls, expr):

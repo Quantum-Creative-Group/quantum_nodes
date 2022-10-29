@@ -27,6 +27,7 @@ class BlochSphereNode(Node, AnimationNode):
 
             # TODO: fix import
             # bloch_data = _bloch_multivector_data(output_state)
+            bloch_data = list()
 
             theta = get_angles(bloch_data[qubit_index][0], bloch_data[qubit_index][1], bloch_data[qubit_index][2])[1]
             phi = get_angles(bloch_data[qubit_index][0], bloch_data[qubit_index][1], bloch_data[qubit_index][2])[2]

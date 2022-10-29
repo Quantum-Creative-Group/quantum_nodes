@@ -47,7 +47,7 @@ class GateNodesManager:
 
         # Finds where the potential existing gate should (at least)
         # be placed from the previous min_gate_index
-        last_gate_type = ""  #  last_gate_type is used to counter redundancy (ex: q1 --|H|--|H|--)
+        last_gate_type = ""  # last_gate_type is used to counter redundancy (ex: q1 --|H|--|H|--)
         for g in qubit_data:
             if g != gate_type and last_gate_type != g:
                 min_gate_index += 1

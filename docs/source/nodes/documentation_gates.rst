@@ -269,7 +269,7 @@ Rotation gates
 Gate RX
 #######
 
-|   **Input:** Quantum circuit, index ot the target qubit to which we want to apply the gate, angle of rotation
+|   **Input:** Quantum circuit, index of the target qubit to which we want to apply the gate, angle of rotation
 |   **Output:** Quantum Circuit
 |
 |   **Usage:** Applies the RX gate to a chosen qubit depending on the angle provided.
@@ -290,7 +290,7 @@ Gate RX
 Gate RY
 #######
 
-|   **Input:** Quantum circuit, index ot the target qubit to which we want to apply the gate, angle of rotation
+|   **Input:** Quantum circuit, index of the target qubit to which we want to apply the gate, angle of rotation
 |   **Output:** Quantum Circuit
 |
 |   **Usage:** Applies the RY gate to a chosen qubit depending on the angle provided.
@@ -311,7 +311,7 @@ Gate RY
 Gate RZ
 #######
 
-|   **Input:** Quantum circuit, index ot the target qubit to which we want to apply the gate, angle of rotation
+|   **Input:** Quantum circuit, index of the target qubit to which we want to apply the gate, angle of rotation
 |   **Output:** Quantum Circuit
 |
 |   **Usage:** Applies the RZ gate to a chosen qubit depending on the angle provided.

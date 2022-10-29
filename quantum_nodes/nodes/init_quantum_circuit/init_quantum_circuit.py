@@ -54,16 +54,16 @@ class InitQuantumCircuitNode(Node, AnimationNode):
             return "execute_QCRegister"
 
     def execute_QNumber(self, number_of_qubits):
-        if(number_of_qubits < 1):
+        if number_of_qubits < 1:
             self.raiseErrorMessage("The number of qubits must be superior to 1")
         else:
             return QuantumCircuit(number_of_qubits)
 
     def execute_QCNumber(self, number_of_qubits, number_of_bits):
-        if(number_of_qubits < 1):
+        if number_of_qubits < 1:
             self.raiseErrorMessage("The number of qubits must be superior to 1")
             return
-        if(number_of_bits < 1):
+        if number_of_bits < 1:
             self.raiseErrorMessage("The number of bits must be superior to 1")
             return
         else:

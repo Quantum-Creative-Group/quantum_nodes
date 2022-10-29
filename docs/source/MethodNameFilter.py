@@ -1,5 +1,6 @@
 from enchant.tokenize import Filter
 
+
 class MethodNameFilter(Filter):
     """If a word looks like a method name, ignore it."""
 
@@ -12,4 +13,3 @@ class MethodNameFilter(Filter):
                 False
 
         return False
-            

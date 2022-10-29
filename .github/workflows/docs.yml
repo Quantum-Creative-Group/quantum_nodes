@@ -51,6 +51,20 @@ jobs:
           path: docs/build/
           key: docs-build-${{ hashFiles('docs/source/conf.py') }}
 
+      - name: Cache animation nodes source code
+        id: animation-nodes
+        uses: actions/cache@v3.0.11
+        if: env.USE_CACHE == 'true'
+        with:
+          path: animation_nodes/
+          key: animation-nodes-source-code-${{ hashFiles('animations_nodes/__init__.py') }}
+
+      - name: Download and prepare animation nodes source code
+        if: steps.cache.animation-nodes.cache-hit != 'true'
+        run:
+          wget https://github.com/JacquesLucke/animation_nodes/releases/download/master-cd-build/animation_nodes_v2_3_linux_py310.zip
+          unzip animation_nodes_v2_3_linux_py310.zip
+
       - name: Check spelling
         run: |
           cd docs
@@ -59,7 +73,7 @@ jobs:
       - name: Build documentation
         run: |
           cd docs
-          sphinx-apidoc -t "_templates/" --implicit-namespaces -d 1 -f -M -T -o source/developers_manual/code/ ../quantum_nodes "/*animation_nodes/*"
+          sphinx-apidoc -t "_templates/" --implicit-namespaces -d 1 -f -M -T -o source/developers_manual/code/ ../quantum_nodes "/*animation_nodes/*" "/*lib/*"
           sed -i "1s/.*/Code documentation/" source/developers_manual/code/quantum_nodes.rst
           sed -i "2s/.*/==================/" source/developers_manual/code/quantum_nodes.rst
           make html MODULE=quantum_nodes
@@ -92,12 +106,8 @@ jobs:
       - name: Unzip build
         run: unzip build_docs.zip
 
-      - name: Deploy on main (dev)
+      - name: Deploy on main
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-        run: echo "Deploy dev documentation, not implemented yet"
-
-      - name: Deploy on release
-        if: startsWith(github.ref, 'refs/tags')
         uses: peaceiris/actions-gh-pages@v3.9.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}

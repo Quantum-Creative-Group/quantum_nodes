@@ -13,4 +13,4 @@ class HistogramInstancer(Operator):
 
     def execute(self, context):
         plotEmptyQganHistogram()
-        return{'FINISHED'}
+        return {'FINISHED'}

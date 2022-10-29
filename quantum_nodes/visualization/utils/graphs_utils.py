@@ -14,12 +14,12 @@ def get_angles(x, y, z):
     else:
         theta = arccos(z / r)
         if x == 0:
-            if(y > 0):
+            if y > 0:
                 phi = pi / 2
             else:
                 phi = -pi / 2
         else:
-            if(x > 0):
+            if x > 0:
                 phi = arctan(y / x)
             else:
                 phi = arctan(y / x) + pi

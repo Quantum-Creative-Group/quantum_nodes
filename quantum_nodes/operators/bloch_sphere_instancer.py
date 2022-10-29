@@ -13,4 +13,4 @@ class BlochSphereInstancer(Operator):
 
     def execute(self, context):
         plotEmptyBlochSphere()
-        return{'FINISHED'}
+        return {'FINISHED'}

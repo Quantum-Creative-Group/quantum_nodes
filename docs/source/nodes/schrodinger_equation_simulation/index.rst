@@ -60,4 +60,4 @@ More information
 ****************
 
 This node is made possible thanks to `Azercoco <https://github.com/Azercoco>`_ and his implementation of the simulation,
-`see the projet on github <https://github.com/Azercoco/Python-2D-Simulation-of-Schrodinger-Equation>`_.
+`see the project on github <https://github.com/Azercoco/Python-2D-Simulation-of-Schrodinger-Equation>`_.
