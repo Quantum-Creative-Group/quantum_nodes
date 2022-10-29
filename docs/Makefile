@@ -19,5 +19,9 @@ help:
 # Rename ../quantum_nodes/__init__.py to ../quantum_nodes/___init__.py so it won't throw an exception when animation_nodes is not found
 %: Makefile
 	mv ../$(MODULE)/__init__.py ../$(MODULE)/___init__.py
+	find ../ -type f -name "*.py" -exec sed -i 's/@persistent/#@persistent/g' {} +
+
 	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
+
+	find ../ -type f -name "*.py" -exec sed -i 's/#@persistent/@persistent/g' {} +
 	mv ../$(MODULE)/___init__.py ../$(MODULE)/__init__.py
