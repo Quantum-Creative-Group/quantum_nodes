@@ -7,8 +7,8 @@ on:
   push:
     tags: # Run when a new release is created
       - "*"
-    branches: # Run when there is a push to main
-      - "main"
+    branches: # Run when there is a push to master
+      - "master"
 
 jobs:
   stylecheck:
