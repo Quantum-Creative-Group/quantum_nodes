@@ -1,8 +1,8 @@
 # Change log
 
-## [0.1.2] - WIP
+## [0.1.2] - 2022-10-30
 
-Updated code and repository to new hosting platform (Github)
+Updated code and repository to new hosting platform (switched from Gitlab to Github).
 
 <details><summary>Details</summary>
 
@@ -13,7 +13,10 @@ Updated code and repository to new hosting platform (Github)
 ### Fixed
 
 * Update resources to Github ([#3](https://github.com/Quantum-Creative-Group/quantum_nodes/pull/3)) 
-* [CI/CD] Fixed wrong name for master branch in workflow
+* [CI/CD] Fixed wrong name for master branch in workflow (b29383024240ec89568b5281de5a0b21e300549e)
+* [Docs] Updated CHANGELOG (2de3256d3f3302830f518c6879df8f1642abd185)
+* [Docs] Updated manual documentation (4bae25676c203ed56287a7d492f37c372bb52b60)
+* Update documentation ([#4](https://github.com/Quantum-Creative-Group/quantum_nodes/pull/4))
 
 </details>
 
