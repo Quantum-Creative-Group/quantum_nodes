@@ -2,9 +2,18 @@
 
 ## [0.1.2] - WIP
 
-WIP
+Updated code and repository to new hosting platform (Github)
 
 <details><summary>Details</summary>
+
+### Added
+
+* Add first elements for Gitlab --> Github migration ([#2](https://github.com/Quantum-Creative-Group/quantum_nodes/pull/3))
+
+### Fixed
+
+* Update resources to Github ([#3](https://github.com/Quantum-Creative-Group/quantum_nodes/pull/3)) 
+* [CI/CD] Fixed wrong name for master branch in workflow
 
 </details>
 
