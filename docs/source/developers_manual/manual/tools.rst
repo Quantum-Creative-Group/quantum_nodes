@@ -30,7 +30,7 @@ Python Docstring Generator
 
 * Select the ``sphinx`` format for the auto docstring functionality
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/docstring_format.png
+.. image:: /images/contrib-tools/docstring_format.png
     :width: 85%
     :alt: Python Docstring Generator, auto docstring sphinx
     :align: center
@@ -52,7 +52,7 @@ reStructuredText Syntax highlighting
 * This extension uses `Esbonio <https://swyddfa.github.io/esbonio/docs/latest/en/>`_
 * Select the right output for sphinx-build in the settings:
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/esbonio_output_sphinx_build.png
+.. image:: /images/contrib-tools/esbonio_output_sphinx_build.png
     :width: 85%
     :alt: reStructuredText syntax highlighting, set output path sphinx-build
     :align: center

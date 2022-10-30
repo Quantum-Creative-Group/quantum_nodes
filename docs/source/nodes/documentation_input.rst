@@ -23,7 +23,7 @@ Init Classical Register
 |   **Usage:** Calls the ``ClassicalRegister()`` Qiskit function to create a classical register of the length of the integer given as a parameter.
 |   
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/nodes/init_classical_register.png
+.. image:: /images/nodes/init_classical_register.png
     :width: 60%
     :alt: Classical register 
     :align: center
@@ -43,7 +43,7 @@ Init Quantum Register
 |   **Usage:** Calls the ``QuantumRegister()`` Qiskit function to create a quantum register of the length of the integer given as a parameter.
 |   
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/nodes/init_quantum_register.png
+.. image:: /images/nodes/init_quantum_register.png
     :width: 60%
     :alt: Quantum register 
     :align: center
@@ -67,7 +67,7 @@ Init Quantum Circuit
 |   If the input is a quantum register, the quantum circuit will be initialised from that register.
 |   
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/nodes/init_quantum_circuit1.png
+.. image:: /images/nodes/init_quantum_circuit1.png
     :width: 60%
     :alt: Quantum circuit 
     :align: center
@@ -75,7 +75,7 @@ Init Quantum Circuit
     
 |
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/nodes/init_quantum_circuit2.png
+.. image:: /images/nodes/init_quantum_circuit2.png
     :width: 60%
     :alt: Quantum circuit 
     :align: center
@@ -83,7 +83,7 @@ Init Quantum Circuit
     
 |
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/nodes/init_quantum_circuit3.png
+.. image:: /images/nodes/init_quantum_circuit3.png
     :width: 60%
     :alt: Quantum circuit 
     :align: center

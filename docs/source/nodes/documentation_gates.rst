@@ -56,7 +56,7 @@ Gate to all circuit
 |   **Description:** The Hadamard gate is a single-qubit operation that maps the basis state ∣0⟩ to 2​∣0⟩+∣1⟩​ and ∣1⟩ to 2​∣0⟩−∣1⟩​, thus creating an equal superposition of the two basis states.
 |   **Expected result:** The Hadamard gate can be expressed as a 90º rotation around the Y-axis, followed by a 180º rotation around the X-axis.
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/nodes/gate_all.png
+.. image:: /images/nodes/gate_all.png
     :width: 60%
     :alt: Quantum gate 
     :align: center
@@ -78,7 +78,7 @@ Gate H
 |   **Description:** The Hadamard gate is a single-qubit operation that maps the basis state ∣0⟩ to 2​∣0⟩+∣1⟩​ and ∣1⟩ to 2​∣0⟩−∣1⟩​, thus creating an equal superposition of the two basis states.
 |   **Expected result:** The Hadamard gate can be expressed as a 90º rotation around the Y-axis, followed by a 180º rotation around the X-axis.
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/nodes/gate_sdg_and_others.png
+.. image:: /images/nodes/gate_sdg_and_others.png
     :width: 60%
     :alt: Quantum gate 
     :align: center
@@ -99,7 +99,7 @@ Gate ID
 |
 |   **Expected result:** This gate will not show visible results as it is a "do-nothing" gate.
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/nodes/gate_sdg_and_others.png
+.. image:: /images/nodes/gate_sdg_and_others.png
     :width: 60%
     :alt: Quantum gate 
     :align: center
@@ -122,7 +122,7 @@ Gate S
 |   The S gate is equivalent to the RZ gate for the angle pi/2. 
 |   **Expected result:** The S gate represents a 90-degree rotation around the z-axis.
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/nodes/gate_sdg_and_others.png
+.. image:: /images/nodes/gate_sdg_and_others.png
     :width: 60%
     :alt: Quantum gate 
     :align: center
@@ -143,7 +143,7 @@ Gate SDG
 |
 |   **Description:** The S Dagger Gate (SDG gate) is the conjugate transpose (inverse) of the S gate.
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/nodes/gate_sdg_and_others.png
+.. image:: /images/nodes/gate_sdg_and_others.png
     :width: 60%
     :alt: Quantum gate 
     :align: center
@@ -165,7 +165,7 @@ Gate T
 |   **Description:** The T gate is a single-qubit operation.
 |   The T gate is equivalent to the RZ gate for the angle pi/4.
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/nodes/gate_sdg_and_others.png
+.. image:: /images/nodes/gate_sdg_and_others.png
     :width: 60%
     :alt: Quantum gate 
     :align: center
@@ -186,7 +186,7 @@ Gate TDG
 |
 |   **Description:** The T Dagger Gate (TDG gate) is the conjugate transpose (inverse) of the T gate.
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/nodes/gate_sdg_and_others.png
+.. image:: /images/nodes/gate_sdg_and_others.png
     :width: 60%
     :alt: Quantum gate 
     :align: center
@@ -207,7 +207,7 @@ Gate X
 |
 |   **Description:** The X or Pauli-X gate is a single-qubit rotation through π radians around the x-axis.
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/nodes/gate_sdg_and_others.png
+.. image:: /images/nodes/gate_sdg_and_others.png
     :width: 60%
     :alt: Quantum gate 
     :align: center
@@ -228,7 +228,7 @@ Gate Y
 |
 |   **Description:** The Y or Pauli-Y gate is a single-qubit rotation through π radians around the y-axis.
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/nodes/gate_sdg_and_others.png
+.. image:: /images/nodes/gate_sdg_and_others.png
     :width: 60%
     :alt: Quantum gate 
     :align: center
@@ -249,7 +249,7 @@ Gate Z
 |
 |   **Description:** The Z or Pauli-Z gate is a single-qubit rotation through π radians around the z-axis.
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/nodes/gate_sdg_and_others.png
+.. image:: /images/nodes/gate_sdg_and_others.png
     :width: 60%
     :alt: Quantum gate 
     :align: center
@@ -276,7 +276,7 @@ Gate RX
 |
 |   **Description:** The Rx gate is one of the Rotation operators. The Rx gate is a single-qubit rotation through angle θ (radians) around the x-axis.
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/nodes/gate_rz_and_others.png
+.. image:: /images/nodes/gate_rz_and_others.png
     :width: 60%
     :alt: Quantum gate 
     :align: center
@@ -297,7 +297,7 @@ Gate RY
 |
 |   **Description:** The Ry gate is one of the Rotation operators. The Ry gate is a single-qubit rotation through angle θ (radians) around the y-axis.
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/nodes/gate_rz_and_others.png
+.. image:: /images/nodes/gate_rz_and_others.png
     :width: 60%
     :alt: Quantum gate 
     :align: center
@@ -318,7 +318,7 @@ Gate RZ
 |
 |   **Description:** The Rz gate is one of the Rotation operators. The Ry gate is a single-qubit rotation through angle θ (radians) around the y-axis.
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/nodes/gate_rz_and_others.png
+.. image:: /images/nodes/gate_rz_and_others.png
     :width: 60%
     :alt: Quantum gate 
     :align: center
@@ -347,7 +347,7 @@ Gates CX, CY, CZ, CH
 |   The CX, CY, CZ, CH gates leave the control qubit unchanged and performs a X, Y, Z or H gate on the target qubit when the control qubit is in state ``∣1⟩`` or leave the target qubit unchanged when the control qubit is in state ∣0⟩.
 |   Simply, these gates apply a X, Y, Z or H gate on the target qubit if the control qubit is in the ``|1⟩`` state.
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/nodes/gate_cy_and_others.png 
+.. image:: /images/nodes/gate_cy_and_others.png 
     :width: 60%
     :alt: Quantum gate 
     :align: center
@@ -372,7 +372,7 @@ Gate CCX
 |
 |   **Usage:** Applies the X gate to a target qubit depending on two control qubits specified by the user.
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/nodes/gate_ccx.png
+.. image:: /images/nodes/gate_ccx.png
     :width: 60%
     :alt: Quantum gate 
     :align: center
@@ -394,7 +394,7 @@ Gate SWAP
 |   **Description:** The SWAP gate is two-qubit operation. 
 |   Expressed in basis states, the SWAP gate swaps the state of the two qubits involved in the operation.
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/nodes/gate_swap.png
+.. image:: /images/nodes/gate_swap.png
     :width: 60%
     :alt: Quantum gate 
     :align: center
@@ -416,7 +416,7 @@ Gate CSWAP
 |   **Description:** The CSWAP gate is two-qubit operation. 
 |   Expressed in basis states, the CSWAP gate swaps the state of the two qubits involved in the operation depending on a control qubit.
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/nodes/gate_cswap.png
+.. image:: /images/nodes/gate_cswap.png
     :width: 60%
     :alt: Quantum gate 
     :align: center

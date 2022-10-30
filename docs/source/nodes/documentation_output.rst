@@ -25,7 +25,7 @@ Quantum Circuit Get Count
 |   ``return execute(quantum_circuit,Aer.get_backend('qasm_simulator')).result().get_counts()``
 |   
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/nodes/init_quantum_circuit_counts.png
+.. image:: /images/nodes/init_quantum_circuit_counts.png
     :width: 60%
     :alt: Quantum circuit get count 
     :align: center
@@ -45,7 +45,7 @@ Init Quantum Register
 |   **Usage:** Measures the chosen qubit OR all qubits.
 |   
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/nodes/init_quantum_register.png
+.. image:: /images/nodes/init_quantum_register.png
     :width: 60%
     :alt: Quantum register 
     :align: center
@@ -64,7 +64,7 @@ Quantum Circuit Output State
 |   **Usage:** Returns the state of the circuit.
 |   
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/nodes/quantum_circuit_output_state.png
+.. image:: /images/nodes/quantum_circuit_output_state.png
     :width: 60%
     :alt: Quantum circuit output state 
     :align: center
@@ -83,7 +83,7 @@ Quantum Circuit IBM Output
 |   **Usage:** Send the quantum circuit to be computed by IBM quantum computers instead of the Blender simulation.
 |   
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/nodes/ibm.png 
+.. image:: /images/nodes/ibm.png 
     :width: 60%
     :alt: Quantum circuit ibm output 
     :align: center

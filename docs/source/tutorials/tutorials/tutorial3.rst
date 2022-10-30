@@ -22,7 +22,7 @@ Tutorial 3 - Use a quantum circuit to modify the location, rotation or scale of 
 
 |   In this example, we are going to use the following circuit, with 2 qubits and an RX gate:
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/tutorial3/step1.png
+.. image:: /images/tutorial3/step1.png
     :width: 85%
     :alt: Step 1 
     :align: center
@@ -32,7 +32,7 @@ Tutorial 3 - Use a quantum circuit to modify the location, rotation or scale of 
 
 |   In order to ease the readability of our tree as we did in the last tutorial, we are going to put this circuit into a group so we can use it later as a subprogram.
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/tutorial3/step2.png
+.. image:: /images/tutorial3/step2.png
     :width: 50%
     :alt: Step 2
     :align: center
@@ -52,7 +52,7 @@ Tutorial 3 - Use a quantum circuit to modify the location, rotation or scale of 
 
 *   |   For this, we are going to create the same subprogram as we saw in the first part of Tutorial #2.
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/tutorial3/step3.png
+.. image:: /images/tutorial3/step3.png
     :width: 85%
     :alt: Step 3
     :align: center
@@ -66,7 +66,7 @@ Tutorial 3 - Use a quantum circuit to modify the location, rotation or scale of 
 
 *   |   First we are going to create our group and link our two subprograms Quantum Circuit and Complex into float, just like this:
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/tutorial3/step4.png
+.. image:: /images/tutorial3/step4.png
     :width: 85%
     :alt: Step 4
     :align: center
@@ -76,7 +76,7 @@ Tutorial 3 - Use a quantum circuit to modify the location, rotation or scale of 
 
 *   |   Then we retrieve the values we want from the float list thanks to the Get List Element node and insert it into the vector that we are going to return.
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/tutorial3/step5.png
+.. image:: /images/tutorial3/step5.png
     :width: 85%
     :alt: Step 5
     :align: center
@@ -104,7 +104,7 @@ Tutorial 3 - Use a quantum circuit to modify the location, rotation or scale of 
 
 *   |   Then we need to get our vector from the Create Vector Subprogram and link it to our transform Node.
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/tutorial3/step6.png
+.. image:: /images/tutorial3/step6.png
     :width: 85%
     :alt: Step 6
     :align: center
@@ -116,22 +116,22 @@ Tutorial 3 - Use a quantum circuit to modify the location, rotation or scale of 
 
 |   Once you've linked it, you should see your object moving when the node tree is executed.
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/tutorial3/step7.png
+.. image:: /images/tutorial3/step7.png
     :width: 30%
     :alt: Step 7
     :class: img-rounded
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/tutorial3/step8.png
+.. image:: /images/tutorial3/step8.png
     :width: 30%
     :alt: Step 8
     :class: img-rounded
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/tutorial3/step9.png
+.. image:: /images/tutorial3/step9.png
     :width: 30%
     :alt: Step 9
     :class: img-rounded
 
 |   It is the same principle for scaling. 
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/tutorial3/step10.png
+.. image:: /images/tutorial3/step10.png
     :width: 85%
     :alt: Step 10
     :align: center
@@ -146,11 +146,11 @@ Tutorial 3 - Use a quantum circuit to modify the location, rotation or scale of 
     |   Be careful not to activate the parameters if they are always at zero, else your cube will disappear.
 
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/tutorial3/step11.png
+.. image:: /images/tutorial3/step11.png
     :width: 47%
     :alt: Step 11
     :class: img-rounded
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/tutorial3/step12.png
+.. image:: /images/tutorial3/step12.png
     :width: 47%
     :alt: Step 12
     :class: img-rounded

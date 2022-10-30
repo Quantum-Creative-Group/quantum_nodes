@@ -71,7 +71,7 @@ Just like bits, qubits are combined to make a result. In the same way, we align 
 In the same way that 3 bits can compose 23 = 8 possible sequences, 3 qubits can compose 8 possible sequences.
 |   However bits are static, once in a state it composes only one possible sequence, while qubits are sometimes not determined, they can give several different results according to the probabilities of qubits.
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/tutorials/quantum-entanglement.png
+.. image:: /images/tutorials/quantum-entanglement.png
     :width: 60%
     :alt: Multiple qubits
     :align: center

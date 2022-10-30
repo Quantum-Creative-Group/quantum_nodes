@@ -25,12 +25,12 @@ Contribute
 
 
 .. note::
-    Click `here <https://docs.gitlab.com/ee/user/project/repository/forking_workflow.html>`_ to learn about the forking workflow on Gitlab.
+    Click `here <https://docs.github.com/en/get-started/quickstart/fork-a-repo>`_ to learn about the forking workflow on Github.
 
 
-* Fork our `git repository <https://gitlab.com/quantum-creative-group/quantum_nodes>`_
+* Fork our `git repository <https://github.com/Quantum-Creative-Group/quantum_nodes>`_
 * Do your modifications
-* Open a new `merge request <https://gitlab.com/quantum-creative-group/quantum_nodes/-/merge_requests>`_
+* Open a new `merge request <https://github.com/Quantum-Creative-Group/quantum_nodes/pulls>`_
 * Wait for your modifications to be reviewed and accepted
 
 

@@ -16,7 +16,7 @@ Tutorial 1 - Create a quantum circuit
 
 *   First, open the Animation-Nodes window and create a new node tree.
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/tutorial1/step1.png
+.. image:: /images/tutorial1/step1.png
     :width: 85%
     :alt: Step 1 
     :align: center
@@ -24,7 +24,7 @@ Tutorial 1 - Create a quantum circuit
     
 |
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/tutorial1/step2.png
+.. image:: /images/tutorial1/step2.png
     :width: 85%
     :alt: Step 2 
     :align: center
@@ -34,7 +34,7 @@ Tutorial 1 - Create a quantum circuit
 
 *   In the Animation nodes panel, we can use nodes from Animation Nodes and Quantum Nodes. Press Shift+A to open the Animation Nodes menu or click the Add menu.
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/tutorial1/step3.png
+.. image:: /images/tutorial1/step3.png
     :width: 85%
     :alt: Step 3
     :align: center
@@ -44,7 +44,7 @@ Tutorial 1 - Create a quantum circuit
 
 |   In this menu you can see all options from Animation Nodes. In the bottom, there is a the Quantum Nodes menu.
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/tutorial1/step4.png
+.. image:: /images/tutorial1/step4.png
     :width: 85%
     :alt: Step 4
     :align: center
@@ -58,7 +58,7 @@ Tutorial 1 - Create a quantum circuit
 
 *   In the **Init Quantum Circuit** menu, select **Init Classical register** and **Init Quantum register**.
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/tutorial1/step5.png
+.. image:: /images/tutorial1/step5.png
     :width: 85%
     :alt: Step 5
     :align: center
@@ -69,7 +69,7 @@ Tutorial 1 - Create a quantum circuit
 |   We now have 2 registers.
 |   You can choose the number of qubits and bits you want to use.
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/tutorial1/step6.png
+.. image:: /images/tutorial1/step6.png
     :width: 50%
     :alt: Step 6
     :align: center
@@ -81,7 +81,7 @@ Tutorial 1 - Create a quantum circuit
 
 *   |   Select **Init Quantum Circuit** -> **Init Quantum Circuit**.
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/tutorial1/step7.png
+.. image:: /images/tutorial1/step7.png
     :width: 85%
     :alt: Step 7
     :align: center
@@ -91,7 +91,7 @@ Tutorial 1 - Create a quantum circuit
 
 |   In this node you can select if you want to initialize your circuit by input number of qubits and bits, or use registers.
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/tutorial1/step8.png
+.. image:: /images/tutorial1/step8.png
     :width: 85%
     :alt: Step 8
     :align: center
@@ -101,7 +101,7 @@ Tutorial 1 - Create a quantum circuit
 
 *   |   We are going to use our registers, select option “Quantum and Classical register”, and link registers to the node.
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/tutorial1/step9.png
+.. image:: /images/tutorial1/step9.png
     :width: 85%
     :alt: Step 9
     :align: center
@@ -122,7 +122,7 @@ Tutorial 1 - Create a quantum circuit
 
 *   |   Go to the menu Quantum Gates.
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/tutorial1/step10.png
+.. image:: /images/tutorial1/step10.png
     :width: 85%
     :alt: Step 10
     :align: center
@@ -141,7 +141,7 @@ Tutorial 1 - Create a quantum circuit
 
 *   |   Select **Quantum Gate X** (the NOT gate) in the **Single Qubit Gates** menu.
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/tutorial1/step11.png
+.. image:: /images/tutorial1/step11.png
     :width: 85%
     :alt: Step 11
     :align: center
@@ -154,7 +154,7 @@ Tutorial 1 - Create a quantum circuit
 |   You can also add the same gate to another qubit. 
 |   In output we get back our circuit. 
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/tutorial1/step12.png
+.. image:: /images/tutorial1/step12.png
     :width: 50%
     :alt: Step 12
     :align: center
@@ -165,7 +165,7 @@ Tutorial 1 - Create a quantum circuit
 |   With a viewer node you can see the quantum circuit representation. 
 |   Here we can see the X gate applies to the qubit 0.
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/tutorial1/step13.png
+.. image:: /images/tutorial1/step13.png
     :width: 85%
     :alt: Step 13
     :align: center
@@ -177,7 +177,7 @@ Tutorial 1 - Create a quantum circuit
 
 *   |   Select **Quantum Gate CX** in the **C Gates** menu and input the circuit in it.
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/tutorial1/step14.png
+.. image:: /images/tutorial1/step14.png
     :width: 85%
     :alt: Step 14
     :align: center
@@ -189,7 +189,7 @@ Tutorial 1 - Create a quantum circuit
 
 *   |   You have to choose which qubit will control and which qubit will be the target.
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/tutorial1/step15.png
+.. image:: /images/tutorial1/step15.png
     :width: 85%
     :alt: Step 15
     :align: center
@@ -212,7 +212,7 @@ Tutorial 1 - Create a quantum circuit
 
 *   |   To store qubit values in bits we are going to use the node **Quantum Output** -> **Quantum Output** -> **Quantum Measure**
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/tutorial1/step16.png
+.. image:: /images/tutorial1/step16.png
     :width: 85%
     :alt: Step 16
     :align: center
@@ -223,7 +223,7 @@ Tutorial 1 - Create a quantum circuit
 |   With this node you can choose which qubit value will be stored in which bit. 
 |   There is also an option to directly measure all qubits and automatically store them in a bit.
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/tutorial1/step17.png
+.. image:: /images/tutorial1/step17.png
     :width: 50%
     :alt: Step 17
     :align: center
@@ -231,7 +231,7 @@ Tutorial 1 - Create a quantum circuit
     
 |
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/tutorial1/step18.png
+.. image:: /images/tutorial1/step18.png
     :width: 50%
     :alt: Step 18
     :align: center
@@ -242,7 +242,7 @@ Tutorial 1 - Create a quantum circuit
 |   Here we choose to only measure the qubit 0 and 1 and store them in the bits 0 and 1. 
 |   To do that use two **Quantum measure** nodes.
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/tutorial1/step19.png
+.. image:: /images/tutorial1/step19.png
     :width: 85%
     :alt: Step 19
     :align: center
@@ -263,7 +263,7 @@ Counts
     A **measure node** is needed for this node to work. Add one between your circuit and the Get count node or else it won't work.
 
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/tutorial1/step20.png
+.. image:: /images/tutorial1/step20.png
     :width: 85%
     :alt: Step 20
     :align: center
@@ -278,7 +278,7 @@ Counts
     In this example, we try 1024 times the circuit and get 1024 times the result “11”, which means that there is 100% chance of getting “11” as the result of this circuit.
 
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/tutorial1/step21.png
+.. image:: /images/tutorial1/step21.png
     :width: 85%
     :alt: Step 21
     :align: center
@@ -295,7 +295,7 @@ State vector
 
 *   |   To use it select **Quantum Output State**.
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/tutorial1/step22.png
+.. image:: /images/tutorial1/step22.png
     :width: 85%
     :alt: Step 22
     :align: center
@@ -305,7 +305,7 @@ State vector
 
 |   Here we have a list of 8 complex numbers related to the number of possibilities (2^3 sequences). 
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/tutorial1/step23.png
+.. image:: /images/tutorial1/step23.png
     :width: 85%
     :alt: Step 23
     :align: center
@@ -325,7 +325,7 @@ State vector
 
 If you want probabilities you have to use Quantum Output State without measures (other example in annex)
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/tutorial1/step24.png
+.. image:: /images/tutorial1/step24.png
     :width: 85%
     :alt: Step 24
     :align: center
@@ -339,7 +339,7 @@ Other quantum circuits:
 
 *1 Qubit, Hadamard Gate*
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/tutorial1/step25.png
+.. image:: /images/tutorial1/step25.png
     :width: 85%
     :alt: Step 25
     :align: center
@@ -349,7 +349,7 @@ Other quantum circuits:
     
 *2 Qubits, Hadamard Gate (q0), Rotation X Gate (5°)(q1)*
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/tutorial1/step26.png
+.. image:: /images/tutorial1/step26.png
     :width: 85%
     :alt: Step 26
     :align: center
@@ -359,7 +359,7 @@ Other quantum circuits:
 
 *“Bell state”: 2 Qubits, Hadamard Gate (q0), CX Gate (q0 -> q1)*
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/tutorial1/step27.png
+.. image:: /images/tutorial1/step27.png
     :width: 85%
     :alt: Step 27
     :align: center
@@ -369,7 +369,7 @@ Other quantum circuits:
 
 *“Bell state” with measures*
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/tutorial1/step28.png
+.. image:: /images/tutorial1/step28.png
     :width: 85%
     :alt: Step 28
     :align: center

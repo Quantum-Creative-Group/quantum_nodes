@@ -1,4 +1,4 @@
-Gitlab
+Github
 subchapter
 subsubchapter
 subchapters
@@ -9,7 +9,6 @@ docstring
 Schrödinger
 Azercoco
 boolean
-numpy
 py
 conda
 qubit

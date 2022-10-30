@@ -24,7 +24,7 @@ Quantum circuit
 
 Example of a quantum circuit:
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/tutorials/quantum-circuit.png
+.. image:: /images/tutorials/quantum-circuit.png
     :width: 60%
     :alt: IBM Quantum Composer
     :align: center
@@ -47,7 +47,7 @@ In this representation, we observe that the quantum circuit is composed of 2 par
 
 |   To store the value of a qubit in a bit, we will perform a measurement on the qubit, here represented by the icon:
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/tutorials/measure.png
+.. image:: /images/tutorials/measure.png
     :width: 4%
     :alt: Measure Icon
     :align: center

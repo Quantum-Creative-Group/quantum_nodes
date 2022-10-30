@@ -29,7 +29,7 @@ Downloads
 Blender
 *******
 
-* Download Blender (>= 2.92): https://www.blender.org/download/
+* Download Blender (>= 2.93): https://www.blender.org/download/
 
 
 .. _blender-install-linux:
@@ -63,7 +63,7 @@ Animation Nodes
 Quantum Nodes
 *************
 
-* Download the add-on from the `Gitlab releases <https://gitlab.com/quantum-creative-group/quantum_nodes/-/releases>`_
+* Download the add-on from the `Github releases <https://github.com/Quantum-Creative-Group/quantum_nodes/releases>`_
   page (latest version recommended)
  
 
@@ -93,9 +93,9 @@ Install python packages
 |   Make sure we have pip installed:  ``sudo ./python3.10 -m ensurepip``
 
 |   Install packages:
-|   pip: ``sudo ./python3.10 -m pip install --upgrade --no-cache-dir pip -t ..\lib\site-packages``
-|   wheel: ``sudo ./python3.10 -m pip install --upgrade --no-cache-dir wheel -t ..\lib\site-packages``
-|   pillow: ``sudo ./python3.10 -m pip install --upgrade --no-cache-dir pillow -t ..\lib\site-packages``
+|   pip: ``sudo ./python3.10 -m pip install --upgrade --no-cache-dir pip``
+|   wheel: ``sudo ./python3.10 -m pip install --upgrade --no-cache-dir wheel``
+|   pillow: ``sudo ./python3.10 -m pip install --upgrade --no-cache-dir pillow``
 |   qiskit: ``sudo ./python3.10 -m pip install --upgrade --no-cache-dir qiskit qiskit_finance qiskit_machine_learning``
 
 
@@ -110,7 +110,7 @@ Now, all we have to do is to install Animation Nodes and Quantum Nodes in Blende
 
 * Go to: ``Edit > Preferences``
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/installation/linux/preferences-blender-linux.png
+.. image:: /images/installation/linux/preferences-blender-linux.png
     :width: 50%
     :alt: Blender, preferences
     :align: center
@@ -120,7 +120,7 @@ Now, all we have to do is to install Animation Nodes and Quantum Nodes in Blende
 
 * Go to the add-on panel and click on ``Install``
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/installation/linux/install-addons-blender-linux.png
+.. image:: /images/installation/linux/install-addons-blender-linux.png
     :width: 80%
     :alt: Blender, preferences, install
     :align: center
@@ -136,7 +136,7 @@ Animation Nodes
 
 * Select Animation Nodes
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/installation/linux/install-linux-select-animation-nodes.png
+.. image:: /images/installation/linux/install-linux-select-animation-nodes.png
     :width: 80%
     :alt: Blender, preferences, install animation nodes
     :align: center
@@ -151,7 +151,7 @@ Animation Nodes
     Don't forget to activate it (click on the *checkbox*)
 
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/installation/linux/install-linux-activate-animation-nodes.png
+.. image:: /images/installation/linux/install-linux-activate-animation-nodes.png
     :width: 80%
     :alt: Blender, preferences, activate animation nodes
     :align: center
@@ -167,7 +167,7 @@ Quantum Nodes
 
 * Select Quantum Nodes
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/installation/linux/install-linux-select-quantum-nodes.png
+.. image:: /images/installation/linux/install-linux-select-quantum-nodes.png
     :width: 80%
     :alt: Blender, preferences, install quantum nodes
     :align: center
@@ -182,7 +182,7 @@ Quantum Nodes
     Don't forget to activate it (click on the *checkbox*)
 
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/installation/linux/install-linux-activate-quantum-nodes.png
+.. image:: /images/installation/linux/install-linux-activate-quantum-nodes.png
     :width: 80%
     :alt: Blender, preferences, activate quantum nodes
     :align: center
@@ -200,6 +200,6 @@ Help
 
 If you have any problem: 
 
-#. Check for any existing `issue <https://gitlab.com/quantum-creative-group/quantum_nodes/-/issues>`_ that may tackle yours
-#. If you do not find anything, please open a new `issue <https://gitlab.com/quantum-creative-group/quantum_nodes/-/issues>`_
-   on Gitlab with all the necessary information to help you |:wink:|
+#. Check for any existing `issue <https://github.com/Quantum-Creative-Group/quantum_nodes/issues>`_ that may tackle yours
+#. If you do not find anything, please open a new `issue <https://github.com/Quantum-Creative-Group/quantum_nodes/issues>`_
+   on Github with all the necessary information to help you |:wink:|
