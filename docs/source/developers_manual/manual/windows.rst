@@ -31,7 +31,7 @@ Contribute
 
 * Fork the repository: https://github.com/Quantum-Creative-Group/quantum_nodes
 * Do your modifications
-* Once you are ready, open a new `merge request <https://github.com/Quantum-Creative-Group/quantum_nodes/pulls>`_
+* Once you are ready, open a new `pull request <https://github.com/Quantum-Creative-Group/quantum_nodes/pulls>`_
 * Wait for your modifications to be reviewed and accepted
 
 .. _build-windows-contrib-manual:

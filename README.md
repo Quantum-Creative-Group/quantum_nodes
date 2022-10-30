@@ -23,11 +23,11 @@ Find more information on [www.quantum-nodes.com](https://www.quantum-nodes.com)
 Here you will find both the user and developer manual for Quantum Nodes: [documentation](https://quantum-creative-group.github.io/quantum_nodes/).
 
 ### Contributing
-Find more detailed instructions on the [dedicated page](https://quantum-creative-group.github.io/quantum_nodes/developers_manual/manual/index.html).
+Find more detailed instructions on the [dedicated page](https://quantum-creative-group.github.io/quantum_nodes/developers_manual/index.html).
 
-* Fork the repository
-* Add useful information
-* Open a pull request to integrate your modifications into the official repository
+* Fork this repository
+* Do your modifications
+* Once you are ready, open a new pull request
 * Wait for your modifications to be reviewed and accepted
 
 ## Citing Quantum Nodes
