@@ -2,7 +2,8 @@ import bpy
 from bpy.types import Node
 
 from animation_nodes.base_types import AnimationNode
-from qiskit.visualization.utils import _bloch_multivector_data
+# TODO: fix import
+# from qiskit.visualization.utils import _bloch_multivector_data
 
 from ... visualization.utils.graphs_utils import get_angles
 
@@ -23,7 +24,11 @@ class BlochSphereNode(Node, AnimationNode):
             return
         try:
             # getting the angles for displaying the vector
-            bloch_data = _bloch_multivector_data(output_state)
+
+            # TODO: fix import
+            # bloch_data = _bloch_multivector_data(output_state)
+            bloch_data = list()
+
             theta = get_angles(bloch_data[qubit_index][0], bloch_data[qubit_index][1], bloch_data[qubit_index][2])[1]
             phi = get_angles(bloch_data[qubit_index][0], bloch_data[qubit_index][1], bloch_data[qubit_index][2])[2]
             # finding the vector mesh in the list of the block sphere children

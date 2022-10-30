@@ -17,4 +17,4 @@ class StateCityInstancer(Operator):
 
     def execute(self, context):
         plotEmptyStateCity()
-        return{'FINISHED'}
+        return {'FINISHED'}

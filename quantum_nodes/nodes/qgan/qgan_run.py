@@ -124,7 +124,7 @@ class RunQGAN(bpy.types.Node, AnimationNode):
         print("Training results:")
         for key, value in result.items():
             print(f"  {key} : {value}")  # Print this data in a viewer node in Blender in addition to Relative Entropy?
-            if(key == "rel_entr"):
+            if key == "rel_entr":
                 rel_entropy = value
 
         # training_results = result.items()

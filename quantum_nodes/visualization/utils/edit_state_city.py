@@ -54,7 +54,7 @@ def editStateCity(parent, state):
         print(nb_cubes)
         for j in range(nb_cubes):
             scale = datareal[i][nb_cubes - j - 1]
-            if(scale == 0):
+            if scale == 0:
                 resize = 0.5 / 0.001
                 cube_size = 0.001
             else:

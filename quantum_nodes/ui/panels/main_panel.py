@@ -113,4 +113,4 @@ def unregister():
     for pcoll in preview_collections.values():
         bpy.utils.previews.remove(pcoll)
     preview_collections.clear()
-    del(bpy.types.Scene.QueryProps)
+    del bpy.types.Scene.QueryProps

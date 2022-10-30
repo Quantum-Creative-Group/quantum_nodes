@@ -13,4 +13,4 @@ class HistogramInstancer(Operator):
 
     def execute(self, context):
         plotEmptyHistogram()
-        return{'FINISHED'}
+        return {'FINISHED'}

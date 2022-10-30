@@ -49,7 +49,7 @@ class QuantumCircuitIBMOutputStateNode(Node, AnimationNode):
             return [(sys.name(), sys.name(), "number of qubits: " + str(sys.configuration().n_qubits))
                     for sys in self._provider.get_provider().backends()]
         else:
-            return[]
+            return []
 
     backendMenu: EnumProperty(
         name="Backend",  # noqa F821
