@@ -20,3 +20,12 @@ Init
 init
 util
 ok
+numpy
+np
+ndarray
+idname
+addon
+namespace
+qasm
+statevector
+uncorrectable
