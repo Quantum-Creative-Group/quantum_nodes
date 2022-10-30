@@ -30,7 +30,7 @@ Contribute
 
 * Fork our `git repository <https://github.com/Quantum-Creative-Group/quantum_nodes>`_
 * Do your modifications
-* Open a new `merge request <https://github.com/Quantum-Creative-Group/quantum_nodes/pulls>`_
+* Open a new `pull request <https://github.com/Quantum-Creative-Group/quantum_nodes/pulls>`_
 * Wait for your modifications to be reviewed and accepted
 
 
