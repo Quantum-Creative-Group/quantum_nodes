@@ -93,9 +93,9 @@ Install python packages
 |   Make sure we have pip installed:  ``sudo ./python3.10 -m ensurepip``
 
 |   Install packages:
-|   pip: ``sudo ./python3.10 -m pip install --upgrade --no-cache-dir pip -t ..\lib\site-packages``
-|   wheel: ``sudo ./python3.10 -m pip install --upgrade --no-cache-dir wheel -t ..\lib\site-packages``
-|   pillow: ``sudo ./python3.10 -m pip install --upgrade --no-cache-dir pillow -t ..\lib\site-packages``
+|   pip: ``sudo ./python3.10 -m pip install --upgrade --no-cache-dir pip``
+|   wheel: ``sudo ./python3.10 -m pip install --upgrade --no-cache-dir wheel``
+|   pillow: ``sudo ./python3.10 -m pip install --upgrade --no-cache-dir pillow``
 |   qiskit: ``sudo ./python3.10 -m pip install --upgrade --no-cache-dir qiskit qiskit_finance qiskit_machine_learning``
 
 
