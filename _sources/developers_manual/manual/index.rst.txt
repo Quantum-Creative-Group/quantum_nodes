@@ -28,7 +28,7 @@ Contribute
 
 * Fork the repository: https://github.com/Quantum-Creative-Group/quantum_nodes
 * Do your modifications
-* Once you are ready, open a new `merge request <https://github.com/Quantum-Creative-Group/quantum_nodes/pulls>`_
+* Once you are ready, open a new `pull request <https://github.com/Quantum-Creative-Group/quantum_nodes/pulls>`_
 * Wait for your modifications to be reviewed and accepted
 
 
@@ -50,14 +50,24 @@ Files architecture
 .. raw:: html
 
     <pre>
-    quantum_nodes_manual/
+    docs/
+    ├── _static/
+    │   ├── animation_nodes_init_replacement_file.txt
+    │   ├── css/
+    │   └── images/
+    │
+    ├── _templates/
+    │   ├── modules.rst_t
+    │   ├── packages.rst_t
+    │   └── toc.rst_t
+    │
     ├── build/
+    │
     ├── source/
-    │   ├── _static/
-    │   │   └── css/
-    │   │
     │   ├── conf.py
     │   ├── index.rst
+    │   ├── MethodNameFilter.py
+    │   ├── spelling_wordlist.txt
     │   │
     │   ├── [chapter]/
     │   │   ├── index.rst
@@ -81,7 +91,7 @@ Add a new chapter
 
 #. Create a new folder
     * If your chapter is a new section, create a new folder under ``source/``
-    * If your chapter is a subchapter, create a new folder  under ``source/parent_chapter/``
+    * If your chapter is a subchapter, create a new folder under ``source/parent_chapter/``
     * Your chapter may be a subsubchapter. No problem, keep the same logic as described before
     * Give it a short and precise name (snake_case naming style)
 
@@ -89,8 +99,8 @@ Add a new chapter
     * This file is the "welcome page" of your chapter
     * Here you can add links to any subchapters and so on ...
 
-#. If you need to add custom css to your page.s
-    * Create a new folder under ``source/_static/css/``
+#. If you need to add custom css to your pages
+    * Create a new folder under ``docs/_static/css/``
     * Give it the same name as your chapter
     * Insert your css files
     *   |   Once this is done, add your path to the ``html_css_files`` variable in ``config.py``
@@ -115,18 +125,24 @@ So, at the end, here is what the global architecture should look like
 .. raw:: html
 
     <pre>
-    quantum_nodes_manual/
+    docs/
+    ├── _static/
+    │   ├── animation_nodes_init_replacement_file.txt
+    │   ├── css/
+    │   └── images/
+    │
+    ├── _templates/
+    │   ├── modules.rst_t
+    │   ├── packages.rst_t
+    │   └── toc.rst_t
+    │
     ├── build/
+    │
     ├── source/
-    │   ├── _static/
-    │   │   └── css/
-    │   │       ├── ...
-    │   │       └── my_chapter/
-    │   │           ├── my_css_file.css
-    │   │           └── ...
-    │   │
     │   ├── conf.py
     │   ├── index.rst
+    │   ├── MethodNameFilter.py
+    │   ├── spelling_wordlist.txt
     │   │
     │   ├── my_chapter/
     │   │   ├── index.rst
