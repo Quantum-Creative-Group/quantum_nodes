@@ -1,0 +1,15 @@
+quantum\_nodes.node\_templates namespace
+========================================
+
+.. py:module:: quantum_nodes.node_templates
+
+Modules
+-------
+
+quantum\_nodes.node\_templates.template1
+----------------------------------------
+
+.. automodule:: quantum_nodes.node_templates.template1
+   :members:
+   :undoc-members:
+   :show-inheritance:

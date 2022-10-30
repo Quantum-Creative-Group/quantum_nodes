@@ -1,0 +1,26 @@
+quantum\_nodes.nodes.quantum\_blur
+==================================
+
+.. automodule:: quantum_nodes.nodes.quantum_blur
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Modules
+-------
+
+quantum\_nodes.nodes.quantum\_blur.quantum\_blur\_input
+-------------------------------------------------------
+
+.. automodule:: quantum_nodes.nodes.quantum_blur.quantum_blur_input
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+quantum\_nodes.nodes.quantum\_blur.quantum\_blur\_output
+--------------------------------------------------------
+
+.. automodule:: quantum_nodes.nodes.quantum_blur.quantum_blur_output
+   :members:
+   :undoc-members:
+   :show-inheritance:

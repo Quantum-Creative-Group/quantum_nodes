@@ -1,0 +1,58 @@
+quantum\_nodes.operators
+========================
+
+.. automodule:: quantum_nodes.operators
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Modules
+-------
+
+quantum\_nodes.operators.bloch\_sphere\_instancer
+-------------------------------------------------
+
+.. automodule:: quantum_nodes.operators.bloch_sphere_instancer
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+quantum\_nodes.operators.histogram\_instancer
+---------------------------------------------
+
+.. automodule:: quantum_nodes.operators.histogram_instancer
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+quantum\_nodes.operators.ibm\_connection
+----------------------------------------
+
+.. automodule:: quantum_nodes.operators.ibm_connection
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+quantum\_nodes.operators.insert\_node
+-------------------------------------
+
+.. automodule:: quantum_nodes.operators.insert_node
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+quantum\_nodes.operators.qgan\_histogram\_instancer
+---------------------------------------------------
+
+.. automodule:: quantum_nodes.operators.qgan_histogram_instancer
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+quantum\_nodes.operators.state\_city\_instancer
+-----------------------------------------------
+
+.. automodule:: quantum_nodes.operators.state_city_instancer
+   :members:
+   :undoc-members:
+   :show-inheritance:

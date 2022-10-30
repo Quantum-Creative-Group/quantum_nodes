@@ -1,0 +1,34 @@
+Code documentation
+==================
+
+.. automodule:: quantum_nodes
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Packages
+--------
+
+.. toctree::
+   :maxdepth: 1
+
+   quantum_nodes.algorithms
+   quantum_nodes.demo_addon
+   quantum_nodes.node_templates
+   quantum_nodes.nodes
+   quantum_nodes.operators
+   quantum_nodes.properties
+   quantum_nodes.sockets
+   quantum_nodes.ui
+   quantum_nodes.visualization
+
+Modules
+-------
+
+quantum\_nodes.auto\_load
+-------------------------
+
+.. automodule:: quantum_nodes.auto_load
+   :members:
+   :undoc-members:
+   :show-inheritance:

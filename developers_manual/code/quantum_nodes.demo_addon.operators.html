@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>quantum_nodes.demo_addon.operators &mdash; Quantum Nodes 0.1.2 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/developers_manual/ascii_art_file_architecture.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/global.css" type="text/css" />
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="quantum_nodes.demo_addon.panels" href="quantum_nodes.demo_addon.panels.html" />
+    <link rel="prev" title="quantum_nodes.demo_addon.backend" href="quantum_nodes.demo_addon.backend.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> Quantum Nodes
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../nodes/index.html">Nodes documentation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Developers manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../addon/index.html">Contribute to Quantum Nodes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../manual/index.html">Contribute to the manual</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="quantum_nodes.html">Code documentation</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="quantum_nodes.html#packages">Packages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="quantum_nodes.algorithms.html">quantum_nodes.algorithms</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="quantum_nodes.demo_addon.html">quantum_nodes.demo_addon</a></li>
+<li class="toctree-l4"><a class="reference internal" href="quantum_nodes.node_templates.html">quantum_nodes.node_templates namespace</a></li>
+<li class="toctree-l4"><a class="reference internal" href="quantum_nodes.nodes.html">quantum_nodes.nodes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="quantum_nodes.operators.html">quantum_nodes.operators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="quantum_nodes.properties.html">quantum_nodes.properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="quantum_nodes.sockets.html">quantum_nodes.sockets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="quantum_nodes.ui.html">quantum_nodes.ui</a></li>
+<li class="toctree-l4"><a class="reference internal" href="quantum_nodes.visualization.html">quantum_nodes.visualization</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="quantum_nodes.html#modules">Modules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quantum_nodes.html#module-quantum_nodes.auto_load">quantum_nodes.auto_load</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Quantum Nodes</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Developers manual</a> &raquo;</li>
+          <li><a href="quantum_nodes.html">Code documentation</a> &raquo;</li>
+          <li><a href="quantum_nodes.demo_addon.html">quantum_nodes.demo_addon</a> &raquo;</li>
+      <li>quantum_nodes.demo_addon.operators</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-quantum_nodes.demo_addon.operators">
+<span id="quantum-nodes-demo-addon-operators"></span><h1>quantum_nodes.demo_addon.operators<a class="headerlink" href="#module-quantum_nodes.demo_addon.operators" title="Permalink to this heading"></a></h1>
+<section id="modules">
+<h2>Modules<a class="headerlink" href="#modules" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-quantum_nodes.demo_addon.operators.add_and_del_gate">
+<span id="quantum-nodes-demo-addon-operators-add-and-del-gate"></span><h2>quantum_nodes.demo_addon.operators.add_and_del_gate<a class="headerlink" href="#module-quantum_nodes.demo_addon.operators.add_and_del_gate" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.operators.add_and_del_gate.AddAndDelGate">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">quantum_nodes.demo_addon.operators.add_and_del_gate.</span></span><span class="sig-name descname"><span class="pre">AddAndDelGate</span></span><a class="headerlink" href="#quantum_nodes.demo_addon.operators.add_and_del_gate.AddAndDelGate" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Operator</span></code></p>
+<p>Add / Remove a gate.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.operators.add_and_del_gate.AddAndDelGate.bl_description">
+<span class="sig-name descname"><span class="pre">bl_description</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Add/Remove</span> <span class="pre">Gates'</span></em><a class="headerlink" href="#quantum_nodes.demo_addon.operators.add_and_del_gate.AddAndDelGate.bl_description" title="Permalink to this definition"></a></dt>
+<dd><p>str</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>type</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.operators.add_and_del_gate.AddAndDelGate.bl_idname">
+<span class="sig-name descname"><span class="pre">bl_idname</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'object.add_and_del_gate'</span></em><a class="headerlink" href="#quantum_nodes.demo_addon.operators.add_and_del_gate.AddAndDelGate.bl_idname" title="Permalink to this definition"></a></dt>
+<dd><p>str</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>type</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.operators.add_and_del_gate.AddAndDelGate.bl_label">
+<span class="sig-name descname"><span class="pre">bl_label</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Add</span> <span class="pre">And</span> <span class="pre">Delete</span> <span class="pre">Gate</span> <span class="pre">Operator'</span></em><a class="headerlink" href="#quantum_nodes.demo_addon.operators.add_and_del_gate.AddAndDelGate.bl_label" title="Permalink to this definition"></a></dt>
+<dd><p>str</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>type</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.operators.add_and_del_gate.AddAndDelGate.button">
+<span class="sig-name descname"><span class="pre">button</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#quantum_nodes.demo_addon.operators.add_and_del_gate.AddAndDelGate.button" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.operators.add_and_del_gate.AddAndDelGate.execute">
+<span class="sig-name descname"><span class="pre">execute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.demo_addon.operators.add_and_del_gate.AddAndDelGate.execute" title="Permalink to this definition"></a></dt>
+<dd><p>Execute the operator</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>context</strong> (<em>'Context'</em>) -- </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>result</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.operators.add_and_del_gate.AddAndDelGate.poll">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">poll</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.demo_addon.operators.add_and_del_gate.AddAndDelGate.poll" title="Permalink to this definition"></a></dt>
+<dd><p>Test if the operator can be called or not</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>context</strong> (<em>'Context'</em>) -- </p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.operators.add_and_del_gate.drawGatesOperator">
+<span class="sig-prename descclassname"><span class="pre">quantum_nodes.demo_addon.operators.add_and_del_gate.</span></span><span class="sig-name descname"><span class="pre">drawGatesOperator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.demo_addon.operators.add_and_del_gate.drawGatesOperator" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-quantum_nodes.demo_addon.operators.add_gate_button">
+<span id="quantum-nodes-demo-addon-operators-add-gate-button"></span><h2>quantum_nodes.demo_addon.operators.add_gate_button<a class="headerlink" href="#module-quantum_nodes.demo_addon.operators.add_gate_button" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.operators.add_gate_button.AddGateButton">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">quantum_nodes.demo_addon.operators.add_gate_button.</span></span><span class="sig-name descname"><span class="pre">AddGateButton</span></span><a class="headerlink" href="#quantum_nodes.demo_addon.operators.add_gate_button.AddGateButton" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Operator</span></code></p>
+<p>Add a gate.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.operators.add_gate_button.AddGateButton.bl_idname">
+<span class="sig-name descname"><span class="pre">bl_idname</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'object.add_gate_button'</span></em><a class="headerlink" href="#quantum_nodes.demo_addon.operators.add_gate_button.AddGateButton.bl_idname" title="Permalink to this definition"></a></dt>
+<dd><p>str</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>type</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.operators.add_gate_button.AddGateButton.bl_label">
+<span class="sig-name descname"><span class="pre">bl_label</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Add</span> <span class="pre">Gate</span> <span class="pre">Button</span> <span class="pre">Operator'</span></em><a class="headerlink" href="#quantum_nodes.demo_addon.operators.add_gate_button.AddGateButton.bl_label" title="Permalink to this definition"></a></dt>
+<dd><p>str</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>type</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.operators.add_gate_button.AddGateButton.execute">
+<span class="sig-name descname"><span class="pre">execute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.demo_addon.operators.add_gate_button.AddGateButton.execute" title="Permalink to this definition"></a></dt>
+<dd><p>Execute the operator</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>context</strong> (<em>'Context'</em>) -- </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>result</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.operators.add_gate_button.AddGateButton.text">
+<span class="sig-name descname"><span class="pre">text</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#quantum_nodes.demo_addon.operators.add_gate_button.AddGateButton.text" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-quantum_nodes.demo_addon.operators.apply_quantum_circuit">
+<span id="quantum-nodes-demo-addon-operators-apply-quantum-circuit"></span><h2>quantum_nodes.demo_addon.operators.apply_quantum_circuit<a class="headerlink" href="#module-quantum_nodes.demo_addon.operators.apply_quantum_circuit" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.operators.apply_quantum_circuit.ApplyQuantumCircuit">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">quantum_nodes.demo_addon.operators.apply_quantum_circuit.</span></span><span class="sig-name descname"><span class="pre">ApplyQuantumCircuit</span></span><a class="headerlink" href="#quantum_nodes.demo_addon.operators.apply_quantum_circuit.ApplyQuantumCircuit" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Operator</span></code></p>
+<p>Apply the quantum circuit on the selected object.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.operators.apply_quantum_circuit.ApplyQuantumCircuit.bl_description">
+<span class="sig-name descname"><span class="pre">bl_description</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Applies</span> <span class="pre">the</span> <span class="pre">quantum</span> <span class="pre">circuit</span> <span class="pre">on</span> <span class="pre">the</span> <span class="pre">selected</span> <span class="pre">mesh'</span></em><a class="headerlink" href="#quantum_nodes.demo_addon.operators.apply_quantum_circuit.ApplyQuantumCircuit.bl_description" title="Permalink to this definition"></a></dt>
+<dd><p>str</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>type</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.operators.apply_quantum_circuit.ApplyQuantumCircuit.bl_idname">
+<span class="sig-name descname"><span class="pre">bl_idname</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'object.apply_quantum_circuit'</span></em><a class="headerlink" href="#quantum_nodes.demo_addon.operators.apply_quantum_circuit.ApplyQuantumCircuit.bl_idname" title="Permalink to this definition"></a></dt>
+<dd><p>str</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>type</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.operators.apply_quantum_circuit.ApplyQuantumCircuit.bl_label">
+<span class="sig-name descname"><span class="pre">bl_label</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'ApplyQuantumCircuit'</span></em><a class="headerlink" href="#quantum_nodes.demo_addon.operators.apply_quantum_circuit.ApplyQuantumCircuit.bl_label" title="Permalink to this definition"></a></dt>
+<dd><p>str</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>type</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.operators.apply_quantum_circuit.ApplyQuantumCircuit.bl_options">
+<span class="sig-name descname"><span class="pre">bl_options</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Set</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Set</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'REGISTER',</span> <span class="pre">'UNDO'}</span></em><a class="headerlink" href="#quantum_nodes.demo_addon.operators.apply_quantum_circuit.ApplyQuantumCircuit.bl_options" title="Permalink to this definition"></a></dt>
+<dd><p>Options for this operator type</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><em>Union</em>[<em>Set</em>[str], <em>Set</em>[int]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.operators.apply_quantum_circuit.ApplyQuantumCircuit.execute">
+<span class="sig-name descname"><span class="pre">execute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.demo_addon.operators.apply_quantum_circuit.ApplyQuantumCircuit.execute" title="Permalink to this definition"></a></dt>
+<dd><p>Execute the operator</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>context</strong> (<em>'Context'</em>) -- </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>result</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.operators.apply_quantum_circuit.ApplyQuantumCircuit.poll">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">poll</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.demo_addon.operators.apply_quantum_circuit.ApplyQuantumCircuit.poll" title="Permalink to this definition"></a></dt>
+<dd><p>Test if the operator can be called or not</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>context</strong> (<em>'Context'</em>) -- </p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-quantum_nodes.demo_addon.operators.delete_target">
+<span id="quantum-nodes-demo-addon-operators-delete-target"></span><h2>quantum_nodes.demo_addon.operators.delete_target<a class="headerlink" href="#module-quantum_nodes.demo_addon.operators.delete_target" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.operators.delete_target.DeleteTarget">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">quantum_nodes.demo_addon.operators.delete_target.</span></span><span class="sig-name descname"><span class="pre">DeleteTarget</span></span><a class="headerlink" href="#quantum_nodes.demo_addon.operators.delete_target.DeleteTarget" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Operator</span></code></p>
+<p>Delete the current target (selected object).</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.operators.delete_target.DeleteTarget.bl_description">
+<span class="sig-name descname"><span class="pre">bl_description</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Deletes</span> <span class="pre">the</span> <span class="pre">current</span> <span class="pre">target'</span></em><a class="headerlink" href="#quantum_nodes.demo_addon.operators.delete_target.DeleteTarget.bl_description" title="Permalink to this definition"></a></dt>
+<dd><p>str</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>type</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.operators.delete_target.DeleteTarget.bl_idname">
+<span class="sig-name descname"><span class="pre">bl_idname</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'object.delete_target'</span></em><a class="headerlink" href="#quantum_nodes.demo_addon.operators.delete_target.DeleteTarget.bl_idname" title="Permalink to this definition"></a></dt>
+<dd><p>str</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>type</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.operators.delete_target.DeleteTarget.bl_label">
+<span class="sig-name descname"><span class="pre">bl_label</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Delete</span> <span class="pre">Target'</span></em><a class="headerlink" href="#quantum_nodes.demo_addon.operators.delete_target.DeleteTarget.bl_label" title="Permalink to this definition"></a></dt>
+<dd><p>str</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>type</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.operators.delete_target.DeleteTarget.execute">
+<span class="sig-name descname"><span class="pre">execute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.demo_addon.operators.delete_target.DeleteTarget.execute" title="Permalink to this definition"></a></dt>
+<dd><p>Execute the operator</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>context</strong> (<em>'Context'</em>) -- </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>result</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.operators.delete_target.DeleteTarget.invoke">
+<span class="sig-name descname"><span class="pre">invoke</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">event</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.demo_addon.operators.delete_target.DeleteTarget.invoke" title="Permalink to this definition"></a></dt>
+<dd><p>Invoke the operator</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>context</strong> (<em>'Context'</em>) -- </p></li>
+<li><p><strong>event</strong> (<em>'Event'</em>) -- </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>result</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-quantum_nodes.demo_addon.operators.duplicate_target">
+<span id="quantum-nodes-demo-addon-operators-duplicate-target"></span><h2>quantum_nodes.demo_addon.operators.duplicate_target<a class="headerlink" href="#module-quantum_nodes.demo_addon.operators.duplicate_target" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.operators.duplicate_target.DuplicateTarget">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">quantum_nodes.demo_addon.operators.duplicate_target.</span></span><span class="sig-name descname"><span class="pre">DuplicateTarget</span></span><a class="headerlink" href="#quantum_nodes.demo_addon.operators.duplicate_target.DuplicateTarget" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Operator</span></code></p>
+<p>Duplicate the selected object to get a copy of it.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.operators.duplicate_target.DuplicateTarget.bl_description">
+<span class="sig-name descname"><span class="pre">bl_description</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Creates</span> <span class="pre">a</span> <span class="pre">brand</span> <span class="pre">new</span> <span class="pre">copy</span> <span class="pre">of</span> <span class="pre">your</span> <span class="pre">work'</span></em><a class="headerlink" href="#quantum_nodes.demo_addon.operators.duplicate_target.DuplicateTarget.bl_description" title="Permalink to this definition"></a></dt>
+<dd><p>str</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>type</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.operators.duplicate_target.DuplicateTarget.bl_idname">
+<span class="sig-name descname"><span class="pre">bl_idname</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'object.duplicate_target'</span></em><a class="headerlink" href="#quantum_nodes.demo_addon.operators.duplicate_target.DuplicateTarget.bl_idname" title="Permalink to this definition"></a></dt>
+<dd><p>str</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>type</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.operators.duplicate_target.DuplicateTarget.bl_label">
+<span class="sig-name descname"><span class="pre">bl_label</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Duplicate</span> <span class="pre">Target'</span></em><a class="headerlink" href="#quantum_nodes.demo_addon.operators.duplicate_target.DuplicateTarget.bl_label" title="Permalink to this definition"></a></dt>
+<dd><p>str</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>type</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.operators.duplicate_target.DuplicateTarget.execute">
+<span class="sig-name descname"><span class="pre">execute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.demo_addon.operators.duplicate_target.DuplicateTarget.execute" title="Permalink to this definition"></a></dt>
+<dd><p>Execute the operator</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>context</strong> (<em>'Context'</em>) -- </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>result</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.operators.duplicate_target.DuplicateTarget.poll">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">poll</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.demo_addon.operators.duplicate_target.DuplicateTarget.poll" title="Permalink to this definition"></a></dt>
+<dd><p>Test if the operator can be called or not</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>context</strong> (<em>'Context'</em>) -- </p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-quantum_nodes.demo_addon.operators.reset_circuits">
+<span id="quantum-nodes-demo-addon-operators-reset-circuits"></span><h2>quantum_nodes.demo_addon.operators.reset_circuits<a class="headerlink" href="#module-quantum_nodes.demo_addon.operators.reset_circuits" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.operators.reset_circuits.ResetCircuits">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">quantum_nodes.demo_addon.operators.reset_circuits.</span></span><span class="sig-name descname"><span class="pre">ResetCircuits</span></span><a class="headerlink" href="#quantum_nodes.demo_addon.operators.reset_circuits.ResetCircuits" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Operator</span></code></p>
+<p>Reset all circuits.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.operators.reset_circuits.ResetCircuits.bl_description">
+<span class="sig-name descname"><span class="pre">bl_description</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Resets</span> <span class="pre">every</span> <span class="pre">quantum</span> <span class="pre">circuit'</span></em><a class="headerlink" href="#quantum_nodes.demo_addon.operators.reset_circuits.ResetCircuits.bl_description" title="Permalink to this definition"></a></dt>
+<dd><p>str</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>type</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.operators.reset_circuits.ResetCircuits.bl_idname">
+<span class="sig-name descname"><span class="pre">bl_idname</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'object.reset_quantum_circuits'</span></em><a class="headerlink" href="#quantum_nodes.demo_addon.operators.reset_circuits.ResetCircuits.bl_idname" title="Permalink to this definition"></a></dt>
+<dd><p>str</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>type</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.operators.reset_circuits.ResetCircuits.bl_label">
+<span class="sig-name descname"><span class="pre">bl_label</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Reset</span> <span class="pre">circuits'</span></em><a class="headerlink" href="#quantum_nodes.demo_addon.operators.reset_circuits.ResetCircuits.bl_label" title="Permalink to this definition"></a></dt>
+<dd><p>str</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>type</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.operators.reset_circuits.ResetCircuits.execute">
+<span class="sig-name descname"><span class="pre">execute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.demo_addon.operators.reset_circuits.ResetCircuits.execute" title="Permalink to this definition"></a></dt>
+<dd><p>Execute the operator</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>context</strong> (<em>'Context'</em>) -- </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>result</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.operators.reset_circuits.ResetCircuits.invoke">
+<span class="sig-name descname"><span class="pre">invoke</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">event</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.demo_addon.operators.reset_circuits.ResetCircuits.invoke" title="Permalink to this definition"></a></dt>
+<dd><p>Invoke the operator</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>context</strong> (<em>'Context'</em>) -- </p></li>
+<li><p><strong>event</strong> (<em>'Event'</em>) -- </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>result</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.operators.reset_circuits.ResetCircuits.poll">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">poll</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.demo_addon.operators.reset_circuits.ResetCircuits.poll" title="Permalink to this definition"></a></dt>
+<dd><p>Test if the operator can be called or not</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>context</strong> (<em>'Context'</em>) -- </p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-quantum_nodes.demo_addon.operators.select_object">
+<span id="quantum-nodes-demo-addon-operators-select-object"></span><h2>quantum_nodes.demo_addon.operators.select_object<a class="headerlink" href="#module-quantum_nodes.demo_addon.operators.select_object" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.operators.select_object.SelectObject">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">quantum_nodes.demo_addon.operators.select_object.</span></span><span class="sig-name descname"><span class="pre">SelectObject</span></span><a class="headerlink" href="#quantum_nodes.demo_addon.operators.select_object.SelectObject" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Operator</span></code></p>
+<p>Select a new target object.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.operators.select_object.SelectObject.bl_idname">
+<span class="sig-name descname"><span class="pre">bl_idname</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'object.select_object'</span></em><a class="headerlink" href="#quantum_nodes.demo_addon.operators.select_object.SelectObject.bl_idname" title="Permalink to this definition"></a></dt>
+<dd><p>str</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>type</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.operators.select_object.SelectObject.bl_label">
+<span class="sig-name descname"><span class="pre">bl_label</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Set</span> <span class="pre">a</span> <span class="pre">new</span> <span class="pre">target'</span></em><a class="headerlink" href="#quantum_nodes.demo_addon.operators.select_object.SelectObject.bl_label" title="Permalink to this definition"></a></dt>
+<dd><p>str</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>type</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.operators.select_object.SelectObject.execute">
+<span class="sig-name descname"><span class="pre">execute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.demo_addon.operators.select_object.SelectObject.execute" title="Permalink to this definition"></a></dt>
+<dd><p>Execute the operator</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>context</strong> (<em>'Context'</em>) -- </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>result</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.operators.select_object.SelectObject.invoke">
+<span class="sig-name descname"><span class="pre">invoke</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">event</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.demo_addon.operators.select_object.SelectObject.invoke" title="Permalink to this definition"></a></dt>
+<dd><p>Invoke the operator</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>context</strong> (<em>'Context'</em>) -- </p></li>
+<li><p><strong>event</strong> (<em>'Event'</em>) -- </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>result</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.operators.select_object.SelectObject.poll">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">poll</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.demo_addon.operators.select_object.SelectObject.poll" title="Permalink to this definition"></a></dt>
+<dd><p>Test if the operator can be called or not</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>context</strong> (<em>'Context'</em>) -- </p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-quantum_nodes.demo_addon.operators.select_qubit">
+<span id="quantum-nodes-demo-addon-operators-select-qubit"></span><h2>quantum_nodes.demo_addon.operators.select_qubit<a class="headerlink" href="#module-quantum_nodes.demo_addon.operators.select_qubit" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.operators.select_qubit.SelectQubit">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">quantum_nodes.demo_addon.operators.select_qubit.</span></span><span class="sig-name descname"><span class="pre">SelectQubit</span></span><a class="headerlink" href="#quantum_nodes.demo_addon.operators.select_qubit.SelectQubit" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Operator</span></code></p>
+<p>Select a qubit on which to add a new gate.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.operators.select_qubit.SelectQubit.bl_description">
+<span class="sig-name descname"><span class="pre">bl_description</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Select</span> <span class="pre">the</span> <span class="pre">qubit</span> <span class="pre">you</span> <span class="pre">want</span> <span class="pre">to</span> <span class="pre">modify'</span></em><a class="headerlink" href="#quantum_nodes.demo_addon.operators.select_qubit.SelectQubit.bl_description" title="Permalink to this definition"></a></dt>
+<dd><p>str</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>type</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.operators.select_qubit.SelectQubit.bl_idname">
+<span class="sig-name descname"><span class="pre">bl_idname</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'dialog.select_qubit'</span></em><a class="headerlink" href="#quantum_nodes.demo_addon.operators.select_qubit.SelectQubit.bl_idname" title="Permalink to this definition"></a></dt>
+<dd><p>str</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>type</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.operators.select_qubit.SelectQubit.bl_label">
+<span class="sig-name descname"><span class="pre">bl_label</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Select</span> <span class="pre">a</span> <span class="pre">qubit'</span></em><a class="headerlink" href="#quantum_nodes.demo_addon.operators.select_qubit.SelectQubit.bl_label" title="Permalink to this definition"></a></dt>
+<dd><p>str</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>type</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.operators.select_qubit.SelectQubit.execute">
+<span class="sig-name descname"><span class="pre">execute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.demo_addon.operators.select_qubit.SelectQubit.execute" title="Permalink to this definition"></a></dt>
+<dd><p>Execute the operator</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>context</strong> (<em>'Context'</em>) -- </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>result</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.operators.select_qubit.SelectQubit.poll">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">poll</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.demo_addon.operators.select_qubit.SelectQubit.poll" title="Permalink to this definition"></a></dt>
+<dd><p>Test if the operator can be called or not</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>context</strong> (<em>'Context'</em>) -- </p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.operators.select_qubit.drawSelectQubitOperator">
+<span class="sig-prename descclassname"><span class="pre">quantum_nodes.demo_addon.operators.select_qubit.</span></span><span class="sig-name descname"><span class="pre">drawSelectQubitOperator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.demo_addon.operators.select_qubit.drawSelectQubitOperator" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-quantum_nodes.demo_addon.operators.select_qubit_button">
+<span id="quantum-nodes-demo-addon-operators-select-qubit-button"></span><h2>quantum_nodes.demo_addon.operators.select_qubit_button<a class="headerlink" href="#module-quantum_nodes.demo_addon.operators.select_qubit_button" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.operators.select_qubit_button.SelectQubitButton">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">quantum_nodes.demo_addon.operators.select_qubit_button.</span></span><span class="sig-name descname"><span class="pre">SelectQubitButton</span></span><a class="headerlink" href="#quantum_nodes.demo_addon.operators.select_qubit_button.SelectQubitButton" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Operator</span></code></p>
+<p>Button to select a qubit.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.operators.select_qubit_button.SelectQubitButton.bl_idname">
+<span class="sig-name descname"><span class="pre">bl_idname</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'object.select_qubit_button'</span></em><a class="headerlink" href="#quantum_nodes.demo_addon.operators.select_qubit_button.SelectQubitButton.bl_idname" title="Permalink to this definition"></a></dt>
+<dd><p>str</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>type</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.operators.select_qubit_button.SelectQubitButton.bl_label">
+<span class="sig-name descname"><span class="pre">bl_label</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Select</span> <span class="pre">qubit</span> <span class="pre">button</span> <span class="pre">Operator'</span></em><a class="headerlink" href="#quantum_nodes.demo_addon.operators.select_qubit_button.SelectQubitButton.bl_label" title="Permalink to this definition"></a></dt>
+<dd><p>str</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>type</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.operators.select_qubit_button.SelectQubitButton.execute">
+<span class="sig-name descname"><span class="pre">execute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.demo_addon.operators.select_qubit_button.SelectQubitButton.execute" title="Permalink to this definition"></a></dt>
+<dd><p>Execute the operator</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>context</strong> (<em>'Context'</em>) -- </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>result</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.operators.select_qubit_button.SelectQubitButton.index">
+<span class="sig-name descname"><span class="pre">index</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#quantum_nodes.demo_addon.operators.select_qubit_button.SelectQubitButton.index" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-quantum_nodes.demo_addon.operators.subdivide_mesh">
+<span id="quantum-nodes-demo-addon-operators-subdivide-mesh"></span><h2>quantum_nodes.demo_addon.operators.subdivide_mesh<a class="headerlink" href="#module-quantum_nodes.demo_addon.operators.subdivide_mesh" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.operators.subdivide_mesh.SubdivideMesh">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">quantum_nodes.demo_addon.operators.subdivide_mesh.</span></span><span class="sig-name descname"><span class="pre">SubdivideMesh</span></span><a class="headerlink" href="#quantum_nodes.demo_addon.operators.subdivide_mesh.SubdivideMesh" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Operator</span></code></p>
+<p>Subdivide the selected mesh.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.operators.subdivide_mesh.SubdivideMesh.bl_description">
+<span class="sig-name descname"><span class="pre">bl_description</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Subdivides</span> <span class="pre">your</span> <span class="pre">object'</span></em><a class="headerlink" href="#quantum_nodes.demo_addon.operators.subdivide_mesh.SubdivideMesh.bl_description" title="Permalink to this definition"></a></dt>
+<dd><p>str</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>type</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.operators.subdivide_mesh.SubdivideMesh.bl_idname">
+<span class="sig-name descname"><span class="pre">bl_idname</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'dialog.number'</span></em><a class="headerlink" href="#quantum_nodes.demo_addon.operators.subdivide_mesh.SubdivideMesh.bl_idname" title="Permalink to this definition"></a></dt>
+<dd><p>str</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>type</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.operators.subdivide_mesh.SubdivideMesh.bl_label">
+<span class="sig-name descname"><span class="pre">bl_label</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Subdivide'</span></em><a class="headerlink" href="#quantum_nodes.demo_addon.operators.subdivide_mesh.SubdivideMesh.bl_label" title="Permalink to this definition"></a></dt>
+<dd><p>str</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>type</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.operators.subdivide_mesh.SubdivideMesh.execute">
+<span class="sig-name descname"><span class="pre">execute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.demo_addon.operators.subdivide_mesh.SubdivideMesh.execute" title="Permalink to this definition"></a></dt>
+<dd><p>Execute the operator</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>context</strong> (<em>'Context'</em>) -- </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>result</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.operators.subdivide_mesh.SubdivideMesh.hasSubsurfModifier">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">hasSubsurfModifier</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.demo_addon.operators.subdivide_mesh.SubdivideMesh.hasSubsurfModifier" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.operators.subdivide_mesh.SubdivideMesh.invoke">
+<span class="sig-name descname"><span class="pre">invoke</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">event</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.demo_addon.operators.subdivide_mesh.SubdivideMesh.invoke" title="Permalink to this definition"></a></dt>
+<dd><p>Invoke the operator</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>context</strong> (<em>'Context'</em>) -- </p></li>
+<li><p><strong>event</strong> (<em>'Event'</em>) -- </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>result</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.operators.subdivide_mesh.SubdivideMesh.number">
+<span class="sig-name descname"><span class="pre">number</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#quantum_nodes.demo_addon.operators.subdivide_mesh.SubdivideMesh.number" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.operators.subdivide_mesh.SubdivideMesh.poll">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">poll</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.demo_addon.operators.subdivide_mesh.SubdivideMesh.poll" title="Permalink to this definition"></a></dt>
+<dd><p>Test if the operator can be called or not</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>context</strong> (<em>'Context'</em>) -- </p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-quantum_nodes.demo_addon.operators.switch_to_an">
+<span id="quantum-nodes-demo-addon-operators-switch-to-an"></span><h2>quantum_nodes.demo_addon.operators.switch_to_an<a class="headerlink" href="#module-quantum_nodes.demo_addon.operators.switch_to_an" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.operators.switch_to_an.SwitchToAn">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">quantum_nodes.demo_addon.operators.switch_to_an.</span></span><span class="sig-name descname"><span class="pre">SwitchToAn</span></span><a class="headerlink" href="#quantum_nodes.demo_addon.operators.switch_to_an.SwitchToAn" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Operator</span></code></p>
+<p>Switch to Animation Nodes.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.operators.switch_to_an.SwitchToAn.bl_description">
+<span class="sig-name descname"><span class="pre">bl_description</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Behind</span> <span class="pre">the</span> <span class="pre">scenes'</span></em><a class="headerlink" href="#quantum_nodes.demo_addon.operators.switch_to_an.SwitchToAn.bl_description" title="Permalink to this definition"></a></dt>
+<dd><p>str</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>type</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.operators.switch_to_an.SwitchToAn.bl_idname">
+<span class="sig-name descname"><span class="pre">bl_idname</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'screen.switch_to_an'</span></em><a class="headerlink" href="#quantum_nodes.demo_addon.operators.switch_to_an.SwitchToAn.bl_idname" title="Permalink to this definition"></a></dt>
+<dd><p>str</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>type</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.operators.switch_to_an.SwitchToAn.bl_label">
+<span class="sig-name descname"><span class="pre">bl_label</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Redirects</span> <span class="pre">the</span> <span class="pre">user</span> <span class="pre">to</span> <span class="pre">the</span> <span class="pre">animation</span> <span class="pre">nodes</span> <span class="pre">editor'</span></em><a class="headerlink" href="#quantum_nodes.demo_addon.operators.switch_to_an.SwitchToAn.bl_label" title="Permalink to this definition"></a></dt>
+<dd><p>str</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>type</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.operators.switch_to_an.SwitchToAn.execute">
+<span class="sig-name descname"><span class="pre">execute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.demo_addon.operators.switch_to_an.SwitchToAn.execute" title="Permalink to this definition"></a></dt>
+<dd><p>Execute the operator</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>context</strong> (<em>'Context'</em>) -- </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>result</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="quantum_nodes.demo_addon.backend.html" class="btn btn-neutral float-left" title="quantum_nodes.demo_addon.backend" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="quantum_nodes.demo_addon.panels.html" class="btn btn-neutral float-right" title="quantum_nodes.demo_addon.panels" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2022, Quantum-Creative-Group.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

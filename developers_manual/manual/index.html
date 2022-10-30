@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contribute to the manual &mdash; Quantum Nodes 0.1.2 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/developers_manual/ascii_art_file_architecture.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/global.css" type="text/css" />
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Linux" href="linux.html" />
+    <link rel="prev" title="Tools" href="../addon/tools.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> Quantum Nodes
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../nodes/index.html">Nodes documentation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Developers manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../addon/index.html">Contribute to Quantum Nodes</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Contribute to the manual</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#development-environment">Development environment</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="linux.html">Linux</a></li>
+<li class="toctree-l4"><a class="reference internal" href="windows.html">Windows</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mac.html">Mac</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tools.html">Tools</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#contribute">Contribute</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#guidelines">Guidelines</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#files-architecture">Files architecture</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-a-new-chapter">Add a new chapter</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#git-workflow">Git workflow</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../code/quantum_nodes.html">Code documentation</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Quantum Nodes</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Developers manual</a> &raquo;</li>
+      <li>Contribute to the manual</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="contribute-to-the-manual">
+<h1>Contribute to the manual<a class="headerlink" href="#contribute-to-the-manual" title="Permalink to this heading"></a></h1>
+<section id="development-environment">
+<span id="dev-env-contrib-manual"></span><h2>Development environment<a class="headerlink" href="#development-environment" title="Permalink to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="linux.html">Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="windows.html">Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mac.html">Mac</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
+</ul>
+</div>
+</section>
+<section id="contribute">
+<span id="intructions-linux-contrib-manual"></span><h2>Contribute<a class="headerlink" href="#contribute" title="Permalink to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Click <a class="reference external" href="https://docs.github.com/en/get-started/quickstart/fork-a-repo">here</a> to learn about the forking workflow on Github.</p>
+</div>
+<ul class="simple">
+<li><p>Fork the repository: <a class="reference external" href="https://github.com/Quantum-Creative-Group/quantum_nodes">https://github.com/Quantum-Creative-Group/quantum_nodes</a></p></li>
+<li><p>Do your modifications</p></li>
+<li><p>Once you are ready, open a new <a class="reference external" href="https://github.com/Quantum-Creative-Group/quantum_nodes/pulls">merge request</a></p></li>
+<li><p>Wait for your modifications to be reviewed and accepted</p></li>
+</ul>
+</section>
+<section id="guidelines">
+<span id="guidelines-contrib-addon"></span><h2>Guidelines<a class="headerlink" href="#guidelines" title="Permalink to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#files-architecture-contrib-manual"><span class="std std-ref">Files architecture</span></a></p></li>
+<li><p><a class="reference internal" href="#add-a-new-chapter-contrib-manual"><span class="std std-ref">Add a new chapter</span></a></p></li>
+</ol>
+<section id="files-architecture">
+<span id="files-architecture-contrib-manual"></span><h3>Files architecture<a class="headerlink" href="#files-architecture" title="Permalink to this heading"></a></h3>
+<pre>
+quantum_nodes_manual/
+├── build/
+├── source/
+│   ├── _static/
+│   │   └── css/
+│   │
+│   ├── conf.py
+│   ├── index.rst
+│   │
+│   ├── [chapter]/
+│   │   ├── index.rst
+│   │   ├── file.rst
+│   │   ├── [subchapter]/
+│   │   ├── ...
+│   │   └── [subchapter]/
+│   │
+│   ├── ...
+│   └── [chapter]/
+│       └── ...
+│
+└── ...
+</pre><br></section>
+<section id="add-a-new-chapter">
+<span id="add-a-new-chapter-contrib-manual"></span><h3>Add a new chapter<a class="headerlink" href="#add-a-new-chapter" title="Permalink to this heading"></a></h3>
+<ol class="arabic">
+<li><dl class="simple">
+<dt>Create a new folder</dt><dd><ul class="simple">
+<li><p>If your chapter is a new section, create a new folder under <code class="docutils literal notranslate"><span class="pre">source/</span></code></p></li>
+<li><p>If your chapter is a subchapter, create a new folder  under <code class="docutils literal notranslate"><span class="pre">source/parent_chapter/</span></code></p></li>
+<li><p>Your chapter may be a subsubchapter. No problem, keep the same logic as described before</p></li>
+<li><p>Give it a short and precise name (snake_case naming style)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Create a new <code class="docutils literal notranslate"><span class="pre">index.rst</span></code> file in your chapter</dt><dd><ul class="simple">
+<li><p>This file is the &quot;welcome page&quot; of your chapter</p></li>
+<li><p>Here you can add links to any subchapters and so on ...</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>If you need to add custom css to your page.s</dt><dd><ul>
+<li><p>Create a new folder under <code class="docutils literal notranslate"><span class="pre">source/_static/css/</span></code></p></li>
+<li><p>Give it the same name as your chapter</p></li>
+<li><p>Insert your css files</p></li>
+<li><div class="line-block">
+<div class="line">Once this is done, add your path to the <code class="docutils literal notranslate"><span class="pre">html_css_files</span></code> variable in <code class="docutils literal notranslate"><span class="pre">config.py</span></code></div>
+</div>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+<p>In a more visual way, here is the architecture of a section/chapter:</p>
+<pre>
+├── index.rst
+├── my_subchapter/
+│   ├── index.rst
+│   ├── my_subsubchapter/
+│   ├── file.rst
+│   └── ...
+├── file.rst
+└── ...
+</pre><br><p>So, at the end, here is what the global architecture should look like</p>
+<pre>
+quantum_nodes_manual/
+├── build/
+├── source/
+│   ├── _static/
+│   │   └── css/
+│   │       ├── ...
+│   │       └── my_chapter/
+│   │           ├── my_css_file.css
+│   │           └── ...
+│   │
+│   ├── conf.py
+│   ├── index.rst
+│   │
+│   ├── my_chapter/
+│   │   ├── index.rst
+│   │   ├── my_subchapter/
+│   │   │   ├── index.rst
+│   │   │   ├── my_subsubchapter/
+│   │   │   ├── file.rst
+│   │   │   └── ...
+│   │   ├── file.rst
+│   │   └── ...
+│   │
+│   └── ...
+│
+└── ...
+</pre><br></section>
+</section>
+<section id="git-workflow">
+<span id="git-workflow-contrib-manual"></span><h2>Git workflow<a class="headerlink" href="#git-workflow" title="Permalink to this heading"></a></h2>
+<a class="img-rounded reference internal image-reference" href="https://miro.medium.com/max/560/1*UH5ozOBwkaFhWA1mrJkVIQ.png"><img alt="Git workflow" class="img-rounded align-center" src="https://miro.medium.com/max/560/1*UH5ozOBwkaFhWA1mrJkVIQ.png" style="width: 80%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../addon/tools.html" class="btn btn-neutral float-left" title="Tools" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="linux.html" class="btn btn-neutral float-right" title="Linux" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2022, Quantum-Creative-Group.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

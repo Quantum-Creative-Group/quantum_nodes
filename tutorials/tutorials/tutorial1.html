@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tutorial 1 - Create a quantum circuit &mdash; Quantum Nodes 0.1.2 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/developers_manual/ascii_art_file_architecture.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/global.css" type="text/css" />
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Tutorial 2 - Use a quantum circuit to modify a mesh" href="tutorial2.html" />
+    <link rel="prev" title="Tutorials" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> Quantum Nodes
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../prerequisites/index.html">Prerequisites</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Tutorials</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Tutorial 1 - Create a quantum circuit</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#initialize-a-quantum-circuit">1 - Initialize a quantum circuit</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#use-quantum-gates">2 - Use quantum gates</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#get-results-from-our-quantum-circuit">3 - Get results from our quantum circuit</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial2.html">Tutorial 2 - Use a quantum circuit to modify a mesh</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial3.html">Tutorial 3 - Use a quantum circuit to modify the location, rotation or scale of a mesh</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial4.html">Tutorial 4 - Create and manipulate meshes using the Quantum Blur</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../nodes/index.html">Nodes documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developers_manual/index.html">Developers manual</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Quantum Nodes</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Tutorials</a> &raquo;</li>
+          <li><a href="index.html">Tutorials</a> &raquo;</li>
+      <li>Tutorial 1 - Create a quantum circuit</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="tutorial-1-create-a-quantum-circuit">
+<h1>Tutorial 1 - Create a quantum circuit<a class="headerlink" href="#tutorial-1-create-a-quantum-circuit" title="Permalink to this heading"></a></h1>
+<div class="line-block">
+<div class="line">In this tutorial, we are going to use Quantum Nodes to create our first quantum circuit in Blender and see what we can use with it.</div>
+</div>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="#tutorial1-initialize"><span class="std std-ref">1 - Initialize a quantum circuit</span></a></p></li>
+<li><p><a class="reference internal" href="#tutorial1-gates"><span class="std std-ref">2 - Use quantum gates</span></a></p></li>
+<li><p><a class="reference internal" href="#tutorial1-output"><span class="std std-ref">3 - Get results from our quantum circuit</span></a></p></li>
+</ul>
+</div></blockquote>
+<section id="initialize-a-quantum-circuit">
+<span id="tutorial1-initialize"></span><h2>1 - Initialize a quantum circuit<a class="headerlink" href="#initialize-a-quantum-circuit" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>First, open the Animation-Nodes window and create a new node tree.</p></li>
+</ul>
+<a class="img-rounded reference internal image-reference" href="../../_images/step1.png"><img alt="Step 1" class="img-rounded align-center" src="../../_images/step1.png" style="width: 85%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<a class="img-rounded reference internal image-reference" href="../../_images/step2.png"><img alt="Step 2" class="img-rounded align-center" src="../../_images/step2.png" style="width: 85%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ul class="simple">
+<li><p>In the Animation nodes panel, we can use nodes from Animation Nodes and Quantum Nodes. Press Shift+A to open the Animation Nodes menu or click the Add menu.</p></li>
+</ul>
+<a class="img-rounded reference internal image-reference" href="../../_images/step3.png"><img alt="Step 3" class="img-rounded align-center" src="../../_images/step3.png" style="width: 85%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="line-block">
+<div class="line">In this menu you can see all options from Animation Nodes. In the bottom, there is a the Quantum Nodes menu.</div>
+</div>
+<a class="img-rounded reference internal image-reference" href="../../_images/step4.png"><img alt="Step 4" class="img-rounded align-center" src="../../_images/step4.png" style="width: 85%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="line-block">
+<div class="line">Here, you can select all nodes from Quantum Nodes.</div>
+</div>
+<div class="line-block">
+<div class="line">To create a new quantum circuit, we will create 2 registers: a quantum register and a classical register.</div>
+</div>
+<ul class="simple">
+<li><p>In the <strong>Init Quantum Circuit</strong> menu, select <strong>Init Classical register</strong> and <strong>Init Quantum register</strong>.</p></li>
+</ul>
+<a class="img-rounded reference internal image-reference" href="../../_images/step5.png"><img alt="Step 5" class="img-rounded align-center" src="../../_images/step5.png" style="width: 85%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="line-block">
+<div class="line">We now have 2 registers.</div>
+<div class="line">You can choose the number of qubits and bits you want to use.</div>
+</div>
+<a class="img-rounded reference internal image-reference" href="../../_images/step6.png"><img alt="Step 6" class="img-rounded align-center" src="../../_images/step6.png" style="width: 50%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="line-block">
+<div class="line">Next, let's initiate our quantum circuit.</div>
+</div>
+<ul>
+<li><div class="line-block">
+<div class="line">Select <strong>Init Quantum Circuit</strong> -&gt; <strong>Init Quantum Circuit</strong>.</div>
+</div>
+</li>
+</ul>
+<a class="img-rounded reference internal image-reference" href="../../_images/step7.png"><img alt="Step 7" class="img-rounded align-center" src="../../_images/step7.png" style="width: 85%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="line-block">
+<div class="line">In this node you can select if you want to initialize your circuit by input number of qubits and bits, or use registers.</div>
+</div>
+<a class="img-rounded reference internal image-reference" href="../../_images/step8.png"><img alt="Step 8" class="img-rounded align-center" src="../../_images/step8.png" style="width: 85%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ul>
+<li><div class="line-block">
+<div class="line">We are going to use our registers, select option “Quantum and Classical register”, and link registers to the node.</div>
+</div>
+</li>
+</ul>
+<a class="img-rounded reference internal image-reference" href="../../_images/step9.png"><img alt="Step 9" class="img-rounded align-center" src="../../_images/step9.png" style="width: 85%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="line-block">
+<div class="line">Our circuit is now initialized.</div>
+</div>
+</section>
+<section id="use-quantum-gates">
+<span id="tutorial1-gates"></span><h2>2 - Use quantum gates<a class="headerlink" href="#use-quantum-gates" title="Permalink to this heading"></a></h2>
+<div class="line-block">
+<div class="line">All qubits and bits are initialized at 0. We want to change their value.</div>
+<div class="line">Let's modify qubits by using quantum gates.</div>
+</div>
+<ul>
+<li><div class="line-block">
+<div class="line">Go to the menu Quantum Gates.</div>
+</div>
+</li>
+</ul>
+<a class="img-rounded reference internal image-reference" href="../../_images/step10.png"><img alt="Step 10" class="img-rounded align-center" src="../../_images/step10.png" style="width: 85%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="line-block">
+<div class="line">Here you have access to every quantum gate implemented in Quantum Nodes.</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<div class="line-block">
+<div class="line">If you want to learn more about each gate implemented in Quantum Nodes, you can read our documentation <a class="reference external" href="https://drive.google.com/file/d/1U4QceNhRnfBhOn5S-MWFM6Rzti8aVMDn/view?usp=sharing">here</a>.</div>
+</div>
+</div>
+<div class="line-block">
+<div class="line">For now we are going to modify one qubit.</div>
+</div>
+<ul>
+<li><div class="line-block">
+<div class="line">Select <strong>Quantum Gate X</strong> (the NOT gate) in the <strong>Single Qubit Gates</strong> menu.</div>
+</div>
+</li>
+</ul>
+<a class="img-rounded reference internal image-reference" href="../../_images/step11.png"><img alt="Step 11" class="img-rounded align-center" src="../../_images/step11.png" style="width: 85%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ul>
+<li><div class="line-block">
+<div class="line">To apply this gate in our circuit, you have to input the circuit in the gate and select the qubit you want to modify.</div>
+</div>
+</li>
+</ul>
+<div class="line-block">
+<div class="line">You can also add the same gate to another qubit.</div>
+<div class="line">In output we get back our circuit.</div>
+</div>
+<a class="img-rounded reference internal image-reference" href="../../_images/step12.png"><img alt="Step 12" class="img-rounded align-center" src="../../_images/step12.png" style="width: 50%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="line-block">
+<div class="line">With a viewer node you can see the quantum circuit representation.</div>
+<div class="line">Here we can see the X gate applies to the qubit 0.</div>
+</div>
+<a class="img-rounded reference internal image-reference" href="../../_images/step13.png"><img alt="Step 13" class="img-rounded align-center" src="../../_images/step13.png" style="width: 85%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="line-block">
+<div class="line">Now we are going to entangle two qubits by using a CX gate (Controlled NOT).</div>
+</div>
+<ul>
+<li><div class="line-block">
+<div class="line">Select <strong>Quantum Gate CX</strong> in the <strong>C Gates</strong> menu and input the circuit in it.</div>
+</div>
+</li>
+</ul>
+<a class="img-rounded reference internal image-reference" href="../../_images/step14.png"><img alt="Step 14" class="img-rounded align-center" src="../../_images/step14.png" style="width: 85%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="line-block">
+<div class="line">This gate entangles two qubits.</div>
+</div>
+<ul>
+<li><div class="line-block">
+<div class="line">You have to choose which qubit will control and which qubit will be the target.</div>
+</div>
+</li>
+</ul>
+<a class="img-rounded reference internal image-reference" href="../../_images/step15.png"><img alt="Step 15" class="img-rounded align-center" src="../../_images/step15.png" style="width: 85%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="line-block">
+<div class="line">Now we have a circuit with multiple gates to manipulate qubits, we must be able to get results by sending them to a simulator.</div>
+</div>
+</section>
+<section id="get-results-from-our-quantum-circuit">
+<span id="tutorial1-output"></span><h2>3 - Get results from our quantum circuit<a class="headerlink" href="#get-results-from-our-quantum-circuit" title="Permalink to this heading"></a></h2>
+<div class="line-block">
+<div class="line">To get results from our quantum circuit, we can first measure qubits.</div>
+</div>
+<div class="line-block">
+<div class="line">In our circuit, we created a classical register to store the qubits values.</div>
+<div class="line">We have 2 bits in our classical register, so we only can store the value from 2 qubits (you can change the number of qubits and bits in your registers at any moment).</div>
+</div>
+<ul>
+<li><div class="line-block">
+<div class="line">To store qubit values in bits we are going to use the node <strong>Quantum Output</strong> -&gt; <strong>Quantum Output</strong> -&gt; <strong>Quantum Measure</strong></div>
+</div>
+</li>
+</ul>
+<a class="img-rounded reference internal image-reference" href="../../_images/step16.png"><img alt="Step 16" class="img-rounded align-center" src="../../_images/step16.png" style="width: 85%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="line-block">
+<div class="line">With this node you can choose which qubit value will be stored in which bit.</div>
+<div class="line">There is also an option to directly measure all qubits and automatically store them in a bit.</div>
+</div>
+<a class="img-rounded reference internal image-reference" href="../../_images/step17.png"><img alt="Step 17" class="img-rounded align-center" src="../../_images/step17.png" style="width: 50%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<a class="img-rounded reference internal image-reference" href="../../_images/step18.png"><img alt="Step 18" class="img-rounded align-center" src="../../_images/step18.png" style="width: 50%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="line-block">
+<div class="line">Here we choose to only measure the qubit 0 and 1 and store them in the bits 0 and 1.</div>
+<div class="line">To do that use two <strong>Quantum measure</strong> nodes.</div>
+</div>
+<a class="img-rounded reference internal image-reference" href="../../_images/step19.png"><img alt="Step 19" class="img-rounded align-center" src="../../_images/step19.png" style="width: 85%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="line-block">
+<div class="line">Now that we have measured some qubits from our circuit, we are going to extract some results.</div>
+</div>
+<section id="counts">
+<h3>Counts<a class="headerlink" href="#counts" title="Permalink to this heading"></a></h3>
+<ul>
+<li><div class="line-block">
+<div class="line">First, we can get the probabilities of qubits state with the node <strong>Quantum Circuit Get Counts</strong> in <strong>Quantum Output</strong> menu.</div>
+</div>
+</li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>A <strong>measure node</strong> is needed for this node to work. Add one between your circuit and the Get count node or else it won't work.</p>
+</div>
+<a class="img-rounded reference internal image-reference" href="../../_images/step20.png"><img alt="Step 20" class="img-rounded align-center" src="../../_images/step20.png" style="width: 85%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="line-block">
+<div class="line">This node simulates many times the circuit and returns how many times it gives the same result.</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In this example, we try 1024 times the circuit and get 1024 times the result “11”, which means that there is 100% chance of getting “11” as the result of this circuit.</p>
+</div>
+<a class="img-rounded reference internal image-reference" href="../../_images/step21.png"><img alt="Step 21" class="img-rounded align-center" src="../../_images/step21.png" style="width: 85%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="state-vector">
+<h3>State vector<a class="headerlink" href="#state-vector" title="Permalink to this heading"></a></h3>
+<div class="line-block">
+<div class="line">In the result of a quantum circuit, you have also a state-vector that contains probabilities from qubits.</div>
+<div class="line">These probabilities are complex numbers, so we choose with Quantum Nodes to return a complex numbers list.</div>
+</div>
+<ul>
+<li><div class="line-block">
+<div class="line">To use it select <strong>Quantum Output State</strong>.</div>
+</div>
+</li>
+</ul>
+<a class="img-rounded reference internal image-reference" href="../../_images/step22.png"><img alt="Step 22" class="img-rounded align-center" src="../../_images/step22.png" style="width: 85%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="line-block">
+<div class="line">Here we have a list of 8 complex numbers related to the number of possibilities (2^3 sequences).</div>
+</div>
+<a class="img-rounded reference internal image-reference" href="../../_images/step23.png"><img alt="Step 23" class="img-rounded align-center" src="../../_images/step23.png" style="width: 85%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In our example, we saw that there is a 100% chance to have “11” in the result. This means in the binary number that there is 100% to have 3 (11 in base 2 = 3 in base 10).</p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<div class="line-block">
+<div class="line">Note here that we placed the Quantum Output State after measures, it means that if you want to get the probabilities you will not be able to get them, because measures “freeze” qubits in a state.</div>
+<div class="line">In other words, it will return that you have 100% to get one random result and not probabilities of multiple results.</div>
+</div>
+</div>
+<p>If you want probabilities you have to use Quantum Output State without measures (other example in annex)</p>
+<a class="img-rounded reference internal image-reference" href="../../_images/step24.png"><img alt="Step 24" class="img-rounded align-center" src="../../_images/step24.png" style="width: 85%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="other-quantum-circuits">
+<h3>Other quantum circuits:<a class="headerlink" href="#other-quantum-circuits" title="Permalink to this heading"></a></h3>
+<p><em>1 Qubit, Hadamard Gate</em></p>
+<a class="img-rounded reference internal image-reference" href="../../_images/step25.png"><img alt="Step 25" class="img-rounded align-center" src="../../_images/step25.png" style="width: 85%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><em>2 Qubits, Hadamard Gate (q0), Rotation X Gate (5°)(q1)</em></p>
+<a class="img-rounded reference internal image-reference" href="../../_images/step26.png"><img alt="Step 26" class="img-rounded align-center" src="../../_images/step26.png" style="width: 85%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><em>“Bell state”: 2 Qubits, Hadamard Gate (q0), CX Gate (q0 -&gt; q1)</em></p>
+<a class="img-rounded reference internal image-reference" href="../../_images/step27.png"><img alt="Step 27" class="img-rounded align-center" src="../../_images/step27.png" style="width: 85%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><em>“Bell state” with measures</em></p>
+<a class="img-rounded reference internal image-reference" href="../../_images/step28.png"><img alt="Step 28" class="img-rounded align-center" src="../../_images/step28.png" style="width: 85%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Tutorials" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="tutorial2.html" class="btn btn-neutral float-right" title="Tutorial 2 - Use a quantum circuit to modify a mesh" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2022, Quantum-Creative-Group.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,18 @@
+quantum\_nodes.demo\_addon
+==========================
+
+.. automodule:: quantum_nodes.demo_addon
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Packages
+--------
+
+.. toctree::
+   :maxdepth: 1
+
+   quantum_nodes.demo_addon.backend
+   quantum_nodes.demo_addon.operators
+   quantum_nodes.demo_addon.panels
+   quantum_nodes.demo_addon.properties

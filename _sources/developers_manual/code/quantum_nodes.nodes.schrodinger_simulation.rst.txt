@@ -1,0 +1,18 @@
+quantum\_nodes.nodes.schrodinger\_simulation
+============================================
+
+.. automodule:: quantum_nodes.nodes.schrodinger_simulation
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Modules
+-------
+
+quantum\_nodes.nodes.schrodinger\_simulation.schrodinger\_equation\_simulation
+------------------------------------------------------------------------------
+
+.. automodule:: quantum_nodes.nodes.schrodinger_simulation.schrodinger_equation_simulation
+   :members:
+   :undoc-members:
+   :show-inheritance:

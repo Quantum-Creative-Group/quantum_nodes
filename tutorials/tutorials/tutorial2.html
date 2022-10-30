@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tutorial 2 - Use a quantum circuit to modify a mesh &mdash; Quantum Nodes 0.1.2 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/developers_manual/ascii_art_file_architecture.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/global.css" type="text/css" />
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Tutorial 3 - Use a quantum circuit to modify the location, rotation or scale of a mesh" href="tutorial3.html" />
+    <link rel="prev" title="Tutorial 1 - Create a quantum circuit" href="tutorial1.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> Quantum Nodes
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../prerequisites/index.html">Prerequisites</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Tutorials</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="tutorial1.html">Tutorial 1 - Create a quantum circuit</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Tutorial 2 - Use a quantum circuit to modify a mesh</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#convert-quantum-result-in-floats">1 - Convert quantum result in floats</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#access-the-mesh-vertices">2 - Access the mesh vertices</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#modify-vertices">3 - Modify vertices</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#have-the-perfect-number-of-floats">4 - Have the perfect number of floats</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial3.html">Tutorial 3 - Use a quantum circuit to modify the location, rotation or scale of a mesh</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial4.html">Tutorial 4 - Create and manipulate meshes using the Quantum Blur</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../nodes/index.html">Nodes documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developers_manual/index.html">Developers manual</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Quantum Nodes</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Tutorials</a> &raquo;</li>
+          <li><a href="index.html">Tutorials</a> &raquo;</li>
+      <li>Tutorial 2 - Use a quantum circuit to modify a mesh</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="tutorial-2-use-a-quantum-circuit-to-modify-a-mesh">
+<h1>Tutorial 2 - Use a quantum circuit to modify a mesh<a class="headerlink" href="#tutorial-2-use-a-quantum-circuit-to-modify-a-mesh" title="Permalink to this heading"></a></h1>
+<div class="line-block">
+<div class="line">In this tutorial, we are going to use results from a quantum circuit to modify a mesh in Blender.</div>
+</div>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="#convert-in-floats"><span class="std std-ref">1 - Convert quantum result in floats</span></a></p></li>
+<li><p><a class="reference internal" href="#access-vertices"><span class="std std-ref">2 - Access the mesh vertices</span></a></p></li>
+<li><p><a class="reference internal" href="#modify-vertices"><span class="std std-ref">3 - Modify vertices</span></a></p></li>
+<li><p><a class="reference internal" href="#number-floats"><span class="std std-ref">4 - Have the perfect number of floats</span></a></p></li>
+</ul>
+</div></blockquote>
+<div class="line-block">
+<div class="line">To begin, we are going to modify a cube.</div>
+</div>
+<ul>
+<li><div class="line-block">
+<div class="line">First, we will create a quantum circuit (if you need help, check the tutorial 1).</div>
+</div>
+</li>
+</ul>
+<section id="convert-quantum-result-in-floats">
+<span id="convert-in-floats"></span><h2>1 - Convert quantum result in floats<a class="headerlink" href="#convert-quantum-result-in-floats" title="Permalink to this heading"></a></h2>
+<div class="line-block">
+<div class="line">Here, we want to be able to modify all vertices of the cube, so we will need 8 results, that means we will need 3 qubits (2^3 = 8).</div>
+<div class="line">We are only going to use the state-vector of the circuit, so we don't need a classical register.</div>
+</div>
+<p>Let's create the following circuit:</p>
+<a class="img-rounded reference internal image-reference" href="../../_images/step110.png"><img alt="Step 1" class="img-rounded align-center" src="../../_images/step110.png" style="width: 85%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="line-block">
+<div class="line">Here we have the state-vector with probabilities related to qubits.</div>
+<div class="line">To send the complex list from the state-vector, we will create a group that contains our circuit and send this list as output.</div>
+<div class="line">To do it we use <strong>Subprograms</strong> options from <strong>Animation Nodes</strong>.</div>
+</div>
+<div class="line-block">
+<div class="line">Let's create the Quantum Circuit group:</div>
+</div>
+<a class="img-rounded reference internal image-reference" href="../../_images/step29.png"><img alt="Step 2" class="img-rounded align-center" src="../../_images/step29.png" style="width: 85%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="line-block">
+<div class="line">To use complexes, we will need to convert our output into floats.</div>
+<div class="line">To do that, Quantum Nodes implements a node <strong>Split Complex128</strong> that returns float from the real part and the imaginary part of the complex number.</div>
+</div>
+<a class="img-rounded reference internal image-reference" href="../../_images/step31.png"><img alt="Step 3" class="img-rounded align-center" src="../../_images/step31.png" style="width: 85%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<a class="img-rounded reference internal image-reference" href="../../_images/step41.png"><img alt="Step 4" class="img-rounded align-center" src="../../_images/step41.png" style="width: 85%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This node only takes one complex at a time, so to convert all of them we will create a loop with Subprograms.</p>
+</div>
+<ul>
+<li><div class="line-block">
+<div class="line">Create a new node tree and create a loop with an input taking Complex128.</div>
+</div>
+</li>
+</ul>
+<a class="img-rounded reference internal image-reference" href="../../_images/step51.png"><img alt="Step 5" class="img-rounded align-center" src="../../_images/step51.png" style="width: 85%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ul>
+<li><div class="line-block">
+<div class="line">Link this node to the node <strong>Split complex128</strong>.</div>
+</div>
+</li>
+</ul>
+<a class="img-rounded reference internal image-reference" href="../../_images/step61.png"><img alt="Step 6" class="img-rounded align-center" src="../../_images/step61.png" style="width: 85%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ul>
+<li><div class="line-block">
+<div class="line">Finally, create two outputs giving the real part and the imaginary part by clicking on New Generator Output in <strong>Loop Input</strong> and choosing Float List.</div>
+</div>
+</li>
+</ul>
+<a class="img-rounded reference internal image-reference" href="../../_images/step71.png"><img alt="Step 7" class="img-rounded align-center" src="../../_images/step71.png" style="width: 85%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="line-block">
+<div class="line">Now we can split all complexes from a list.</div>
+</div>
+</section>
+<section id="access-the-mesh-vertices">
+<span id="access-vertices"></span><h2>2 - Access the mesh vertices<a class="headerlink" href="#access-the-mesh-vertices" title="Permalink to this heading"></a></h2>
+<div class="line-block">
+<div class="line">Next we are going to create our main node tree to modify our cube.</div>
+</div>
+<ul>
+<li><div class="line-block">
+<div class="line">Create a new node tree.</div>
+</div>
+</li>
+</ul>
+<div class="line-block">
+<div class="line">In this one, we will use nodes from Animation Nodes to get vertices from an object and send back all the vertices transformed with our previous trees.</div>
+</div>
+<ul>
+<li><div class="line-block">
+<div class="line">First, call the object with <strong>Object Input</strong> and get his vertices with <strong>Mesh Object Input</strong>.</div>
+</div>
+</li>
+</ul>
+<a class="img-rounded reference internal image-reference" href="../../_images/step81.png"><img alt="Step 8" class="img-rounded align-center" src="../../_images/step81.png" style="width: 85%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="line-block">
+<div class="line">To be able to modify vertices from the object, we are going to get all vectors from the vertex locations and separate them to modify the axes independently.</div>
+</div>
+<a class="img-rounded reference internal image-reference" href="../../_images/step91.png"><img alt="Step 9" class="img-rounded align-center" src="../../_images/step91.png" style="width: 85%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ul>
+<li><div class="line-block">
+<div class="line">Go to the 3D Viewport and create a new cube.</div>
+</div>
+</li>
+<li><div class="line-block">
+<div class="line">Use the eyedropper tool from the <strong>Object Input</strong> node and select the cube. This is how you choose what object the tree and therefore the quantum circuit will be applied to.</div>
+</div>
+</li>
+</ul>
+<a class="img-rounded reference internal image-reference" href="../../_images/step101.png"><img alt="Step 10" class="img-rounded align-center" src="../../_images/step101.png" style="width: 85%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<div class="line-block">
+<div class="line">It is really useful to split your Blender workspace in multiple screens as you will often have to move through menus.</div>
+<div class="line">To do that, click on a corner of one workspace and slide it. You cn then choose what kind of workspace you want it to be in the dropdown menu at the top.</div>
+</div>
+</div>
+<div class="line-block">
+<div class="line">If you use the Viewer node, you can see the vertex locations of the cube.</div>
+<div class="line">For example we can see all floats x from vectors.</div>
+</div>
+<a class="img-rounded reference internal image-reference" href="../../_images/step111.png"><img alt="Step 11" class="img-rounded align-center" src="../../_images/step111.png" style="width: 85%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="line-block">
+<div class="line">We now have access to the cube vertices.</div>
+<div class="line">We can use our quantum circuit and our loop to change them.</div>
+</div>
+</section>
+<section id="modify-vertices">
+<span id="id1"></span><h2>3 - Modify vertices<a class="headerlink" href="#modify-vertices" title="Permalink to this heading"></a></h2>
+<ul>
+<li><div class="line-block">
+<div class="line">We use <strong>Invoke Subprogram</strong> to call our quantum circuit and our loop and link them to get two float lists.</div>
+</div>
+</li>
+</ul>
+<a class="img-rounded reference internal image-reference" href="../../_images/step121.png"><img alt="Step 12" class="img-rounded align-center" src="../../_images/step121.png" style="width: 85%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<a class="img-rounded reference internal image-reference" href="../../_images/step131.png"><img alt="Step 13" class="img-rounded align-center" src="../../_images/step131.png" style="width: 85%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="line-block">
+<div class="line">We can now change how we want the x, y or z list by using the node <strong>Float Math</strong>.</div>
+</div>
+<div class="line-block">
+<div class="line">For example I can choose to only change the x list by adding the real list and combine a new vector.</div>
+</div>
+<a class="img-rounded reference internal image-reference" href="../../_images/step141.png"><img alt="Step 14" class="img-rounded align-center" src="../../_images/step141.png" style="width: 85%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ul>
+<li><div class="line-block">
+<div class="line">We need to send our new vector to the cube again by using the <strong>Mesh Object Output</strong> node and select the type vertices.</div>
+</div>
+</li>
+</ul>
+<a class="img-rounded reference internal image-reference" href="../../_images/step151.png"><img alt="Step 15" class="img-rounded align-center" src="../../_images/step151.png" style="width: 85%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="line-block">
+<div class="line">We can see that some vertices from our cube have been moved along the x-axis.</div>
+</div>
+<a class="img-rounded reference internal image-reference" href="../../_images/step161.png"><img alt="Step 16" class="img-rounded align-center" src="../../_images/step161.png" style="width: 50%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<a class="img-rounded reference internal image-reference" href="../../_images/step171.png"><img alt="Step 17" class="img-rounded align-center" src="../../_images/step171.png" style="width: 50%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="line-block">
+<div class="line">You now know how to modify vertices thanks to a quantum circuit, but this way works only if you use the exact number of floats.</div>
+<div class="line">Here we use 3 qubits to obtain 8 results, it's perfect for a cube that has 8 vertices.</div>
+<div class="line">However, by increasing the number of qubits in the quantum circuit, we will have too many results.</div>
+</div>
+<p>Example if we to change to have 4 qubits:</p>
+<a class="img-rounded reference internal image-reference" href="../../_images/step181.png"><img alt="Step 18" class="img-rounded align-center" src="../../_images/step181.png" style="width: 85%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="have-the-perfect-number-of-floats">
+<span id="number-floats"></span><h2>4 - Have the perfect number of floats<a class="headerlink" href="#have-the-perfect-number-of-floats" title="Permalink to this heading"></a></h2>
+<div class="line-block">
+<div class="line">As we've seen, Qubits give us 2^n results (n number of qubits).</div>
+<div class="line">We need to find a way to filter only the number of results we want.</div>
+</div>
+<div class="line-block">
+<div class="line">To do that, we are going to create an adapter.</div>
+</div>
+<ul>
+<li><div class="line-block">
+<div class="line">Create a new node tree and create a new Loop with the <strong>Subprograms</strong> menu.</div>
+</div>
+</li>
+</ul>
+<div class="line-block">
+<div class="line">In parameters, we will take a float list for the real part of complex numbers.</div>
+<div class="line">We will get the float in the list related to the index and repeat the loop until the iteration number is equal to the number of vertices.</div>
+</div>
+<a class="img-rounded reference internal image-reference" href="../../_images/step191.png"><img alt="Step 19" class="img-rounded align-center" src="../../_images/step191.png" style="width: 85%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="line-block">
+<div class="line">We can use this loop in our main tree with <strong>Invoke subprogram</strong>.</div>
+<div class="line">To use it correctly, we have to input the float list from the quantum circuit and specify the number of iteration with the number of vertices.</div>
+</div>
+<a class="img-rounded reference internal image-reference" href="../../_images/step201.png"><img alt="Step 20" class="img-rounded align-center" src="../../_images/step201.png" style="width: 85%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="line-block">
+<div class="line">Now, no matter the number of results, we get the correct number of floats to create a new vector.</div>
+<div class="line">For example we can replace the Cube by a Sphere with more vertices and it will still work.</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We re-implement the new vertices to the same object. If you repeat this node, it will take each time the new vertex locations.</p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Automatic execution of the node tree is the default on Blender.
+This means that the node tree is executed as much as possible.
+As it is CPU intensive, it is recommended to change this option by deselecting Always in the Node Tree tab.</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="tutorial1.html" class="btn btn-neutral float-left" title="Tutorial 1 - Create a quantum circuit" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="tutorial3.html" class="btn btn-neutral float-right" title="Tutorial 3 - Use a quantum circuit to modify the location, rotation or scale of a mesh" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2022, Quantum-Creative-Group.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

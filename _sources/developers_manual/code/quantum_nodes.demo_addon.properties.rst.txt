@@ -1,0 +1,18 @@
+quantum\_nodes.demo\_addon.properties
+=====================================
+
+.. automodule:: quantum_nodes.demo_addon.properties
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Modules
+-------
+
+quantum\_nodes.demo\_addon.properties.select\_axis
+--------------------------------------------------
+
+.. automodule:: quantum_nodes.demo_addon.properties.select_axis
+   :members:
+   :undoc-members:
+   :show-inheritance:

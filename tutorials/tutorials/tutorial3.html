@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tutorial 3 - Use a quantum circuit to modify the location, rotation or scale of a mesh &mdash; Quantum Nodes 0.1.2 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/developers_manual/ascii_art_file_architecture.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/global.css" type="text/css" />
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Tutorial 4 - Create and manipulate meshes using the Quantum Blur" href="tutorial4.html" />
+    <link rel="prev" title="Tutorial 2 - Use a quantum circuit to modify a mesh" href="tutorial2.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> Quantum Nodes
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../prerequisites/index.html">Prerequisites</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Tutorials</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="tutorial1.html">Tutorial 1 - Create a quantum circuit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial2.html">Tutorial 2 - Use a quantum circuit to modify a mesh</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Tutorial 3 - Use a quantum circuit to modify the location, rotation or scale of a mesh</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#the-quantum-circuit">1 - The Quantum Circuit</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#create-vector">2 - Create Vector</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#transforming-the-cube">3 - Transforming the cube</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial4.html">Tutorial 4 - Create and manipulate meshes using the Quantum Blur</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../nodes/index.html">Nodes documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developers_manual/index.html">Developers manual</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Quantum Nodes</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Tutorials</a> &raquo;</li>
+          <li><a href="index.html">Tutorials</a> &raquo;</li>
+      <li>Tutorial 3 - Use a quantum circuit to modify the location, rotation or scale of a mesh</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="tutorial-3-use-a-quantum-circuit-to-modify-the-location-rotation-or-scale-of-a-mesh">
+<h1>Tutorial 3 - Use a quantum circuit to modify the location, rotation or scale of a mesh<a class="headerlink" href="#tutorial-3-use-a-quantum-circuit-to-modify-the-location-rotation-or-scale-of-a-mesh" title="Permalink to this heading"></a></h1>
+<div class="line-block">
+<div class="line">In this tutorial, we are going to use results from a quantum circuit to modify the location, rotation or scale of a mesh in blender.</div>
+</div>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="#tutorial3-quantum-circuit"><span class="std std-ref">1 - The Quantum Circuit</span></a></p></li>
+<li><p><a class="reference internal" href="#tutorial3-create-vector"><span class="std std-ref">2 - Create Vector</span></a></p></li>
+<li><p><a class="reference internal" href="#tutorial3-transforming-cube"><span class="std std-ref">3 - Transforming the cube</span></a></p></li>
+</ul>
+</div></blockquote>
+<div class="line-block">
+<div class="line">We are going to modify a cube.</div>
+</div>
+<ul>
+<li><div class="line-block">
+<div class="line">First, we will create a quantum circuit (if you need help you can check the tutorial #1).</div>
+</div>
+</li>
+</ul>
+<section id="the-quantum-circuit">
+<span id="tutorial3-quantum-circuit"></span><h2>1 - The Quantum Circuit<a class="headerlink" href="#the-quantum-circuit" title="Permalink to this heading"></a></h2>
+<ul>
+<li><div class="line-block">
+<div class="line">First we need to create a Quantum circuit.</div>
+</div>
+</li>
+</ul>
+<div class="line-block">
+<div class="line">In this example, we are going to use the following circuit, with 2 qubits and an RX gate:</div>
+</div>
+<a class="img-rounded reference internal image-reference" href="../../_images/step112.png"><img alt="Step 1" class="img-rounded align-center" src="../../_images/step112.png" style="width: 85%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="line-block">
+<div class="line">In order to ease the readability of our tree as we did in the last tutorial, we are going to put this circuit into a group so we can use it later as a subprogram.</div>
+</div>
+<a class="img-rounded reference internal image-reference" href="../../_images/step210.png"><img alt="Step 2" class="img-rounded align-center" src="../../_images/step210.png" style="width: 50%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="create-vector">
+<span id="tutorial3-create-vector"></span><h2>2 - Create Vector<a class="headerlink" href="#create-vector" title="Permalink to this heading"></a></h2>
+<ul>
+<li><div class="line-block">
+<div class="line">Once we have our <strong>Quantum Circuit Output</strong>, we need to create a vector out of it.</div>
+</div>
+</li>
+</ul>
+<div class="line-block">
+<div class="line">To use the data from our Quantum Circuit, we will need to convert the complex list returned to a float list.</div>
+</div>
+<ul>
+<li><div class="line-block">
+<div class="line">For this, we are going to create the same subprogram as we saw in the first part of Tutorial #2.</div>
+</div>
+</li>
+</ul>
+<a class="img-rounded reference internal image-reference" href="../../_images/step32.png"><img alt="Step 3" class="img-rounded align-center" src="../../_images/step32.png" style="width: 85%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ul>
+<li><div class="line-block">
+<div class="line">Once this is done, we can go back to creating our new group: <strong>Create Vector</strong>.</div>
+</div>
+</li>
+</ul>
+<div class="line-block">
+<div class="line">The goal of this group is to transform the results we got with our quantum circuit into a vector.</div>
+</div>
+<ul>
+<li><div class="line-block">
+<div class="line">First we are going to create our group and link our two subprograms Quantum Circuit and Complex into float, just like this:</div>
+</div>
+</li>
+</ul>
+<a class="img-rounded reference internal image-reference" href="../../_images/step42.png"><img alt="Step 4" class="img-rounded align-center" src="../../_images/step42.png" style="width: 85%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ul>
+<li><div class="line-block">
+<div class="line">Then we retrieve the values we want from the float list thanks to the Get List Element node and insert it into the vector that we are going to return.</div>
+</div>
+</li>
+</ul>
+<a class="img-rounded reference internal image-reference" href="../../_images/step52.png"><img alt="Step 5" class="img-rounded align-center" src="../../_images/step52.png" style="width: 85%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="line-block">
+<div class="line">There are several ways you can create your vector. It is really up to you.</div>
+<div class="line">Her, what we did was to use the first three floats of the list and put them respectively as the X, Y and Z of the vector.</div>
+<div class="line">Then we multiplied their value thanks to math nodes in order for the cube to move more.</div>
+</div>
+</section>
+<section id="transforming-the-cube">
+<span id="tutorial3-transforming-cube"></span><h2>3 - Transforming the cube<a class="headerlink" href="#transforming-the-cube" title="Permalink to this heading"></a></h2>
+<div class="line-block">
+<div class="line">Once you have your vector ready, the only thing left to do is to use it to transform your cube.</div>
+</div>
+<ul>
+<li><div class="line-block">
+<div class="line">Let's create a new node tree for that.</div>
+</div>
+</li>
+</ul>
+<div class="line-block">
+<div class="line">We are going to use the <strong>Object Transforms Output</strong> node, which basically allows us to set the location, rotation and scale of a selected object to the input transformations.</div>
+</div>
+<div class="line-block">
+<div class="line">Hence, we need to select our object as well as the transformation we want to apply to it.</div>
+</div>
+<ul>
+<li><div class="line-block">
+<div class="line">Then we need to get our vector from the Create Vector Subprogram and link it to our transform Node.</div>
+</div>
+</li>
+</ul>
+<a class="img-rounded reference internal image-reference" href="../../_images/step62.png"><img alt="Step 6" class="img-rounded align-center" src="../../_images/step62.png" style="width: 85%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ul>
+<li><div class="line-block">
+<div class="line">For example, here we are using the location transform on all axes on a cube. It is the easiest case.</div>
+</div>
+</li>
+</ul>
+<div class="line-block">
+<div class="line">Once you've linked it, you should see your object moving when the node tree is executed.</div>
+</div>
+<a class="img-rounded reference internal image-reference" href="../../_images/step72.png"><img alt="Step 7" class="img-rounded" src="../../_images/step72.png" style="width: 30%;" /></a>
+<a class="img-rounded reference internal image-reference" href="../../_images/step82.png"><img alt="Step 8" class="img-rounded" src="../../_images/step82.png" style="width: 30%;" /></a>
+<a class="img-rounded reference internal image-reference" href="../../_images/step92.png"><img alt="Step 9" class="img-rounded" src="../../_images/step92.png" style="width: 30%;" /></a>
+<div class="line-block">
+<div class="line">It is the same principle for scaling.</div>
+</div>
+<a class="img-rounded reference internal image-reference" href="../../_images/step102.png"><img alt="Step 10" class="img-rounded align-center" src="../../_images/step102.png" style="width: 85%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="line-block">
+<div class="line">Here is the result:</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<div class="line-block">
+<div class="line">Be careful not to activate the parameters if they are always at zero, else your cube will disappear.</div>
+</div>
+</div>
+<a class="img-rounded reference internal image-reference" href="../../_images/step113.png"><img alt="Step 11" class="img-rounded" src="../../_images/step113.png" style="width: 47%;" /></a>
+<a class="img-rounded reference internal image-reference" href="../../_images/step122.png"><img alt="Step 12" class="img-rounded" src="../../_images/step122.png" style="width: 47%;" /></a>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="tutorial2.html" class="btn btn-neutral float-left" title="Tutorial 2 - Use a quantum circuit to modify a mesh" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="tutorial4.html" class="btn btn-neutral float-right" title="Tutorial 4 - Create and manipulate meshes using the Quantum Blur" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2022, Quantum-Creative-Group.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

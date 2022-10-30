@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>quantum_nodes.demo_addon.backend &mdash; Quantum Nodes 0.1.2 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/developers_manual/ascii_art_file_architecture.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/global.css" type="text/css" />
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="quantum_nodes.demo_addon.operators" href="quantum_nodes.demo_addon.operators.html" />
+    <link rel="prev" title="quantum_nodes.demo_addon" href="quantum_nodes.demo_addon.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> Quantum Nodes
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../nodes/index.html">Nodes documentation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Developers manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../addon/index.html">Contribute to Quantum Nodes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../manual/index.html">Contribute to the manual</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="quantum_nodes.html">Code documentation</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="quantum_nodes.html#packages">Packages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="quantum_nodes.algorithms.html">quantum_nodes.algorithms</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="quantum_nodes.demo_addon.html">quantum_nodes.demo_addon</a></li>
+<li class="toctree-l4"><a class="reference internal" href="quantum_nodes.node_templates.html">quantum_nodes.node_templates namespace</a></li>
+<li class="toctree-l4"><a class="reference internal" href="quantum_nodes.nodes.html">quantum_nodes.nodes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="quantum_nodes.operators.html">quantum_nodes.operators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="quantum_nodes.properties.html">quantum_nodes.properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="quantum_nodes.sockets.html">quantum_nodes.sockets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="quantum_nodes.ui.html">quantum_nodes.ui</a></li>
+<li class="toctree-l4"><a class="reference internal" href="quantum_nodes.visualization.html">quantum_nodes.visualization</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="quantum_nodes.html#modules">Modules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quantum_nodes.html#module-quantum_nodes.auto_load">quantum_nodes.auto_load</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Quantum Nodes</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Developers manual</a> &raquo;</li>
+          <li><a href="quantum_nodes.html">Code documentation</a> &raquo;</li>
+          <li><a href="quantum_nodes.demo_addon.html">quantum_nodes.demo_addon</a> &raquo;</li>
+      <li>quantum_nodes.demo_addon.backend</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-quantum_nodes.demo_addon.backend">
+<span id="quantum-nodes-demo-addon-backend"></span><h1>quantum_nodes.demo_addon.backend<a class="headerlink" href="#module-quantum_nodes.demo_addon.backend" title="Permalink to this heading"></a></h1>
+<section id="modules">
+<h2>Modules<a class="headerlink" href="#modules" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-quantum_nodes.demo_addon.backend.circuit_manager">
+<span id="quantum-nodes-demo-addon-backend-circuit-manager"></span><h2>quantum_nodes.demo_addon.backend.circuit_manager<a class="headerlink" href="#module-quantum_nodes.demo_addon.backend.circuit_manager" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.backend.circuit_manager.CircuitManager">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">quantum_nodes.demo_addon.backend.circuit_manager.</span></span><span class="sig-name descname"><span class="pre">CircuitManager</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nb_qubits</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.demo_addon.backend.circuit_manager.CircuitManager" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Manage a quantum circuit.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.backend.circuit_manager.CircuitManager.popGate">
+<span class="sig-name descname"><span class="pre">popGate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">q_index</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.demo_addon.backend.circuit_manager.CircuitManager.popGate" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.backend.circuit_manager.CircuitManager.pushGate">
+<span class="sig-name descname"><span class="pre">pushGate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">q_index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gate</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.demo_addon.backend.circuit_manager.CircuitManager.pushGate" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.backend.circuit_manager.CircuitManager.reset">
+<span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.demo_addon.backend.circuit_manager.CircuitManager.reset" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-quantum_nodes.demo_addon.backend.demo_node_tree_utils">
+<span id="quantum-nodes-demo-addon-backend-demo-node-tree-utils"></span><h2>quantum_nodes.demo_addon.backend.demo_node_tree_utils<a class="headerlink" href="#module-quantum_nodes.demo_addon.backend.demo_node_tree_utils" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.backend.demo_node_tree_utils.generateCircuit">
+<span class="sig-prename descclassname"><span class="pre">quantum_nodes.demo_addon.backend.demo_node_tree_utils.</span></span><span class="sig-name descname"><span class="pre">generateCircuit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">demo_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">circuit_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.demo_addon.backend.demo_node_tree_utils.generateCircuit" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.backend.demo_node_tree_utils.generateMainNodeTree">
+<span class="sig-prename descclassname"><span class="pre">quantum_nodes.demo_addon.backend.demo_node_tree_utils.</span></span><span class="sig-name descname"><span class="pre">generateMainNodeTree</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">main_tree_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obj</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.demo_addon.backend.demo_node_tree_utils.generateMainNodeTree" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.backend.demo_node_tree_utils.generateMaxValue">
+<span class="sig-prename descclassname"><span class="pre">quantum_nodes.demo_addon.backend.demo_node_tree_utils.</span></span><span class="sig-name descname"><span class="pre">generateMaxValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">demo_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.demo_addon.backend.demo_node_tree_utils.generateMaxValue" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.backend.demo_node_tree_utils.generateMeshData">
+<span class="sig-prename descclassname"><span class="pre">quantum_nodes.demo_addon.backend.demo_node_tree_utils.</span></span><span class="sig-name descname"><span class="pre">generateMeshData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">demo_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.demo_addon.backend.demo_node_tree_utils.generateMeshData" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.backend.demo_node_tree_utils.generateMultiplyAll">
+<span class="sig-prename descclassname"><span class="pre">quantum_nodes.demo_addon.backend.demo_node_tree_utils.</span></span><span class="sig-name descname"><span class="pre">generateMultiplyAll</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">demo_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.demo_addon.backend.demo_node_tree_utils.generateMultiplyAll" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.backend.demo_node_tree_utils.generateNegative">
+<span class="sig-prename descclassname"><span class="pre">quantum_nodes.demo_addon.backend.demo_node_tree_utils.</span></span><span class="sig-name descname"><span class="pre">generateNegative</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">demo_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.demo_addon.backend.demo_node_tree_utils.generateNegative" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-quantum_nodes.demo_addon.backend.gate">
+<span id="quantum-nodes-demo-addon-backend-gate"></span><h2>quantum_nodes.demo_addon.backend.gate<a class="headerlink" href="#module-quantum_nodes.demo_addon.backend.gate" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.backend.gate.Gate">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">quantum_nodes.demo_addon.backend.gate.</span></span><span class="sig-name descname"><span class="pre">Gate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">i</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.demo_addon.backend.gate.Gate" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Represent a gate node in a quantum circuit.</p>
+</dd></dl>
+
+</section>
+<section id="module-quantum_nodes.demo_addon.backend.gate_nodes_manager">
+<span id="quantum-nodes-demo-addon-backend-gate-nodes-manager"></span><h2>quantum_nodes.demo_addon.backend.gate_nodes_manager<a class="headerlink" href="#module-quantum_nodes.demo_addon.backend.gate_nodes_manager" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.backend.gate_nodes_manager.GateNodesManager">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">quantum_nodes.demo_addon.backend.gate_nodes_manager.</span></span><span class="sig-name descname"><span class="pre">GateNodesManager</span></span><a class="headerlink" href="#quantum_nodes.demo_addon.backend.gate_nodes_manager.GateNodesManager" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Manage gates in a quantum circuit built with nodes.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.backend.gate_nodes_manager.GateNodesManager.addGate">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">addGate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_gate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">circuit_tree</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q_index</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.demo_addon.backend.gate_nodes_manager.GateNodesManager.addGate" title="Permalink to this definition"></a></dt>
+<dd><p>Add a new gate in the given circuit node tree.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.backend.gate_nodes_manager.GateNodesManager.getExistingGate">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">getExistingGate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">circuit_tree</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gate_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q_index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qubit_data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.demo_addon.backend.gate_nodes_manager.GateNodesManager.getExistingGate" title="Permalink to this definition"></a></dt>
+<dd><p>Return the gate if it already exists.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.backend.gate_nodes_manager.GateNodesManager.qubitIndexInGate">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">qubitIndexInGate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">q_index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.demo_addon.backend.gate_nodes_manager.GateNodesManager.qubitIndexInGate" title="Permalink to this definition"></a></dt>
+<dd><p>Return <cite>True</cite> if the q_index is a value of one of the sockets.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.backend.gate_nodes_manager.GateNodesManager.removeGate">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">removeGate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gate_node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">circuit_tree</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.demo_addon.backend.gate_nodes_manager.GateNodesManager.removeGate" title="Permalink to this definition"></a></dt>
+<dd><p>Remove the given gate node. Create a new link between the input and output of the deleted node.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.backend.gate_nodes_manager.GateNodesManager.removeLink">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">removeLink</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node_tree</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.demo_addon.backend.gate_nodes_manager.GateNodesManager.removeLink" title="Permalink to this definition"></a></dt>
+<dd><p>Remove the link between the given input and output.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-quantum_nodes.demo_addon.backend.gates_factory">
+<span id="quantum-nodes-demo-addon-backend-gates-factory"></span><h2>quantum_nodes.demo_addon.backend.gates_factory<a class="headerlink" href="#module-quantum_nodes.demo_addon.backend.gates_factory" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.backend.gates_factory.GatesFactory">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">quantum_nodes.demo_addon.backend.gates_factory.</span></span><span class="sig-name descname"><span class="pre">GatesFactory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start_left</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spacing</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">demo_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.demo_addon.backend.gates_factory.GatesFactory" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Generate new gates.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.backend.gates_factory.GatesFactory.createGate">
+<span class="sig-name descname"><span class="pre">createGate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gate_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gate_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gate_index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">circuit_tree</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.demo_addon.backend.gates_factory.GatesFactory.createGate" title="Permalink to this definition"></a></dt>
+<dd><p>Store all the useful information to add a new node to the circuit node tree.</p>
+<p>Also moves the output nodes to the right if more space is needed.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.backend.gates_factory.GatesFactory.getExistingGates">
+<span class="sig-name descname"><span class="pre">getExistingGates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">circuit_tree</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.demo_addon.backend.gates_factory.GatesFactory.getExistingGates" title="Permalink to this definition"></a></dt>
+<dd><p>Return all the existing gate nodes in the circuit.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-quantum_nodes.demo_addon.backend.node_tree_manager">
+<span id="quantum-nodes-demo-addon-backend-node-tree-manager"></span><h2>quantum_nodes.demo_addon.backend.node_tree_manager<a class="headerlink" href="#module-quantum_nodes.demo_addon.backend.node_tree_manager" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.backend.node_tree_manager.NodeTreeManager">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">quantum_nodes.demo_addon.backend.node_tree_manager.</span></span><span class="sig-name descname"><span class="pre">NodeTreeManager</span></span><a class="headerlink" href="#quantum_nodes.demo_addon.backend.node_tree_manager.NodeTreeManager" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Manage a node tree generated from this add-on.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.backend.node_tree_manager.NodeTreeManager.generateNodeTree">
+<span class="sig-name descname"><span class="pre">generateNodeTree</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.demo_addon.backend.node_tree_manager.NodeTreeManager.generateNodeTree" title="Permalink to this definition"></a></dt>
+<dd><p>Generate the demo node trees.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.backend.node_tree_manager.NodeTreeManager.getModification">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">getModification</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">last_circuits</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_circuits</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.demo_addon.backend.node_tree_manager.NodeTreeManager.getModification" title="Permalink to this definition"></a></dt>
+<dd><p>Return the information about the modification done on the circuits.</p>
+<p>Returns: action, gate_type, (circuit name, qubit index, gate index).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.backend.node_tree_manager.NodeTreeManager.removeAllTrees">
+<span class="sig-name descname"><span class="pre">removeAllTrees</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.demo_addon.backend.node_tree_manager.NodeTreeManager.removeAllTrees" title="Permalink to this definition"></a></dt>
+<dd><p>Remove all the demo node trees.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.backend.node_tree_manager.NodeTreeManager.resetAllGates">
+<span class="sig-name descname"><span class="pre">resetAllGates</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.demo_addon.backend.node_tree_manager.NodeTreeManager.resetAllGates" title="Permalink to this definition"></a></dt>
+<dd><p>Reset all the gate nodes in the node trees (for each circuit).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.backend.node_tree_manager.NodeTreeManager.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_circuits</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.demo_addon.backend.node_tree_manager.NodeTreeManager.update" title="Permalink to this definition"></a></dt>
+<dd><p>Update the circuit node trees.</p>
+<dl class="simple">
+<dt>If &quot;ADD&quot; :</dt><dd><p>Searches for a potential existing gate to insert the new one.
+If not found, then creates a new node.</p>
+</dd>
+<dt>If &quot;DEL&quot; :</dt><dd><p>Retrieves the node where the gate is and removes the socket.
+If the node isn't used anymore, deletes it.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.backend.node_tree_manager.NodeTreeManager.updateTarget">
+<span class="sig-name descname"><span class="pre">updateTarget</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.demo_addon.backend.node_tree_manager.NodeTreeManager.updateTarget" title="Permalink to this definition"></a></dt>
+<dd><p>Update the target of the quantum circuits.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-quantum_nodes.demo_addon.backend.quantum_nodes_demo_manager">
+<span id="quantum-nodes-demo-addon-backend-quantum-nodes-demo-manager"></span><h2>quantum_nodes.demo_addon.backend.quantum_nodes_demo_manager<a class="headerlink" href="#module-quantum_nodes.demo_addon.backend.quantum_nodes_demo_manager" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.backend.quantum_nodes_demo_manager.QuantumNodesDEMOManager">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">quantum_nodes.demo_addon.backend.quantum_nodes_demo_manager.</span></span><span class="sig-name descname"><span class="pre">QuantumNodesDEMOManager</span></span><a class="headerlink" href="#quantum_nodes.demo_addon.backend.quantum_nodes_demo_manager.QuantumNodesDEMOManager" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Manage of the demo panel.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.backend.quantum_nodes_demo_manager.QuantumNodesDEMOManager.getSelectedCircuit">
+<span class="sig-name descname"><span class="pre">getSelectedCircuit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.demo_addon.backend.quantum_nodes_demo_manager.QuantumNodesDEMOManager.getSelectedCircuit" title="Permalink to this definition"></a></dt>
+<dd><p>Return the circuit corresponding the selected axis in the UI. It returns a CircuitManager, not a list.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.backend.quantum_nodes_demo_manager.QuantumNodesDEMOManager.initializeDemoNodeTree">
+<span class="sig-name descname"><span class="pre">initializeDemoNodeTree</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.demo_addon.backend.quantum_nodes_demo_manager.QuantumNodesDEMOManager.initializeDemoNodeTree" title="Permalink to this definition"></a></dt>
+<dd><p>Build the demo node tree and links the target to the tree.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.backend.quantum_nodes_demo_manager.QuantumNodesDEMOManager.removeAll">
+<span class="sig-name descname"><span class="pre">removeAll</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.demo_addon.backend.quantum_nodes_demo_manager.QuantumNodesDEMOManager.removeAll" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.backend.quantum_nodes_demo_manager.QuantumNodesDEMOManager.resetCircuits">
+<span class="sig-name descname"><span class="pre">resetCircuits</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.demo_addon.backend.quantum_nodes_demo_manager.QuantumNodesDEMOManager.resetCircuits" title="Permalink to this definition"></a></dt>
+<dd><p>Reset circuits and the corresponding node trees.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.backend.quantum_nodes_demo_manager.QuantumNodesDEMOManager.setNewCircuits">
+<span class="sig-name descname"><span class="pre">setNewCircuits</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.demo_addon.backend.quantum_nodes_demo_manager.QuantumNodesDEMOManager.setNewCircuits" title="Permalink to this definition"></a></dt>
+<dd><p>Set the new circuit. The size depends on the number of vertices of the target.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.backend.quantum_nodes_demo_manager.QuantumNodesDEMOManager.setNewTarget">
+<span class="sig-name descname"><span class="pre">setNewTarget</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_target</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.demo_addon.backend.quantum_nodes_demo_manager.QuantumNodesDEMOManager.setNewTarget" title="Permalink to this definition"></a></dt>
+<dd><p>Set the new target and resets everything (circuits in the UI + node trees).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.demo_addon.backend.quantum_nodes_demo_manager.QuantumNodesDEMOManager.updateNodeTree">
+<span class="sig-name descname"><span class="pre">updateNodeTree</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.demo_addon.backend.quantum_nodes_demo_manager.QuantumNodesDEMOManager.updateNodeTree" title="Permalink to this definition"></a></dt>
+<dd><p>Update the node tree so that it corresponds to the represented circuits in the UI.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="quantum_nodes.demo_addon.html" class="btn btn-neutral float-left" title="quantum_nodes.demo_addon" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="quantum_nodes.demo_addon.operators.html" class="btn btn-neutral float-right" title="quantum_nodes.demo_addon.operators" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2022, Quantum-Creative-Group.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,18 @@
+quantum\_nodes.ui.panels
+========================
+
+.. automodule:: quantum_nodes.ui.panels
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Modules
+-------
+
+quantum\_nodes.ui.panels.main\_panel
+------------------------------------
+
+.. automodule:: quantum_nodes.ui.panels.main_panel
+   :members:
+   :undoc-members:
+   :show-inheritance:

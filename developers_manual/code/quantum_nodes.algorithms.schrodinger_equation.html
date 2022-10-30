@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>quantum_nodes.algorithms.schrodinger_equation &mdash; Quantum Nodes 0.1.2 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/developers_manual/ascii_art_file_architecture.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/global.css" type="text/css" />
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="quantum_nodes.demo_addon" href="quantum_nodes.demo_addon.html" />
+    <link rel="prev" title="quantum_nodes.algorithms" href="quantum_nodes.algorithms.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> Quantum Nodes
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../nodes/index.html">Nodes documentation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Developers manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../addon/index.html">Contribute to Quantum Nodes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../manual/index.html">Contribute to the manual</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="quantum_nodes.html">Code documentation</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="quantum_nodes.html#packages">Packages</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="quantum_nodes.algorithms.html">quantum_nodes.algorithms</a></li>
+<li class="toctree-l4"><a class="reference internal" href="quantum_nodes.demo_addon.html">quantum_nodes.demo_addon</a></li>
+<li class="toctree-l4"><a class="reference internal" href="quantum_nodes.node_templates.html">quantum_nodes.node_templates namespace</a></li>
+<li class="toctree-l4"><a class="reference internal" href="quantum_nodes.nodes.html">quantum_nodes.nodes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="quantum_nodes.operators.html">quantum_nodes.operators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="quantum_nodes.properties.html">quantum_nodes.properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="quantum_nodes.sockets.html">quantum_nodes.sockets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="quantum_nodes.ui.html">quantum_nodes.ui</a></li>
+<li class="toctree-l4"><a class="reference internal" href="quantum_nodes.visualization.html">quantum_nodes.visualization</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="quantum_nodes.html#modules">Modules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quantum_nodes.html#module-quantum_nodes.auto_load">quantum_nodes.auto_load</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Quantum Nodes</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Developers manual</a> &raquo;</li>
+          <li><a href="quantum_nodes.html">Code documentation</a> &raquo;</li>
+          <li><a href="quantum_nodes.algorithms.html">quantum_nodes.algorithms</a> &raquo;</li>
+      <li>quantum_nodes.algorithms.schrodinger_equation</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-quantum_nodes.algorithms.schrodinger_equation">
+<span id="quantum-nodes-algorithms-schrodinger-equation"></span><h1>quantum_nodes.algorithms.schrodinger_equation<a class="headerlink" href="#module-quantum_nodes.algorithms.schrodinger_equation" title="Permalink to this heading"></a></h1>
+<section id="modules">
+<h2>Modules<a class="headerlink" href="#modules" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-quantum_nodes.algorithms.schrodinger_equation.simulation_cache">
+<span id="quantum-nodes-algorithms-schrodinger-equation-simulation-cache"></span><h2>quantum_nodes.algorithms.schrodinger_equation.simulation_cache<a class="headerlink" href="#module-quantum_nodes.algorithms.schrodinger_equation.simulation_cache" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="quantum_nodes.algorithms.schrodinger_equation.simulation_cache.SimulationCache">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">quantum_nodes.algorithms.schrodinger_equation.simulation_cache.</span></span><span class="sig-name descname"><span class="pre">SimulationCache</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">max_frame</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.algorithms.schrodinger_equation.simulation_cache.SimulationCache" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Store all the computed frames and to determine the ones that need to be computed    when the user is asking the data for a specific frame.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.algorithms.schrodinger_equation.simulation_cache.SimulationCache.getFrame">
+<span class="sig-name descname"><span class="pre">getFrame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frame</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#quantum_nodes.algorithms.schrodinger_equation.simulation_data_manager.SimulationDataManager" title="quantum_nodes.algorithms.schrodinger_equation.simulation_data_manager.SimulationDataManager"><span class="pre">SimulationDataManager</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">inp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#quantum_nodes.algorithms.schrodinger_equation.simulation_inputs_manager.SimulationInputsManager" title="quantum_nodes.algorithms.schrodinger_equation.simulation_inputs_manager.SimulationInputsManager"><span class="pre">SimulationInputsManager</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.algorithms.schrodinger_equation.simulation_cache.SimulationCache.getFrame" title="Permalink to this definition"></a></dt>
+<dd><p>Return the requested data at the given frame. Manages the situations where several frames need to be        calculated in order to return the requested data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>frame</strong> (<em>int</em>) -- index of the frame</p></li>
+<li><p><strong>d</strong> (<a class="reference internal" href="#quantum_nodes.algorithms.schrodinger_equation.simulation_data_manager.SimulationDataManager" title="quantum_nodes.algorithms.schrodinger_equation.simulation_data_manager.SimulationDataManager"><em>SimulationDataManager</em></a>) -- simulation data manager</p></li>
+<li><p><strong>inp</strong> (<a class="reference internal" href="#quantum_nodes.algorithms.schrodinger_equation.simulation_inputs_manager.SimulationInputsManager" title="quantum_nodes.algorithms.schrodinger_equation.simulation_inputs_manager.SimulationInputsManager"><em>SimulationInputsManager</em></a>) -- simulation inputs manager</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>e</strong> -- whenever something wrong happens during the frame computation</p></li>
+<li><p><strong>IndexError</strong> -- frame index out of range</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>requested data at the given frame</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.algorithms.schrodinger_equation.simulation_cache.SimulationCache.processFrame">
+<span class="sig-name descname"><span class="pre">processFrame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#quantum_nodes.algorithms.schrodinger_equation.simulation_data_manager.SimulationDataManager" title="quantum_nodes.algorithms.schrodinger_equation.simulation_data_manager.SimulationDataManager"><span class="pre">SimulationDataManager</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">inp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#quantum_nodes.algorithms.schrodinger_equation.simulation_inputs_manager.SimulationInputsManager" title="quantum_nodes.algorithms.schrodinger_equation.simulation_inputs_manager.SimulationInputsManager"><span class="pre">SimulationInputsManager</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.algorithms.schrodinger_equation.simulation_cache.SimulationCache.processFrame" title="Permalink to this definition"></a></dt>
+<dd><p>Compute the next frame.</p>
+<p>This method is only an implementation of the plot_animation() function taken from the source code.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>d</strong> (<a class="reference internal" href="#quantum_nodes.algorithms.schrodinger_equation.simulation_data_manager.SimulationDataManager" title="quantum_nodes.algorithms.schrodinger_equation.simulation_data_manager.SimulationDataManager"><em>SimulationDataManager</em></a>) -- simulation data manager</p></li>
+<li><p><strong>inp</strong> (<a class="reference internal" href="#quantum_nodes.algorithms.schrodinger_equation.simulation_inputs_manager.SimulationInputsManager" title="quantum_nodes.algorithms.schrodinger_equation.simulation_inputs_manager.SimulationInputsManager"><em>SimulationInputsManager</em></a>) -- simulation inputs manager</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-quantum_nodes.algorithms.schrodinger_equation.simulation_data_manager">
+<span id="quantum-nodes-algorithms-schrodinger-equation-simulation-data-manager"></span><h2>quantum_nodes.algorithms.schrodinger_equation.simulation_data_manager<a class="headerlink" href="#module-quantum_nodes.algorithms.schrodinger_equation.simulation_data_manager" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="quantum_nodes.algorithms.schrodinger_equation.simulation_data_manager.SimulationDataManager">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">quantum_nodes.algorithms.schrodinger_equation.simulation_data_manager.</span></span><span class="sig-name descname"><span class="pre">SimulationDataManager</span></span><a class="headerlink" href="#quantum_nodes.algorithms.schrodinger_equation.simulation_data_manager.SimulationDataManager" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Manage all the data needed to compute the next frame.</p>
+<div class="line-block">
+<div class="line">All these methods are taken from util.py.</div>
+<div class="line">Source code: <a class="reference external" href="https://github.com/Azercoco/Python-2D-Simulation-of-Schrodinger-Equation/blob/master/util.py">https://github.com/Azercoco/Python-2D-Simulation-of-Schrodinger-Equation/blob/master/util.py</a></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.algorithms.schrodinger_equation.simulation_data_manager.SimulationDataManager.applyObstacle">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">applyObstacle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">MM</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mesh_x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mesh_y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sim_inputs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.algorithms.schrodinger_equation.simulation_data_manager.SimulationDataManager.applyObstacle" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.algorithms.schrodinger_equation.simulation_data_manager.SimulationDataManager.dxSquare">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dxSquare</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">MM</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.algorithms.schrodinger_equation.simulation_data_manager.SimulationDataManager.dxSquare" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.algorithms.schrodinger_equation.simulation_data_manager.SimulationDataManager.dySquare">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dySquare</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">MM</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.algorithms.schrodinger_equation.simulation_data_manager.SimulationDataManager.dySquare" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.algorithms.schrodinger_equation.simulation_data_manager.SimulationDataManager.getAdjPos">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">getAdjPos</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.algorithms.schrodinger_equation.simulation_data_manager.SimulationDataManager.getAdjPos" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.algorithms.schrodinger_equation.simulation_data_manager.SimulationDataManager.integrate">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">integrate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">MM</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.algorithms.schrodinger_equation.simulation_data_manager.SimulationDataManager.integrate" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.algorithms.schrodinger_equation.simulation_data_manager.SimulationDataManager.xConcatenate">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">xConcatenate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">MM</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.algorithms.schrodinger_equation.simulation_data_manager.SimulationDataManager.xConcatenate" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.algorithms.schrodinger_equation.simulation_data_manager.SimulationDataManager.xDeconcatenate">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">xDeconcatenate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vector</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.algorithms.schrodinger_equation.simulation_data_manager.SimulationDataManager.xDeconcatenate" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.algorithms.schrodinger_equation.simulation_data_manager.SimulationDataManager.yConcatenate">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">yConcatenate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">MM</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.algorithms.schrodinger_equation.simulation_data_manager.SimulationDataManager.yConcatenate" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.algorithms.schrodinger_equation.simulation_data_manager.SimulationDataManager.yDeconcatenate">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">yDeconcatenate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vector</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.algorithms.schrodinger_equation.simulation_data_manager.SimulationDataManager.yDeconcatenate" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-quantum_nodes.algorithms.schrodinger_equation.simulation_inputs_manager">
+<span id="quantum-nodes-algorithms-schrodinger-equation-simulation-inputs-manager"></span><h2>quantum_nodes.algorithms.schrodinger_equation.simulation_inputs_manager<a class="headerlink" href="#module-quantum_nodes.algorithms.schrodinger_equation.simulation_inputs_manager" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="quantum_nodes.algorithms.schrodinger_equation.simulation_inputs_manager.SimulationInputsManager">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">quantum_nodes.algorithms.schrodinger_equation.simulation_inputs_manager.</span></span><span class="sig-name descname"><span class="pre">SimulationInputsManager</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_o_w</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pot</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dt</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.algorithms.schrodinger_equation.simulation_inputs_manager.SimulationInputsManager" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Manage all the user inputs.</p>
+<p>All these methods are taken from field.py.
+Source code: <a class="reference external" href="https://github.com/Azercoco/Python-2D-Simulation-of-Schrodinger-Equation/blob/master/field.py">https://github.com/Azercoco/Python-2D-Simulation-of-Schrodinger-Equation/blob/master/field.py</a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.algorithms.schrodinger_equation.simulation_inputs_manager.SimulationInputsManager.getPotential">
+<span class="sig-name descname"><span class="pre">getPotential</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.algorithms.schrodinger_equation.simulation_inputs_manager.SimulationInputsManager.getPotential" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.algorithms.schrodinger_equation.simulation_inputs_manager.SimulationInputsManager.hasChanged">
+<span class="sig-name descname"><span class="pre">hasChanged</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_o_w</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pot</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dt</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.algorithms.schrodinger_equation.simulation_inputs_manager.SimulationInputsManager.hasChanged" title="Permalink to this definition"></a></dt>
+<dd><p>Check if node inputs have changed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dim</strong> (<em>int</em>) -- size of the 2d grid, which corresponds to dim**2 points</p></li>
+<li><p><strong>size</strong> (<em>int</em>) -- scale of the simulation</p></li>
+<li><p><strong>center</strong> (<em>np.ndarray</em>) -- starting position of the wave packet</p></li>
+<li><p><strong>n_o_w</strong> (<em>np.ndarray</em>) -- number of waves that composes the wave packet</p></li>
+<li><p><strong>spr</strong> (<em>np.ndarray</em>) -- spreading of the wave packet</p></li>
+<li><p><strong>pot</strong> (<em>str</em>) -- boolean expression of the potential (in function of x and y)</p></li>
+<li><p><strong>obs</strong> (<em>str</em>) -- boolean expression of the obstacle.s (in function of x and y)</p></li>
+<li><p><strong>fr</strong> (<em>int</em>) -- frame rate of the simulation</p></li>
+<li><p><strong>d</strong> (<em>float</em>) -- duration of the simulation</p></li>
+<li><p><strong>dt</strong> (<em>float</em>) -- simulation time spent for each second of animation</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>indicate if node inputs have changed</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.algorithms.schrodinger_equation.simulation_inputs_manager.SimulationInputsManager.isObstacle">
+<span class="sig-name descname"><span class="pre">isObstacle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.algorithms.schrodinger_equation.simulation_inputs_manager.SimulationInputsManager.isObstacle" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.algorithms.schrodinger_equation.simulation_inputs_manager.SimulationInputsManager.setObstacle">
+<span class="sig-name descname"><span class="pre">setObstacle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.algorithms.schrodinger_equation.simulation_inputs_manager.SimulationInputsManager.setObstacle" title="Permalink to this definition"></a></dt>
+<dd><p>Set the obstacle expression.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>expr</strong> (<em>str</em>) -- boolean expression in function of x and y</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.algorithms.schrodinger_equation.simulation_inputs_manager.SimulationInputsManager.setPotential">
+<span class="sig-name descname"><span class="pre">setPotential</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.algorithms.schrodinger_equation.simulation_inputs_manager.SimulationInputsManager.setPotential" title="Permalink to this definition"></a></dt>
+<dd><p>Set the potential expression.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>expr</strong> (<em>str</em>) -- boolean expression in function of x and y</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.algorithms.schrodinger_equation.simulation_inputs_manager.SimulationInputsManager.verifyObstacleExpr">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">verifyObstacleExpr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expr</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.algorithms.schrodinger_equation.simulation_inputs_manager.SimulationInputsManager.verifyObstacleExpr" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.algorithms.schrodinger_equation.simulation_inputs_manager.SimulationInputsManager.verifyPotentialExpr">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">verifyPotentialExpr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expr</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.algorithms.schrodinger_equation.simulation_inputs_manager.SimulationInputsManager.verifyPotentialExpr" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-quantum_nodes.algorithms.schrodinger_equation.simulation_manager">
+<span id="quantum-nodes-algorithms-schrodinger-equation-simulation-manager"></span><h2>quantum_nodes.algorithms.schrodinger_equation.simulation_manager<a class="headerlink" href="#module-quantum_nodes.algorithms.schrodinger_equation.simulation_manager" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="quantum_nodes.algorithms.schrodinger_equation.simulation_manager.SimulationManager">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">quantum_nodes.algorithms.schrodinger_equation.simulation_manager.</span></span><span class="sig-name descname"><span class="pre">SimulationManager</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_o_w</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pot</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dt</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.algorithms.schrodinger_equation.simulation_manager.SimulationManager" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Implementation of the 2D simulation of Schrödinger equation.</p>
+<div class="line-block">
+<div class="line">This code is just a new architecture to meet our needs (adapted for blender animation nodes).</div>
+<div class="line">All the simulation computation is from Azercoco.</div>
+<div class="line">You can find his code here: <a class="reference external" href="https://github.com/Azercoco/Python-2D-Simulation-of-Schrodinger-Equation">https://github.com/Azercoco/Python-2D-Simulation-of-Schrodinger-Equation</a></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.algorithms.schrodinger_equation.simulation_manager.SimulationManager.getFrameData">
+<span class="sig-name descname"><span class="pre">getFrameData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frame</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.algorithms.schrodinger_equation.simulation_manager.SimulationManager.getFrameData" title="Permalink to this definition"></a></dt>
+<dd><p>Return data from the requested frame.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>frame</strong> (<em>int</em>) -- the requested frame</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>e</strong> -- whenever something goes wrong during the computation of the frames</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>state of the simulation at the given frame (list of numpy.complex128)</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.algorithms.schrodinger_equation.simulation_manager.SimulationManager.initialize">
+<span class="sig-name descname"><span class="pre">initialize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.algorithms.schrodinger_equation.simulation_manager.SimulationManager.initialize" title="Permalink to this definition"></a></dt>
+<dd><p>Initialize the data needed for the simulation.</p>
+<div class="line-block">
+<div class="line">This method is only an implementation of the init function taken from the source code.</div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.algorithms.schrodinger_equation.simulation_manager.SimulationManager.updateSimulation">
+<span class="sig-name descname"><span class="pre">updateSimulation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_o_w</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pot</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dt</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.algorithms.schrodinger_equation.simulation_manager.SimulationManager.updateSimulation" title="Permalink to this definition"></a></dt>
+<dd><p>Check if any of the user inputs have changed in order to update the parameters of the simulation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dim</strong> (<em>int</em>) -- size of the 2d grid, which corresponds to dim**2 points</p></li>
+<li><p><strong>size</strong> (<em>int</em>) -- scale of the simulation</p></li>
+<li><p><strong>center</strong> (<em>np.ndarray</em>) -- starting position of the wave packet</p></li>
+<li><p><strong>n_o_w</strong> (<em>np.ndarray</em>) -- number of waves that composes the wave packet</p></li>
+<li><p><strong>spr</strong> (<em>np.ndarray</em>) -- spreading of the wave packet</p></li>
+<li><p><strong>pot</strong> (<em>str</em>) -- boolean expression of the potential (in function of x and y)</p></li>
+<li><p><strong>obs</strong> (<em>str</em>) -- boolean expression of the obstacle.s (in function of x and y)</p></li>
+<li><p><strong>fr</strong> (<em>int</em>) -- frame rate of the simulation</p></li>
+<li><p><strong>d</strong> (<em>float</em>) -- duration of the simulation</p></li>
+<li><p><strong>dt</strong> (<em>float</em>) -- simulation time spent for each second of animation):</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="quantum_nodes.algorithms.html" class="btn btn-neutral float-left" title="quantum_nodes.algorithms" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="quantum_nodes.demo_addon.html" class="btn btn-neutral float-right" title="quantum_nodes.demo_addon" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2022, Quantum-Creative-Group.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

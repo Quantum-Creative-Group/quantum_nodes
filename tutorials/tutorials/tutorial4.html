@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tutorial 4 - Create and manipulate meshes using the Quantum Blur &mdash; Quantum Nodes 0.1.2 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/developers_manual/ascii_art_file_architecture.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/global.css" type="text/css" />
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Nodes documentation" href="../../nodes/index.html" />
+    <link rel="prev" title="Tutorial 3 - Use a quantum circuit to modify the location, rotation or scale of a mesh" href="tutorial3.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> Quantum Nodes
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../prerequisites/index.html">Prerequisites</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Tutorials</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="tutorial1.html">Tutorial 1 - Create a quantum circuit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial2.html">Tutorial 2 - Use a quantum circuit to modify a mesh</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial3.html">Tutorial 3 - Use a quantum circuit to modify the location, rotation or scale of a mesh</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Tutorial 4 - Create and manipulate meshes using the Quantum Blur</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#quantum-circuit-and-quantum-blur">1 - Quantum circuit and Quantum Blur</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#the-mesh-data-manipulation">2 - The mesh data manipulation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#the-node-tree">3 - The node tree</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../nodes/index.html">Nodes documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developers_manual/index.html">Developers manual</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Quantum Nodes</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Tutorials</a> &raquo;</li>
+          <li><a href="index.html">Tutorials</a> &raquo;</li>
+      <li>Tutorial 4 - Create and manipulate meshes using the Quantum Blur</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="tutorial-4-create-and-manipulate-meshes-using-the-quantum-blur">
+<h1>Tutorial 4 - Create and manipulate meshes using the Quantum Blur<a class="headerlink" href="#tutorial-4-create-and-manipulate-meshes-using-the-quantum-blur" title="Permalink to this heading"></a></h1>
+<div class="line-block">
+<div class="line">In this tutorial, we will see how to implement a Quantum Blur circuit to create a mesh that gets deformed in an animation.</div>
+</div>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="#tutorial4-quantum-circuit"><span class="std std-ref">1 - Quantum circuit and Quantum Blur</span></a></p></li>
+<li><p><a class="reference internal" href="#tutorial4-data-manip"><span class="std std-ref">2 - The mesh data manipulation</span></a></p></li>
+<li><p><a class="reference internal" href="#tutorial4-node-tree"><span class="std std-ref">3 - The node tree</span></a></p></li>
+</ul>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<div class="line-block">
+<div class="line">Quantum Nodes allows you to work using different approaches to manipulate data and one of them is the Quantum Blur.</div>
+<div class="line">Based on Woottons's solution to manipulate vertices, vectors or matrices for example, it allows us to translate the input data into a quantum circuit.</div>
+<div class="line">We are then able to apply transformations to it and finally translate it back into coherent numeric data depending on the given input.</div>
+</div>
+</div>
+<p>Example of output you can get by using a Quantum Blur:</p>
+<a class="img-rounded reference internal image-reference" href="../../_images/step114.png"><img alt="Step 1" class="img-rounded align-center" src="../../_images/step114.png" style="width: 85%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>To organize this node tree better, we will divide it in 3 parts: the quantum circuit, the mesh manipulation and the “node tree call” which delegates the actions.</p>
+<section id="quantum-circuit-and-quantum-blur">
+<span id="tutorial4-quantum-circuit"></span><h2>1 - Quantum circuit and Quantum Blur<a class="headerlink" href="#quantum-circuit-and-quantum-blur" title="Permalink to this heading"></a></h2>
+<div class="line-block">
+<div class="line">First, we will create this quantum circuit using the Quantum Blur which translates everything into quantum data that can be manipulated with quantum gates.</div>
+</div>
+<p>Let's create the following circuit:</p>
+<a class="img-rounded reference internal image-reference" href="../../_images/step211.png"><img alt="Step 2" class="img-rounded align-center" src="../../_images/step211.png" style="width: 85%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ul>
+<li><div class="line-block">
+<div class="line">To do that, create a new tree.</div>
+</div>
+</li>
+<li><div class="line-block">
+<div class="line">In the Subprograms tab, add a <strong>group input</strong> using floats which will be our input type.</div>
+<div class="line">(The name at the bottom is the one used to call the subprogram after. You can choose what you want.)</div>
+</div>
+</li>
+<li><div class="line-block">
+<div class="line">Add a <strong>Group Output.</strong></div>
+</div>
+</li>
+</ul>
+<a class="img-rounded reference internal image-reference" href="../../_images/step33.png"><img alt="Step 3" class="img-rounded align-center" src="../../_images/step33.png" style="width: 85%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="line-block">
+<div class="line">In the <strong>Quantum Nodes</strong> menu -&gt; <strong>Quantum Blur</strong>, add a <strong>Quantum Blur Input</strong> and a <strong>Quantum Blur Output</strong>.</div>
+</div>
+<ul>
+<li><div class="line-block">
+<div class="line">Link the <strong>Group Input</strong> and <strong>Quantum Blur Input</strong> together and the <strong>Group Output</strong> and <strong>Quantum Blur Output</strong> together.</div>
+</div>
+</li>
+</ul>
+<div class="line-block">
+<div class="line">The gates that manipulate data will be placed between the Quantum Blur gates.</div>
+</div>
+<div class="line-block">
+<div class="line">You can choose whatever gates you want.</div>
+<div class="line">In this example, we will use multiple gates and manipulate them using data from the scene such as the frame number.</div>
+</div>
+<ul>
+<li><div class="line-block">
+<div class="line">Add a RX, RY and RZ gates between the Quantum Blur Input and Output and link the circuit input-output.</div>
+</div>
+</li>
+</ul>
+<a class="img-rounded reference internal image-reference" href="../../_images/step43.png"><img alt="Step 4" class="img-rounded align-center" src="../../_images/step43.png" style="width: 85%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="line-block">
+<div class="line">These gates need angles as parameters. We will use a random number depending on the frame number as the angle to get varying results.</div>
+</div>
+<ul>
+<li><div class="line-block">
+<div class="line">Add a <strong>Time Info</strong> node (gives the frame number), a <strong>Square Root</strong> node, a <strong>Random Number</strong> node and a <strong>Math divide</strong> node.</div>
+</div>
+</li>
+</ul>
+<a class="img-rounded reference internal image-reference" href="../../_images/step53.png"><img alt="Step 5" class="img-rounded align-center" src="../../_images/step53.png" style="width: 85%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ul>
+<li><div class="line-block">
+<div class="line">Link them together and link the result to each of the angle parameters in the gates.</div>
+</div>
+</li>
+</ul>
+<div class="line-block">
+<div class="line">The quantum circuit is done.</div>
+<div class="line">Once again, you can experiment with all those node and change them as you wish.</div>
+</div>
+</section>
+<section id="the-mesh-data-manipulation">
+<span id="tutorial4-data-manip"></span><h2>2 - The mesh data manipulation<a class="headerlink" href="#the-mesh-data-manipulation" title="Permalink to this heading"></a></h2>
+<div class="line-block">
+<div class="line">This part of the program manipulates the mesh data using the quantum circuit outputs and the original data from the mesh to modify it.</div>
+</div>
+<div class="line-block">
+<div class="line">You are free to use any kind of manipulation of the data as it is what will change the result.</div>
+</div>
+<ul>
+<li><div class="line-block">
+<div class="line">Create a new node tree.</div>
+</div>
+</li>
+<li><div class="line-block">
+<div class="line">Add a <strong>Group Input</strong> using two float lists and a <strong>Group Output</strong>.</div>
+</div>
+</li>
+</ul>
+<a class="img-rounded reference internal image-reference" href="../../_images/step63.png"><img alt="Step 6" class="img-rounded align-center" src="../../_images/step63.png" style="width: 85%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="line-block">
+<div class="line">The calculations depending on the quantum results we want to apply in this case are the following:</div>
+<div class="line">- If the quantum output number is negative, we assign a multiplier factor of -1.</div>
+<div class="line">- Otherwise, we assign 1.</div>
+</div>
+<div class="line-block">
+<div class="line">Using these new numbers, we then multiply them with our original numbers from the vertices of the mesh.</div>
+</div>
+<div class="line-block">
+<div class="line">Because we use float lists, we need loops to run through them.</div>
+</div>
+<ul>
+<li><div class="line-block">
+<div class="line">For the Sign Test node tree, add a <strong>Loop Input</strong> with the Subprograms tab, then a <strong>Compare</strong> node, a <strong>Switch</strong> node and the <strong>Loop Output</strong> (a float list).</div>
+</div>
+</li>
+</ul>
+<a class="img-rounded reference internal image-reference" href="../../_images/step73.png"><img alt="Step 7" class="img-rounded align-center" src="../../_images/step73.png" style="width: 85%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ul>
+<li><div class="line-block">
+<div class="line">For the Multiply node tree, add a <strong>Loop Input</strong>, then a <strong>Multiply</strong> node and the <strong>Loop Output</strong> (a float list).</div>
+</div>
+</li>
+</ul>
+<a class="img-rounded reference internal image-reference" href="../../_images/step83.png"><img alt="Step 8" class="img-rounded align-center" src="../../_images/step83.png" style="width: 85%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ul>
+<li><div class="line-block">
+<div class="line">Invoke these subprograms after the Group Input.</div>
+</div>
+</li>
+</ul>
+<div class="line-block">
+<div class="line">These nodes allow us to modify the original values with the ones we got in the quantum circuit output.</div>
+</div>
+<a class="img-rounded reference internal image-reference" href="../../_images/step93.png"><img alt="Step 9" class="img-rounded align-center" src="../../_images/step93.png" style="width: 85%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="line-block">
+<div class="line">With the aim of adding more randomness through the values of quantum outputs in the lists we create, we also added Math functions like a Multiply with the Absolute value of the list we got at the end of the Quantum Circuit.</div>
+</div>
+<a class="img-rounded reference internal image-reference" href="../../_images/step103.png"><img alt="Step 10" class="img-rounded align-center" src="../../_images/step103.png" style="width: 85%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="line-block">
+<div class="line">The mesh data node tree is now finished.</div>
+</div>
+</section>
+<section id="the-node-tree">
+<span id="tutorial4-node-tree"></span><h2>3 - The node tree<a class="headerlink" href="#the-node-tree" title="Permalink to this heading"></a></h2>
+<div class="line-block">
+<div class="line">This part of the tree is the one that leads and delegates all the steps: choosing the mesh, invoking the subprograms, returning the output mesh…</div>
+</div>
+<ul>
+<li><div class="line-block">
+<div class="line">Add a <strong>Mesh Object Input</strong> and a <strong>Mesh Object Output</strong>.</div>
+</div>
+</li>
+</ul>
+<div class="line-block">
+<div class="line">The output type is vertices because this is what we want to modify.</div>
+</div>
+<a class="img-rounded reference internal image-reference" href="../../_images/step115.png"><img alt="Step 11" class="img-rounded align-center" src="../../_images/step115.png" style="width: 85%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="line-block">
+<div class="line">To be able to use the mesh, we need to separate its vertices into vectors depending on the axis.</div>
+</div>
+<div class="line-block">
+<div class="line">Use a <strong>Separate Vector</strong> node to separate x, y, z.</div>
+<div class="line">Add a <strong>Combine Vector</strong> node before the Output as we will need them to be reunited at the end.</div>
+</div>
+<a class="img-rounded reference internal image-reference" href="../../_images/step123.png"><img alt="Step 12" class="img-rounded align-center" src="../../_images/step123.png" style="width: 85%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="line-block">
+<div class="line">Once our vectors are separated, we can use them and input them through our subprograms.</div>
+</div>
+<ul>
+<li><div class="line-block">
+<div class="line">Add an <strong>Invoke Subprogram</strong> node for every subprogram we call: the quantum circuit and the mesh data and link them.</div>
+</div>
+</li>
+</ul>
+<a class="img-rounded reference internal image-reference" href="../../_images/step132.png"><img alt="Step 13" class="img-rounded align-center" src="../../_images/step132.png" style="width: 85%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="line-block">
+<div class="line">We are now done with the node tree.</div>
+</div>
+<ul>
+<li><div class="line-block">
+<div class="line">The last thing is to input the object you want in both the mesh object node and mesh object output node to see the results.</div>
+</div>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<div class="line-block">
+<div class="line">To create an animation, the easiest way is to add keyframes in the timeline menu.</div>
+<div class="line">Add one keyframe for the location of the object before putting it as an input in the Mesh object output node.</div>
+<div class="line">Once the keyframe is set, you can then input your mesh and see the results.</div>
+</div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="tutorial3.html" class="btn btn-neutral float-left" title="Tutorial 3 - Use a quantum circuit to modify the location, rotation or scale of a mesh" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../nodes/index.html" class="btn btn-neutral float-right" title="Nodes documentation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2022, Quantum-Creative-Group.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

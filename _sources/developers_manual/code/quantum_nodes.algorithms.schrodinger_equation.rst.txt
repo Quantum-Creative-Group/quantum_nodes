@@ -1,0 +1,42 @@
+quantum\_nodes.algorithms.schrodinger\_equation
+===============================================
+
+.. automodule:: quantum_nodes.algorithms.schrodinger_equation
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Modules
+-------
+
+quantum\_nodes.algorithms.schrodinger\_equation.simulation\_cache
+-----------------------------------------------------------------
+
+.. automodule:: quantum_nodes.algorithms.schrodinger_equation.simulation_cache
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+quantum\_nodes.algorithms.schrodinger\_equation.simulation\_data\_manager
+-------------------------------------------------------------------------
+
+.. automodule:: quantum_nodes.algorithms.schrodinger_equation.simulation_data_manager
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+quantum\_nodes.algorithms.schrodinger\_equation.simulation\_inputs\_manager
+---------------------------------------------------------------------------
+
+.. automodule:: quantum_nodes.algorithms.schrodinger_equation.simulation_inputs_manager
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+quantum\_nodes.algorithms.schrodinger\_equation.simulation\_manager
+-------------------------------------------------------------------
+
+.. automodule:: quantum_nodes.algorithms.schrodinger_equation.simulation_manager
+   :members:
+   :undoc-members:
+   :show-inheritance:

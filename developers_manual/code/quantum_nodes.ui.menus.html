@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>quantum_nodes.ui.menus &mdash; Quantum Nodes 0.1.2 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/developers_manual/ascii_art_file_architecture.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/global.css" type="text/css" />
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="quantum_nodes.ui.panels" href="quantum_nodes.ui.panels.html" />
+    <link rel="prev" title="quantum_nodes.ui" href="quantum_nodes.ui.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> Quantum Nodes
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../nodes/index.html">Nodes documentation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Developers manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../addon/index.html">Contribute to Quantum Nodes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../manual/index.html">Contribute to the manual</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="quantum_nodes.html">Code documentation</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="quantum_nodes.html#packages">Packages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="quantum_nodes.algorithms.html">quantum_nodes.algorithms</a></li>
+<li class="toctree-l4"><a class="reference internal" href="quantum_nodes.demo_addon.html">quantum_nodes.demo_addon</a></li>
+<li class="toctree-l4"><a class="reference internal" href="quantum_nodes.node_templates.html">quantum_nodes.node_templates namespace</a></li>
+<li class="toctree-l4"><a class="reference internal" href="quantum_nodes.nodes.html">quantum_nodes.nodes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="quantum_nodes.operators.html">quantum_nodes.operators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="quantum_nodes.properties.html">quantum_nodes.properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="quantum_nodes.sockets.html">quantum_nodes.sockets</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="quantum_nodes.ui.html">quantum_nodes.ui</a></li>
+<li class="toctree-l4"><a class="reference internal" href="quantum_nodes.visualization.html">quantum_nodes.visualization</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="quantum_nodes.html#modules">Modules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quantum_nodes.html#module-quantum_nodes.auto_load">quantum_nodes.auto_load</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Quantum Nodes</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Developers manual</a> &raquo;</li>
+          <li><a href="quantum_nodes.html">Code documentation</a> &raquo;</li>
+          <li><a href="quantum_nodes.ui.html">quantum_nodes.ui</a> &raquo;</li>
+      <li>quantum_nodes.ui.menus</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-quantum_nodes.ui.menus">
+<span id="quantum-nodes-ui-menus"></span><h1>quantum_nodes.ui.menus<a class="headerlink" href="#module-quantum_nodes.ui.menus" title="Permalink to this heading"></a></h1>
+<section id="modules">
+<h2>Modules<a class="headerlink" href="#modules" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-quantum_nodes.ui.menus.main_menu">
+<span id="quantum-nodes-ui-menus-main-menu"></span><h2>quantum_nodes.ui.menus.main_menu<a class="headerlink" href="#module-quantum_nodes.ui.menus.main_menu" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="quantum_nodes.ui.menus.main_menu.QN_MT_MainMenu">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">quantum_nodes.ui.menus.main_menu.</span></span><span class="sig-name descname"><span class="pre">QN_MT_MainMenu</span></span><a class="headerlink" href="#quantum_nodes.ui.menus.main_menu.QN_MT_MainMenu" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Menu</span></code></p>
+<p>Main menu of Quantum Nodes.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.ui.menus.main_menu.QN_MT_MainMenu.bl_idname">
+<span class="sig-name descname"><span class="pre">bl_idname</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'QN_MT_quantum_nodes'</span></em><a class="headerlink" href="#quantum_nodes.ui.menus.main_menu.QN_MT_MainMenu.bl_idname" title="Permalink to this definition"></a></dt>
+<dd><p>If this is set, the menu gets a custom ID, otherwise it takes the name of the class used to define the menu (for example, if the class name is &quot;OBJECT_MT_hello&quot;, and bl_idname is not set by the script, then bl_idname = &quot;OBJECT_MT_hello&quot;)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.ui.menus.main_menu.QN_MT_MainMenu.bl_label">
+<span class="sig-name descname"><span class="pre">bl_label</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Quantum</span> <span class="pre">Nodes'</span></em><a class="headerlink" href="#quantum_nodes.ui.menus.main_menu.QN_MT_MainMenu.bl_label" title="Permalink to this definition"></a></dt>
+<dd><p>The menu label</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.ui.menus.main_menu.QN_MT_MainMenu.draw">
+<span class="sig-name descname"><span class="pre">draw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.ui.menus.main_menu.QN_MT_MainMenu.draw" title="Permalink to this definition"></a></dt>
+<dd><p>Draw UI elements into the menu UI layout</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>context</strong> (<em>'Context'</em>) -- </p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="quantum_nodes.ui.menus.main_menu.drawMenu">
+<span class="sig-prename descclassname"><span class="pre">quantum_nodes.ui.menus.main_menu.</span></span><span class="sig-name descname"><span class="pre">drawMenu</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.ui.menus.main_menu.drawMenu" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="quantum_nodes.ui.menus.main_menu.register">
+<span class="sig-prename descclassname"><span class="pre">quantum_nodes.ui.menus.main_menu.</span></span><span class="sig-name descname"><span class="pre">register</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.ui.menus.main_menu.register" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="quantum_nodes.ui.menus.main_menu.unregister">
+<span class="sig-prename descclassname"><span class="pre">quantum_nodes.ui.menus.main_menu.</span></span><span class="sig-name descname"><span class="pre">unregister</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.ui.menus.main_menu.unregister" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-quantum_nodes.ui.menus.menus">
+<span id="quantum-nodes-ui-menus-menus"></span><h2>quantum_nodes.ui.menus.menus<a class="headerlink" href="#module-quantum_nodes.ui.menus.menus" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="quantum_nodes.ui.menus.menus.QN_MT_ComplexNumbers">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">quantum_nodes.ui.menus.menus.</span></span><span class="sig-name descname"><span class="pre">QN_MT_ComplexNumbers</span></span><a class="headerlink" href="#quantum_nodes.ui.menus.menus.QN_MT_ComplexNumbers" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Menu</span></code></p>
+<p>Menu of complex numbers nodes.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.ui.menus.menus.QN_MT_ComplexNumbers.bl_idname">
+<span class="sig-name descname"><span class="pre">bl_idname</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'QN_MT_complex_numbers'</span></em><a class="headerlink" href="#quantum_nodes.ui.menus.menus.QN_MT_ComplexNumbers.bl_idname" title="Permalink to this definition"></a></dt>
+<dd><p>If this is set, the menu gets a custom ID, otherwise it takes the name of the class used to define the menu (for example, if the class name is &quot;OBJECT_MT_hello&quot;, and bl_idname is not set by the script, then bl_idname = &quot;OBJECT_MT_hello&quot;)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.ui.menus.menus.QN_MT_ComplexNumbers.bl_label">
+<span class="sig-name descname"><span class="pre">bl_label</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Complex</span> <span class="pre">Numbers'</span></em><a class="headerlink" href="#quantum_nodes.ui.menus.menus.QN_MT_ComplexNumbers.bl_label" title="Permalink to this definition"></a></dt>
+<dd><p>The menu label</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.ui.menus.menus.QN_MT_ComplexNumbers.draw">
+<span class="sig-name descname"><span class="pre">draw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_context</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.ui.menus.menus.QN_MT_ComplexNumbers.draw" title="Permalink to this definition"></a></dt>
+<dd><p>Draw UI elements into the menu UI layout</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>context</strong> (<em>'Context'</em>) -- </p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="quantum_nodes.ui.menus.menus.QN_MT_Outputs">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">quantum_nodes.ui.menus.menus.</span></span><span class="sig-name descname"><span class="pre">QN_MT_Outputs</span></span><a class="headerlink" href="#quantum_nodes.ui.menus.menus.QN_MT_Outputs" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Menu</span></code></p>
+<p>Menu of all output gates nodes.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.ui.menus.menus.QN_MT_Outputs.bl_idname">
+<span class="sig-name descname"><span class="pre">bl_idname</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'QN_MT_outputs'</span></em><a class="headerlink" href="#quantum_nodes.ui.menus.menus.QN_MT_Outputs.bl_idname" title="Permalink to this definition"></a></dt>
+<dd><p>If this is set, the menu gets a custom ID, otherwise it takes the name of the class used to define the menu (for example, if the class name is &quot;OBJECT_MT_hello&quot;, and bl_idname is not set by the script, then bl_idname = &quot;OBJECT_MT_hello&quot;)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.ui.menus.menus.QN_MT_Outputs.bl_label">
+<span class="sig-name descname"><span class="pre">bl_label</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'All</span> <span class="pre">Quantum</span> <span class="pre">Output'</span></em><a class="headerlink" href="#quantum_nodes.ui.menus.menus.QN_MT_Outputs.bl_label" title="Permalink to this definition"></a></dt>
+<dd><p>The menu label</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.ui.menus.menus.QN_MT_Outputs.draw">
+<span class="sig-name descname"><span class="pre">draw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_context</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.ui.menus.menus.QN_MT_Outputs.draw" title="Permalink to this definition"></a></dt>
+<dd><p>Draw UI elements into the menu UI layout</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>context</strong> (<em>'Context'</em>) -- </p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="quantum_nodes.ui.menus.menus.QN_MT_Qgan">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">quantum_nodes.ui.menus.menus.</span></span><span class="sig-name descname"><span class="pre">QN_MT_Qgan</span></span><a class="headerlink" href="#quantum_nodes.ui.menus.menus.QN_MT_Qgan" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Menu</span></code></p>
+<p>Menu of QGAN related nodes.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.ui.menus.menus.QN_MT_Qgan.bl_idname">
+<span class="sig-name descname"><span class="pre">bl_idname</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'QN_MT_qgan'</span></em><a class="headerlink" href="#quantum_nodes.ui.menus.menus.QN_MT_Qgan.bl_idname" title="Permalink to this definition"></a></dt>
+<dd><p>If this is set, the menu gets a custom ID, otherwise it takes the name of the class used to define the menu (for example, if the class name is &quot;OBJECT_MT_hello&quot;, and bl_idname is not set by the script, then bl_idname = &quot;OBJECT_MT_hello&quot;)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.ui.menus.menus.QN_MT_Qgan.bl_label">
+<span class="sig-name descname"><span class="pre">bl_label</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Quantum</span> <span class="pre">GAN'</span></em><a class="headerlink" href="#quantum_nodes.ui.menus.menus.QN_MT_Qgan.bl_label" title="Permalink to this definition"></a></dt>
+<dd><p>The menu label</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.ui.menus.menus.QN_MT_Qgan.draw">
+<span class="sig-name descname"><span class="pre">draw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_context</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.ui.menus.menus.QN_MT_Qgan.draw" title="Permalink to this definition"></a></dt>
+<dd><p>Draw UI elements into the menu UI layout</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>context</strong> (<em>'Context'</em>) -- </p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="quantum_nodes.ui.menus.menus.QN_MT_QuantumBlur">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">quantum_nodes.ui.menus.menus.</span></span><span class="sig-name descname"><span class="pre">QN_MT_QuantumBlur</span></span><a class="headerlink" href="#quantum_nodes.ui.menus.menus.QN_MT_QuantumBlur" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Menu</span></code></p>
+<p>Menu of Quantum Blur nodes.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.ui.menus.menus.QN_MT_QuantumBlur.bl_idname">
+<span class="sig-name descname"><span class="pre">bl_idname</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'QN_MT_quantum_blur'</span></em><a class="headerlink" href="#quantum_nodes.ui.menus.menus.QN_MT_QuantumBlur.bl_idname" title="Permalink to this definition"></a></dt>
+<dd><p>If this is set, the menu gets a custom ID, otherwise it takes the name of the class used to define the menu (for example, if the class name is &quot;OBJECT_MT_hello&quot;, and bl_idname is not set by the script, then bl_idname = &quot;OBJECT_MT_hello&quot;)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.ui.menus.menus.QN_MT_QuantumBlur.bl_label">
+<span class="sig-name descname"><span class="pre">bl_label</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Quantum</span> <span class="pre">Blur'</span></em><a class="headerlink" href="#quantum_nodes.ui.menus.menus.QN_MT_QuantumBlur.bl_label" title="Permalink to this definition"></a></dt>
+<dd><p>The menu label</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.ui.menus.menus.QN_MT_QuantumBlur.draw">
+<span class="sig-name descname"><span class="pre">draw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_context</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.ui.menus.menus.QN_MT_QuantumBlur.draw" title="Permalink to this definition"></a></dt>
+<dd><p>Draw UI elements into the menu UI layout</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>context</strong> (<em>'Context'</em>) -- </p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="quantum_nodes.ui.menus.menus.QN_MT_QuantumCircuits">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">quantum_nodes.ui.menus.menus.</span></span><span class="sig-name descname"><span class="pre">QN_MT_QuantumCircuits</span></span><a class="headerlink" href="#quantum_nodes.ui.menus.menus.QN_MT_QuantumCircuits" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Menu</span></code></p>
+<p>Menu of circuit related nodes.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.ui.menus.menus.QN_MT_QuantumCircuits.bl_idname">
+<span class="sig-name descname"><span class="pre">bl_idname</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'QN_MT_init_quantum_circuits'</span></em><a class="headerlink" href="#quantum_nodes.ui.menus.menus.QN_MT_QuantumCircuits.bl_idname" title="Permalink to this definition"></a></dt>
+<dd><p>If this is set, the menu gets a custom ID, otherwise it takes the name of the class used to define the menu (for example, if the class name is &quot;OBJECT_MT_hello&quot;, and bl_idname is not set by the script, then bl_idname = &quot;OBJECT_MT_hello&quot;)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.ui.menus.menus.QN_MT_QuantumCircuits.bl_label">
+<span class="sig-name descname"><span class="pre">bl_label</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Init</span> <span class="pre">Quantum</span> <span class="pre">Circuit'</span></em><a class="headerlink" href="#quantum_nodes.ui.menus.menus.QN_MT_QuantumCircuits.bl_label" title="Permalink to this definition"></a></dt>
+<dd><p>The menu label</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.ui.menus.menus.QN_MT_QuantumCircuits.draw">
+<span class="sig-name descname"><span class="pre">draw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_context</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.ui.menus.menus.QN_MT_QuantumCircuits.draw" title="Permalink to this definition"></a></dt>
+<dd><p>Draw UI elements into the menu UI layout</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>context</strong> (<em>'Context'</em>) -- </p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="quantum_nodes.ui.menus.menus.QN_MT_QuantumGates">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">quantum_nodes.ui.menus.menus.</span></span><span class="sig-name descname"><span class="pre">QN_MT_QuantumGates</span></span><a class="headerlink" href="#quantum_nodes.ui.menus.menus.QN_MT_QuantumGates" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Menu</span></code></p>
+<p>Menu of all quantum gates nodes.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.ui.menus.menus.QN_MT_QuantumGates.bl_idname">
+<span class="sig-name descname"><span class="pre">bl_idname</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'QN_MT_quantum_gates'</span></em><a class="headerlink" href="#quantum_nodes.ui.menus.menus.QN_MT_QuantumGates.bl_idname" title="Permalink to this definition"></a></dt>
+<dd><p>If this is set, the menu gets a custom ID, otherwise it takes the name of the class used to define the menu (for example, if the class name is &quot;OBJECT_MT_hello&quot;, and bl_idname is not set by the script, then bl_idname = &quot;OBJECT_MT_hello&quot;)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.ui.menus.menus.QN_MT_QuantumGates.bl_label">
+<span class="sig-name descname"><span class="pre">bl_label</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Gates'</span></em><a class="headerlink" href="#quantum_nodes.ui.menus.menus.QN_MT_QuantumGates.bl_label" title="Permalink to this definition"></a></dt>
+<dd><p>The menu label</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.ui.menus.menus.QN_MT_QuantumGates.draw">
+<span class="sig-name descname"><span class="pre">draw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_context</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.ui.menus.menus.QN_MT_QuantumGates.draw" title="Permalink to this definition"></a></dt>
+<dd><p>Draw UI elements into the menu UI layout</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>context</strong> (<em>'Context'</em>) -- </p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="quantum_nodes.ui.menus.menus.QN_MT_Schrodinger">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">quantum_nodes.ui.menus.menus.</span></span><span class="sig-name descname"><span class="pre">QN_MT_Schrodinger</span></span><a class="headerlink" href="#quantum_nodes.ui.menus.menus.QN_MT_Schrodinger" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Menu</span></code></p>
+<p>Menu of Schrödinger equation simulation nodes.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.ui.menus.menus.QN_MT_Schrodinger.bl_idname">
+<span class="sig-name descname"><span class="pre">bl_idname</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'QN_MT_schrodinger'</span></em><a class="headerlink" href="#quantum_nodes.ui.menus.menus.QN_MT_Schrodinger.bl_idname" title="Permalink to this definition"></a></dt>
+<dd><p>If this is set, the menu gets a custom ID, otherwise it takes the name of the class used to define the menu (for example, if the class name is &quot;OBJECT_MT_hello&quot;, and bl_idname is not set by the script, then bl_idname = &quot;OBJECT_MT_hello&quot;)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.ui.menus.menus.QN_MT_Schrodinger.bl_label">
+<span class="sig-name descname"><span class="pre">bl_label</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Schrödinger</span> <span class="pre">Simulation'</span></em><a class="headerlink" href="#quantum_nodes.ui.menus.menus.QN_MT_Schrodinger.bl_label" title="Permalink to this definition"></a></dt>
+<dd><p>The menu label</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.ui.menus.menus.QN_MT_Schrodinger.draw">
+<span class="sig-name descname"><span class="pre">draw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_context</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.ui.menus.menus.QN_MT_Schrodinger.draw" title="Permalink to this definition"></a></dt>
+<dd><p>Draw UI elements into the menu UI layout</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>context</strong> (<em>'Context'</em>) -- </p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-quantum_nodes.ui.menus.submenus">
+<span id="quantum-nodes-ui-menus-submenus"></span><h2>quantum_nodes.ui.menus.submenus<a class="headerlink" href="#module-quantum_nodes.ui.menus.submenus" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="quantum_nodes.ui.menus.submenus.QN_MT_SUB_Outputs">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">quantum_nodes.ui.menus.submenus.</span></span><span class="sig-name descname"><span class="pre">QN_MT_SUB_Outputs</span></span><a class="headerlink" href="#quantum_nodes.ui.menus.submenus.QN_MT_SUB_Outputs" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Menu</span></code></p>
+<p>Menu of output nodes.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.ui.menus.submenus.QN_MT_SUB_Outputs.bl_idname">
+<span class="sig-name descname"><span class="pre">bl_idname</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'QN_MT_SUB_outputs'</span></em><a class="headerlink" href="#quantum_nodes.ui.menus.submenus.QN_MT_SUB_Outputs.bl_idname" title="Permalink to this definition"></a></dt>
+<dd><p>If this is set, the menu gets a custom ID, otherwise it takes the name of the class used to define the menu (for example, if the class name is &quot;OBJECT_MT_hello&quot;, and bl_idname is not set by the script, then bl_idname = &quot;OBJECT_MT_hello&quot;)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.ui.menus.submenus.QN_MT_SUB_Outputs.bl_label">
+<span class="sig-name descname"><span class="pre">bl_label</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Quantum</span> <span class="pre">Output'</span></em><a class="headerlink" href="#quantum_nodes.ui.menus.submenus.QN_MT_SUB_Outputs.bl_label" title="Permalink to this definition"></a></dt>
+<dd><p>The menu label</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.ui.menus.submenus.QN_MT_SUB_Outputs.draw">
+<span class="sig-name descname"><span class="pre">draw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_context</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.ui.menus.submenus.QN_MT_SUB_Outputs.draw" title="Permalink to this definition"></a></dt>
+<dd><p>Draw UI elements into the menu UI layout</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>context</strong> (<em>'Context'</em>) -- </p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="quantum_nodes.ui.menus.submenus.QN_MT_SUB_QuantumGates">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">quantum_nodes.ui.menus.submenus.</span></span><span class="sig-name descname"><span class="pre">QN_MT_SUB_QuantumGates</span></span><a class="headerlink" href="#quantum_nodes.ui.menus.submenus.QN_MT_SUB_QuantumGates" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Menu</span></code></p>
+<p>Menu of C gates nodes.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.ui.menus.submenus.QN_MT_SUB_QuantumGates.bl_idname">
+<span class="sig-name descname"><span class="pre">bl_idname</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'QN_MT_quantum_gates_c'</span></em><a class="headerlink" href="#quantum_nodes.ui.menus.submenus.QN_MT_SUB_QuantumGates.bl_idname" title="Permalink to this definition"></a></dt>
+<dd><p>If this is set, the menu gets a custom ID, otherwise it takes the name of the class used to define the menu (for example, if the class name is &quot;OBJECT_MT_hello&quot;, and bl_idname is not set by the script, then bl_idname = &quot;OBJECT_MT_hello&quot;)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.ui.menus.submenus.QN_MT_SUB_QuantumGates.bl_label">
+<span class="sig-name descname"><span class="pre">bl_label</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'C</span> <span class="pre">Gates'</span></em><a class="headerlink" href="#quantum_nodes.ui.menus.submenus.QN_MT_SUB_QuantumGates.bl_label" title="Permalink to this definition"></a></dt>
+<dd><p>The menu label</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.ui.menus.submenus.QN_MT_SUB_QuantumGates.draw">
+<span class="sig-name descname"><span class="pre">draw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_context</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.ui.menus.submenus.QN_MT_SUB_QuantumGates.draw" title="Permalink to this definition"></a></dt>
+<dd><p>Draw UI elements into the menu UI layout</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>context</strong> (<em>'Context'</em>) -- </p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="quantum_nodes.ui.menus.submenus.QN_MT_SUB_QuantumGatesR">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">quantum_nodes.ui.menus.submenus.</span></span><span class="sig-name descname"><span class="pre">QN_MT_SUB_QuantumGatesR</span></span><a class="headerlink" href="#quantum_nodes.ui.menus.submenus.QN_MT_SUB_QuantumGatesR" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Menu</span></code></p>
+<p>Menu of R gates nodes.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.ui.menus.submenus.QN_MT_SUB_QuantumGatesR.bl_idname">
+<span class="sig-name descname"><span class="pre">bl_idname</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'QN_MT_quantum_gates_r'</span></em><a class="headerlink" href="#quantum_nodes.ui.menus.submenus.QN_MT_SUB_QuantumGatesR.bl_idname" title="Permalink to this definition"></a></dt>
+<dd><p>If this is set, the menu gets a custom ID, otherwise it takes the name of the class used to define the menu (for example, if the class name is &quot;OBJECT_MT_hello&quot;, and bl_idname is not set by the script, then bl_idname = &quot;OBJECT_MT_hello&quot;)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.ui.menus.submenus.QN_MT_SUB_QuantumGatesR.bl_label">
+<span class="sig-name descname"><span class="pre">bl_label</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'R</span> <span class="pre">Gates'</span></em><a class="headerlink" href="#quantum_nodes.ui.menus.submenus.QN_MT_SUB_QuantumGatesR.bl_label" title="Permalink to this definition"></a></dt>
+<dd><p>The menu label</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.ui.menus.submenus.QN_MT_SUB_QuantumGatesR.draw">
+<span class="sig-name descname"><span class="pre">draw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_context</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.ui.menus.submenus.QN_MT_SUB_QuantumGatesR.draw" title="Permalink to this definition"></a></dt>
+<dd><p>Draw UI elements into the menu UI layout</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>context</strong> (<em>'Context'</em>) -- </p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="quantum_nodes.ui.menus.submenus.QN_MT_SUB_QuantumGatesSingleQubit">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">quantum_nodes.ui.menus.submenus.</span></span><span class="sig-name descname"><span class="pre">QN_MT_SUB_QuantumGatesSingleQubit</span></span><a class="headerlink" href="#quantum_nodes.ui.menus.submenus.QN_MT_SUB_QuantumGatesSingleQubit" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Menu</span></code></p>
+<p>Menu of single qubits gates nodes.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.ui.menus.submenus.QN_MT_SUB_QuantumGatesSingleQubit.bl_idname">
+<span class="sig-name descname"><span class="pre">bl_idname</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'QN_MT_quantum_gates_single_qubit'</span></em><a class="headerlink" href="#quantum_nodes.ui.menus.submenus.QN_MT_SUB_QuantumGatesSingleQubit.bl_idname" title="Permalink to this definition"></a></dt>
+<dd><p>If this is set, the menu gets a custom ID, otherwise it takes the name of the class used to define the menu (for example, if the class name is &quot;OBJECT_MT_hello&quot;, and bl_idname is not set by the script, then bl_idname = &quot;OBJECT_MT_hello&quot;)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.ui.menus.submenus.QN_MT_SUB_QuantumGatesSingleQubit.bl_label">
+<span class="sig-name descname"><span class="pre">bl_label</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Single</span> <span class="pre">Qubit</span> <span class="pre">Gates'</span></em><a class="headerlink" href="#quantum_nodes.ui.menus.submenus.QN_MT_SUB_QuantumGatesSingleQubit.bl_label" title="Permalink to this definition"></a></dt>
+<dd><p>The menu label</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.ui.menus.submenus.QN_MT_SUB_QuantumGatesSingleQubit.draw">
+<span class="sig-name descname"><span class="pre">draw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_context</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.ui.menus.submenus.QN_MT_SUB_QuantumGatesSingleQubit.draw" title="Permalink to this definition"></a></dt>
+<dd><p>Draw UI elements into the menu UI layout</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>context</strong> (<em>'Context'</em>) -- </p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="quantum_nodes.ui.menus.submenus.QN_MT_SUB_QuantumGatesToAll">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">quantum_nodes.ui.menus.submenus.</span></span><span class="sig-name descname"><span class="pre">QN_MT_SUB_QuantumGatesToAll</span></span><a class="headerlink" href="#quantum_nodes.ui.menus.submenus.QN_MT_SUB_QuantumGatesToAll" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Menu</span></code></p>
+<p>Menu of gates 'to all circuit' nodes.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.ui.menus.submenus.QN_MT_SUB_QuantumGatesToAll.bl_idname">
+<span class="sig-name descname"><span class="pre">bl_idname</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'QN_MT_quantum_gates_to_all'</span></em><a class="headerlink" href="#quantum_nodes.ui.menus.submenus.QN_MT_SUB_QuantumGatesToAll.bl_idname" title="Permalink to this definition"></a></dt>
+<dd><p>If this is set, the menu gets a custom ID, otherwise it takes the name of the class used to define the menu (for example, if the class name is &quot;OBJECT_MT_hello&quot;, and bl_idname is not set by the script, then bl_idname = &quot;OBJECT_MT_hello&quot;)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.ui.menus.submenus.QN_MT_SUB_QuantumGatesToAll.bl_label">
+<span class="sig-name descname"><span class="pre">bl_label</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Gates</span> <span class="pre">To</span> <span class="pre">All'</span></em><a class="headerlink" href="#quantum_nodes.ui.menus.submenus.QN_MT_SUB_QuantumGatesToAll.bl_label" title="Permalink to this definition"></a></dt>
+<dd><p>The menu label</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.ui.menus.submenus.QN_MT_SUB_QuantumGatesToAll.draw">
+<span class="sig-name descname"><span class="pre">draw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_context</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.ui.menus.submenus.QN_MT_SUB_QuantumGatesToAll.draw" title="Permalink to this definition"></a></dt>
+<dd><p>Draw UI elements into the menu UI layout</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>context</strong> (<em>'Context'</em>) -- </p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="quantum_nodes.ui.menus.submenus.QN_MT_SUB_Visualization">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">quantum_nodes.ui.menus.submenus.</span></span><span class="sig-name descname"><span class="pre">QN_MT_SUB_Visualization</span></span><a class="headerlink" href="#quantum_nodes.ui.menus.submenus.QN_MT_SUB_Visualization" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Menu</span></code></p>
+<p>Menu of data visualization nodes.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.ui.menus.submenus.QN_MT_SUB_Visualization.bl_idname">
+<span class="sig-name descname"><span class="pre">bl_idname</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'QN_MT_SUB_visualization'</span></em><a class="headerlink" href="#quantum_nodes.ui.menus.submenus.QN_MT_SUB_Visualization.bl_idname" title="Permalink to this definition"></a></dt>
+<dd><p>If this is set, the menu gets a custom ID, otherwise it takes the name of the class used to define the menu (for example, if the class name is &quot;OBJECT_MT_hello&quot;, and bl_idname is not set by the script, then bl_idname = &quot;OBJECT_MT_hello&quot;)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.ui.menus.submenus.QN_MT_SUB_Visualization.bl_label">
+<span class="sig-name descname"><span class="pre">bl_label</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Visualization</span> <span class="pre">tools'</span></em><a class="headerlink" href="#quantum_nodes.ui.menus.submenus.QN_MT_SUB_Visualization.bl_label" title="Permalink to this definition"></a></dt>
+<dd><p>The menu label</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.ui.menus.submenus.QN_MT_SUB_Visualization.draw">
+<span class="sig-name descname"><span class="pre">draw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_context</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.ui.menus.submenus.QN_MT_SUB_Visualization.draw" title="Permalink to this definition"></a></dt>
+<dd><p>Draw UI elements into the menu UI layout</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>context</strong> (<em>'Context'</em>) -- </p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="quantum_nodes.ui.html" class="btn btn-neutral float-left" title="quantum_nodes.ui" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="quantum_nodes.ui.panels.html" class="btn btn-neutral float-right" title="quantum_nodes.ui.panels" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2022, Quantum-Creative-Group.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,66 @@
+quantum\_nodes.demo\_addon.backend
+==================================
+
+.. automodule:: quantum_nodes.demo_addon.backend
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Modules
+-------
+
+quantum\_nodes.demo\_addon.backend.circuit\_manager
+---------------------------------------------------
+
+.. automodule:: quantum_nodes.demo_addon.backend.circuit_manager
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+quantum\_nodes.demo\_addon.backend.demo\_node\_tree\_utils
+----------------------------------------------------------
+
+.. automodule:: quantum_nodes.demo_addon.backend.demo_node_tree_utils
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+quantum\_nodes.demo\_addon.backend.gate
+---------------------------------------
+
+.. automodule:: quantum_nodes.demo_addon.backend.gate
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+quantum\_nodes.demo\_addon.backend.gate\_nodes\_manager
+-------------------------------------------------------
+
+.. automodule:: quantum_nodes.demo_addon.backend.gate_nodes_manager
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+quantum\_nodes.demo\_addon.backend.gates\_factory
+-------------------------------------------------
+
+.. automodule:: quantum_nodes.demo_addon.backend.gates_factory
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+quantum\_nodes.demo\_addon.backend.node\_tree\_manager
+------------------------------------------------------
+
+.. automodule:: quantum_nodes.demo_addon.backend.node_tree_manager
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+quantum\_nodes.demo\_addon.backend.quantum\_nodes\_demo\_manager
+----------------------------------------------------------------
+
+.. automodule:: quantum_nodes.demo_addon.backend.quantum_nodes_demo_manager
+   :members:
+   :undoc-members:
+   :show-inheritance:

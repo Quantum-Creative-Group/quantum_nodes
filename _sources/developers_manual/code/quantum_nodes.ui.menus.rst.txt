@@ -1,0 +1,34 @@
+quantum\_nodes.ui.menus
+=======================
+
+.. automodule:: quantum_nodes.ui.menus
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Modules
+-------
+
+quantum\_nodes.ui.menus.main\_menu
+----------------------------------
+
+.. automodule:: quantum_nodes.ui.menus.main_menu
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+quantum\_nodes.ui.menus.menus
+-----------------------------
+
+.. automodule:: quantum_nodes.ui.menus.menus
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+quantum\_nodes.ui.menus.submenus
+--------------------------------
+
+.. automodule:: quantum_nodes.ui.menus.submenus
+   :members:
+   :undoc-members:
+   :show-inheritance:

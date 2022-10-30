@@ -1,0 +1,98 @@
+quantum\_nodes.demo\_addon.operators
+====================================
+
+.. automodule:: quantum_nodes.demo_addon.operators
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Modules
+-------
+
+quantum\_nodes.demo\_addon.operators.add\_and\_del\_gate
+--------------------------------------------------------
+
+.. automodule:: quantum_nodes.demo_addon.operators.add_and_del_gate
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+quantum\_nodes.demo\_addon.operators.add\_gate\_button
+------------------------------------------------------
+
+.. automodule:: quantum_nodes.demo_addon.operators.add_gate_button
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+quantum\_nodes.demo\_addon.operators.apply\_quantum\_circuit
+------------------------------------------------------------
+
+.. automodule:: quantum_nodes.demo_addon.operators.apply_quantum_circuit
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+quantum\_nodes.demo\_addon.operators.delete\_target
+---------------------------------------------------
+
+.. automodule:: quantum_nodes.demo_addon.operators.delete_target
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+quantum\_nodes.demo\_addon.operators.duplicate\_target
+------------------------------------------------------
+
+.. automodule:: quantum_nodes.demo_addon.operators.duplicate_target
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+quantum\_nodes.demo\_addon.operators.reset\_circuits
+----------------------------------------------------
+
+.. automodule:: quantum_nodes.demo_addon.operators.reset_circuits
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+quantum\_nodes.demo\_addon.operators.select\_object
+---------------------------------------------------
+
+.. automodule:: quantum_nodes.demo_addon.operators.select_object
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+quantum\_nodes.demo\_addon.operators.select\_qubit
+--------------------------------------------------
+
+.. automodule:: quantum_nodes.demo_addon.operators.select_qubit
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+quantum\_nodes.demo\_addon.operators.select\_qubit\_button
+----------------------------------------------------------
+
+.. automodule:: quantum_nodes.demo_addon.operators.select_qubit_button
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+quantum\_nodes.demo\_addon.operators.subdivide\_mesh
+----------------------------------------------------
+
+.. automodule:: quantum_nodes.demo_addon.operators.subdivide_mesh
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+quantum\_nodes.demo\_addon.operators.switch\_to\_an
+---------------------------------------------------
+
+.. automodule:: quantum_nodes.demo_addon.operators.switch_to_an
+   :members:
+   :undoc-members:
+   :show-inheritance:

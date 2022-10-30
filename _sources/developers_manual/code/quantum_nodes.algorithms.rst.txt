@@ -1,0 +1,15 @@
+quantum\_nodes.algorithms
+=========================
+
+.. automodule:: quantum_nodes.algorithms
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Packages
+--------
+
+.. toctree::
+   :maxdepth: 1
+
+   quantum_nodes.algorithms.schrodinger_equation

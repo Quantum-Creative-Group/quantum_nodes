@@ -1,0 +1,58 @@
+quantum\_nodes.sockets
+======================
+
+.. automodule:: quantum_nodes.sockets
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Modules
+-------
+
+quantum\_nodes.sockets.classical\_register
+------------------------------------------
+
+.. automodule:: quantum_nodes.sockets.classical_register
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+quantum\_nodes.sockets.numpy\_long\_complex
+-------------------------------------------
+
+.. automodule:: quantum_nodes.sockets.numpy_long_complex
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+quantum\_nodes.sockets.qgan
+---------------------------
+
+.. automodule:: quantum_nodes.sockets.qgan
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+quantum\_nodes.sockets.quantum\_circuit
+---------------------------------------
+
+.. automodule:: quantum_nodes.sockets.quantum_circuit
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+quantum\_nodes.sockets.quantum\_count
+-------------------------------------
+
+.. automodule:: quantum_nodes.sockets.quantum_count
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+quantum\_nodes.sockets.quantum\_register
+----------------------------------------
+
+.. automodule:: quantum_nodes.sockets.quantum_register
+   :members:
+   :undoc-members:
+   :show-inheritance:

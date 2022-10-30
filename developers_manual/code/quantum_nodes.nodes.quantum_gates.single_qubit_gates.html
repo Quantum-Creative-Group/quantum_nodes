@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>quantum_nodes.nodes.quantum_gates.single_qubit_gates &mdash; Quantum Nodes 0.1.2 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/developers_manual/ascii_art_file_architecture.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/global.css" type="text/css" />
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="quantum_nodes.nodes.quantum_output" href="quantum_nodes.nodes.quantum_output.html" />
+    <link rel="prev" title="quantum_nodes.nodes.quantum_gates.gates_to_all" href="quantum_nodes.nodes.quantum_gates.gates_to_all.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> Quantum Nodes
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../nodes/index.html">Nodes documentation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Developers manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../addon/index.html">Contribute to Quantum Nodes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../manual/index.html">Contribute to the manual</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="quantum_nodes.html">Code documentation</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="quantum_nodes.html#packages">Packages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="quantum_nodes.algorithms.html">quantum_nodes.algorithms</a></li>
+<li class="toctree-l4"><a class="reference internal" href="quantum_nodes.demo_addon.html">quantum_nodes.demo_addon</a></li>
+<li class="toctree-l4"><a class="reference internal" href="quantum_nodes.node_templates.html">quantum_nodes.node_templates namespace</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="quantum_nodes.nodes.html">quantum_nodes.nodes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="quantum_nodes.operators.html">quantum_nodes.operators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="quantum_nodes.properties.html">quantum_nodes.properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="quantum_nodes.sockets.html">quantum_nodes.sockets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="quantum_nodes.ui.html">quantum_nodes.ui</a></li>
+<li class="toctree-l4"><a class="reference internal" href="quantum_nodes.visualization.html">quantum_nodes.visualization</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="quantum_nodes.html#modules">Modules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quantum_nodes.html#module-quantum_nodes.auto_load">quantum_nodes.auto_load</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Quantum Nodes</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Developers manual</a> &raquo;</li>
+          <li><a href="quantum_nodes.html">Code documentation</a> &raquo;</li>
+          <li><a href="quantum_nodes.nodes.html">quantum_nodes.nodes</a> &raquo;</li>
+          <li><a href="quantum_nodes.nodes.quantum_gates.html">quantum_nodes.nodes.quantum_gates</a> &raquo;</li>
+      <li>quantum_nodes.nodes.quantum_gates.single_qubit_gates</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-quantum_nodes.nodes.quantum_gates.single_qubit_gates">
+<span id="quantum-nodes-nodes-quantum-gates-single-qubit-gates"></span><h1>quantum_nodes.nodes.quantum_gates.single_qubit_gates<a class="headerlink" href="#module-quantum_nodes.nodes.quantum_gates.single_qubit_gates" title="Permalink to this heading"></a></h1>
+<section id="modules">
+<h2>Modules<a class="headerlink" href="#modules" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_h">
+<span id="quantum-nodes-nodes-quantum-gates-single-qubit-gates-quantum-gate-h"></span><h2>quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_h<a class="headerlink" href="#module-quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_h" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_h.QuantumGateHNode">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_h.</span></span><span class="sig-name descname"><span class="pre">QuantumGateHNode</span></span><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_h.QuantumGateHNode" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Node</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">AnimationNode</span></code></p>
+<p>Apply quantum gate H to selected qubits.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_h.QuantumGateHNode.bl_idname">
+<span class="sig-name descname"><span class="pre">bl_idname</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'an_QuantumGateHNode'</span></em><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_h.QuantumGateHNode.bl_idname" title="Permalink to this definition"></a></dt>
+<dd><p>str</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>type</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_h.QuantumGateHNode.bl_label">
+<span class="sig-name descname"><span class="pre">bl_label</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Quantum</span> <span class="pre">Gate</span> <span class="pre">H'</span></em><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_h.QuantumGateHNode.bl_label" title="Permalink to this definition"></a></dt>
+<dd><p>The node label</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_h.QuantumGateHNode.bl_width_default">
+<span class="sig-name descname"><span class="pre">bl_width_default</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">160</span></em><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_h.QuantumGateHNode.bl_width_default" title="Permalink to this definition"></a></dt>
+<dd><p>float</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>type</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_h.QuantumGateHNode.draw">
+<span class="sig-name descname"><span class="pre">draw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">layout</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_h.QuantumGateHNode.draw" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_h.QuantumGateHNode.errorHandlingType">
+<span class="sig-name descname"><span class="pre">errorHandlingType</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'EXCEPTION'</span></em><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_h.QuantumGateHNode.errorHandlingType" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_h.QuantumGateHNode.getExecutionCode">
+<span class="sig-name descname"><span class="pre">getExecutionCode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">required</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_h.QuantumGateHNode.getExecutionCode" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_h.QuantumGateHNode.getInputSocketVariables">
+<span class="sig-name descname"><span class="pre">getInputSocketVariables</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_h.QuantumGateHNode.getInputSocketVariables" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_h.QuantumGateHNode.newInputSocket">
+<span class="sig-name descname"><span class="pre">newInputSocket</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_h.QuantumGateHNode.newInputSocket" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_h.QuantumGateHNode.removeUnlinkedInputs">
+<span class="sig-name descname"><span class="pre">removeUnlinkedInputs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_h.QuantumGateHNode.removeUnlinkedInputs" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_h.QuantumGateHNode.setup">
+<span class="sig-name descname"><span class="pre">setup</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_h.QuantumGateHNode.setup" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_id">
+<span id="quantum-nodes-nodes-quantum-gates-single-qubit-gates-quantum-gate-id"></span><h2>quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_id<a class="headerlink" href="#module-quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_id" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_id.QuantumGateIDNode">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_id.</span></span><span class="sig-name descname"><span class="pre">QuantumGateIDNode</span></span><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_id.QuantumGateIDNode" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Node</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">AnimationNode</span></code></p>
+<p>Apply quantum gate ID to selected qubits.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_id.QuantumGateIDNode.bl_idname">
+<span class="sig-name descname"><span class="pre">bl_idname</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'an_QuantumGateIDNode'</span></em><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_id.QuantumGateIDNode.bl_idname" title="Permalink to this definition"></a></dt>
+<dd><p>str</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>type</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_id.QuantumGateIDNode.bl_label">
+<span class="sig-name descname"><span class="pre">bl_label</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Quantum</span> <span class="pre">Gate</span> <span class="pre">ID'</span></em><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_id.QuantumGateIDNode.bl_label" title="Permalink to this definition"></a></dt>
+<dd><p>The node label</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_id.QuantumGateIDNode.bl_width_default">
+<span class="sig-name descname"><span class="pre">bl_width_default</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">160</span></em><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_id.QuantumGateIDNode.bl_width_default" title="Permalink to this definition"></a></dt>
+<dd><p>float</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>type</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_id.QuantumGateIDNode.draw">
+<span class="sig-name descname"><span class="pre">draw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">layout</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_id.QuantumGateIDNode.draw" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_id.QuantumGateIDNode.errorHandlingType">
+<span class="sig-name descname"><span class="pre">errorHandlingType</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'EXCEPTION'</span></em><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_id.QuantumGateIDNode.errorHandlingType" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_id.QuantumGateIDNode.getExecutionCode">
+<span class="sig-name descname"><span class="pre">getExecutionCode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">required</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_id.QuantumGateIDNode.getExecutionCode" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_id.QuantumGateIDNode.getInputSocketVariables">
+<span class="sig-name descname"><span class="pre">getInputSocketVariables</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_id.QuantumGateIDNode.getInputSocketVariables" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_id.QuantumGateIDNode.newInputSocket">
+<span class="sig-name descname"><span class="pre">newInputSocket</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_id.QuantumGateIDNode.newInputSocket" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_id.QuantumGateIDNode.removeUnlinkedInputs">
+<span class="sig-name descname"><span class="pre">removeUnlinkedInputs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_id.QuantumGateIDNode.removeUnlinkedInputs" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_id.QuantumGateIDNode.setup">
+<span class="sig-name descname"><span class="pre">setup</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_id.QuantumGateIDNode.setup" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_s">
+<span id="quantum-nodes-nodes-quantum-gates-single-qubit-gates-quantum-gate-s"></span><h2>quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_s<a class="headerlink" href="#module-quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_s" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_s.QuantumGateSNode">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_s.</span></span><span class="sig-name descname"><span class="pre">QuantumGateSNode</span></span><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_s.QuantumGateSNode" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Node</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">AnimationNode</span></code></p>
+<p>Apply quantum gate S to selected qubits.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_s.QuantumGateSNode.bl_idname">
+<span class="sig-name descname"><span class="pre">bl_idname</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'an_QuantumGateSNode'</span></em><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_s.QuantumGateSNode.bl_idname" title="Permalink to this definition"></a></dt>
+<dd><p>str</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>type</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_s.QuantumGateSNode.bl_label">
+<span class="sig-name descname"><span class="pre">bl_label</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Quantum</span> <span class="pre">Gate</span> <span class="pre">S'</span></em><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_s.QuantumGateSNode.bl_label" title="Permalink to this definition"></a></dt>
+<dd><p>The node label</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_s.QuantumGateSNode.bl_width_default">
+<span class="sig-name descname"><span class="pre">bl_width_default</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">160</span></em><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_s.QuantumGateSNode.bl_width_default" title="Permalink to this definition"></a></dt>
+<dd><p>float</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>type</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_s.QuantumGateSNode.draw">
+<span class="sig-name descname"><span class="pre">draw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">layout</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_s.QuantumGateSNode.draw" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_s.QuantumGateSNode.errorHandlingType">
+<span class="sig-name descname"><span class="pre">errorHandlingType</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'EXCEPTION'</span></em><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_s.QuantumGateSNode.errorHandlingType" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_s.QuantumGateSNode.getExecutionCode">
+<span class="sig-name descname"><span class="pre">getExecutionCode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">required</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_s.QuantumGateSNode.getExecutionCode" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_s.QuantumGateSNode.getInputSocketVariables">
+<span class="sig-name descname"><span class="pre">getInputSocketVariables</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_s.QuantumGateSNode.getInputSocketVariables" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_s.QuantumGateSNode.newInputSocket">
+<span class="sig-name descname"><span class="pre">newInputSocket</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_s.QuantumGateSNode.newInputSocket" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_s.QuantumGateSNode.removeUnlinkedInputs">
+<span class="sig-name descname"><span class="pre">removeUnlinkedInputs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_s.QuantumGateSNode.removeUnlinkedInputs" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_s.QuantumGateSNode.setup">
+<span class="sig-name descname"><span class="pre">setup</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_s.QuantumGateSNode.setup" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_sdg">
+<span id="quantum-nodes-nodes-quantum-gates-single-qubit-gates-quantum-gate-sdg"></span><h2>quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_sdg<a class="headerlink" href="#module-quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_sdg" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_sdg.QuantumGateSDGNode">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_sdg.</span></span><span class="sig-name descname"><span class="pre">QuantumGateSDGNode</span></span><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_sdg.QuantumGateSDGNode" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Node</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">AnimationNode</span></code></p>
+<p>Apply quantum gate SDG to selected qubits.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_sdg.QuantumGateSDGNode.bl_idname">
+<span class="sig-name descname"><span class="pre">bl_idname</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'an_QuantumGateSDGNode'</span></em><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_sdg.QuantumGateSDGNode.bl_idname" title="Permalink to this definition"></a></dt>
+<dd><p>str</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>type</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_sdg.QuantumGateSDGNode.bl_label">
+<span class="sig-name descname"><span class="pre">bl_label</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Quantum</span> <span class="pre">Gate</span> <span class="pre">SDG'</span></em><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_sdg.QuantumGateSDGNode.bl_label" title="Permalink to this definition"></a></dt>
+<dd><p>The node label</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_sdg.QuantumGateSDGNode.bl_width_default">
+<span class="sig-name descname"><span class="pre">bl_width_default</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">160</span></em><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_sdg.QuantumGateSDGNode.bl_width_default" title="Permalink to this definition"></a></dt>
+<dd><p>float</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>type</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_sdg.QuantumGateSDGNode.draw">
+<span class="sig-name descname"><span class="pre">draw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">layout</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_sdg.QuantumGateSDGNode.draw" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_sdg.QuantumGateSDGNode.errorHandlingType">
+<span class="sig-name descname"><span class="pre">errorHandlingType</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'EXCEPTION'</span></em><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_sdg.QuantumGateSDGNode.errorHandlingType" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_sdg.QuantumGateSDGNode.getExecutionCode">
+<span class="sig-name descname"><span class="pre">getExecutionCode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">required</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_sdg.QuantumGateSDGNode.getExecutionCode" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_sdg.QuantumGateSDGNode.getInputSocketVariables">
+<span class="sig-name descname"><span class="pre">getInputSocketVariables</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_sdg.QuantumGateSDGNode.getInputSocketVariables" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_sdg.QuantumGateSDGNode.newInputSocket">
+<span class="sig-name descname"><span class="pre">newInputSocket</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_sdg.QuantumGateSDGNode.newInputSocket" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_sdg.QuantumGateSDGNode.removeUnlinkedInputs">
+<span class="sig-name descname"><span class="pre">removeUnlinkedInputs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_sdg.QuantumGateSDGNode.removeUnlinkedInputs" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_sdg.QuantumGateSDGNode.setup">
+<span class="sig-name descname"><span class="pre">setup</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_sdg.QuantumGateSDGNode.setup" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_t">
+<span id="quantum-nodes-nodes-quantum-gates-single-qubit-gates-quantum-gate-t"></span><h2>quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_t<a class="headerlink" href="#module-quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_t" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_t.QuantumGateTNode">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_t.</span></span><span class="sig-name descname"><span class="pre">QuantumGateTNode</span></span><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_t.QuantumGateTNode" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Node</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">AnimationNode</span></code></p>
+<p>Apply quantum gate T to selected qubits.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_t.QuantumGateTNode.bl_idname">
+<span class="sig-name descname"><span class="pre">bl_idname</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'an_QuantumGateTNode'</span></em><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_t.QuantumGateTNode.bl_idname" title="Permalink to this definition"></a></dt>
+<dd><p>str</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>type</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_t.QuantumGateTNode.bl_label">
+<span class="sig-name descname"><span class="pre">bl_label</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Quantum</span> <span class="pre">Gate</span> <span class="pre">T'</span></em><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_t.QuantumGateTNode.bl_label" title="Permalink to this definition"></a></dt>
+<dd><p>The node label</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_t.QuantumGateTNode.bl_width_default">
+<span class="sig-name descname"><span class="pre">bl_width_default</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">160</span></em><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_t.QuantumGateTNode.bl_width_default" title="Permalink to this definition"></a></dt>
+<dd><p>float</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>type</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_t.QuantumGateTNode.draw">
+<span class="sig-name descname"><span class="pre">draw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">layout</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_t.QuantumGateTNode.draw" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_t.QuantumGateTNode.errorHandlingType">
+<span class="sig-name descname"><span class="pre">errorHandlingType</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'EXCEPTION'</span></em><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_t.QuantumGateTNode.errorHandlingType" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_t.QuantumGateTNode.getExecutionCode">
+<span class="sig-name descname"><span class="pre">getExecutionCode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">required</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_t.QuantumGateTNode.getExecutionCode" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_t.QuantumGateTNode.getInputSocketVariables">
+<span class="sig-name descname"><span class="pre">getInputSocketVariables</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_t.QuantumGateTNode.getInputSocketVariables" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_t.QuantumGateTNode.newInputSocket">
+<span class="sig-name descname"><span class="pre">newInputSocket</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_t.QuantumGateTNode.newInputSocket" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_t.QuantumGateTNode.removeUnlinkedInputs">
+<span class="sig-name descname"><span class="pre">removeUnlinkedInputs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_t.QuantumGateTNode.removeUnlinkedInputs" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_t.QuantumGateTNode.setup">
+<span class="sig-name descname"><span class="pre">setup</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_t.QuantumGateTNode.setup" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_tdg">
+<span id="quantum-nodes-nodes-quantum-gates-single-qubit-gates-quantum-gate-tdg"></span><h2>quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_tdg<a class="headerlink" href="#module-quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_tdg" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_tdg.QuantumGateTDGNode">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_tdg.</span></span><span class="sig-name descname"><span class="pre">QuantumGateTDGNode</span></span><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_tdg.QuantumGateTDGNode" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Node</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">AnimationNode</span></code></p>
+<p>Apply quantum gate TDG to selected qubits.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_tdg.QuantumGateTDGNode.bl_idname">
+<span class="sig-name descname"><span class="pre">bl_idname</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'an_QuantumGateTDGNode'</span></em><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_tdg.QuantumGateTDGNode.bl_idname" title="Permalink to this definition"></a></dt>
+<dd><p>str</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>type</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_tdg.QuantumGateTDGNode.bl_label">
+<span class="sig-name descname"><span class="pre">bl_label</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Quantum</span> <span class="pre">Gate</span> <span class="pre">TDG'</span></em><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_tdg.QuantumGateTDGNode.bl_label" title="Permalink to this definition"></a></dt>
+<dd><p>The node label</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_tdg.QuantumGateTDGNode.draw">
+<span class="sig-name descname"><span class="pre">draw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">layout</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_tdg.QuantumGateTDGNode.draw" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_tdg.QuantumGateTDGNode.errorHandlingType">
+<span class="sig-name descname"><span class="pre">errorHandlingType</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'EXCEPTION'</span></em><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_tdg.QuantumGateTDGNode.errorHandlingType" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_tdg.QuantumGateTDGNode.getExecutionCode">
+<span class="sig-name descname"><span class="pre">getExecutionCode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">required</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_tdg.QuantumGateTDGNode.getExecutionCode" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_tdg.QuantumGateTDGNode.getInputSocketVariables">
+<span class="sig-name descname"><span class="pre">getInputSocketVariables</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_tdg.QuantumGateTDGNode.getInputSocketVariables" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_tdg.QuantumGateTDGNode.newInputSocket">
+<span class="sig-name descname"><span class="pre">newInputSocket</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_tdg.QuantumGateTDGNode.newInputSocket" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_tdg.QuantumGateTDGNode.removeUnlinkedInputs">
+<span class="sig-name descname"><span class="pre">removeUnlinkedInputs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_tdg.QuantumGateTDGNode.removeUnlinkedInputs" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_tdg.QuantumGateTDGNode.setup">
+<span class="sig-name descname"><span class="pre">setup</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_tdg.QuantumGateTDGNode.setup" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_x">
+<span id="quantum-nodes-nodes-quantum-gates-single-qubit-gates-quantum-gate-x"></span><h2>quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_x<a class="headerlink" href="#module-quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_x" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_x.QuantumGateXNode">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_x.</span></span><span class="sig-name descname"><span class="pre">QuantumGateXNode</span></span><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_x.QuantumGateXNode" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Node</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">AnimationNode</span></code></p>
+<p>Apply quantum gate X to selected qubits.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_x.QuantumGateXNode.bl_idname">
+<span class="sig-name descname"><span class="pre">bl_idname</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'an_QuantumGateXNode'</span></em><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_x.QuantumGateXNode.bl_idname" title="Permalink to this definition"></a></dt>
+<dd><p>str</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>type</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_x.QuantumGateXNode.bl_label">
+<span class="sig-name descname"><span class="pre">bl_label</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Quantum</span> <span class="pre">Gate</span> <span class="pre">X'</span></em><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_x.QuantumGateXNode.bl_label" title="Permalink to this definition"></a></dt>
+<dd><p>The node label</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_x.QuantumGateXNode.bl_width_default">
+<span class="sig-name descname"><span class="pre">bl_width_default</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">160</span></em><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_x.QuantumGateXNode.bl_width_default" title="Permalink to this definition"></a></dt>
+<dd><p>float</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>type</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_x.QuantumGateXNode.draw">
+<span class="sig-name descname"><span class="pre">draw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">layout</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_x.QuantumGateXNode.draw" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_x.QuantumGateXNode.errorHandlingType">
+<span class="sig-name descname"><span class="pre">errorHandlingType</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'EXCEPTION'</span></em><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_x.QuantumGateXNode.errorHandlingType" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_x.QuantumGateXNode.getExecutionCode">
+<span class="sig-name descname"><span class="pre">getExecutionCode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">required</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_x.QuantumGateXNode.getExecutionCode" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_x.QuantumGateXNode.getInputSocketVariables">
+<span class="sig-name descname"><span class="pre">getInputSocketVariables</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_x.QuantumGateXNode.getInputSocketVariables" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_x.QuantumGateXNode.newInputSocket">
+<span class="sig-name descname"><span class="pre">newInputSocket</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_x.QuantumGateXNode.newInputSocket" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_x.QuantumGateXNode.removeUnlinkedInputs">
+<span class="sig-name descname"><span class="pre">removeUnlinkedInputs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_x.QuantumGateXNode.removeUnlinkedInputs" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_x.QuantumGateXNode.setup">
+<span class="sig-name descname"><span class="pre">setup</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_x.QuantumGateXNode.setup" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_y">
+<span id="quantum-nodes-nodes-quantum-gates-single-qubit-gates-quantum-gate-y"></span><h2>quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_y<a class="headerlink" href="#module-quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_y" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_y.QuantumGateYNode">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_y.</span></span><span class="sig-name descname"><span class="pre">QuantumGateYNode</span></span><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_y.QuantumGateYNode" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Node</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">AnimationNode</span></code></p>
+<p>Apply quantum gate Y to selected qubits.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_y.QuantumGateYNode.bl_idname">
+<span class="sig-name descname"><span class="pre">bl_idname</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'an_QuantumGateYNode'</span></em><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_y.QuantumGateYNode.bl_idname" title="Permalink to this definition"></a></dt>
+<dd><p>str</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>type</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_y.QuantumGateYNode.bl_label">
+<span class="sig-name descname"><span class="pre">bl_label</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Quantum</span> <span class="pre">Gate</span> <span class="pre">Y'</span></em><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_y.QuantumGateYNode.bl_label" title="Permalink to this definition"></a></dt>
+<dd><p>The node label</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_y.QuantumGateYNode.bl_width_default">
+<span class="sig-name descname"><span class="pre">bl_width_default</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">160</span></em><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_y.QuantumGateYNode.bl_width_default" title="Permalink to this definition"></a></dt>
+<dd><p>float</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>type</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_y.QuantumGateYNode.draw">
+<span class="sig-name descname"><span class="pre">draw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">layout</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_y.QuantumGateYNode.draw" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_y.QuantumGateYNode.errorHandlingType">
+<span class="sig-name descname"><span class="pre">errorHandlingType</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'EXCEPTION'</span></em><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_y.QuantumGateYNode.errorHandlingType" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_y.QuantumGateYNode.getExecutionCode">
+<span class="sig-name descname"><span class="pre">getExecutionCode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">required</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_y.QuantumGateYNode.getExecutionCode" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_y.QuantumGateYNode.getInputSocketVariables">
+<span class="sig-name descname"><span class="pre">getInputSocketVariables</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_y.QuantumGateYNode.getInputSocketVariables" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_y.QuantumGateYNode.newInputSocket">
+<span class="sig-name descname"><span class="pre">newInputSocket</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_y.QuantumGateYNode.newInputSocket" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_y.QuantumGateYNode.removeUnlinkedInputs">
+<span class="sig-name descname"><span class="pre">removeUnlinkedInputs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_y.QuantumGateYNode.removeUnlinkedInputs" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_y.QuantumGateYNode.setup">
+<span class="sig-name descname"><span class="pre">setup</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_y.QuantumGateYNode.setup" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_z">
+<span id="quantum-nodes-nodes-quantum-gates-single-qubit-gates-quantum-gate-z"></span><h2>quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_z<a class="headerlink" href="#module-quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_z" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_z.QuantumGateZNode">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_z.</span></span><span class="sig-name descname"><span class="pre">QuantumGateZNode</span></span><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_z.QuantumGateZNode" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Node</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">AnimationNode</span></code></p>
+<p>Apply quantum gate Z to selected qubits.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_z.QuantumGateZNode.bl_idname">
+<span class="sig-name descname"><span class="pre">bl_idname</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'an_QuantumGateZNode'</span></em><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_z.QuantumGateZNode.bl_idname" title="Permalink to this definition"></a></dt>
+<dd><p>str</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>type</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_z.QuantumGateZNode.bl_label">
+<span class="sig-name descname"><span class="pre">bl_label</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Quantum</span> <span class="pre">Gate</span> <span class="pre">Z'</span></em><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_z.QuantumGateZNode.bl_label" title="Permalink to this definition"></a></dt>
+<dd><p>The node label</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_z.QuantumGateZNode.bl_width_default">
+<span class="sig-name descname"><span class="pre">bl_width_default</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">160</span></em><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_z.QuantumGateZNode.bl_width_default" title="Permalink to this definition"></a></dt>
+<dd><p>float</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>type</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_z.QuantumGateZNode.draw">
+<span class="sig-name descname"><span class="pre">draw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">layout</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_z.QuantumGateZNode.draw" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_z.QuantumGateZNode.errorHandlingType">
+<span class="sig-name descname"><span class="pre">errorHandlingType</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'EXCEPTION'</span></em><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_z.QuantumGateZNode.errorHandlingType" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_z.QuantumGateZNode.getExecutionCode">
+<span class="sig-name descname"><span class="pre">getExecutionCode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">required</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_z.QuantumGateZNode.getExecutionCode" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_z.QuantumGateZNode.getInputSocketVariables">
+<span class="sig-name descname"><span class="pre">getInputSocketVariables</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_z.QuantumGateZNode.getInputSocketVariables" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_z.QuantumGateZNode.newInputSocket">
+<span class="sig-name descname"><span class="pre">newInputSocket</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_z.QuantumGateZNode.newInputSocket" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_z.QuantumGateZNode.removeUnlinkedInputs">
+<span class="sig-name descname"><span class="pre">removeUnlinkedInputs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_z.QuantumGateZNode.removeUnlinkedInputs" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_z.QuantumGateZNode.setup">
+<span class="sig-name descname"><span class="pre">setup</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quantum_nodes.nodes.quantum_gates.single_qubit_gates.quantum_gate_z.QuantumGateZNode.setup" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="quantum_nodes.nodes.quantum_gates.gates_to_all.html" class="btn btn-neutral float-left" title="quantum_nodes.nodes.quantum_gates.gates_to_all" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="quantum_nodes.nodes.quantum_output.html" class="btn btn-neutral float-right" title="quantum_nodes.nodes.quantum_output" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2022, Quantum-Creative-Group.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
