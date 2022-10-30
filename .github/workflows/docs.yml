@@ -52,7 +52,7 @@ jobs:
           key: docs-build-${{ hashFiles('docs/source/conf.py') }}
 
       - name: Cache animation nodes source code
-        id: animation-nodes
+        id: animation-nodes-source-code
         uses: actions/cache@v3.0.11
         if: env.USE_CACHE == 'true'
         with:
@@ -62,6 +62,7 @@ jobs:
       - name: Download and prepare animation nodes source code
         if: steps.cache.animation-nodes-source-code.cache-hit != 'true'
         run: |
+          rm -rf animation_nodes/
           wget https://github.com/JacquesLucke/animation_nodes/releases/download/master-cd-build/animation_nodes_v2_3_linux_py310.zip
           unzip animation_nodes_v2_3_linux_py310.zip
           rm animation_nodes_v2_3_linux_py310.zip
