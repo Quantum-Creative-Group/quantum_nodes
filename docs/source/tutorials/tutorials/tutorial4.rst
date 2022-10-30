@@ -16,7 +16,7 @@ Tutorial 4 - Create and manipulate meshes using the Quantum Blur
 
 Example of output you can get by using a Quantum Blur:
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/tutorial4/step1.png
+.. image:: /images/tutorial4/step1.png
     :width: 85%
     :alt: Step 1 
     :align: center
@@ -36,7 +36,7 @@ To organize this node tree better, we will divide it in 3 parts: the quantum cir
 
 Let's create the following circuit:
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/tutorial4/step2.png
+.. image:: /images/tutorial4/step2.png
     :width: 85%
     :alt: Step 2
     :align: center
@@ -51,7 +51,7 @@ Let's create the following circuit:
 
 *   |   Add a **Group Output.**
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/tutorial4/step3.png
+.. image:: /images/tutorial4/step3.png
     :width: 85%
     :alt: Step 3
     :align: center
@@ -70,7 +70,7 @@ Let's create the following circuit:
 
 *   |   Add a RX, RY and RZ gates between the Quantum Blur Input and Output and link the circuit input-output.
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/tutorial4/step4.png
+.. image:: /images/tutorial4/step4.png
     :width: 85%
     :alt: Step 4
     :align: center
@@ -82,7 +82,7 @@ Let's create the following circuit:
 
 *   |   Add a **Time Info** node (gives the frame number), a **Square Root** node, a **Random Number** node and a **Math divide** node.
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/tutorial4/step5.png
+.. image:: /images/tutorial4/step5.png
     :width: 85%
     :alt: Step 5
     :align: center
@@ -109,7 +109,7 @@ Let's create the following circuit:
 
 *   |   Add a **Group Input** using two float lists and a **Group Output**. 
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/tutorial4/step6.png
+.. image:: /images/tutorial4/step6.png
     :width: 85%
     :alt: Step 6
     :align: center
@@ -127,7 +127,7 @@ Let's create the following circuit:
 
 *   |   For the Sign Test node tree, add a **Loop Input** with the Subprograms tab, then a **Compare** node, a **Switch** node and the **Loop Output** (a float list). 
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/tutorial4/step7.png
+.. image:: /images/tutorial4/step7.png
     :width: 85%
     :alt: Step 7
     :align: center
@@ -137,7 +137,7 @@ Let's create the following circuit:
 
 *   |   For the Multiply node tree, add a **Loop Input**, then a **Multiply** node and the **Loop Output** (a float list). 
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/tutorial4/step8.png
+.. image:: /images/tutorial4/step8.png
     :width: 85%
     :alt: Step 8
     :align: center
@@ -149,7 +149,7 @@ Let's create the following circuit:
 
 |   These nodes allow us to modify the original values with the ones we got in the quantum circuit output.
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/tutorial4/step9.png
+.. image:: /images/tutorial4/step9.png
     :width: 85%
     :alt: Step 9
     :align: center
@@ -159,7 +159,7 @@ Let's create the following circuit:
 
 |   With the aim of adding more randomness through the values of quantum outputs in the lists we create, we also added Math functions like a Multiply with the Absolute value of the list we got at the end of the Quantum Circuit. 
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/tutorial4/step10.png
+.. image:: /images/tutorial4/step10.png
     :width: 85%
     :alt: Step 10
     :align: center
@@ -181,7 +181,7 @@ Let's create the following circuit:
 
 |   The output type is vertices because this is what we want to modify.
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/tutorial4/step11.png
+.. image:: /images/tutorial4/step11.png
     :width: 85%
     :alt: Step 11
     :align: center
@@ -194,7 +194,7 @@ Let's create the following circuit:
 |   Use a **Separate Vector** node to separate x, y, z. 
 |   Add a **Combine Vector** node before the Output as we will need them to be reunited at the end. 
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/tutorial4/step12.png
+.. image:: /images/tutorial4/step12.png
     :width: 85%
     :alt: Step 12
     :align: center
@@ -206,7 +206,7 @@ Let's create the following circuit:
 
 *   |   Add an **Invoke Subprogram** node for every subprogram we call: the quantum circuit and the mesh data and link them. 
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/tutorial4/step13.png
+.. image:: /images/tutorial4/step13.png
     :width: 85%
     :alt: Step 13
     :align: center

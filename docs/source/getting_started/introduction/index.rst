@@ -11,7 +11,7 @@ Quantum Nodes manual
 
 |   This website is here to help you understand how to use Quantum Nodes!
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/quantum_monkey.jpg
+.. image:: https://quantum-nodes.com/wp-content/uploads/2022/07/representative_image_quantum_nodes-scaled.jpg
     :width: 80%
     :alt: Quantum monkey
     :align: center

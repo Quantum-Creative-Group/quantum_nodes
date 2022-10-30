@@ -7,7 +7,7 @@ Now that we have seen what a qubit is, how can we manipulate them?
 
 For bits we use “logic gates”. These allow the creation of algorithms to perform calculations:
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/tutorials/quantum-gates.png
+.. image:: /images/tutorials/quantum-gates.png
     :width: 60%
     :alt: Quantum gates
     :align: center
@@ -33,7 +33,7 @@ Manipulation of quantum gates
 
 Example of the **NOT gate**: 
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/tutorials/quantum-gate-not.png
+.. image:: /images/tutorials/quantum-gate-not.png
     :width: 60%
     :alt: Quantum gate not
     :align: center

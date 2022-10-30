@@ -29,7 +29,7 @@ Downloads
 Blender
 *******
 
-* Download Blender (>= 2.92): https://www.blender.org/download/
+* Download Blender (>= 2.93): https://www.blender.org/download/
 
 
 .. _blender-install-linux:
@@ -110,7 +110,7 @@ Now, all we have to do is to install Animation Nodes and Quantum Nodes in Blende
 
 * Go to: ``Edit > Preferences``
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/installation/linux/preferences-blender-linux.png
+.. image:: /images/installation/linux/preferences-blender-linux.png
     :width: 50%
     :alt: Blender, preferences
     :align: center
@@ -120,7 +120,7 @@ Now, all we have to do is to install Animation Nodes and Quantum Nodes in Blende
 
 * Go to the add-on panel and click on ``Install``
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/installation/linux/install-addons-blender-linux.png
+.. image:: /images/installation/linux/install-addons-blender-linux.png
     :width: 80%
     :alt: Blender, preferences, install
     :align: center
@@ -136,7 +136,7 @@ Animation Nodes
 
 * Select Animation Nodes
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/installation/linux/install-linux-select-animation-nodes.png
+.. image:: /images/installation/linux/install-linux-select-animation-nodes.png
     :width: 80%
     :alt: Blender, preferences, install animation nodes
     :align: center
@@ -151,7 +151,7 @@ Animation Nodes
     Don't forget to activate it (click on the *checkbox*)
 
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/installation/linux/install-linux-activate-animation-nodes.png
+.. image:: /images/installation/linux/install-linux-activate-animation-nodes.png
     :width: 80%
     :alt: Blender, preferences, activate animation nodes
     :align: center
@@ -167,7 +167,7 @@ Quantum Nodes
 
 * Select Quantum Nodes
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/installation/linux/install-linux-select-quantum-nodes.png
+.. image:: /images/installation/linux/install-linux-select-quantum-nodes.png
     :width: 80%
     :alt: Blender, preferences, install quantum nodes
     :align: center
@@ -182,7 +182,7 @@ Quantum Nodes
     Don't forget to activate it (click on the *checkbox*)
 
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/installation/linux/install-linux-activate-quantum-nodes.png
+.. image:: /images/installation/linux/install-linux-activate-quantum-nodes.png
     :width: 80%
     :alt: Blender, preferences, activate quantum nodes
     :align: center

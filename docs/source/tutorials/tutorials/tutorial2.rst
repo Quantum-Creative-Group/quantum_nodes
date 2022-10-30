@@ -24,7 +24,7 @@ Tutorial 2 - Use a quantum circuit to modify a mesh
 
 Let's create the following circuit:
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/tutorial2/step1.png
+.. image:: /images/tutorial2/step1.png
     :width: 85%
     :alt: Step 1 
     :align: center
@@ -38,7 +38,7 @@ Let's create the following circuit:
 
 |   Let's create the Quantum Circuit group:
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/tutorial2/step2.png
+.. image:: /images/tutorial2/step2.png
     :width: 85%
     :alt: Step 2 
     :align: center
@@ -49,7 +49,7 @@ Let's create the following circuit:
 |   To use complexes, we will need to convert our output into floats. 
 |   To do that, Quantum Nodes implements a node **Split Complex128** that returns float from the real part and the imaginary part of the complex number.
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/tutorial2/step3.png
+.. image:: /images/tutorial2/step3.png
     :width: 85%
     :alt: Step 3
     :align: center
@@ -57,7 +57,7 @@ Let's create the following circuit:
 
 |
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/tutorial2/step4.png
+.. image:: /images/tutorial2/step4.png
     :width: 85%
     :alt: Step 4
     :align: center
@@ -72,7 +72,7 @@ Let's create the following circuit:
 
 *   |   Create a new node tree and create a loop with an input taking Complex128.
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/tutorial2/step5.png
+.. image:: /images/tutorial2/step5.png
     :width: 85%
     :alt: Step 5
     :align: center
@@ -82,7 +82,7 @@ Let's create the following circuit:
 
 *   |   Link this node to the node **Split complex128**.
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/tutorial2/step6.png
+.. image:: /images/tutorial2/step6.png
     :width: 85%
     :alt: Step 6
     :align: center
@@ -92,7 +92,7 @@ Let's create the following circuit:
 
 *   |   Finally, create two outputs giving the real part and the imaginary part by clicking on New Generator Output in **Loop Input** and choosing Float List.
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/tutorial2/step7.png
+.. image:: /images/tutorial2/step7.png
     :width: 85%
     :alt: Step 7
     :align: center
@@ -116,7 +116,7 @@ Let's create the following circuit:
 
 *   |   First, call the object with **Object Input** and get his vertices with **Mesh Object Input**.
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/tutorial2/step8.png
+.. image:: /images/tutorial2/step8.png
     :width: 85%
     :alt: Step 8
     :align: center
@@ -126,7 +126,7 @@ Let's create the following circuit:
 
 |   To be able to modify vertices from the object, we are going to get all vectors from the vertex locations and separate them to modify the axes independently.
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/tutorial2/step9.png
+.. image:: /images/tutorial2/step9.png
     :width: 85%
     :alt: Step 9
     :align: center
@@ -137,7 +137,7 @@ Let's create the following circuit:
 *   |   Go to the 3D Viewport and create a new cube. 
 *   |   Use the eyedropper tool from the **Object Input** node and select the cube. This is how you choose what object the tree and therefore the quantum circuit will be applied to.
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/tutorial2/step10.png
+.. image:: /images/tutorial2/step10.png
     :width: 85%
     :alt: Step 10
     :align: center
@@ -154,7 +154,7 @@ Let's create the following circuit:
 |   If you use the Viewer node, you can see the vertex locations of the cube. 
 |   For example we can see all floats x from vectors.
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/tutorial2/step11.png
+.. image:: /images/tutorial2/step11.png
     :width: 85%
     :alt: Step 11
     :align: center
@@ -173,7 +173,7 @@ Let's create the following circuit:
 
 *   |   We use **Invoke Subprogram** to call our quantum circuit and our loop and link them to get two float lists. 
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/tutorial2/step12.png
+.. image:: /images/tutorial2/step12.png
     :width: 85%
     :alt: Step 12
     :align: center
@@ -181,7 +181,7 @@ Let's create the following circuit:
 
 |
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/tutorial2/step13.png
+.. image:: /images/tutorial2/step13.png
     :width: 85%
     :alt: Step 13
     :align: center
@@ -193,7 +193,7 @@ Let's create the following circuit:
 
 |   For example I can choose to only change the x list by adding the real list and combine a new vector.
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/tutorial2/step14.png
+.. image:: /images/tutorial2/step14.png
     :width: 85%
     :alt: Step 14
     :align: center
@@ -203,7 +203,7 @@ Let's create the following circuit:
 
 *   |   We need to send our new vector to the cube again by using the **Mesh Object Output** node and select the type vertices.
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/tutorial2/step15.png
+.. image:: /images/tutorial2/step15.png
     :width: 85%
     :alt: Step 15
     :align: center
@@ -213,7 +213,7 @@ Let's create the following circuit:
 
 |   We can see that some vertices from our cube have been moved along the x-axis. 
  
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/tutorial2/step16.png
+.. image:: /images/tutorial2/step16.png
     :width: 50%
     :alt: Step 16
     :align: center
@@ -221,7 +221,7 @@ Let's create the following circuit:
 
 |
  
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/tutorial2/step17.png
+.. image:: /images/tutorial2/step17.png
     :width: 50%
     :alt: Step 17
     :align: center
@@ -235,7 +235,7 @@ Let's create the following circuit:
 
 Example if we to change to have 4 qubits:
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/tutorial2/step18.png
+.. image:: /images/tutorial2/step18.png
     :width: 85%
     :alt: Step 18
     :align: center
@@ -259,7 +259,7 @@ Example if we to change to have 4 qubits:
 |   In parameters, we will take a float list for the real part of complex numbers. 
 |   We will get the float in the list related to the index and repeat the loop until the iteration number is equal to the number of vertices.
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/tutorial2/step19.png
+.. image:: /images/tutorial2/step19.png
     :width: 85%
     :alt: Step 19
     :align: center
@@ -270,7 +270,7 @@ Example if we to change to have 4 qubits:
 |   We can use this loop in our main tree with **Invoke subprogram**. 
 |   To use it correctly, we have to input the float list from the quantum circuit and specify the number of iteration with the number of vertices.
 
-.. image:: https://gitlab.com/quantum-creative-group/quantum_nodes_manual/-/raw/assets/tutorial2/step20.png
+.. image:: /images/tutorial2/step20.png
     :width: 85%
     :alt: Step 20
     :align: center
