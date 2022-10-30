@@ -63,7 +63,7 @@ Animation Nodes
 Quantum Nodes
 *************
 
-* Download the add-on from the `Gitlab releases <https://gitlab.com/quantum-creative-group/quantum_nodes/-/releases>`_
+* Download the add-on from the `Github releases <https://github.com/Quantum-Creative-Group/quantum_nodes/releases>`_
   page (latest version recommended)
  
 
@@ -200,6 +200,6 @@ Help
 
 If you have any problem: 
 
-#. Check for any existing `issue <https://gitlab.com/quantum-creative-group/quantum_nodes/-/issues>`_ that may tackle yours
-#. If you do not find anything, please open a new `issue <https://gitlab.com/quantum-creative-group/quantum_nodes/-/issues>`_
-   on Gitlab with all the necessary information to help you |:wink:|
+#. Check for any existing `issue <https://github.com/Quantum-Creative-Group/quantum_nodes/issues>`_ that may tackle yours
+#. If you do not find anything, please open a new `issue <https://github.com/Quantum-Creative-Group/quantum_nodes/issues>`_
+   on Github with all the necessary information to help you |:wink:|

@@ -21,12 +21,12 @@ Created by Quantum-Creative-Group
 bl_info = {
     "name": "Quantum Nodes",
     "author": "Quantum Creative Group",
-    "version": (0, 1, 1),
-    "blender": (2, 92, 0),
+    "version": (0, 1, 2),
+    "blender": (2, 93, 0),
     "location": "Animation Nodes Editor",
     "description": "Animation Nodes extension which implements quantum computing tools.",
     "warning": "This version is still in development.",
-    "doc_url": "https://quantum-creative-group.gitlab.io/quantum_nodes_manual/",
+    "doc_url": "https://quantum-creative-group.github.io/quantum_nodes/",
     "tracker_url": "https://github.com/Quantum-Creative-Group/quantum_nodes/issues",
     "category": "Node",
 }

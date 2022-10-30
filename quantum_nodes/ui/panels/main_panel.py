@@ -87,7 +87,7 @@ class MainPanel(Panel):
         row.operator(
             'wm.url_open',
             text="Need Help ?",
-            icon='BOOKMARKS').url = 'https://quantum-creative-group.gitlab.io/quantum_nodes_manual/'
+            icon='BOOKMARKS').url = 'https://quantum-creative-group.github.io/quantum_nodes/'
         row = layout.row()
         row.operator(
             'wm.url_open',
