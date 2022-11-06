@@ -10,6 +10,25 @@ import requests
 import argparse
 import subprocess
 
+# Parser for test.py
+parser = argparse.ArgumentParser(description="Add-on test suite")
+parser.add_argument(
+    "-b",
+    metavar="Blender version",
+    type=str,
+    nargs='?',
+    default="3.0.0",
+    help="Version of Blender to test."
+)
+parser.add_argument(
+    "-os",
+    metavar="Targeted operating system",
+    type=str,
+    nargs='?',
+    default="ubuntu",
+    help="Targeted operating system on which to run the test suite."
+)
+
 
 class TerminalDisplay:
     """Usefull tools to better the messages displayed in the terminal."""
@@ -43,6 +62,11 @@ class TerminalDisplay:
 
 class PackageAndAddonUtils:
     """Utility methods to manage python packages and blender add-ons."""
+
+    ANIMATION_NODES = {
+        "module": "ANIMATION_NODES_MODULE",
+        "path": ""
+    }
 
     @classmethod
     def install_py_package(cls, package: str, force: bool = False) -> None:
