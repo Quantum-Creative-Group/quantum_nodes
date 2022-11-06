@@ -64,9 +64,29 @@ class PackageAndAddonUtils:
     """Utility methods to manage python packages and blender add-ons."""
 
     ANIMATION_NODES = {
-        "module": "ANIMATION_NODES_MODULE",
-        "path": ""
+        "module": "animation_nodes",
+        "path": "",
+        "windows-latest": "https://github.com/JacquesLucke/animation_nodes/releases/download/master-cd-build/animation_nodes_v2_3_windows",
+        "ubuntu-latest": "https://github.com/JacquesLucke/animation_nodes/releases/download/master-cd-build/animation_nodes_v2_3_ubuntu",
+        "macos-latest": "https://github.com/JacquesLucke/animation_nodes/releases/download/master-cd-build/animation_nodes_v2_3_macOS",
     }
+
+    @classmethod
+    def get_python_version(cls, blender: str) -> str:
+        """
+        Get the python version used by the given blender version.
+
+        Args:
+            blender (str): blender version (format: major.minor.patch).
+
+        Returns:
+            str: python version used by Blender (MajorMinor).
+        """
+
+        if ["2.9", "3.0"] in blender:
+            return "39"
+        if ["3.1, 3.2, 3.3"]:
+            return "310"
 
     @classmethod
     def install_py_package(cls, package: str, force: bool = False) -> None:
@@ -108,13 +128,13 @@ class PackageAndAddonUtils:
         subprocess.check_call(args)
 
     @classmethod
-    def download_blender_addon(cls, url: str, name: str, dest: str = "cache") -> str:
+    def download_blender_addon(cls, url: str, name: str, dest: str) -> str:
         """
         Download the given blender add-on and put it in the destination folder.
         Args:
             url (str): base url to download the file.
             name (str): name of the add-on's folder.
-            dest (str): destination of the downloaded file. Defaults to 'cache'.
+            dest (str): destination of the downloaded file.
         Returns:
             str: path to the zip file
         """
