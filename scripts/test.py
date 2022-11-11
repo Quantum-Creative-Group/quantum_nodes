@@ -86,5 +86,5 @@ if __name__ == "__main__":
         print(e)
         exit_val = 1
 
-    print(f"{TERM.LIGHT_BLUE}{TERM.centered_str(' RUN TESTS END ', '=')}{TERM.RESET}")
+    print(f"{TERM.LIGHT_BLUE}{TERM.centered_str(' TEST SUITE: END ', '=')}{TERM.RESET}")
     sys.exit(exit_val)

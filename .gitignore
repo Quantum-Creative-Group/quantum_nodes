@@ -9,6 +9,7 @@ docs/source/developers_manual/code/
 animation_nodes/
 
 # Cache
+.pytest_cache/
 **/__pycache__
 cache/
 

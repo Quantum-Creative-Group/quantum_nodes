@@ -67,7 +67,7 @@ class PackageAndAddonUtils:
         "module": "animation_nodes",
         "path": "",
         "windows-latest": "https://github.com/JacquesLucke/animation_nodes/releases/download/master-cd-build/animation_nodes_v2_3_windows",
-        "ubuntu-latest": "https://github.com/JacquesLucke/animation_nodes/releases/download/master-cd-build/animation_nodes_v2_3_ubuntu",
+        "ubuntu-latest": "https://github.com/JacquesLucke/animation_nodes/releases/download/master-cd-build/animation_nodes_v2_3_linux",
         "macos-latest": "https://github.com/JacquesLucke/animation_nodes/releases/download/master-cd-build/animation_nodes_v2_3_macOS",
     }
 
