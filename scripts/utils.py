@@ -1,6 +1,5 @@
-"""
-Utility functions and classes to setup the unit testing environment.
-"""
+"""Utility functions and classes to setup the unit testing environment."""
+
 import os
 import sys
 import shutil
@@ -26,12 +25,12 @@ parser.add_argument(
     type=str,
     nargs='?',
     default="ubuntu",
-    help="Targeted operating system on which to run the test suite. Must be one of: ['macos-latest', 'ubuntu-latest', 'windows-latest']."
+    help="Targeted operating system on which to run the test suite. Must be one of: ['macos-latest', 'ubuntu-latest', 'windows-latest']."  # noqa: E501
 )
 
 
 class TerminalDisplay:
-    """Usefull tools to better the messages displayed in the terminal."""
+    """Useful tools to better the messages displayed in the terminal."""
 
     # List of colors which can be used to color texts in the terminal.
     LIGHT_RED = '\033[91m'
@@ -49,9 +48,11 @@ class TerminalDisplay:
     def centered_str(cls, message: str, char: str = "-") -> str:
         """
         Generate a line full of 'char' with the given message at the center.
+
         Args:
             message (str): message to display.
             char (str, optional): char with which to fill the line. Defaults to "-".
+
         Returns:
             str: generated line
         """
@@ -66,9 +67,9 @@ class PackageAndAddonUtils:
     ANIMATION_NODES = {
         "module": "animation_nodes",
         "path": "",
-        "windows-latest": "https://github.com/JacquesLucke/animation_nodes/releases/download/master-cd-build/animation_nodes_v2_3_windows",
-        "ubuntu-latest": "https://github.com/JacquesLucke/animation_nodes/releases/download/master-cd-build/animation_nodes_v2_3_linux",
-        "macos-latest": "https://github.com/JacquesLucke/animation_nodes/releases/download/master-cd-build/animation_nodes_v2_3_macOS",
+        "windows-latest": "https://github.com/JacquesLucke/animation_nodes/releases/download/master-cd-build/animation_nodes_v2_3_windows",     # noqa: E501
+        "ubuntu-latest": "https://github.com/JacquesLucke/animation_nodes/releases/download/master-cd-build/animation_nodes_v2_3_linux",        # noqa: E501
+        "macos-latest": "https://github.com/JacquesLucke/animation_nodes/releases/download/master-cd-build/animation_nodes_v2_3_macOS",         # noqa: E501
     }
 
     @classmethod
@@ -95,6 +96,7 @@ class PackageAndAddonUtils:
     def install_py_package(cls, package: str, force: bool = False) -> None:
         """
         Install the given python package.
+
         Args:
             package (str): name of the package.
             force (bool, optional): force reinstall. Defaults to False.
@@ -108,6 +110,7 @@ class PackageAndAddonUtils:
     def install_py_requirements(cls, requirements: str, force: bool = False) -> None:
         """
         Install python packages from the given requirements file.
+
         Args:
             requirements (str): path to the requirements file.
             force (bool, optional): force reinstall. Defaults to False.
@@ -121,6 +124,7 @@ class PackageAndAddonUtils:
     def install_local_py_package(cls, path: str, force: bool = False) -> None:
         """
         Install a local package.
+
         Args:
             path (str): path to the folder of the local package.
             force (bool, optional): force reinstall. Defaults to False.
@@ -134,10 +138,12 @@ class PackageAndAddonUtils:
     def download_blender_addon(cls, url: str, name: str, dest: str) -> str:
         """
         Download the given blender add-on and put it in the destination folder.
+
         Args:
             url (str): base url to download the file.
             name (str): name of the add-on's folder.
             dest (str): destination of the downloaded file.
+
         Returns:
             str: path to the zip file
         """
@@ -169,6 +175,7 @@ class FilesUtils:
     def zipdir(cls, path: str, ziph: zipfile.ZipFile) -> None:
         """
         Zip the given folder.
+
         Args:
             path (str): path to the folder.
             ziph (zipfile.ZipFile): zip file.
@@ -208,6 +215,7 @@ class FilesUtils:
     def remove_folders_matching_pattern(cls, root_folder: str, pattern: str = "__pycache__") -> None:
         """
         Remove folders which name match the given pattern.
+
         Args:
             root_folder (str): root folder.
             pattern (str, optional): pattern of the folders to remove. Defaults to "__pycache__".

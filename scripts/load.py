@@ -1,4 +1,5 @@
 """Run the test suite inside blender."""
+
 import os
 import sys
 from pathlib import Path
@@ -64,6 +65,7 @@ class SetupPlugin:
     def __init__(self, addon: str):
         """
         Init method of the class.
+
         Args:
             addon (sstr): absolute path to the addon (zip file)
         """
@@ -77,6 +79,7 @@ class SetupPlugin:
     def pytest_configure(self, config: dict):
         """
         Configure pytest.
+
         Args:
             config (dict): configuration
         """

@@ -4,4 +4,4 @@ import pytest
 
 def test_hello_world():
 
-    assert "HelloWorld" == True
+    assert "HelloWorld" == "test_fail"
