@@ -34,9 +34,9 @@ if __name__ == "__main__":
 
     system = args.os
 
-    if not ['macos-latest', 'ubuntu-latest', 'windows-latest'] in system:
-        print(f"{TERM.LIGHT_RED}ERROR: -os option must be one of\
-            ['macos-latest', 'ubuntu-latest', 'windows-latest'].{TERM.RESET}")
+    if not any(system == supported_os for supported_os in ['macos-latest', 'ubuntu-latest', 'windows-latest']):
+        print(f"{TERM.LIGHT_RED}ERROR: -os option must be one of: \
+['macos-latest', 'ubuntu-latest', 'windows-latest'].{TERM.RESET}")
         parser.parse_args(['-h'])
 
     module = "quantum_nodes"
@@ -51,12 +51,12 @@ if __name__ == "__main__":
 
         # Download addons on which this add-on depends
         PAU.ANIMATION_NODES["path"] = PAU.download_blender_addon(f"{PAU.ANIMATION_NODES[system]}_py{python}.zip",
-                                                                 PAU.ANIMATION_NODES['module'], cache)
+                                                                 f"{PAU.ANIMATION_NODES['module']}_py{python}", cache)
         os.environ[f"{PAU.ANIMATION_NODES['module']}_module"] = PAU.ANIMATION_NODES['module']
         os.environ[f"{PAU.ANIMATION_NODES['module']}_path"] = PAU.ANIMATION_NODES['path']
 
         # Zip addon
-        print(f"Zipping addon - path: {PAU.ANIMATION_NODES['path']}")
+        print(f"Zipping folder: {addon}")
         zipf = zipfile.ZipFile(module + ".zip", 'w', zipfile.ZIP_DEFLATED)
         FilesUtils.zipdir("./" + module, zipf)
         zipf.close()
@@ -65,3 +65,26 @@ if __name__ == "__main__":
     except Exception as e:
         print(e)
         exit_val = 1
+
+    # Custom configuration
+    config = {
+        "blender_load_tests_script": os.path.abspath(here.joinpath("load.py").as_posix()),
+        "coverage": False,
+        "tests": os.path.abspath(here.joinpath("../tests").as_posix()),
+        "blender_cache": os.path.abspath(here.joinpath("../cache").as_posix())
+    }
+
+    try:
+        # Setup custom blender cache (where the blender versions will be downloaded and extracted)
+        # The blender_addon_tester module raises an error when passed as a key in the config dict
+        if config.get("blender_cache", None):
+            os.environ["BLENDER_CACHE"] = config["blender_cache"]
+            config.pop("blender_cache")
+
+        exit_val = BAT.test_blender_addon(addon_path=addon, blender_revision=blender, config=config)
+    except Exception as e:
+        print(e)
+        exit_val = 1
+
+    print(f"{TERM.LIGHT_BLUE}{TERM.centered_str(' RUN TESTS END ', '=')}{TERM.RESET}")
+    sys.exit(exit_val)

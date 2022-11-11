@@ -26,7 +26,7 @@ parser.add_argument(
     type=str,
     nargs='?',
     default="ubuntu",
-    help="Targeted operating system on which to run the test suite."
+    help="Targeted operating system on which to run the test suite. Must be one of: ['macos-latest', 'ubuntu-latest', 'windows-latest']."
 )
 
 
@@ -83,10 +83,13 @@ class PackageAndAddonUtils:
             str: python version used by Blender (MajorMinor).
         """
 
-        if ["2.9", "3.0"] in blender:
+        if any(version in blender for version in ["2.9", "3.0"]):
             return "39"
-        if ["3.1, 3.2, 3.3"]:
+
+        if any(version in blender for version in ["3.1, 3.2, 3.3"]):
             return "310"
+
+        raise ValueError(f"Unable to determine which python version is used by the given blender version ({blender})")
 
     @classmethod
     def install_py_package(cls, package: str, force: bool = False) -> None:
@@ -148,11 +151,11 @@ class PackageAndAddonUtils:
             print(f"Created destination folder: {dest}")
 
         if os.path.exists(os.path.join(dest, filename)):
-            print(f"Stop-Motion-OBJ - found: {path}")
+            print(f"{name} - found: {path}")
             return path
 
         # Else, download it and save it at the given destination
-        print(f"Downloading: {filename}")
+        print(f"Downloading: {filename} ({url})")
         response = requests.get(url)
         open(os.path.join(dest, filename), "wb").write(response.content)
 

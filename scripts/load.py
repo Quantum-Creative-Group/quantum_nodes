@@ -8,6 +8,7 @@ sys.path.append(os.path.abspath("."))
 
 from scripts.utils import TerminalDisplay as TERM
 from scripts.utils import PackageAndAddonUtils as PAU
+from scripts.utils import FilesUtils
 
 print(f"{TERM.LIGHT_BLUE}{TERM.centered_str(' LOAD PYTEST ', '=')}{TERM.RESET}")
 print("Running file:", __file__, "from Blender.")
@@ -85,9 +86,8 @@ class SetupPlugin:
         self.bpy_module, self.zfile = BAT.zip_addon(self.addon, self.addon_dir)
         BAT.change_addon_dir(self.bpy_module, self.addon_dir)
         BAT.install_addon(
-            os.environ.get(
-                PAU.ANIMATION_NODES["module"], None), os.environ.get(
-                PAU.ANIMATION_NODES["path"], None)
+            os.environ.get(f"{PAU.ANIMATION_NODES['module']}_module", None),
+            os.environ.get(f"{PAU.ANIMATION_NODES['module']}_path", None)
         )
         BAT.install_addon(self.bpy_module, self.zfile)
         config.cache.set("bpy_module", self.bpy_module)
@@ -99,8 +99,13 @@ class SetupPlugin:
 
         print("PyTest unconfigure...")
 
-        BAT.cleanup(self.addon, self.bpy_module, self.addon_dir)
-        BAT.cleanup(self.addon, os.environ.get(PAU.ANIMATION_NODES["module"], None), self.addon_dir)
+        BAT.cleanup(None, self.bpy_module, self.addon_dir)
+        BAT.cleanup(None, os.environ.get(f"{PAU.ANIMATION_NODES['module']}_module", None), self.addon_dir)
+
+        # Cleanup zip files
+        print("Cleaning up - zip files")
+        exclude = [os.path.abspath("./cache")]
+        FilesUtils.remove_files_matching_pattern(self.root, exclude_folders=exclude, pattern="*.zip")
 
         print("PyTest unconfigure successful!")
 
