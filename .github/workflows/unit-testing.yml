@@ -43,4 +43,4 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Run test suite (Blender ${{ matrix.blender-version }}, ${{ matrix.os }})
-        run: python -m scripts.run_tests.py -b ${{ matrix.blender-version }} -os ${{ matrix.os }}
+        run: python -m scripts.test.py -b ${{ matrix.blender-version }} -os ${{ matrix.os }}
