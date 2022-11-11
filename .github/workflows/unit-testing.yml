@@ -10,7 +10,7 @@ on:
 
 jobs:
   Unit-testing:
-    runs-on: {{ matrix.os }}
+    runs-on: ${{ matrix.os }}
     strategy:
       max-parallel: 4
       fail-fast: false
@@ -28,7 +28,8 @@ jobs:
             "3.2.2",
             "3.3.0",
             "3.3.1"
-          ]
+          ],
+          os: ["ubuntu-latest", "windows-latest"]
     env:
       BLENDER_CACHE: ${{ github.workspace }}/cache # The place where blender releases are downloaded
       BLENDER_VERSION: ${{ matrix.blender-version }}
