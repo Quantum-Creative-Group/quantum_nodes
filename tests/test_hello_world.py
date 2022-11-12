@@ -4,4 +4,6 @@ import pytest
 
 def test_hello_world():
 
-    assert "HelloWorld" == "test_fail"
+    variable = "HelloWorld"
+
+    assert "HelloWorld" == variable
