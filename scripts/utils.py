@@ -87,7 +87,7 @@ class PackageAndAddonUtils:
         if any(version in blender for version in ["2.9", "3.0"]):
             return "39"
 
-        if any(version in blender for version in ["3.1, 3.2, 3.3"]):
+        if any(version in blender for version in ["3.1", "3.2", "3.3"]):
             return "310"
 
         raise ValueError(f"Unable to determine which python version is used by the given blender version ({blender})")
