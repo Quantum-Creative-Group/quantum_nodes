@@ -10,6 +10,9 @@ sphinx-rtd-theme
 sphinxcontrib-spelling
 fake-bpy-module-latest
 
+blender-addon-tester
+pytest
+
 scipy
 numpy
 pillow

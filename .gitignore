@@ -9,8 +9,13 @@ docs/source/developers_manual/code/
 animation_nodes/
 
 # Cache
+.pytest_cache/
 **/__pycache__
+cache/
 
 # Blender
 *.pyc
 *.blend[1-9]
+
+# Tests
+local_addon/

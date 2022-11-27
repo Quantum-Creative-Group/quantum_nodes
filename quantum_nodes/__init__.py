@@ -23,7 +23,7 @@ bl_info = {
     "author": "Quantum Creative Group",
     "version": (0, 1, 2),
     "blender": (2, 93, 0),
-    "location": "Animation Nodes Editor",
+    "location": "Animation Nodes",
     "description": "Animation Nodes extension which implements quantum computing tools.",
     "warning": "This version is still in development.",
     "doc_url": "https://quantum-creative-group.github.io/quantum_nodes/",
