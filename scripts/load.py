@@ -62,7 +62,7 @@ import blender_addon_tester.addon_helper as BAT
 class SetupPlugin:
     """Setup class for pytest."""
 
-    def __init__(self, addon: str):
+    def __init__(self, addon: str, addon_dir: str = os.path.abspath("./local_addon/")):
         """
         Init method of the class.
 
@@ -72,7 +72,7 @@ class SetupPlugin:
 
         self.root = Path(__file__).parent.parent
         self.addon = addon
-        self.addon_dir = "local_addon"
+        self.addon_dir = addon_dir
         self.bpy_module = None
         self.zfile = None
 
@@ -102,13 +102,20 @@ class SetupPlugin:
 
         print("PyTest unconfigure...")
 
-        BAT.cleanup(None, self.bpy_module, self.addon_dir)
-        BAT.cleanup(None, os.environ.get(f"{PAU.ANIMATION_NODES['module']}_module", None), self.addon_dir)
-
         # Cleanup zip files
         print("Cleaning up - zip files")
         exclude = [os.path.abspath("./cache")]
         FilesUtils.remove_files_matching_pattern(self.root, exclude_folders=exclude, pattern="*.zip")
+
+        BAT.cleanup(None, self.bpy_module, os.path.join(self.addon_dir, "addons", self.bpy_module))
+
+        # TODO: find a better fix to "[WinError 5] Access denied:
+        # '[....]\\local_addon\\addons\\animation_nodes\\algorithms\\hashing\\murmurhash3.cp39-win_amd64.pyd'"
+        try:
+            an_path = os.environ.get(f"{PAU.ANIMATION_NODES['module']}_module", None)
+            BAT.cleanup(None, an_path, os.path.join(self.addon_dir, "addons", an_path))
+        except BaseException as exception:
+            print(f"{TERM.LIGHT_YELLOW}WARNING: failed to clean animation_nodes directory ({an_path}).{TERM.RESET}")
 
         print("PyTest unconfigure successful!")
 
