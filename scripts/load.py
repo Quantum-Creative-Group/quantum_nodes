@@ -67,7 +67,8 @@ class SetupPlugin:
         Init method of the class.
 
         Args:
-            addon (sstr): absolute path to the addon (zip file)
+            addon (str): absolute path to the addon (zip file).
+            addon_dir (str, optional): absolute path to the local addon path. Defaults to: os.path.abspath("./local_addon/").
         """
 
         self.root = Path(__file__).parent.parent
@@ -81,7 +82,7 @@ class SetupPlugin:
         Configure pytest.
 
         Args:
-            config (dict): configuration
+            config (dict): configuration.
         """
 
         print("PyTest configure...")
@@ -112,10 +113,11 @@ class SetupPlugin:
         # TODO: find a better fix to "[WinError 5] Access denied:
         # '[....]\\local_addon\\addons\\animation_nodes\\algorithms\\hashing\\murmurhash3.cp39-win_amd64.pyd'"
         try:
-            an_path = os.environ.get(f"{PAU.ANIMATION_NODES['module']}_module", None)
-            BAT.cleanup(None, an_path, os.path.join(self.addon_dir, "addons", an_path))
+            an_module = os.environ.get(f"{PAU.ANIMATION_NODES['module']}_module", None)
+            an_local_addon_path = os.path.join(self.addon_dir, "addons", an_module)
+            BAT.cleanup(None, an_module, an_local_addon_path)
         except BaseException as exception:
-            print(f"{TERM.LIGHT_YELLOW}WARNING: failed to clean animation_nodes directory ({an_path}).{TERM.RESET}")
+            print(f"{TERM.LIGHT_YELLOW}WARNING: failed to clean animation_nodes directory ({an_local_addon_path}).{TERM.RESET}")
 
         print("PyTest unconfigure successful!")
 
