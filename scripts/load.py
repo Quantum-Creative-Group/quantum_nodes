@@ -68,7 +68,8 @@ class SetupPlugin:
 
         Args:
             addon (str): absolute path to the addon (zip file).
-            addon_dir (str, optional): absolute path to the local addon path. Defaults to: os.path.abspath("./local_addon/").
+            addon_dir (str, optional): absolute path to the local addon path.
+                                       Defaults to: os.path.abspath("./local_addon/").
         """
 
         self.root = Path(__file__).parent.parent
@@ -117,7 +118,9 @@ class SetupPlugin:
             an_local_addon_path = os.path.join(self.addon_dir, "addons", an_module)
             BAT.cleanup(None, an_module, an_local_addon_path)
         except BaseException as exception:
-            print(f"{TERM.LIGHT_YELLOW}WARNING: failed to clean animation_nodes directory ({an_local_addon_path}).{TERM.RESET}")
+            print(f"{TERM.LIGHT_YELLOW}WARNING: failed to clean animation_nodes \
+directory ({an_local_addon_path}).{TERM.RESET}")
+            print(exception)
 
         print("PyTest unconfigure successful!")
 
