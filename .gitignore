@@ -16,3 +16,6 @@ cache/
 # Blender
 *.pyc
 *.blend[1-9]
+
+# Tests
+local_addon/
