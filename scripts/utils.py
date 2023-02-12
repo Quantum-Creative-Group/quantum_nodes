@@ -21,11 +21,11 @@ parser.add_argument(
 )
 parser.add_argument(
     "-os",
-    metavar="Targeted operating system",
+    metavar="Operating system",
     type=str,
     nargs='?',
     default="ubuntu",
-    help="Targeted operating system on which to run the test suite. Must be one of: ['macos-latest', 'ubuntu-latest', 'windows-latest']."  # noqa: E501
+    help="Operating system on which to run tests: ['macos-latest', 'ubuntu-latest', 'windows-latest']."
 )
 
 

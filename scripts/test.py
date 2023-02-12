@@ -35,8 +35,7 @@ if __name__ == "__main__":
     system = args.os
 
     if not any(system == supported_os for supported_os in ['macos-latest', 'ubuntu-latest', 'windows-latest']):
-        print(f"{TERM.LIGHT_RED}ERROR: -os option must be one of: \
-['macos-latest', 'ubuntu-latest', 'windows-latest'].{TERM.RESET}")
+        print(f"{TERM.LIGHT_RED}ERROR: -os option must be one of: ['macos-latest', 'ubuntu-latest', 'windows-latest'].{TERM.RESET}")  # noqa: E501
         parser.parse_args(['-h'])
 
     module = "quantum_nodes"
