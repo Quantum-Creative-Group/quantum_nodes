@@ -11,6 +11,8 @@ from scripts.utils import parser
 
 print(f"{TERM.LIGHT_BLUE}{TERM.centered_str(' TEST SUITE: START ', '=')}{TERM.RESET}")
 
+PAU.load_default_user_folders()
+
 # Check that blender-addon-tester is installed
 try:
     import blender_addon_tester as BAT

@@ -2,12 +2,14 @@
 
 import os
 import sys
+import site
 import shutil
 import fnmatch
 import zipfile
 import requests
 import argparse
 import subprocess
+from pathlib import Path
 
 # Parser for test.py
 parser = argparse.ArgumentParser(description="Add-on test suite")
@@ -71,6 +73,15 @@ class PackageAndAddonUtils:
         "ubuntu-latest": "https://github.com/JacquesLucke/animation_nodes/releases/download/master-cd-build/animation_nodes_v2_3_linux",        # noqa: E501
         "macos-latest": "https://github.com/JacquesLucke/animation_nodes/releases/download/master-cd-build/animation_nodes_v2_3_macOS",         # noqa: E501
     }
+
+    @classmethod
+    def load_default_user_folders(cls):
+        # Add user default folders where pip will install some of the dependencies
+        # This is because some folders may not be writable
+        USER_SITE = site.getusersitepackages()
+        sys.path.append(os.path.abspath(USER_SITE))
+        sys.path.append(os.path.join(os.path.abspath(Path(USER_SITE).parent), "Scripts"))
+        print(sys.path)
 
     @classmethod
     def get_python_version(cls, blender: str) -> str:

@@ -2,13 +2,7 @@
 
 import os
 import sys
-import site
 from pathlib import Path
-
-# Add user default folders where pip will install some of the dependencies
-# This is because some folders may not be writable
-sys.path.append(os.path.abspath(site.USER_SITE))
-sys.path.append(os.path.join(os.path.abspath(Path(site.USER_SITE).parent), "Scripts"))
 
 # Make utils.py functions available in this file
 sys.path.append(os.path.abspath("."))
@@ -41,6 +35,8 @@ TESTS_PATH = os.environ.get("BLENDER_ADDON_TESTS_PATH", default_tests_dir.as_pos
 # + INSTALL REQUIREMENTS +
 # +----------------------+
 
+PAU.load_default_user_folders()
+
 try:
     import PIL
     import scipy
@@ -56,7 +52,7 @@ except Exception as e:
     print(f"{TERM.LIGHT_YELLOW}Missing module...{TERM.RESET}", e)
     print(f"{TERM.LIGHT_YELLOW}Trying to install missing dependencies...{TERM.RESET}")
     try:
-        PAU.install_py_requirements(os.path.join(os.path.abspath("./scripts"), "requirements.txt"))
+        PAU.install_py_requirements(os.path.join(os.path.abspath("./scripts"), "requirements.txt"), force=True)
     except Exception as e:
         print(e)
         sys.exit(1)
