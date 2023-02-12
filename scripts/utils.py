@@ -87,7 +87,7 @@ class PackageAndAddonUtils:
         if any(version in blender for version in ["2.9", "3.0"]):
             return "39"
 
-        if any(version in blender for version in ["3.1", "3.2", "3.3"]):
+        if any(version in blender for version in ["3.1", "3.2", "3.3", "3.4"]):
             return "310"
 
         raise ValueError(f"Unable to determine which python version is used by the given blender version ({blender})")
@@ -101,7 +101,8 @@ class PackageAndAddonUtils:
             package (str): name of the package.
             force (bool, optional): force reinstall. Defaults to False.
         """
-        args = [sys.executable, "-m", "pip", "install", package]
+
+        args = [sys.executable, "-m", "pip", "install", package, "--user"]
         if force:
             args.append("--force-reinstall")
         subprocess.check_call(args)
@@ -115,7 +116,8 @@ class PackageAndAddonUtils:
             requirements (str): path to the requirements file.
             force (bool, optional): force reinstall. Defaults to False.
         """
-        args = [sys.executable, "-m", "pip", "install", "-r", requirements, "-U"]
+
+        args = [sys.executable, "-m", "pip", "install", "-r", requirements, "--upgrade", "--user"]
         if force:
             args.append("--force-reinstall")
         subprocess.check_call(args)
@@ -129,6 +131,7 @@ class PackageAndAddonUtils:
             path (str): path to the folder of the local package.
             force (bool, optional): force reinstall. Defaults to False.
         """
+
         args = [sys.executable, "-m", "pip", "install", "-e", path]
         if force:
             args.append("--force-reinstall")

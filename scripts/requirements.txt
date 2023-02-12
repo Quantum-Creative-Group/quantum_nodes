@@ -1,0 +1,14 @@
+# Requirements for unit tests
+wheel
+pyenchant
+myst-parser
+
+blender-addon-tester
+pytest
+
+scipy
+numpy
+pillow
+qiskit
+qiskit-finance
+qiskit-machine-learning

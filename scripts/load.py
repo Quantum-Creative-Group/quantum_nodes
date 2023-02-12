@@ -2,7 +2,13 @@
 
 import os
 import sys
+import site
 from pathlib import Path
+
+# Add user default folders where pip will install some of the dependencies
+# This is because some folders may not be writable
+sys.path.append(os.path.abspath(site.USER_SITE))
+sys.path.append(os.path.join(os.path.abspath(Path(site.USER_SITE).parent), "Scripts"))
 
 # Make utils.py functions available in this file
 sys.path.append(os.path.abspath("."))
@@ -50,7 +56,7 @@ except Exception as e:
     print(f"{TERM.LIGHT_YELLOW}Missing module...{TERM.RESET}", e)
     print(f"{TERM.LIGHT_YELLOW}Trying to install missing dependencies...{TERM.RESET}")
     try:
-        PAU.install_py_requirements(os.path.join(os.path.abspath("."), "requirements.txt"), force=True)
+        PAU.install_py_requirements(os.path.join(os.path.abspath("./scripts"), "requirements.txt"))
     except Exception as e:
         print(e)
         sys.exit(1)

@@ -1,22 +1,7 @@
-"""
-Copyright (C) 2021-2022 Quantum Creative Group.\
-contact@quantum-nodes.com.
-
-Created by Quantum-Creative-Group
-
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program. If not, see <http://www.gnu.org/licenses/>.
-"""
+import os
+import sys
+import site
+from pathlib import Path
 
 bl_info = {
     "name": "Quantum Nodes",
@@ -30,6 +15,11 @@ bl_info = {
     "tracker_url": "https://github.com/Quantum-Creative-Group/quantum_nodes/issues",
     "category": "Node",
 }
+
+# Add user default folders where pip will install some of the dependencies
+# This is because some folders may not be writable
+sys.path.append(os.path.abspath(site.USER_SITE))
+sys.path.append(os.path.join(os.path.abspath(Path(site.USER_SITE).parent), "Scripts"))
 
 import addon_utils
 from . import auto_load
