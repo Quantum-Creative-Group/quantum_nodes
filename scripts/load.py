@@ -35,7 +35,7 @@ TESTS_PATH = os.environ.get("BLENDER_ADDON_TESTS_PATH", default_tests_dir.as_pos
 # + INSTALL REQUIREMENTS +
 # +----------------------+
 
-PAU.load_default_user_folders()
+PAU.reload_available_modues()
 
 try:
     import PIL
@@ -52,7 +52,8 @@ except Exception as e:
     print(f"{TERM.LIGHT_YELLOW}Missing module...{TERM.RESET}", e)
     print(f"{TERM.LIGHT_YELLOW}Trying to install missing dependencies...{TERM.RESET}")
     try:
-        PAU.install_py_requirements(os.path.join(os.path.abspath("./scripts"), "requirements.txt"), force=True)
+        PAU.install_py_requirements(os.path.join(os.path.abspath("./scripts"), "requirements.txt"))
+        PAU.reload_available_modues()
     except Exception as e:
         print(e)
         sys.exit(1)

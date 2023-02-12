@@ -11,7 +11,7 @@ from scripts.utils import parser
 
 print(f"{TERM.LIGHT_BLUE}{TERM.centered_str(' TEST SUITE: START ', '=')}{TERM.RESET}")
 
-PAU.load_default_user_folders()
+PAU.reload_available_modues()
 
 # Check that blender-addon-tester is installed
 try:

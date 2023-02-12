@@ -10,6 +10,7 @@ import requests
 import argparse
 import subprocess
 from pathlib import Path
+from importlib import invalidate_caches
 
 # Parser for test.py
 parser = argparse.ArgumentParser(description="Add-on test suite")
@@ -75,13 +76,14 @@ class PackageAndAddonUtils:
     }
 
     @classmethod
-    def load_default_user_folders(cls):
+    def reload_available_modues(cls):
         # Add user default folders where pip will install some of the dependencies
         # This is because some folders may not be writable
         USER_SITE = site.getusersitepackages()
         sys.path.append(os.path.abspath(USER_SITE))
         sys.path.append(os.path.join(os.path.abspath(Path(USER_SITE).parent), "Scripts"))
-        print(sys.path)
+        # Force to reload list of available modules and packages
+        invalidate_caches()
 
     @classmethod
     def get_python_version(cls, blender: str) -> str:
