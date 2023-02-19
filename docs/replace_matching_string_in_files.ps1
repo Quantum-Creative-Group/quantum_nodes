@@ -7,7 +7,7 @@ param(
 
 [array]$files = Get-ChildItem -Path $folder -Include *.py -Recurse -Force | select -expand fullname
 
-function Replace-Strings-In-Files {
+function Find-And-Replace-Strings {
 
     param(
         [array]$files,
@@ -20,4 +20,4 @@ function Replace-Strings-In-Files {
     }
 }
 
-Replace-Strings-In-Files $files $find $replace
+Find-And-Replace-Strings $files $find $replace
