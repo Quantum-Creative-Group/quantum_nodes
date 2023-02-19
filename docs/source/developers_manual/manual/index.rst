@@ -2,24 +2,31 @@ Contribute to the manual
 ========================
 
 
-.. _dev-env-contrib-manual:
+* :ref:`development-environment-contrib-manual`
+* :ref:`tools-contrib-manual`
+* :ref:`guidelines-contrib-manual`
+* :ref:`git-workflow-contrib-manual`
+
+.. _development-environment-contrib-manual:
 
 Development environment
 ***********************
 
-.. toctree::
-    :maxdepth: 1
 
-    linux
-    windows
-    mac
-    tools
+Install dependencies
+--------------------
 
 
-.. _intructions-linux-contrib-manual:
+.. important::
+    Make sure to install the dependencies in an appropriate python environment.
+    For example, you can use the one which comes with Blender.
+
+
+|   Run: ``pip install -r requirements.txt``
+
 
 Contribute
-**********
+----------
 
 
 .. note::
@@ -32,7 +39,80 @@ Contribute
 * Wait for your modifications to be reviewed and accepted
 
 
-.. _guidelines-contrib-addon:
+Build the manual
+----------------
+
+* Clone the `quantum_nodes <https://github.com/Quantum-Creative-Group/quantum_nodes>`_ repository.
+
+*   |   Open a terminal and go in the ``docs`` folder: ``cd docs``
+    |   Then type: ``make html`` (or ``make.bat html`` on Windows)
+    |   Visualize the html in ``build/html``
+
+
+.. _tools-contrib-manual:
+
+Tools
+*****
+
+Here is a list of tools which will help you to write documentation.
+
+#. :ref:`tools-vs-code-extensions`
+    #. :ref:`tools-pydocstring-generator-vscode`
+    #. :ref:`tools-rst-vscode`
+
+
+.. _tools-vs-code-extensions:
+
+VSCode extensions
+-----------------
+
+
+.. _tools-pydocstring-generator-vscode:
+
+Python Docstring Generator
+##########################
+
+
+.. note::
+    Automatically generates the right docstring format for methods / functions / classes ...
+
+
+* Install `python docstring generator <https://marketplace.visualstudio.com/items?itemName=njpwerner.autodocstring>`_
+
+* Select the ``sphinx`` format for the auto docstring functionality
+
+.. image:: /images/contrib-tools/docstring_format.png
+    :width: 85%
+    :alt: Python Docstring Generator, auto docstring sphinx
+    :align: center
+    :class: img-rounded
+
+|
+
+.. _tools-rst-vscode:
+
+reStructuredText Syntax highlighting
+####################################
+
+
+.. note::
+    Syntax highlighting and document symbols for reStructuredText
+
+
+* Install `reStructuredText syntax highlighting <https://marketplace.visualstudio.com/items?itemName=trond-snekvik.simple-rst>`_
+* This extension uses `Esbonio <https://swyddfa.github.io/esbonio/docs/latest/en/>`_
+* Select the right output for sphinx-build in the settings:
+
+.. image:: /images/contrib-tools/esbonio_output_sphinx_build.png
+    :width: 85%
+    :alt: reStructuredText syntax highlighting, set output path sphinx-build
+    :align: center
+    :class: img-rounded
+
+|
+
+
+.. _guidelines-contrib-manual:
 
 Guidelines
 **********
