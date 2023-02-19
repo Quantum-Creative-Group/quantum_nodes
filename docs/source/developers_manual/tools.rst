@@ -1,22 +1,36 @@
-.. _tools-contrib-manual:
+.. _tools-dev-addon:
 
 Tools
 =====
 
-Here is a list of tools which will help you to write documentation.
+Here is a list of tools which will help you to develop Quantum Nodes.
 
-#. :ref:`vs-code-extensions`
-    #. :ref:`pydocstring-generator-vscode`
-    #. :ref:`rst-vscode`
+* :ref:`vs-code-extensions-addon`
+    * :ref:`tools-blender-vscode`
+    * :ref:`tools-pydocstring-generator-vscode`
+    * :ref:`tools-rst-vscode`
 
 
-.. _vs-code-extensions:
+.. _vs-code-extensions-addon:
 
 VSCode extensions
 #################
 
 
-.. _pydocstring-generator-vscode:
+.. _tools-blender-vscode:
+
+Blender Development
+*******************
+
+
+.. note::
+    Tools to simplify Blender development. Developed by `Jacques Lucke <https://github.com/JacquesLucke>`_.
+
+
+* Install `blender development <https://marketplace.visualstudio.com/items?itemName=JacquesLucke.blender-development>`_
+
+
+.. _tools-pydocstring-generator-vscode:
 
 Python Docstring Generator
 **************************
@@ -38,7 +52,7 @@ Python Docstring Generator
 
 |
 
-.. _rst-vscode:
+.. _tools-rst-vscode:
 
 reStructuredText Syntax highlighting
 ************************************

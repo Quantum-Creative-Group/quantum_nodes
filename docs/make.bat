@@ -4,28 +4,25 @@ pushd %~dp0
 
 REM Command file for Sphinx documentation
 
-if "%SPHINXBUILD%" == "" (
+if "%2" == "" (
 	set SPHINXBUILD=sphinx-build
+) else (
+	set SPHINXBUILD=%2
 )
+
 set SOURCEDIR=source
 set BUILDDIR=build
+set MODULE=quantum_nodes
 
 if "%1" == "" goto help
 
-%SPHINXBUILD% >NUL 2>NUL
-if errorlevel 9009 (
-	echo.
-	echo.The 'sphinx-build' command was not found. Make sure you have Sphinx
-	echo.installed, then set the SPHINXBUILD environment variable to point
-	echo.to the full path of the 'sphinx-build' executable. Alternatively you
-	echo.may add the Sphinx directory to PATH.
-	echo.
-	echo.If you don't have Sphinx installed, grab it from
-	echo.http://sphinx-doc.org/
-	exit /b 1
-)
+move "../%MODULE%/__init__.py" "../%MODULE%/___init__.py"
+powershell -ExecutionPolicy ByPass -command ". replace_matching_string_in_files.ps1 -find '@persistent' -replace '#@persistent';"
 
 %SPHINXBUILD% -M %1 %SOURCEDIR% %BUILDDIR% %SPHINXOPTS% %O%
+
+powershell -ExecutionPolicy ByPass -command ". replace_matching_string_in_files.ps1 -find '#@persistent' -replace '@persistent';"
+move "../%MODULE%/___init__.py" "../%MODULE%/__init__.py"
 goto end
 
 :help

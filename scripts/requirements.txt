@@ -1,14 +1,7 @@
+# Requirements for unit tests
 wheel
 pyenchant
 myst-parser
-pre-commit
-autopep8
-
-sphinx
-sphinxemoji
-sphinx-rtd-theme
-sphinxcontrib-spelling
-fake-bpy-module-latest
 
 blender-addon-tester
 pytest
